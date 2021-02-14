@@ -11,7 +11,7 @@ Using a terminal, you can do the following sequence of commands:
 
 ```
 $ git clone https://github.com/ionutbortis/gnome-bedtime.git
-$ mv gnome-bedtime "~/.local/share/gnome-shell/extensions/gnomebedtime@ionutbortis.gmail.com"
+$ mv gnome-bedtime ~/.local/share/gnome-shell/extensions/gnomebedtime@ionutbortis.gmail.com
 ```
 
 Then press `Alt`+`F2`, type `r` in the dialog window, then press `Enter`.
