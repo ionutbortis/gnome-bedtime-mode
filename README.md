@@ -29,7 +29,7 @@ Credits for inspiration go to:
 - Desaturate All extension: https://extensions.gnome.org/extension/1102/desaturate-all/ (https://github.com/laerne/desaturate_all)
 - Tint All extension: https://extensions.gnome.org/extension/1471/tint-all/ (https://github.com/amarovita/tint-all)
 
-I wrote this extension because I want to be able to swicth it on and off from command line. Also, I added a smooth transition from normal to grayscale and back.
+I wrote this extension because I want to be able to switch it on and off from command line. Also, I added a smooth transition from normal to grayscale and back.
 
 Because it can be enabled from command line, you cand schedule it nicely with crontab or some other extensions that support scheduling.
 
