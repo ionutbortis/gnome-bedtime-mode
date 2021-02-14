@@ -1,0 +1,10 @@
+{
+  "name": "Gnome Bedtime",
+  "description": "Hey Gnome, it's bedtime! Converts to grayscale the entire Gnome workspace.",
+  "uuid": "gnomebedtime@ionutbortis.gmail.com",
+  "url": "https://github.com/ionutbortis/gnome-bedtime",
+  "shell-version": [
+    "3.36"
+  ],
+  "version": 0.1
+}
