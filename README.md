@@ -3,7 +3,7 @@
 Hey Gnome, it's bedtime! 
 
 Converts to grayscale the entire Gnome workspace by using a smooth transition. 
-This is behaviour is similar to Samsung's bedtime mode which converts the phone screen to grayscale.
+This behaviour is similar to Samsung's bedtime mode which converts the phone screen to grayscale.
 
 # Installation
 
