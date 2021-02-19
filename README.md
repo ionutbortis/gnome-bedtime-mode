@@ -37,7 +37,7 @@ Credits for inspiration go to:
 
 I wrote this extension because I want to be able to switch it on and off from command line. Also, I added a smooth transition from normal to grayscale and back.
 
-Because it can be enabled/disabled from command line, you can schedule it nicely with crontab or some other extensions that support scheduling.
+Because it can be enabled/disabled from command line, you can schedule it nicely with crontab, your own scripts or some other extensions that support scheduling.
 
 Night Theme Switcher extension (https://extensions.gnome.org/extension/2236/night-theme-switcher/) has a Manual Schedule section and you can set two commands for sunrise and sunset. Also, that extension offers the possibility to follow the Night Light settings and some other nice goodies.
 
