@@ -8,7 +8,7 @@ This behaviour is similar to Android's bedtime mode which converts the phone scr
 
 # Installation
 
-Using the Gnome extensions website, by using this link:
+From the Gnome extensions website, by using this link:
 https://extensions.gnome.org/extension/4012/gnome-bedtime/
 
 Or
