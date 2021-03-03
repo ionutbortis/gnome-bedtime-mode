@@ -27,85 +27,82 @@ const { setInterval, logDebug } = Me.imports.utils;
 class Bedtime {
   constructor() {
     this._transitions = 50;
-    //this._transitions = 15;
 
-    this._transition_delay_ms = 50;
+    this._transitionDelayMillis = 50;
 
     this._color_effect = new Clutter.DesaturateEffect();
     this._color_effect.factor = 0;
 
-    this._step = 0;
+    this._transitionStep = 0;
 
-    this._timerId = null;
+    this._transitionTimerId = null;
   }
 
   enable() {
     logDebug("Enabling extension...");
-
     this._turnOn();
   }
 
   disable() {
     logDebug("Disabling extension...");
-
     this._turnOff();
-    this._cleanUp();
   }
 
   _turnOn() {
-    this._step = 0;
+    this._transitionStep = 0;
 
-    this._timerId = setInterval(
+    this._transitionTimerId = setInterval(
       this._smoothOn.bind(this),
-      this._transition_delay_ms
+      this._transitionDelayMillis
     );
   }
 
   _turnOff() {
-    this._step = this._transitions;
+    this._transitionStep = this._transitions;
 
-    this._timerTOFIX = setInterval(
+    this._transitionTimerId = setInterval(
       this._smoothOff.bind(this),
-      this._transition_delay_ms
+      this._transitionDelayMillis
     );
   }
 
-  _disableTimer() {
-    if (this._timerId) {
-      GLib.Source.remove(this._timerId);
-      this._timerId = null;
-    }
-  }
-
-  _cleanUp() {
-    this._removeEffect();
-    this._disableTimer();
-  }
-
   _smoothOn() {
-    this._step++;
+    this._transitionStep++;
     this._addEffect();
 
-    return this._step < this._transitions;
+    return this._transitionStep < this._transitions;
   }
 
   _smoothOff() {
-    this._step--;
+    this._transitionStep--;
     this._addEffect();
 
-    return this._step > 0;
+    if (this._transitionStep > 0) return true;
+    else this._cleanUp();
   }
 
   _addEffect() {
-    this._color_effect.factor = this._step / this._transitions;
+    this._color_effect.factor = this._transitionStep / this._transitions;
 
-    logDebug("Effect factor: " + this._color_effect.factor);
-
+    logDebug(`Effect factor: ${this._color_effect.factor}`);
     Main.uiGroup.add_effect(this._color_effect);
   }
 
   _removeEffect() {
     Main.uiGroup.remove_effect(this._color_effect);
+  }
+
+  _disableTransitionTimer() {
+    if (this._transitionTimerId) {
+      GLib.Source.remove(this._transitionTimerId);
+      this._transitionTimerId = null;
+    }
+  }
+
+  _cleanUp() {
+    logDebug("Starting cleanup...");
+    this._removeEffect();
+    this._disableTransitionTimer();
   }
 }
 
