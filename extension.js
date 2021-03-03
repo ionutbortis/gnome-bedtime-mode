@@ -1,5 +1,4 @@
-/* extension.js
- *
+/*
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2 of the License, or
@@ -15,60 +14,102 @@
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
+const { GLib } = imports.gi;
 
 const Clutter = imports.gi.Clutter;
 const Main = imports.ui.main;
-const Mainloop = imports.mainloop;
+
+const { extensionUtils } = imports.misc;
+const Me = extensionUtils.getCurrentExtension();
+
+const { setInterval, logDebug } = Me.imports.utils;
 
 class Bedtime {
   constructor() {
     this._transitions = 50;
+    //this._transitions = 15;
+
     this._transition_delay_ms = 50;
 
     this._color_effect = new Clutter.DesaturateEffect();
     this._color_effect.factor = 0;
+
+    this._step = 0;
+
+    this._timerId = null;
   }
 
   enable() {
-    this._smooth_on();
+    logDebug("Enabling extension...");
+
+    this._turnOn();
   }
 
   disable() {
-    this._smooth_off();
+    logDebug("Disabling extension...");
+
+    this._turnOff();
+    this._cleanUp();
   }
 
-  _smooth_on(step = 0) {
-    Mainloop.timeout_add(this._transition_delay_ms, () => {
-      step++;
+  _turnOn() {
+    this._step = 0;
 
-      this._add_effect(step);
-
-      step < this._transitions
-        ? this._smooth_on(step)
-        : this._add_effect(this._transitions);
-    });
+    this._timerId = setInterval(
+      this._smoothOn.bind(this),
+      this._transition_delay_ms
+    );
   }
 
-  _smooth_off(step = this._transitions) {
-    Mainloop.timeout_add(this._transition_delay_ms, () => {
-      step--;
+  _turnOff() {
+    this._step = this._transitions;
 
-      this._add_effect(step);
-
-      step > 0 ? this._smooth_off(step) : this._remove_effect();
-    });
+    this._timerTOFIX = setInterval(
+      this._smoothOff.bind(this),
+      this._transition_delay_ms
+    );
   }
 
-  _add_effect(step) {
-    this._color_effect.factor = step / this._transitions;
+  _disableTimer() {
+    if (this._timerId) {
+      GLib.Source.remove(this._timerId);
+      this._timerId = null;
+    }
+  }
+
+  _cleanUp() {
+    this._removeEffect();
+    this._disableTimer();
+  }
+
+  _smoothOn() {
+    this._step++;
+    this._addEffect();
+
+    return this._step < this._transitions;
+  }
+
+  _smoothOff() {
+    this._step--;
+    this._addEffect();
+
+    return this._step > 0;
+  }
+
+  _addEffect() {
+    this._color_effect.factor = this._step / this._transitions;
+
+    logDebug("Effect factor: " + this._color_effect.factor);
+
     Main.uiGroup.add_effect(this._color_effect);
   }
 
-  _remove_effect() {
+  _removeEffect() {
     Main.uiGroup.remove_effect(this._color_effect);
   }
 }
 
 function init() {
+  logDebug("Initializing extension...");
   return new Bedtime();
 }
