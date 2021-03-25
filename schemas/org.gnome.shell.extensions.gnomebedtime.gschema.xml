@@ -2,7 +2,7 @@
 <schemalist>
     <schema id="org.gnome.shell.extensions.gnomebedtime" path="/org/gnome/shell/extensions/gnomebedtime/">
         <key name="automatic-schedule" type="b">
-            <default>true</default>
+            <default>false</default>
             <summary>Enable Automatic Schedule</summary>
             <description>Enables automatic scheduling of the bedtime mode in the time range specified by the start and end times</description>
         </key>
