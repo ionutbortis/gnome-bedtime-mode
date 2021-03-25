@@ -23,26 +23,75 @@ var Preferences = class {
     logDebug("Preferences _connectSettings method started...");
 
     const autoSwitch = this._builder.get_object("automatic_schedule_switch");
-    this._settings.settings.bind("automatic-schedule", autoSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
+    this._settings.gnomeSettings.bind("automatic-schedule", autoSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
 
     const scheduleTimesFrame = this._builder.get_object("schedule_times_frame");
-    this._settings.settings.bind("automatic-schedule", scheduleTimesFrame, "sensitive", Gio.SettingsBindFlags.DEFAULT);
+    this._settings.gnomeSettings.bind("automatic-schedule", scheduleTimesFrame, "sensitive", Gio.SettingsBindFlags.DEFAULT);
+
+    // const handleSpinner = (spinnerId, settingsValueGetter, settingsValueSetter) => {
+    //   const spinner = this._builder.get_object(spinnerId);
+
+    //   spinner.value = settingsValueGetter();
+    //   spinner.connect("output", () => {
+    //     const text = spinner.adjustment.value.toString().padStart(2, "0");
+    //     spinner.set_text(text);
+    //     return true;
+    //   });
+    //   spinner.connect("value-changed", () => {
+    //     settingsValueSetter(spinner.value());
+    //   });
+    // };
+
+    // handleSpinner(
+    //   "schedule_start_hours_spin",
+    //   () => this._settings.scheduleStartHours,
+    //   (v) => {
+    //     this._settings.scheduleStartHours = v;
+    //   }
+    // );
 
     const scheduleStartHoursSpin = this._builder.get_object("schedule_start_hours_spin");
-
-    logDebug(`Schedule Start Hours setting is ${this._settings.settings.scheduleStartHours}`);
-
-    scheduleStartHoursSpin.value = this._settings.settings.scheduleStartHours;
+    scheduleStartHoursSpin.value = this._settings.scheduleStartHours;
     scheduleStartHoursSpin.connect("output", () => {
       const text = scheduleStartHoursSpin.adjustment.value.toString().padStart(2, "0");
       scheduleStartHoursSpin.set_text(text);
       return true;
     });
-
     scheduleStartHoursSpin.connect("value-changed", () => {
-      this._settings.settings.scheduleStartHours = scheduleStartHoursSpin.value;
+      this._settings.scheduleStartHours = scheduleStartHoursSpin.value;
+    });
 
-      logDebug(`value-chaged handler called. Spinner value is ${scheduleStartHoursSpin.value}`);
+    const scheduleStartMinutesSpin = this._builder.get_object("schedule_start_minutes_spin");
+    scheduleStartMinutesSpin.value = this._settings.scheduleStartMinutes;
+    scheduleStartMinutesSpin.connect("output", () => {
+      const text = scheduleStartMinutesSpin.adjustment.value.toString().padStart(2, "0");
+      scheduleStartMinutesSpin.set_text(text);
+      return true;
+    });
+    scheduleStartMinutesSpin.connect("value-changed", () => {
+      this._settings.scheduleStartMinutes = scheduleStartMinutesSpin.value;
+    });
+
+    const scheduleEndHoursSpin = this._builder.get_object("schedule_end_hours_spin");
+    scheduleEndHoursSpin.value = this._settings.scheduleEndHours;
+    scheduleEndHoursSpin.connect("output", () => {
+      const text = scheduleEndHoursSpin.adjustment.value.toString().padStart(2, "0");
+      scheduleEndHoursSpin.set_text(text);
+      return true;
+    });
+    scheduleEndHoursSpin.connect("value-changed", () => {
+      this._settings.scheduleEndHours = scheduleEndHoursSpin.value;
+    });
+
+    const scheduleEndMinutesSpin = this._builder.get_object("schedule_end_minutes_spin");
+    scheduleEndMinutesSpin.value = this._settings.scheduleEndMinutes;
+    scheduleEndMinutesSpin.connect("output", () => {
+      const text = scheduleEndMinutesSpin.adjustment.value.toString().padStart(2, "0");
+      scheduleEndMinutesSpin.set_text(text);
+      return true;
+    });
+    scheduleEndMinutesSpin.connect("value-changed", () => {
+      this._settings.scheduleEndMinutes = scheduleEndMinutesSpin.value;
     });
   }
 };

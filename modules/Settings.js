@@ -7,8 +7,8 @@ const { logDebug } = Me.imports.utils;
 
 var Settings = class {
   constructor() {
-    logDebug("Initializing  settings...");
-    this.settings = extensionUtils.getSettings();
+    logDebug("Initializing settings...");
+    this.gnomeSettings = extensionUtils.getSettings();
 
     logDebug("Settings initialized.");
   }
@@ -16,12 +16,12 @@ var Settings = class {
   enable() {
     logDebug("Connecting settings signals...");
 
-    this._automaticScheduleConnect = this.settings.connect("changed::automatic-schedule", this._onAutomaticScheduleChanged.bind(this));
+    this._automaticScheduleConnect = this.gnomeSettings.connect("changed::automatic-schedule", this._onAutomaticScheduleChanged.bind(this));
 
-    this._scheduleStartHoursConnect = this.settings.connect("changed::schedule-start-hours", this._onScheduleStartHoursChanged.bind(this));
-    this._scheduleStartMinutesConnect = this.settings.connect("changed::schedule-start-minutes", this._onScheduleStartMinutesChanged.bind(this));
-    this._scheduleEndHoursConnect = this.settings.connect("changed::schedule-end-hours", this._onScheduleEndHoursChanged.bind(this));
-    this._scheduleEndMinutesConnect = this.settings.connect("changed::schedule-end-minutes", this._onScheduleEndMinutesChanged.bind(this));
+    this._scheduleStartHoursConnect = this.gnomeSettings.connect("changed::schedule-start-hours", this._onScheduleStartHoursChanged.bind(this));
+    this._scheduleStartMinutesConnect = this.gnomeSettings.connect("changed::schedule-start-minutes", this._onScheduleStartMinutesChanged.bind(this));
+    this._scheduleEndHoursConnect = this.gnomeSettings.connect("changed::schedule-end-hours", this._onScheduleEndHoursChanged.bind(this));
+    this._scheduleEndMinutesConnect = this.gnomeSettings.connect("changed::schedule-end-minutes", this._onScheduleEndMinutesChanged.bind(this));
 
     logDebug("Settings signals connected.");
   }
@@ -29,23 +29,23 @@ var Settings = class {
   disable() {
     logDebug("Disconnecting settings signals...");
 
-    this.settings.disconnect(this._automaticScheduleConnect);
+    this.gnomeSettings.disconnect(this._automaticScheduleConnect);
 
-    this.settings.disconnect(this._scheduleStartHoursConnect);
-    this.settings.disconnect(this._scheduleStartMinutesConnect);
-    this.settings.disconnect(this._scheduleEndHoursConnect);
-    this.settings.disconnect(this._scheduleEndMinutesConnect);
+    this.gnomeSettings.disconnect(this._scheduleStartHoursConnect);
+    this.gnomeSettings.disconnect(this._scheduleStartMinutesConnect);
+    this.gnomeSettings.disconnect(this._scheduleEndHoursConnect);
+    this.gnomeSettings.disconnect(this._scheduleEndMinutesConnect);
 
     logDebug("Settings signals disconnected.");
   }
 
   get automaticSchedule() {
-    return this.settings.get_boolean("automatic-schedule");
+    return this.gnomeSettings.get_boolean("automatic-schedule");
   }
 
   set automaticSchedule(value) {
     if (value !== this.automaticSchedule) {
-      this.settings.set_boolean("automatic-schedule", value);
+      this.gnomeSettings.set_boolean("automatic-schedule", value);
 
       logDebug(`Automatic Schedule has been set to ${value}`);
     }
@@ -58,30 +58,26 @@ var Settings = class {
   }
 
   get scheduleStartHours() {
-    return this.settings.get_int("schedule-start-hours");
+    return this.gnomeSettings.get_int("schedule-start-hours");
   }
 
   set scheduleStartHours(value) {
     if (value !== this.scheduleStartHours) {
-      this.settings.set_int("schedule-start-hours", value);
-
-      logDebug(`Schedule Start Hours has been set to ${value}`);
+      this.gnomeSettings.set_int("schedule-start-hours", value);
     }
   }
 
   _onScheduleStartHoursChanged(_settings, _changedKey) {
-    logDebug(`Schedule Start Hours changed to ${this.scheduleStartHours}`);
-
     this.emit("schedule-start-hours-changed", this.scheduleStartHours);
   }
 
   get scheduleStartMinutes() {
-    return this.settings.get_int("schedule-start-minutes");
+    return this.gnomeSettings.get_int("schedule-start-minutes");
   }
 
   set scheduleStartMinutes(value) {
     if (value !== this.scheduleStartMinutes) {
-      this.settings.set_int("schedule-start-minutes", value);
+      this.gnomeSettings.set_int("schedule-start-minutes", value);
     }
   }
 
@@ -90,12 +86,12 @@ var Settings = class {
   }
 
   get scheduleEndHours() {
-    return this.settings.get_int("schedule-end-hours");
+    return this.gnomeSettings.get_int("schedule-end-hours");
   }
 
   set scheduleEndHours(value) {
     if (value !== this.scheduleEndHours) {
-      this.settings.set_int("schedule-end-hours", value);
+      this.gnomeSettings.set_int("schedule-end-hours", value);
     }
   }
 
@@ -104,12 +100,12 @@ var Settings = class {
   }
 
   get scheduleEndMinutes() {
-    return this.settings.get_int("schedule-end-minutes");
+    return this.gnomeSettings.get_int("schedule-end-minutes");
   }
 
   set scheduleEndMinutes(value) {
     if (value !== this.scheduleEndMinutes) {
-      this.settings.set_int("schedule-end-minutes", value);
+      this.gnomeSettings.set_int("schedule-end-minutes", value);
     }
   }
 
