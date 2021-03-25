@@ -40,7 +40,7 @@ function logDebug(message) {
  * @param {*} interval The time in ms at which to repeatedly call the function
  * @param  {...any} args Optional arguments to the function
  */
-function setInterval(func, interval, ...args) {
+function runAtInterval(func, interval, ...args) {
   const wrappedFunc = () => {
     return func.apply(this, args);
   };

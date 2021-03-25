@@ -14,15 +14,24 @@
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
+
+"use strict";
+
 const { GLib } = imports.gi;
+const { extensionUtils } = imports.misc;
+
+const Me = extensionUtils.getCurrentExtension();
 
 const Clutter = imports.gi.Clutter;
 const Main = imports.ui.main;
 
-const { extensionUtils } = imports.misc;
-const Me = extensionUtils.getCurrentExtension();
+const { runAtInterval, logDebug } = Me.imports.utils;
+const { Settings } = Me.imports.modules.Settings;
 
-const { setInterval, logDebug } = Me.imports.utils;
+var enabled = false;
+
+var settings = null;
+var timer = null;
 
 class Bedtime {
   constructor() {
@@ -34,36 +43,34 @@ class Bedtime {
     this._color_effect.factor = 0;
 
     this._transitionStep = 0;
-
     this._transitionTimerId = null;
   }
 
   enable() {
     logDebug("Enabling extension...");
+
+    settings = new Settings();
+    settings.enable();
+
     this._turnOn();
   }
 
   disable() {
     logDebug("Disabling extension...");
     this._turnOff();
+
+    settings.disable();
+    settings = null;
   }
 
   _turnOn() {
     this._transitionStep = 0;
-
-    this._transitionTimerId = setInterval(
-      this._smoothOn.bind(this),
-      this._transitionDelayMillis
-    );
+    this._transitionTimerId = runAtInterval(this._smoothOn.bind(this), this._transitionDelayMillis);
   }
 
   _turnOff() {
     this._transitionStep = this._transitions;
-
-    this._transitionTimerId = setInterval(
-      this._smoothOff.bind(this),
-      this._transitionDelayMillis
-    );
+    this._transitionTimerId = runAtInterval(this._smoothOff.bind(this), this._transitionDelayMillis);
   }
 
   _smoothOn() {
@@ -84,7 +91,6 @@ class Bedtime {
   _addEffect() {
     this._color_effect.factor = this._transitionStep / this._transitions;
 
-    logDebug(`Effect factor: ${this._color_effect.factor}`);
     Main.uiGroup.add_effect(this._color_effect);
   }
 

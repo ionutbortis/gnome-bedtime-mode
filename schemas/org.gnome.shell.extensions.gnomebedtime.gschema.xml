@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="org.gnome.shell.extensions.gnomebedtime" path="/org/gnome/shell/extensions/gnomebedtime/">
+        <key name="automatic-schedule" type="b">
+            <default>true</default>
+            <summary>Enable Automatic Schedule</summary>
+            <description>Enables automatic scheduling of the bedtime mode in the time range specified by the start and end times</description>
+        </key>
+        <key name="schedule-start-hours" type="i">
+            <default>22</default>
+            <summary>Schedule start time hours</summary>
+            <description>The hours at which the bedtime mode will be enabled</description>
+        </key>
+        <key name="schedule-start-minutes" type="i">
+            <default>0</default>
+            <summary>Schedule start time minutes</summary>
+            <description>The minutes at which the bedtime mode will be enabled</description>
+        </key>
+        <key name="schedule-end-hours" type="i">
+            <default>7</default>
+            <summary>Schedule end time hours</summary>
+            <description>The hours at which the bedtime mode will be disabled</description>
+        </key>
+        <key name="schedule-end-minutes" type="i">
+            <default>0</default>
+            <summary>Schedule end time minutes</summary>
+            <description>The minutes at which the bedtime mode will be disabled</description>
+        </key>
+
+        <key name="ondemand-button-placement" type="s">
+            <choices>
+                <choice value="none"/>
+                <choice value="panel"/>
+                <choice value="menu"/>
+            </choices>
+            <default>"panel"</default>
+            <summary>On-demand button placement</summary>
+            <description>Location where the on-demand button will be placed</description>
+        </key>
+    </schema>
+</schemalist>
