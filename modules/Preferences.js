@@ -23,32 +23,10 @@ var Preferences = class {
     logDebug("Preferences _connectSettings method started...");
 
     const autoSwitch = this._builder.get_object("automatic_schedule_switch");
-    this._settings.gnomeSettings.bind("automatic-schedule", autoSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
+    this._settings.gSettings.bind("automatic-schedule", autoSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
 
     const scheduleTimesFrame = this._builder.get_object("schedule_times_frame");
-    this._settings.gnomeSettings.bind("automatic-schedule", scheduleTimesFrame, "sensitive", Gio.SettingsBindFlags.DEFAULT);
-
-    // const handleSpinner = (spinnerId, settingsValueGetter, settingsValueSetter) => {
-    //   const spinner = this._builder.get_object(spinnerId);
-
-    //   spinner.value = settingsValueGetter();
-    //   spinner.connect("output", () => {
-    //     const text = spinner.adjustment.value.toString().padStart(2, "0");
-    //     spinner.set_text(text);
-    //     return true;
-    //   });
-    //   spinner.connect("value-changed", () => {
-    //     settingsValueSetter(spinner.value());
-    //   });
-    // };
-
-    // handleSpinner(
-    //   "schedule_start_hours_spin",
-    //   () => this._settings.scheduleStartHours,
-    //   (v) => {
-    //     this._settings.scheduleStartHours = v;
-    //   }
-    // );
+    this._settings.gSettings.bind("automatic-schedule", scheduleTimesFrame, "sensitive", Gio.SettingsBindFlags.DEFAULT);
 
     const scheduleStartHoursSpin = this._builder.get_object("schedule_start_hours_spin");
     scheduleStartHoursSpin.value = this._settings.scheduleStartHours;
