@@ -13,8 +13,8 @@ var Bedtime = class {
 
     this._transitionDelayMillis = 50;
 
-    this._color_effect = new Clutter.DesaturateEffect();
-    this._color_effect.factor = 0;
+    this._colorEffect = new Clutter.DesaturateEffect();
+    this._colorEffect.factor = 0;
 
     this._transitionStep = 0;
     this._transitionTimerId = null;
@@ -40,27 +40,28 @@ var Bedtime = class {
 
   _smoothOn() {
     this._transitionStep++;
-    this._addEffect();
+    this._addColorEffect();
 
     return this._transitionStep < this._transitions;
   }
 
   _smoothOff() {
     this._transitionStep--;
-    this._addEffect();
+    this._addColorEffect();
 
     if (this._transitionStep > 0) return true;
     else this._cleanUp();
   }
 
-  _addEffect() {
-    this._color_effect.factor = this._transitionStep / this._transitions;
+  _addColorEffect() {
+    this._colorEffect.factor = this._transitionStep / this._transitions;
 
-    Main.uiGroup.add_effect(this._color_effect);
+    Main.uiGroup.add_effect(this._colorEffect);
   }
 
-  _removeEffect() {
-    Main.uiGroup.remove_effect(this._color_effect);
+  _removeColorEffect() {
+    Main.uiGroup.remove_effect(this._colorEffect);
+    this._colorEffect = null;
   }
 
   _disableTransitionTimer() {
@@ -71,8 +72,8 @@ var Bedtime = class {
   }
 
   _cleanUp() {
-    logDebug("Bedtime mode cleanup...");
-    this._removeEffect();
+    logDebug("Cleaning up bedtime related changes...");
+    this._removeColorEffect();
     this._disableTransitionTimer();
   }
 };
