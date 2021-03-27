@@ -4,36 +4,60 @@ const { GLib, Clutter } = imports.gi;
 const { extensionUtils } = imports.misc;
 const Me = extensionUtils.getCurrentExtension();
 
-const extension = Me.imports.extension;
 const { runAtInterval, logDebug } = Me.imports.utils;
+const extension = Me.imports.extension;
 
 var Bedtime = class {
   constructor() {
     this._transitions = 50;
-
     this._transitionDelayMillis = 50;
-
-    this._colorEffect = new Clutter.DesaturateEffect();
-    this._colorEffect.factor = 0;
 
     this._transitionStep = 0;
     this._transitionTimerId = null;
+
+    this._colorEffect = new Clutter.DesaturateEffect();
+    this._colorEffect.factor = 0;
   }
 
   enable() {
-    this._turnOn();
+    this._connectSettings();
+    if (extension.settings.bedtimeModeActive) this._turnOn();
   }
 
   disable() {
-    this._turnOff();
+    this._disconnectSettings();
+    if (extension.settings.bedtimeModeActive) this._turnOff();
+
+    this._cleanUp();
+  }
+
+  _connectSettings() {
+    logDebug("Connecting Bedtime to settings...");
+    this._bedtimeModeActiveConnect = extension.settings.connect("bedtime-mode-active-changed", this._onBedtimeModeActiveChanged.bind(this));
+  }
+
+  _disconnectSettings() {
+    if (this._bedtimeModeActiveConnect) {
+      extension.settings.disconnect(this._bedtimeModeActiveConnect);
+      this._bedtimeModeActiveConnect = null;
+    }
+    logDebug("Disconnected Bedtime from settings.");
+  }
+
+  _onBedtimeModeActiveChanged(_settings, bedtimeModeActive) {
+    bedtimeModeActive ? this._turnOn() : this._turnOff();
   }
 
   _turnOn() {
+    logDebug("Turning on bedtime mode...");
+
     this._transitionStep = 0;
     this._transitionTimerId = runAtInterval(this._smoothOn.bind(this), this._transitionDelayMillis);
   }
 
   _turnOff() {
+    logDebug("Turning off bedtime mode...");
+
     this._transitionStep = this._transitions;
     this._transitionTimerId = runAtInterval(this._smoothOff.bind(this), this._transitionDelayMillis);
   }
@@ -49,8 +73,7 @@ var Bedtime = class {
     this._transitionStep--;
     this._addColorEffect();
 
-    if (this._transitionStep > 0) return true;
-    else this._cleanUp();
+    return this._transitionStep > 0;
   }
 
   _addColorEffect() {
