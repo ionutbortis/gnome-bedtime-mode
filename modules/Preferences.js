@@ -12,7 +12,7 @@ var Preferences = class {
     this._settings.enable();
 
     this._builder = new Gtk.Builder();
-    this._builder.add_from_file(GLib.build_filenamev([Me.path, "modules", "ui", "preferences.ui"]));
+    this._builder.add_from_file(GLib.build_filenamev([Me.path, "ui", "preferences.ui"]));
 
     this.widget = this._builder.get_object("preferences");
 
