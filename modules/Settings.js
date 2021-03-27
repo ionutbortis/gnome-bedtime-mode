@@ -17,8 +17,8 @@ var Settings = class {
   enable() {
     logDebug("Connecting settings signals...");
 
+    this._bedtimeModeActiveConnect = this.gSettings.connect("changed::bedtime-mode-active", this._onBedtimeModeActiveChanged.bind(this));
     this._automaticScheduleConnect = this.gSettings.connect("changed::automatic-schedule", this._onAutomaticScheduleChanged.bind(this));
-
     this._scheduleStartHoursConnect = this.gSettings.connect("changed::schedule-start-hours", this._onScheduleStartHoursChanged.bind(this));
     this._scheduleStartMinutesConnect = this.gSettings.connect("changed::schedule-start-minutes", this._onScheduleStartMinutesChanged.bind(this));
     this._scheduleEndHoursConnect = this.gSettings.connect("changed::schedule-end-hours", this._onScheduleEndHoursChanged.bind(this));
@@ -30,14 +30,30 @@ var Settings = class {
   disable() {
     logDebug("Disconnecting settings signals...");
 
+    this.gSettings.disconnect(this._bedtimeModeActiveConnect);
     this.gSettings.disconnect(this._automaticScheduleConnect);
-
     this.gSettings.disconnect(this._scheduleStartHoursConnect);
     this.gSettings.disconnect(this._scheduleStartMinutesConnect);
     this.gSettings.disconnect(this._scheduleEndHoursConnect);
     this.gSettings.disconnect(this._scheduleEndMinutesConnect);
 
     logDebug("Settings signals disconnected.");
+  }
+
+  get bedtimeModeActive() {
+    return this.gSettings.get_boolean("bedtime-mode-active");
+  }
+
+  set bedtimeModeActive(value) {
+    if (value !== this.bedtimeModeActive) {
+      this.gSettings.set_boolean("bedtime-mode-active", value);
+      logDebug(`Bedtime Mode Active has been set to ${value}`);
+    }
+  }
+
+  _onBedtimeModeActiveChanged(_settings, _changedKey) {
+    logDebug(`Bedtime Mode has been ${this.bedtimeModeActive ? "enabled" : "disabled"}`);
+    this.emit("bedtime-mode-active-changed", this.bedtimeModeActive);
   }
 
   get automaticSchedule() {
@@ -47,14 +63,10 @@ var Settings = class {
   set automaticSchedule(value) {
     if (value !== this.automaticSchedule) {
       this.gSettings.set_boolean("automatic-schedule", value);
-
-      logDebug(`Automatic Schedule has been set to ${value}`);
     }
   }
 
   _onAutomaticScheduleChanged(_settings, _changedKey) {
-    logDebug(`Automatic Schedule has been ${this.automaticSchedule ? "enabled" : "disabled"}`);
-
     this.emit("automatic-schedule-changed", this.automaticSchedule);
   }
 

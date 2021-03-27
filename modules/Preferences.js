@@ -22,6 +22,11 @@ var Preferences = class {
   _connectSettings() {
     logDebug("Preferences _connectSettings method started...");
 
+    // TODO this switch is only for manual testing purposes so far
+    // It should be removed later
+    const bedtimeModeSwitch = this._builder.get_object("bedtime_mode_switch");
+    this._settings.gSettings.bind("bedtime-mode-active", bedtimeModeSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
+
     const autoSwitch = this._builder.get_object("automatic_schedule_switch");
     this._settings.gSettings.bind("automatic-schedule", autoSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
 
