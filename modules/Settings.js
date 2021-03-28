@@ -9,6 +9,13 @@ var Settings = class {
   constructor() {
     logDebug("Initializing settings...");
 
+    this._bedtimeModeActiveConnect = null;
+    this._automaticScheduleConnect = null;
+    this._scheduleStartHoursConnect = null;
+    this._scheduleStartMinutesConnect = null;
+    this._scheduleEndHoursConnect = null;
+    this._scheduleEndMinutesConnect = null;
+
     this.gSettings = extensionUtils.getSettings();
 
     logDebug("Settings initialized.");
@@ -19,10 +26,10 @@ var Settings = class {
 
     this._bedtimeModeActiveConnect = this.gSettings.connect("changed::bedtime-mode-active", this._onBedtimeModeActiveChanged.bind(this));
     this._automaticScheduleConnect = this.gSettings.connect("changed::automatic-schedule", this._onAutomaticScheduleChanged.bind(this));
-    this._scheduleStartHoursConnect = this.gSettings.connect("changed::schedule-start-hours", this._onScheduleStartHoursChanged.bind(this));
-    this._scheduleStartMinutesConnect = this.gSettings.connect("changed::schedule-start-minutes", this._onScheduleStartMinutesChanged.bind(this));
-    this._scheduleEndHoursConnect = this.gSettings.connect("changed::schedule-end-hours", this._onScheduleEndHoursChanged.bind(this));
-    this._scheduleEndMinutesConnect = this.gSettings.connect("changed::schedule-end-minutes", this._onScheduleEndMinutesChanged.bind(this));
+    this._scheduleStartHoursConnect = this.gSettings.connect("changed::schedule-start-hours", this._onScheduleTimesChanged.bind(this));
+    this._scheduleStartMinutesConnect = this.gSettings.connect("changed::schedule-start-minutes", this._onScheduleTimesChanged.bind(this));
+    this._scheduleEndHoursConnect = this.gSettings.connect("changed::schedule-end-hours", this._onScheduleTimesChanged.bind(this));
+    this._scheduleEndMinutesConnect = this.gSettings.connect("changed::schedule-end-minutes", this._onScheduleTimesChanged.bind(this));
 
     logDebug("Settings signals connected.");
   }
@@ -47,83 +54,45 @@ var Settings = class {
   set bedtimeModeActive(value) {
     if (value !== this.bedtimeModeActive) {
       this.gSettings.set_boolean("bedtime-mode-active", value);
-      logDebug(`Bedtime Mode Active has been set to ${value}`);
+      logDebug(`Bedtime Mode Active has been set to '${value}'`);
     }
-  }
-
-  _onBedtimeModeActiveChanged(_settings, _changedKey) {
-    logDebug(`Bedtime Mode has been ${this.bedtimeModeActive ? "enabled" : "disabled"}`);
-    this.emit("bedtime-mode-active-changed", this.bedtimeModeActive);
   }
 
   get automaticSchedule() {
     return this.gSettings.get_boolean("automatic-schedule");
   }
 
-  set automaticSchedule(value) {
-    if (value !== this.automaticSchedule) {
-      this.gSettings.set_boolean("automatic-schedule", value);
-    }
-  }
-
-  _onAutomaticScheduleChanged(_settings, _changedKey) {
-    this.emit("automatic-schedule-changed", this.automaticSchedule);
-  }
-
   get scheduleStartHours() {
     return this.gSettings.get_int("schedule-start-hours");
-  }
-
-  set scheduleStartHours(value) {
-    if (value !== this.scheduleStartHours) {
-      this.gSettings.set_int("schedule-start-hours", value);
-    }
-  }
-
-  _onScheduleStartHoursChanged(_settings, _changedKey) {
-    this.emit("schedule-start-hours-changed", this.scheduleStartHours);
   }
 
   get scheduleStartMinutes() {
     return this.gSettings.get_int("schedule-start-minutes");
   }
 
-  set scheduleStartMinutes(value) {
-    if (value !== this.scheduleStartMinutes) {
-      this.gSettings.set_int("schedule-start-minutes", value);
-    }
-  }
-
-  _onScheduleStartMinutesChanged(_settings, _changedKey) {
-    this.emit("schedule-start-minutes-changed", this.scheduleStartMinutes);
-  }
-
   get scheduleEndHours() {
     return this.gSettings.get_int("schedule-end-hours");
-  }
-
-  set scheduleEndHours(value) {
-    if (value !== this.scheduleEndHours) {
-      this.gSettings.set_int("schedule-end-hours", value);
-    }
-  }
-
-  _onScheduleEndHoursChanged(_settings, _changedKey) {
-    this.emit("schedule-end-hours-changed", this.scheduleEndHours);
   }
 
   get scheduleEndMinutes() {
     return this.gSettings.get_int("schedule-end-minutes");
   }
 
-  set scheduleEndMinutes(value) {
-    if (value !== this.scheduleEndMinutes) {
-      this.gSettings.set_int("schedule-end-minutes", value);
-    }
+  _onBedtimeModeActiveChanged() {
+    logDebug(`Bedtime Mode has been ${this.bedtimeModeActive ? "enabled" : "disabled"}`);
+
+    this.emit("bedtime-mode-active-changed", this.bedtimeModeActive);
   }
 
-  _onScheduleEndMinutesChanged(_settings, _changedKey) {
-    this.emit("schedule-end-minutes-changed", this.scheduleEndMinutes);
+  _onAutomaticScheduleChanged() {
+    this.emit("automatic-schedule-changed", this.automaticSchedule);
+  }
+
+  _onScheduleTimesChanged() {
+    logDebug(`Schedule Times changed, emiting change signal...`);
+
+    this.emit("schedule-times-changed", {});
   }
 };
+
 Signals.addSignalMethods(Settings.prototype);

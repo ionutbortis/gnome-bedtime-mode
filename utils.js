@@ -32,15 +32,15 @@ function logDebug(message) {
 }
 
 /**
- * This runs the provided function at the specified interval. The function is run
- * multiple times if it returns true. The loop is stopped when the function
- * returns false.
+ * This runs in a loop the provided function at the specified interval.
+ * The function is run multiple times if it returns true. The loop is stopped
+ * when the supplied function to run returns false.
  *
- * @param {*} func The function to call at the specified interval
- * @param {*} interval The time in ms at which to repeatedly call the function
+ * @param {*} func The function to loop at the specified interval
+ * @param {*} interval The time in ms at which to loop call the function
  * @param  {...any} args Optional arguments to the function
  */
-function runAtInterval(func, interval, ...args) {
+function loopRun(func, interval, ...args) {
   const wrappedFunc = () => {
     return func.apply(this, args);
   };

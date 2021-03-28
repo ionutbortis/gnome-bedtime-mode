@@ -4,7 +4,7 @@ const { GLib, Clutter } = imports.gi;
 const { extensionUtils } = imports.misc;
 const Me = extensionUtils.getCurrentExtension();
 
-const { runAtInterval, logDebug } = Me.imports.utils;
+const { loopRun, logDebug } = Me.imports.utils;
 const extension = Me.imports.extension;
 
 var Bedtime = class {
@@ -17,18 +17,24 @@ var Bedtime = class {
 
     this._colorEffect = new Clutter.DesaturateEffect();
     this._colorEffect.factor = 0;
+
+    this._bedtimeModeActiveConnect = null;
   }
 
   enable() {
     this._connectSettings();
+    this._addColorEffect();
+
     if (extension.settings.bedtimeModeActive) this._turnOn();
   }
 
   disable() {
     this._disconnectSettings();
-    if (extension.settings.bedtimeModeActive) this._turnOff();
-
     this._cleanUp();
+
+    // TODO remove this if there is no clean way to do a smooth transition when disabling
+    // the extension
+    // if (extension.settings.bedtimeModeActive) this._turnOff();
   }
 
   _connectSettings() {
@@ -49,36 +55,38 @@ var Bedtime = class {
   }
 
   _turnOn() {
-    logDebug("Turning on bedtime mode...");
+    logDebug("Turning on Bedtime Mode...");
 
     this._transitionStep = 0;
-    this._transitionTimerId = runAtInterval(this._smoothOn.bind(this), this._transitionDelayMillis);
+    this._transitionTimerId = loopRun(this._smoothOn.bind(this), this._transitionDelayMillis);
   }
 
   _turnOff() {
-    logDebug("Turning off bedtime mode...");
+    logDebug("Turning off Bedtime Mode...");
 
     this._transitionStep = this._transitions;
-    this._transitionTimerId = runAtInterval(this._smoothOff.bind(this), this._transitionDelayMillis);
+    this._transitionTimerId = loopRun(this._smoothOff.bind(this), this._transitionDelayMillis);
   }
 
   _smoothOn() {
     this._transitionStep++;
-    this._addColorEffect();
+    this._changeEffectFactor();
 
     return this._transitionStep < this._transitions;
   }
 
   _smoothOff() {
     this._transitionStep--;
-    this._addColorEffect();
+    this._changeEffectFactor();
 
     return this._transitionStep > 0;
   }
 
-  _addColorEffect() {
+  _changeEffectFactor() {
     this._colorEffect.factor = this._transitionStep / this._transitions;
+  }
 
+  _addColorEffect() {
     Main.uiGroup.add_effect(this._colorEffect);
   }
 
@@ -95,7 +103,7 @@ var Bedtime = class {
   }
 
   _cleanUp() {
-    logDebug("Cleaning up bedtime related changes...");
+    logDebug("Cleaning up Bedtime Mode related changes...");
     this._removeColorEffect();
     this._disableTransitionTimer();
   }

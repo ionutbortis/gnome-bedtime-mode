@@ -15,17 +15,25 @@ var Preferences = class {
     this._builder.add_from_file(GLib.build_filenamev([Me.path, "ui", "preferences.ui"]));
 
     this.widget = this._builder.get_object("preferences");
+    this.widget.connect("destroy", () => this._cleanUp());
 
-    this._connectSettings();
+    this._bindSettings();
   }
 
-  _connectSettings() {
-    logDebug("Preferences _connectSettings method started...");
+  _cleanUp() {
+    this._settings.disable();
+    this._settings = null;
+    this._builder = null;
+  }
 
-    // TODO this switch is only for manual testing purposes so far
-    // It should be removed later
+  _bindSettings() {
+    logDebug("Preferences _bindSettings method started...");
+
+    // TODO This switch is only for manual testing purposes so far
+    // It should be removed later if not need anymore
     const bedtimeModeSwitch = this._builder.get_object("bedtime_mode_switch");
     this._settings.gSettings.bind("bedtime-mode-active", bedtimeModeSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
+    //
 
     const autoSwitch = this._builder.get_object("automatic_schedule_switch");
     this._settings.gSettings.bind("automatic-schedule", autoSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
@@ -33,48 +41,21 @@ var Preferences = class {
     const scheduleTimesFrame = this._builder.get_object("schedule_times_frame");
     this._settings.gSettings.bind("automatic-schedule", scheduleTimesFrame, "sensitive", Gio.SettingsBindFlags.DEFAULT);
 
-    const scheduleStartHoursSpin = this._builder.get_object("schedule_start_hours_spin");
-    scheduleStartHoursSpin.value = this._settings.scheduleStartHours;
-    scheduleStartHoursSpin.connect("output", () => {
-      const text = scheduleStartHoursSpin.adjustment.value.toString().padStart(2, "0");
-      scheduleStartHoursSpin.set_text(text);
-      return true;
-    });
-    scheduleStartHoursSpin.connect("value-changed", () => {
-      this._settings.scheduleStartHours = scheduleStartHoursSpin.value;
-    });
+    this._handleSpinner("schedule_start_hours_spin", "schedule-start-hours");
+    this._handleSpinner("schedule_start_minutes_spin", "schedule-start-minutes");
+    this._handleSpinner("schedule_end_hours_spin", "schedule-end-hours");
+    this._handleSpinner("schedule_end_minutes_spin", "schedule-end-minutes");
+  }
 
-    const scheduleStartMinutesSpin = this._builder.get_object("schedule_start_minutes_spin");
-    scheduleStartMinutesSpin.value = this._settings.scheduleStartMinutes;
-    scheduleStartMinutesSpin.connect("output", () => {
-      const text = scheduleStartMinutesSpin.adjustment.value.toString().padStart(2, "0");
-      scheduleStartMinutesSpin.set_text(text);
-      return true;
-    });
-    scheduleStartMinutesSpin.connect("value-changed", () => {
-      this._settings.scheduleStartMinutes = scheduleStartMinutesSpin.value;
-    });
+  _handleSpinner(spinnerId, settingsValueKey) {
+    const spinner = this._builder.get_object(spinnerId);
 
-    const scheduleEndHoursSpin = this._builder.get_object("schedule_end_hours_spin");
-    scheduleEndHoursSpin.value = this._settings.scheduleEndHours;
-    scheduleEndHoursSpin.connect("output", () => {
-      const text = scheduleEndHoursSpin.adjustment.value.toString().padStart(2, "0");
-      scheduleEndHoursSpin.set_text(text);
-      return true;
-    });
-    scheduleEndHoursSpin.connect("value-changed", () => {
-      this._settings.scheduleEndHours = scheduleEndHoursSpin.value;
-    });
+    this._settings.gSettings.bind(settingsValueKey, spinner, "value", Gio.SettingsBindFlags.DEFAULT);
 
-    const scheduleEndMinutesSpin = this._builder.get_object("schedule_end_minutes_spin");
-    scheduleEndMinutesSpin.value = this._settings.scheduleEndMinutes;
-    scheduleEndMinutesSpin.connect("output", () => {
-      const text = scheduleEndMinutesSpin.adjustment.value.toString().padStart(2, "0");
-      scheduleEndMinutesSpin.set_text(text);
+    spinner.connect("output", () => {
+      const text = spinner.adjustment.value.toString().padStart(2, "0");
+      spinner.set_text(text);
       return true;
-    });
-    scheduleEndMinutesSpin.connect("value-changed", () => {
-      this._settings.scheduleEndMinutes = scheduleEndMinutesSpin.value;
     });
   }
 };
