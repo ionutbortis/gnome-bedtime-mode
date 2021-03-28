@@ -22,8 +22,6 @@ var ScheduleTimer = class {
 
     this._connectSettings();
     this._enableTimer();
-
-    logDebug("Schedule Timer enabled.");
   }
 
   disable() {
@@ -31,8 +29,6 @@ var ScheduleTimer = class {
 
     this._disconnectSettings();
     this._disableTimer();
-
-    logDebug("Schedule Timer disabled.");
   }
 
   _connectSettings() {
@@ -97,6 +93,9 @@ var ScheduleTimer = class {
   }
 
   _onScheduleTimesChanged() {
-    if (extension.settings.automaticSchedule) this._checkScheduleLoop();
+    if (extension.settings.automaticSchedule) {
+      //this._scheduleReached = false;
+      this._checkScheduleLoop();
+    }
   }
 };

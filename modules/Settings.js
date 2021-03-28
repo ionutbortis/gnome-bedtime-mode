@@ -7,7 +7,7 @@ const { logDebug } = Me.imports.utils;
 
 var Settings = class {
   constructor() {
-    logDebug("Initializing settings...");
+    logDebug("Initializing Settings...");
 
     this._bedtimeModeActiveConnect = null;
     this._automaticScheduleConnect = null;
@@ -17,8 +17,6 @@ var Settings = class {
     this._scheduleEndMinutesConnect = null;
 
     this.gSettings = extensionUtils.getSettings();
-
-    logDebug("Settings initialized.");
   }
 
   enable() {
@@ -30,8 +28,6 @@ var Settings = class {
     this._scheduleStartMinutesConnect = this.gSettings.connect("changed::schedule-start-minutes", this._onScheduleTimesChanged.bind(this));
     this._scheduleEndHoursConnect = this.gSettings.connect("changed::schedule-end-hours", this._onScheduleTimesChanged.bind(this));
     this._scheduleEndMinutesConnect = this.gSettings.connect("changed::schedule-end-minutes", this._onScheduleTimesChanged.bind(this));
-
-    logDebug("Settings signals connected.");
   }
 
   disable() {
@@ -43,8 +39,6 @@ var Settings = class {
     this.gSettings.disconnect(this._scheduleStartMinutesConnect);
     this.gSettings.disconnect(this._scheduleEndHoursConnect);
     this.gSettings.disconnect(this._scheduleEndMinutesConnect);
-
-    logDebug("Settings signals disconnected.");
   }
 
   get bedtimeModeActive() {

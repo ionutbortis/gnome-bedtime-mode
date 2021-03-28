@@ -43,11 +43,8 @@ var Bedtime = class {
   }
 
   _disconnectSettings() {
-    if (this._bedtimeModeActiveConnect) {
-      extension.settings.disconnect(this._bedtimeModeActiveConnect);
-      this._bedtimeModeActiveConnect = null;
-    }
-    logDebug("Disconnected Bedtime from settings.");
+    logDebug("Disconnecting Bedtime from settings...");
+    extension.settings.disconnect(this._bedtimeModeActiveConnect);
   }
 
   _onBedtimeModeActiveChanged(_settings, bedtimeModeActive) {
