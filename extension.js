@@ -50,5 +50,4 @@ function disable() {
 
 function init() {
   logDebug("Initializing extension...");
-  // TODO add translations init here
 }

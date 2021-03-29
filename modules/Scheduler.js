@@ -8,8 +8,8 @@ const { loopRun, logDebug } = Me.imports.utils;
 
 var Scheduler = class {
   constructor() {
+    this._timerLoopMillis = 30 * 1000;
     this._timerId = null;
-    this._timerLoopMillis = 1000;
 
     this._scheduleReached = false;
 

@@ -97,7 +97,9 @@ var Settings = class {
   }
 
   _onScheduleTimesChanged() {
-    logDebug(`Schedule Times changed, emiting change signal...`);
+    const start = `Start=${this.scheduleStartHours}:${this.scheduleStartMinutes}`;
+    const end = `End=${this.scheduleEndHours}:${this.scheduleEndMinutes}`;
+    logDebug(`Schedule Times changed: ${start} ${end}`);
 
     this.emit("schedule-times-changed", {});
   }
