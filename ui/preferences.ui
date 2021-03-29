@@ -461,7 +461,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBoxText" id="ondemand_button_placement_combo">
+                          <object class="GtkComboBoxText" id="ondemand_button_location_combo">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="halign">end</property>
@@ -470,7 +470,7 @@
                             <property name="active-id">panel</property>
                             <items>
                               <item id="none" translatable="yes">None</item>
-                              <item id="panel" translatable="yes">Top Bar</item>
+                              <item id="bar" translatable="yes">Top Bar</item>
                               <item id="menu" translatable="yes">System Menu</item>
                             </items>
                           </object>

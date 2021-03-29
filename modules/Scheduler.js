@@ -64,7 +64,6 @@ var Scheduler = class {
 
     if (this._scheduleReached !== currentTimeOnSchedule) {
       this._scheduleReached = currentTimeOnSchedule;
-
       logDebug(`Schedule Reached value changed to '${this._scheduleReached}'`);
 
       extension.settings.bedtimeModeActive = this._scheduleReached;

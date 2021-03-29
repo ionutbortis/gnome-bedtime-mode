@@ -38,6 +38,9 @@ var Preferences = class {
     const scheduleTimesFrame = this._builder.get_object("schedule_times_frame");
     this._settings.gSettings.bind("automatic-schedule", scheduleTimesFrame, "sensitive", Gio.SettingsBindFlags.DEFAULT);
 
+    const buttonLocationCombo = this._builder.get_object("ondemand_button_location_combo");
+    this._settings.gSettings.bind("ondemand-button-location", buttonLocationCombo, "active-id", Gio.SettingsBindFlags.DEFAULT);
+
     this._handleSpinner("schedule_start_hours_spin", "schedule-start-hours");
     this._handleSpinner("schedule_start_minutes_spin", "schedule-start-minutes");
     this._handleSpinner("schedule_end_hours_spin", "schedule-end-hours");
