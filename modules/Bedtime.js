@@ -31,24 +31,22 @@ var Bedtime = class {
   disable() {
     this._disconnectSettings();
     this._cleanUp();
-
-    // TODO remove this if there is no clean way to do a smooth transition when disabling
-    // the extension
-    // if (extension.settings.bedtimeModeActive) this._turnOff();
   }
 
   _connectSettings() {
     logDebug("Connecting Bedtime to settings...");
+
     this._bedtimeModeActiveConnect = extension.settings.connect("bedtime-mode-active-changed", this._onBedtimeModeActiveChanged.bind(this));
   }
 
   _disconnectSettings() {
     logDebug("Disconnecting Bedtime from settings...");
+
     extension.settings.disconnect(this._bedtimeModeActiveConnect);
   }
 
-  _onBedtimeModeActiveChanged(_settings, bedtimeModeActive) {
-    bedtimeModeActive ? this._turnOn() : this._turnOff();
+  _onBedtimeModeActiveChanged(_settings, _bedtimeModeActive) {
+    _bedtimeModeActive ? this._turnOn() : this._turnOff();
   }
 
   _turnOn() {
@@ -66,14 +64,14 @@ var Bedtime = class {
   }
 
   _smoothOn() {
-    this._transitionStep++;
+    if (this._transitionStep < this._transitions) this._transitionStep++;
     this._changeEffectFactor();
 
     return this._transitionStep < this._transitions;
   }
 
   _smoothOff() {
-    this._transitionStep--;
+    if (this._transitionStep > 0) this._transitionStep--;
     this._changeEffectFactor();
 
     return this._transitionStep > 0;

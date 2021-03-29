@@ -6,7 +6,7 @@ const Me = extensionUtils.getCurrentExtension();
 const extension = Me.imports.extension;
 const { loopRun, logDebug } = Me.imports.utils;
 
-var ScheduleTimer = class {
+var Scheduler = class {
   constructor() {
     this._timerId = null;
     this._timerLoopMillis = 1000;
@@ -18,36 +18,44 @@ var ScheduleTimer = class {
   }
 
   enable() {
-    logDebug("Enabling Schedule Timer...");
+    logDebug("Enabling Scheduler...");
 
     this._connectSettings();
     this._enableTimer();
   }
 
   disable() {
-    logDebug("Disabling Schedule Timer...");
+    logDebug("Disabling Scheduler...");
 
     this._disconnectSettings();
     this._disableTimer();
   }
 
   _connectSettings() {
-    logDebug("Connecting Schedule Timer to settings...");
+    logDebug("Connecting Scheduler to settings...");
 
     this._automaticScheduleConnect = extension.settings.connect("automatic-schedule-changed", this._onAutomaticScheduleChanged.bind(this));
     this._scheduleTimesConnect = extension.settings.connect("schedule-times-changed", this._onScheduleTimesChanged.bind(this));
   }
 
   _disconnectSettings() {
+    logDebug("Disconnecting Scheduler from settings...");
+
     extension.settings.disconnect(this._automaticScheduleConnect);
     extension.settings.disconnect(this._scheduleTimesConnect);
-
-    logDebug("Disconnected Schedule Timer from settings.");
   }
 
   _enableTimer() {
     if (extension.settings.automaticSchedule) {
+      extension.settings.bedtimeModeActive = this._isCurrentTimeOnSchedule();
       this._timerId = loopRun(this._checkScheduleLoop.bind(this), this._timerLoopMillis);
+    }
+  }
+
+  _disableTimer() {
+    if (this._timerId) {
+      GLib.Source.remove(this._timerId);
+      this._timerId = null;
     }
   }
 
@@ -57,7 +65,7 @@ var ScheduleTimer = class {
     if (this._scheduleReached !== currentTimeOnSchedule) {
       this._scheduleReached = currentTimeOnSchedule;
 
-      logDebug(`Schedule Reached flag value changed to '${this._scheduleReached}'.`);
+      logDebug(`Schedule Reached value changed to '${this._scheduleReached}'`);
 
       extension.settings.bedtimeModeActive = this._scheduleReached;
     }
@@ -75,13 +83,6 @@ var ScheduleTimer = class {
     return scheduleEnd >= scheduleStart ? now >= scheduleStart && now < scheduleEnd : now >= scheduleStart || now < scheduleEnd;
   }
 
-  _disableTimer() {
-    if (this._timerId) {
-      GLib.Source.remove(this._timerId);
-      this._timerId = null;
-    }
-  }
-
   _onAutomaticScheduleChanged() {
     if (extension.settings.automaticSchedule) {
       this._enableTimer();
@@ -94,8 +95,7 @@ var ScheduleTimer = class {
 
   _onScheduleTimesChanged() {
     if (extension.settings.automaticSchedule) {
-      //this._scheduleReached = false;
-      this._checkScheduleLoop();
+      extension.settings.bedtimeModeActive = this._isCurrentTimeOnSchedule();
     }
   }
 };

@@ -27,16 +27,13 @@ var Preferences = class {
   }
 
   _bindSettings() {
-    logDebug("Preferences _bindSettings method started...");
+    logDebug("Connecting Preferences to settings...");
 
-    // TODO This switch is only for manual testing purposes so far
-    // It should be removed later if not need anymore
     const bedtimeModeSwitch = this._builder.get_object("bedtime_mode_switch");
     this._settings.gSettings.bind("bedtime-mode-active", bedtimeModeSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
-    //
 
-    const autoSwitch = this._builder.get_object("automatic_schedule_switch");
-    this._settings.gSettings.bind("automatic-schedule", autoSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
+    const autoScheduleSwitch = this._builder.get_object("automatic_schedule_switch");
+    this._settings.gSettings.bind("automatic-schedule", autoScheduleSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
 
     const scheduleTimesFrame = this._builder.get_object("schedule_times_frame");
     this._settings.gSettings.bind("automatic-schedule", scheduleTimesFrame, "sensitive", Gio.SettingsBindFlags.DEFAULT);
@@ -53,7 +50,7 @@ var Preferences = class {
     this._settings.gSettings.bind(settingsValueKey, spinner, "value", Gio.SettingsBindFlags.DEFAULT);
 
     spinner.connect("output", () => {
-      const text = spinner.adjustment.value.toString().padStart(2, "0");
+      const text = spinner.value.toString().padStart(2, "0");
       spinner.set_text(text);
       return true;
     });
