@@ -123,7 +123,7 @@
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="halign">start</property>
-                                <property name="label" translatable="yes">&lt;small&gt;Specifies the time when the bedtime mode will be automatically enabled.&lt;/small&gt; </property>
+                                <property name="label" translatable="yes">&lt;small&gt;Specifies the time when Bedtime Mode will be automatically turned on.&lt;/small&gt; </property>
                                 <property name="use-markup">True</property>
                                 <property name="wrap">True</property>
                                 <property name="max-width-chars">50</property>
@@ -261,7 +261,7 @@
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="halign">start</property>
-                                <property name="label" translatable="yes">&lt;small&gt;Specifies the time when the bedtime mode will be automatically disabled.&lt;/small&gt; </property>
+                                <property name="label" translatable="yes">&lt;small&gt;Specifies the time when Bedtime Mode will be automatically turned off.&lt;/small&gt; </property>
                                 <property name="use-markup">True</property>
                                 <property name="wrap">True</property>
                                 <property name="max-width-chars">50</property>
@@ -438,7 +438,7 @@
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="halign">start</property>
-                                <property name="label" translatable="yes">&lt;small&gt;By using this you can add/hide a button to system tray or system menu. The button can be used to manually toggle the bedtime mode.&lt;/small&gt; </property>
+                                <property name="label" translatable="yes">&lt;small&gt;By using this you can add a button to Top Bar or System Menu. The button can be used to manually toggle the Bedtime Mode.&lt;/small&gt; </property>
                                 <property name="use-markup">True</property>
                                 <property name="wrap">True</property>
                                 <property name="max-width-chars">50</property>

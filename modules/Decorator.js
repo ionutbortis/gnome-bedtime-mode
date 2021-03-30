@@ -68,7 +68,7 @@ var Decorator = class {
   }
 
   _addButtonToBar() {
-    logDebug("Adding On-demand button to the system bar...");
+    logDebug("Adding On-demand button to Top Bar...");
 
     const icon = new St.Icon({
       gicon: this._getButtonIcon(),
@@ -88,7 +88,7 @@ var Decorator = class {
   }
 
   _addButtonToMenu() {
-    logDebug("Adding On-demand button to the system menu...");
+    logDebug("Adding On-demand button to System Menu...");
 
     this._button = new PopupImageMenuItem(this._getMenuItemLabel(), this._getButtonIcon());
 
@@ -104,7 +104,7 @@ var Decorator = class {
   }
 
   _getButtonIcon() {
-    const name = extension.settings.bedtimeModeActive ? "bedtime-mode-on" : "bedtime-mode-off";
+    const name = extension.settings.bedtimeModeActive ? "bedtime-mode-on-symbolic" : "bedtime-mode-off-symbolic";
     return Gio.icon_new_for_string(GLib.build_filenamev([Me.path, "icons", "status", `${name}.svg`]));
   }
 

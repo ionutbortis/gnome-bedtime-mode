@@ -29,7 +29,7 @@ function enable() {
   decorator.enable();
   bedtime.enable();
 
-  logDebug("Extension enabled.");
+  logDebug("Extension enabled");
 }
 
 function disable() {
@@ -45,7 +45,7 @@ function disable() {
   scheduler = null;
   settings = null;
 
-  logDebug("Extension disabled.");
+  logDebug("Extension disabled");
 }
 
 function init() {

@@ -11,7 +11,7 @@ var Scheduler = class {
     this._timerLoopMillis = 30 * 1000;
     this._timerId = null;
 
-    this._scheduleReached = false;
+    this._activeSchedule = false;
 
     this._automaticScheduleConnect = null;
     this._scheduleTimesConnect = null;
@@ -62,11 +62,11 @@ var Scheduler = class {
   _checkScheduleLoop() {
     const currentTimeOnSchedule = this._isCurrentTimeOnSchedule();
 
-    if (this._scheduleReached !== currentTimeOnSchedule) {
-      this._scheduleReached = currentTimeOnSchedule;
-      logDebug(`Schedule Reached value changed to '${this._scheduleReached}'`);
+    if (this._activeSchedule !== currentTimeOnSchedule) {
+      this._activeSchedule = currentTimeOnSchedule;
+      logDebug(`Active Schedule is '${this._activeSchedule}'`);
 
-      extension.settings.bedtimeModeActive = this._scheduleReached;
+      extension.settings.bedtimeModeActive = this._activeSchedule;
     }
 
     return true; // continue loop

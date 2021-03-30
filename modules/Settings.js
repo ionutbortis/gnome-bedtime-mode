@@ -54,7 +54,7 @@ var Settings = class {
   set bedtimeModeActive(value) {
     if (value !== this.bedtimeModeActive) {
       this.gSettings.set_boolean("bedtime-mode-active", value);
-      logDebug(`Bedtime Mode Active has been set to '${value}'`);
+      logDebug(`Bedtime Mode Active is '${value}'`);
     }
   }
 
@@ -83,7 +83,7 @@ var Settings = class {
   }
 
   _onBedtimeModeActiveChanged() {
-    logDebug(`Bedtime Mode has been ${this.bedtimeModeActive ? "enabled" : "disabled"}`);
+    logDebug(`Bedtime Mode has been ${this.bedtimeModeActive ? "'enabled'" : "'disabled'"}`);
 
     this.emit("bedtime-mode-active-changed", this.bedtimeModeActive);
   }
