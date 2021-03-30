@@ -76,7 +76,7 @@ var Preferences = class {
   }
 
   _onAutomaticScheduleChanged() {
-    if (this._buttonVisibilityCombo.active_id === "active-schedule" && !this._settings.automaticSchedule) {
+    if (!this._settings.automaticSchedule && this._settings.buttonVisibility === "active-schedule") {
       this._buttonVisibilityCombo.active_id = "always";
     }
   }
