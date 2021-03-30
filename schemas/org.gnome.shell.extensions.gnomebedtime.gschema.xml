@@ -31,16 +31,26 @@
             <summary>Schedule end time minutes</summary>
             <description>The minutes at which the bedtime mode will be disabled</description>
         </key>
-
         <key name="ondemand-button-location" type="s">
             <choices>
-                <choice value="none"/>
                 <choice value="bar"/>
                 <choice value="menu"/>
             </choices>
             <default>"bar"</default>
             <summary>On-demand button location</summary>
             <description>Location where the on-demand button should be placed</description>
+        </key>
+        <key name="ondemand-button-visibility" type="s">
+            <choices>
+                <choice value="always"/>
+                <choice value="active-schedule"/>
+                <choice value="never"/>
+            </choices>
+            <default>"always"</default>
+            <summary>On-demand button visibility</summary>
+            <description>If the value is set to "active-schedule" then the button will be displayed only when the 
+            "automatic-schedule" is enabled and the configured schedule is active.
+            </description>
         </key>
     </schema>
 </schemalist>

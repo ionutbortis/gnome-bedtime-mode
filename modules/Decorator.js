@@ -17,6 +17,8 @@ var Decorator = class {
 
     this._bedtimeModeActiveConnect = null;
     this._buttonLocationConnect = null;
+    this._buttonVisibilityConnect = null;
+    this._activeScheduleConnect = null;
   }
 
   enable() {
@@ -38,6 +40,9 @@ var Decorator = class {
 
     this._bedtimeModeActiveConnect = extension.settings.connect("bedtime-mode-active-changed", this._onBedtimeModeActiveChanged.bind(this));
     this._buttonLocationConnect = extension.settings.connect("button-location-changed", this._onButtonLocationChanged.bind(this));
+    this._buttonVisibilityConnect = extension.settings.connect("button-visibility-changed", this._onButtonVisibilityChanged.bind(this));
+
+    this._activeScheduleConnect = extension.scheduler.connect("active-schedule-changed", this._onActiveScheduleChanged.bind(this));
   }
 
   _disconnectSettings() {
@@ -45,16 +50,34 @@ var Decorator = class {
 
     extension.settings.disconnect(this._bedtimeModeActiveConnect);
     extension.settings.disconnect(this._buttonLocationConnect);
+
+    extension.scheduler.disconnect(this._activeScheduleConnect);
   }
 
   _addButton() {
+    if (!this._shouldDisplayButton()) return;
+
     switch (extension.settings.buttonLocation) {
       case "bar":
         this._addButtonToBar();
         break;
+
       case "menu":
         this._addButtonToMenu();
         break;
+    }
+  }
+
+  _shouldDisplayButton() {
+    switch (extension.settings.buttonVisibility) {
+      case "active-schedule":
+        return extension.scheduler.activeSchedule;
+
+      case "always":
+        return true;
+
+      case "never":
+        return false;
     }
   }
 
@@ -132,6 +155,18 @@ var Decorator = class {
   _onButtonLocationChanged() {
     this._removeButton();
     this._addButton();
+  }
+
+  _onButtonVisibilityChanged() {
+    this._removeButton();
+    this._addButton();
+  }
+
+  _onActiveScheduleChanged() {
+    if (extension.settings.buttonVisibility === "active-schedule") {
+      this._removeButton();
+      this._addButton();
+    }
   }
 
   _toggleBedtimeMode() {

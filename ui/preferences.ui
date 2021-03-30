@@ -91,6 +91,7 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="activatable">False</property>
+                    <property name="selectable">False</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
@@ -229,6 +230,7 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="activatable">False</property>
+                    <property name="selectable">False</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
@@ -397,15 +399,15 @@
             <property name="label-xalign">0</property>
             <child>
               <object class="GtkListBox">
-                <property name="width-request">600</property>
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="selection-mode">none</property>
                 <child>
-                  <object class="GtkListBoxRow">
+                  <object class="GtkListBoxRow" id="ondemand_button_location_row">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="activatable">False</property>
+                    <property name="selectable">False</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
@@ -469,7 +471,6 @@
                             <property name="active">1</property>
                             <property name="active-id">panel</property>
                             <items>
-                              <item id="none" translatable="yes">None</item>
                               <item id="bar" translatable="yes">Top Bar</item>
                               <item id="menu" translatable="yes">System Menu</item>
                             </items>
@@ -489,6 +490,119 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="activatable">False</property>
+                    <property name="selectable">False</property>
+                    <child>
+                      <object class="GtkSeparator">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkListBoxRow">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="activatable">False</property>
+                    <property name="selectable">False</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-start">16</property>
+                        <property name="margin-end">16</property>
+                        <property name="margin-top">16</property>
+                        <property name="margin-bottom">16</property>
+                        <property name="spacing">30</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="orientation">vertical</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="halign">start</property>
+                                <property name="label" translatable="yes">Show Button</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="halign">start</property>
+                                <property name="label" translatable="yes">&lt;small&gt;Display the button only when the schedule is active or choose to always show or hide it.&lt;/small&gt; </property>
+                                <property name="use-markup">True</property>
+                                <property name="wrap">True</property>
+                                <property name="max-width-chars">50</property>
+                                <property name="xalign">0</property>
+                                <style>
+                                  <class name="dim-label"/>
+                                </style>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkComboBoxText" id="ondemand_button_visibility_combo">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">end</property>
+                            <property name="valign">center</property>
+                            <property name="active">0</property>
+                            <property name="active-id">always</property>
+                            <items>
+                              <item id="always" translatable="yes">Always</item>
+                              <item id="active-schedule" translatable="yes">On Active Schedule</item>
+                              <item id="never" translatable="yes">Never</item>
+                            </items>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkListBoxRow">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="activatable">False</property>
+                    <property name="selectable">False</property>
+                    <child>
+                      <object class="GtkSeparator">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkListBoxRow">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="activatable">False</property>
+                    <property name="selectable">False</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>

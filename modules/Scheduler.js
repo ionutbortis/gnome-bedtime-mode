@@ -1,3 +1,4 @@
+const Signals = imports.signals;
 const { GLib } = imports.gi;
 const { extensionUtils } = imports.misc;
 
@@ -8,13 +9,17 @@ const { loopRun, logDebug } = Me.imports.utils;
 
 var Scheduler = class {
   constructor() {
-    this._timerLoopMillis = 30 * 1000;
+    this._timerLoopMillis = 2 * 1000;
     this._timerId = null;
 
     this._activeSchedule = false;
 
     this._automaticScheduleConnect = null;
     this._scheduleTimesConnect = null;
+  }
+
+  get activeSchedule() {
+    return this._activeSchedule;
   }
 
   enable() {
@@ -64,7 +69,7 @@ var Scheduler = class {
 
     if (this._activeSchedule !== currentTimeOnSchedule) {
       this._activeSchedule = currentTimeOnSchedule;
-      logDebug(`Active Schedule is '${this._activeSchedule}'`);
+      this._signalActiveScheduleChange();
 
       extension.settings.bedtimeModeActive = this._activeSchedule;
     }
@@ -80,6 +85,12 @@ var Scheduler = class {
     const scheduleEnd = extension.settings.scheduleEndHours + extension.settings.scheduleEndMinutes / 60;
 
     return scheduleEnd >= scheduleStart ? now >= scheduleStart && now < scheduleEnd : now >= scheduleStart || now < scheduleEnd;
+  }
+
+  _signalActiveScheduleChange() {
+    logDebug(`Active Schedule changed to '${this._activeSchedule}'`);
+
+    this.emit("active-schedule-changed", this._activeSchedule);
   }
 
   _onAutomaticScheduleChanged() {
@@ -98,3 +109,5 @@ var Scheduler = class {
     }
   }
 };
+
+Signals.addSignalMethods(Scheduler.prototype);

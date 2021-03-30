@@ -8,6 +8,12 @@ const { Settings } = Me.imports.modules.Settings;
 
 var Preferences = class {
   constructor() {
+    this._buttonLocationRow = null;
+    this._buttonVisibilityCombo = null;
+
+    this._automaticScheduleConnect = null;
+    this._buttonVisibilityConnect = null;
+
     this._settings = new Settings();
     this._settings.enable();
 
@@ -17,17 +23,22 @@ var Preferences = class {
     this.widget = this._builder.get_object("preferences");
     this.widget.connect("destroy", () => this._cleanUp());
 
-    this._bindSettings();
+    this._connectSettings();
   }
 
   _cleanUp() {
+    this._disconnectSettings();
+
     this._settings.disable();
     this._settings = null;
     this._builder = null;
   }
 
-  _bindSettings() {
+  _connectSettings() {
     logDebug("Connecting Preferences to settings...");
+
+    this._automaticScheduleConnect = this._settings.connect("automatic-schedule-changed", this._onAutomaticScheduleChanged.bind(this));
+    this._buttonVisibilityConnect = this._settings.connect("button-visibility-changed", this._onButtonVisibilityChanged.bind(this));
 
     const bedtimeModeSwitch = this._builder.get_object("bedtime_mode_switch");
     this._settings.gSettings.bind("bedtime-mode-active", bedtimeModeSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
@@ -39,7 +50,12 @@ var Preferences = class {
     this._settings.gSettings.bind("automatic-schedule", scheduleTimesFrame, "sensitive", Gio.SettingsBindFlags.DEFAULT);
 
     const buttonLocationCombo = this._builder.get_object("ondemand_button_location_combo");
-    this._settings.gSettings.bind("ondemand-button-location", buttonLocationCombo, "active-id", Gio.SettingsBindFlags.DEFAULT);
+    this._settings.gSettings.bind("ondemand-button-location", buttonLocationCombo, "active_id", Gio.SettingsBindFlags.DEFAULT);
+
+    this._buttonVisibilityCombo = this._builder.get_object("ondemand_button_visibility_combo");
+    this._settings.gSettings.bind("ondemand-button-visibility", this._buttonVisibilityCombo, "active_id", Gio.SettingsBindFlags.DEFAULT);
+
+    this._buttonLocationRow = this._builder.get_object("ondemand_button_location_row");
 
     this._handleSpinner("schedule_start_hours_spin", "schedule-start-hours");
     this._handleSpinner("schedule_start_minutes_spin", "schedule-start-minutes");
@@ -57,5 +73,35 @@ var Preferences = class {
       spinner.set_text(text);
       return true;
     });
+  }
+
+  _onAutomaticScheduleChanged() {
+    if (this._buttonVisibilityCombo.active_id === "active-schedule" && !this._settings.automaticSchedule) {
+      this._buttonVisibilityCombo.active_id = "always";
+    }
+  }
+
+  _onButtonVisibilityChanged() {
+    switch (this._settings.buttonVisibility) {
+      case "active-schedule":
+        this._settings.automaticSchedule = true;
+        this._buttonLocationRow.sensitive = true;
+        break;
+
+      case "always":
+        this._buttonLocationRow.sensitive = true;
+        break;
+
+      case "never":
+        this._buttonLocationRow.sensitive = false;
+        break;
+    }
+  }
+
+  _disconnectSettings() {
+    logDebug("Disconnecting Preferences from settings...");
+
+    this._settings.disconnect(this._automaticScheduleConnect);
+    this._settings.disconnect(this._buttonVisibilityConnect);
   }
 };
