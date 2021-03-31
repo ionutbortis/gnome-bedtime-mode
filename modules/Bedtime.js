@@ -90,7 +90,7 @@ var Bedtime = class {
     this._colorEffect = null;
   }
 
-  _disableTransitionTimer() {
+  _removeTransitionTimer() {
     if (this._transitionTimerId) {
       GLib.Source.remove(this._transitionTimerId);
       this._transitionTimerId = null;
@@ -100,6 +100,6 @@ var Bedtime = class {
   _cleanUp() {
     logDebug("Cleaning up Bedtime Mode related changes...");
     this._removeColorEffect();
-    this._disableTransitionTimer();
+    this._removeTransitionTimer();
   }
 };

@@ -41,7 +41,6 @@ var Decorator = class {
     this._bedtimeModeActiveConnect = extension.settings.connect("bedtime-mode-active-changed", this._onBedtimeModeActiveChanged.bind(this));
     this._buttonLocationConnect = extension.settings.connect("button-location-changed", this._onButtonLocationChanged.bind(this));
     this._buttonVisibilityConnect = extension.settings.connect("button-visibility-changed", this._onButtonVisibilityChanged.bind(this));
-
     this._activeScheduleConnect = extension.scheduler.connect("active-schedule-changed", this._onActiveScheduleChanged.bind(this));
   }
 
@@ -50,7 +49,6 @@ var Decorator = class {
 
     extension.settings.disconnect(this._bedtimeModeActiveConnect);
     extension.settings.disconnect(this._buttonLocationConnect);
-
     extension.scheduler.disconnect(this._activeScheduleConnect);
   }
 
@@ -107,7 +105,7 @@ var Decorator = class {
       icon.gicon = this._getButtonIcon();
     };
 
-    main.panel.addToStatusArea("BedtimeModeToggleButton", this._button);
+    main.panel.addToStatusArea("BedtimeModeToggleButton", this._button, this._getTopBarPosition());
   }
 
   _addButtonToMenu() {
@@ -127,12 +125,15 @@ var Decorator = class {
   }
 
   _getButtonIcon() {
-    const name = extension.settings.bedtimeModeActive ? "bedtime-mode-on-symbolic" : "bedtime-mode-off-symbolic";
-    return Gio.icon_new_for_string(GLib.build_filenamev([Me.path, "icons", "status", `${name}.svg`]));
+    return Gio.icon_new_for_string(GLib.build_filenamev([Me.path, "icons", "status", "bedtime-mode-symbolic.svg"]));
   }
 
   _getMenuItemLabel() {
     return extension.settings.bedtimeModeActive ? "Turn Off Bedtime Mode" : "Turn On Bedtime Mode";
+  }
+
+  _getTopBarPosition() {
+    return main.panel._rightBox.get_children().length - 1;
   }
 
   _getMenuItemPosition(aggregateMenu) {
