@@ -15,8 +15,17 @@ zip_exclusions=(
   --exclude='*extras/*'
   --exclude='*ui/preferences.ui~'
 )
-package_name=gnome-bedtime
+name_prefix=gnome-bedtime
 
-cd $SOURCE_CODE_ROOT && rm -f $package_name*.zip
+rm -f "$dest_folder"/"$name_prefix"*.zip
 
-zip -r "${zip_exclusions[@]}" $dest_folder/"$package_name"_"$version".zip .
+package_file="$dest_folder"/"$name_prefix"_"$version".zip
+
+echo "Creating release package: $package_file"
+cd $SOURCE_CODE_ROOT && zip -r "${zip_exclusions[@]}" $package_file .
+
+echo "Installing package to local extensions folder..."
+my_extension_home=~/.local/share/gnome-shell/extensions/gnomebedtime@ionutbortis.gmail.com
+rm -rf $my_extension_home/* && unzip -q $package_file -d $my_extension_home
+
+echo "Done. Hit ALT+F2 and type 'r' to restart the gnome shell and check that extension works properly."
