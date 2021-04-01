@@ -127,7 +127,7 @@
                                 <property name="label" translatable="yes">&lt;small&gt;Specifies the time when Bedtime Mode will be automatically turned on.&lt;/small&gt; </property>
                                 <property name="use-markup">True</property>
                                 <property name="wrap">True</property>
-                                <property name="max-width-chars">50</property>
+                                <property name="max-width-chars">55</property>
                                 <property name="xalign">0</property>
                                 <style>
                                   <class name="dim-label"/>
@@ -266,7 +266,7 @@
                                 <property name="label" translatable="yes">&lt;small&gt;Specifies the time when Bedtime Mode will be automatically turned off.&lt;/small&gt; </property>
                                 <property name="use-markup">True</property>
                                 <property name="wrap">True</property>
-                                <property name="max-width-chars">50</property>
+                                <property name="max-width-chars">55</property>
                                 <property name="xalign">0</property>
                                 <style>
                                   <class name="dim-label"/>
