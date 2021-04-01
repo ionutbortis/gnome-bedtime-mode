@@ -1,3 +1,5 @@
+"use strict";
+
 const Signals = imports.signals;
 const { extensionUtils } = imports.misc;
 

@@ -1,3 +1,5 @@
+"use strict";
+
 const Main = imports.ui.main;
 const { GLib, Clutter } = imports.gi;
 

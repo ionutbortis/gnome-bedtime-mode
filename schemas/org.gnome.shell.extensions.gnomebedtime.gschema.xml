@@ -48,7 +48,7 @@
             </choices>
             <default>"always"</default>
             <summary>On-demand button visibility</summary>
-            <description>If the value is set to "active-schedule" then the button will be displayed only when the 
+            <description>If the value is set to "active-schedule" then the button will be displayed only when 
             "automatic-schedule" is enabled and the configured schedule is active.
             </description>
         </key>

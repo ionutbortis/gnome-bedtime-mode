@@ -1,3 +1,5 @@
+"use strict";
+
 const { Gio, GLib, Gtk } = imports.gi;
 const { extensionUtils } = imports.misc;
 

@@ -1,3 +1,5 @@
+"use strict";
+
 const { Gio, GLib, St } = imports.gi;
 const { main } = imports.ui;
 const { Button: PanelMenuButton } = imports.ui.panelMenu;
