@@ -18,6 +18,7 @@ var Decorator = class {
     this._button = null;
     this._topBarItemsCheckLoopId = null;
 
+    this._bedtimeModeActiveConnect = null;
     this._buttonLocationConnect = null;
     this._buttonBarPositionOffsetConnect = null;
     this._buttonVisibilityConnect = null;
@@ -42,6 +43,7 @@ var Decorator = class {
   _connectSettings() {
     logDebug("Connecting Decorator to settings...");
 
+    this._bedtimeModeActiveConnect = extension.settings.connect("bedtime-mode-active-changed", this._onBedtimeModeActiveChanged.bind(this));
     this._buttonLocationConnect = extension.settings.connect("button-location-changed", this._onButtonLocationChanged.bind(this));
     this._buttonBarPositionOffsetConnect = extension.settings.connect(
       "button-bar-position-offset-changed",
@@ -54,6 +56,7 @@ var Decorator = class {
   _disconnectSettings() {
     logDebug("Disconnecting Decorator from settings...");
 
+    extension.settings.disconnect(this._bedtimeModeActiveConnect);
     extension.settings.disconnect(this._buttonLocationConnect);
     extension.settings.disconnect(this._buttonBarPositionOffsetConnect);
     extension.scheduler.disconnect(this._activeScheduleConnect);
@@ -120,7 +123,7 @@ var Decorator = class {
     this._button.connect("activate", () => this._toggleBedtimeMode());
     this._button.update = () => {
       this._button.label.text = this._getMenuItemLabel();
-      this._button.setIcon(this._getButtonIcon());
+      //this._button.setIcon(this._getButtonIcon());
     };
 
     const aggregateMenu = main.panel.statusArea.aggregateMenu;
@@ -169,6 +172,10 @@ var Decorator = class {
     return items.indexOf(aggregateMenu._system.menu) - 1;
   }
 
+  _onBedtimeModeActiveChanged() {
+    this._updateButton();
+  }
+
   _onButtonLocationChanged() {
     this._redrawButton();
   }
@@ -189,6 +196,13 @@ var Decorator = class {
   _onActiveScheduleChanged() {
     if (extension.settings.buttonVisibility === "active-schedule") {
       this._redrawButton();
+    }
+  }
+
+  _updateButton() {
+    if (this._button) {
+      logDebug("Updating On-demand button state...");
+      this._button.update();
     }
   }
 

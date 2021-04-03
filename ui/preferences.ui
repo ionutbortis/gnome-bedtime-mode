@@ -537,7 +537,7 @@
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="halign">start</property>
-                                <property name="label" translatable="yes">&lt;small&gt;Change the button position on the Top Bar. One click will try to move the button one position to the left.&lt;/small&gt; </property>
+                                <property name="label" translatable="yes">&lt;small&gt;Change button position at Top Bar. If clicked it will try to move the button one position to the left.&lt;/small&gt; </property>
                                 <property name="use-markup">True</property>
                                 <property name="wrap">True</property>
                                 <property name="max-width-chars">50</property>
@@ -561,7 +561,7 @@
                         </child>
                         <child>
                           <object class="GtkButton" id="ondemand_button_position">
-                            <property name="label" translatable="yes">Move To Left</property>
+                            <property name="label" translatable="yes">Move To The Left</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
