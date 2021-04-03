@@ -11,10 +11,12 @@ const { Settings } = Me.imports.modules.Settings;
 var Preferences = class {
   constructor() {
     this._buttonLocationRow = null;
+    this._buttonPositionRow = null;
     this._buttonVisibilityCombo = null;
 
     this._automaticScheduleConnect = null;
     this._buttonVisibilityConnect = null;
+    this._buttonLocationConnect = null;
 
     this._settings = new Settings();
     this._settings.enable();
@@ -41,6 +43,7 @@ var Preferences = class {
 
     this._automaticScheduleConnect = this._settings.connect("automatic-schedule-changed", this._onAutomaticScheduleChanged.bind(this));
     this._buttonVisibilityConnect = this._settings.connect("button-visibility-changed", this._onButtonVisibilityChanged.bind(this));
+    this._buttonLocationConnect = this._settings.connect("button-location-changed", this._onButtonLocationChanged.bind(this));
 
     const bedtimeModeSwitch = this._builder.get_object("bedtime_mode_switch");
     this._settings.gSettings.bind("bedtime-mode-active", bedtimeModeSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
@@ -58,6 +61,8 @@ var Preferences = class {
     this._settings.gSettings.bind("ondemand-button-visibility", this._buttonVisibilityCombo, "active_id", Gio.SettingsBindFlags.DEFAULT);
 
     this._buttonLocationRow = this._builder.get_object("ondemand_button_location_row");
+
+    this._handleButtonPositionElements();
 
     this._handleSpinner("schedule_start_hours_spin", "schedule-start-hours");
     this._handleSpinner("schedule_start_minutes_spin", "schedule-start-minutes");
@@ -88,16 +93,33 @@ var Preferences = class {
       case "active-schedule":
         this._settings.automaticSchedule = true;
         this._buttonLocationRow.sensitive = true;
+        this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar";
         break;
 
       case "always":
         this._buttonLocationRow.sensitive = true;
+        this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar";
         break;
 
       case "never":
         this._buttonLocationRow.sensitive = false;
+        this._buttonPositionRow.sensitive = false;
         break;
     }
+  }
+
+  _onButtonLocationChanged() {
+    this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar";
+  }
+
+  _handleButtonPositionElements() {
+    this._buttonPositionRow = this._builder.get_object("ondemand_button_position_row");
+    this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar";
+
+    const positionButton = this._builder.get_object("ondemand_button_position");
+    positionButton.connect("clicked", () => {
+      this._settings.buttonBarPositionOffset++;
+    });
   }
 
   _disconnectSettings() {
@@ -105,5 +127,6 @@ var Preferences = class {
 
     this._settings.disconnect(this._automaticScheduleConnect);
     this._settings.disconnect(this._buttonVisibilityConnect);
+    this._settings.disconnect(this._buttonLocationConnect);
   }
 };

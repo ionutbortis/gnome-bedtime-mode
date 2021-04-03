@@ -4,7 +4,7 @@
         <key name="bedtime-mode-active" type="b">
             <default>true</default>
             <summary>Bedtime Mode active flag</summary>
-            <description>This flag is used to enable/disable the bedtime mode</description>
+            <description>This flag is used to enable/disable the bedtime mode.</description>
         </key>
         <key name="automatic-schedule" type="b">
             <default>false</default>
@@ -14,22 +14,22 @@
         <key name="schedule-start-hours" type="i">
             <default>22</default>
             <summary>Schedule start time hours</summary>
-            <description>The hours at which the bedtime mode will be enabled</description>
+            <description>The hours at which the bedtime mode will be enabled.</description>
         </key>
         <key name="schedule-start-minutes" type="i">
             <default>0</default>
             <summary>Schedule start time minutes</summary>
-            <description>The minutes at which the bedtime mode will be enabled</description>
+            <description>The minutes at which the bedtime mode will be enabled.</description>
         </key>
         <key name="schedule-end-hours" type="i">
             <default>7</default>
             <summary>Schedule end time hours</summary>
-            <description>The hours at which the bedtime mode will be disabled</description>
+            <description>The hours at which the bedtime mode will be disabled.</description>
         </key>
         <key name="schedule-end-minutes" type="i">
             <default>0</default>
             <summary>Schedule end time minutes</summary>
-            <description>The minutes at which the bedtime mode will be disabled</description>
+            <description>The minutes at which the bedtime mode will be disabled.</description>
         </key>
         <key name="ondemand-button-location" type="s">
             <choices>
@@ -38,7 +38,12 @@
             </choices>
             <default>"bar"</default>
             <summary>On-demand button location</summary>
-            <description>Location where the on-demand button should be placed</description>
+            <description>Location where the on-demand button should be placed.</description>
+        </key>
+        <key name="ondemand-button-bar-position-offset" type="i">
+            <default>1</default>
+            <summary>Top bar position offset for the On-demand button</summary>
+            <description>The offset specifies the position relative to the bar's right corner.</description>
         </key>
         <key name="ondemand-button-visibility" type="s">
             <choices>
