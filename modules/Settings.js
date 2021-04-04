@@ -11,57 +11,35 @@ var Settings = class {
   constructor() {
     logDebug("Initializing Settings...");
 
-    this._bedtimeModeActiveConnect = null;
-    this._automaticScheduleConnect = null;
-    this._buttonLocationConnect = null;
-    this._buttonVisibilityConnect = null;
-    this._buttonBarManualPositionConnect = null;
-    this._buttonBarPositionValueConnect = null;
-
-    this._scheduleStartHoursConnect = null;
-    this._scheduleStartMinutesConnect = null;
-    this._scheduleEndHoursConnect = null;
-    this._scheduleEndMinutesConnect = null;
-
+    this._connections = [];
     this.gSettings = extensionUtils.getSettings();
   }
 
   enable() {
     logDebug("Connecting settings signals...");
 
-    this._bedtimeModeActiveConnect = this.gSettings.connect("changed::bedtime-mode-active", this._onBedtimeModeActiveChanged.bind(this));
-    this._automaticScheduleConnect = this.gSettings.connect("changed::automatic-schedule", this._onAutomaticScheduleChanged.bind(this));
-    this._buttonVisibilityConnect = this.gSettings.connect("changed::ondemand-button-visibility", this._onButtonVisibilityChanged.bind(this));
-    this._buttonLocationConnect = this.gSettings.connect("changed::ondemand-button-location", this._onButtonLocationChanged.bind(this));
-    this._buttonBarManualPositionConnect = this.gSettings.connect(
-      "changed::ondemand-button-bar-manual-position",
-      this._onButtonBarManualPositionChanged.bind(this)
-    );
-    this._buttonBarPositionValueConnect = this.gSettings.connect(
-      "changed::ondemand-button-bar-position-value",
-      this._onButtonBarPositionValueChanged.bind(this)
-    );
-
-    this._scheduleStartHoursConnect = this.gSettings.connect("changed::schedule-start-hours", this._onScheduleTimesChanged.bind(this));
-    this._scheduleStartMinutesConnect = this.gSettings.connect("changed::schedule-start-minutes", this._onScheduleTimesChanged.bind(this));
-    this._scheduleEndHoursConnect = this.gSettings.connect("changed::schedule-end-hours", this._onScheduleTimesChanged.bind(this));
-    this._scheduleEndMinutesConnect = this.gSettings.connect("changed::schedule-end-minutes", this._onScheduleTimesChanged.bind(this));
+    this._createConnection("bedtime-mode-active", this._onBedtimeModeActiveChanged.name);
+    this._createConnection("automatic-schedule", this._onAutomaticScheduleChanged.name);
+    this._createConnection("ondemand-button-visibility", this._onButtonVisibilityChanged.name);
+    this._createConnection("ondemand-button-location", this._onButtonLocationChanged.name);
+    this._createConnection("ondemand-button-bar-manual-position", this._onButtonBarManualPositionChanged.name);
+    this._createConnection("ondemand-button-bar-position-value", this._onButtonBarPositionValueChanged.name);
+    this._createConnection("schedule-start-hours", this._onScheduleTimesChanged.name);
+    this._createConnection("schedule-start-minutes", this._onScheduleTimesChanged.name);
+    this._createConnection("schedule-end-hours", this._onScheduleTimesChanged.name);
+    this._createConnection("schedule-end-minutes", this._onScheduleTimesChanged.name);
   }
 
   disable() {
     logDebug("Disconnecting settings signals...");
 
-    this.gSettings.disconnect(this._bedtimeModeActiveConnect);
-    this.gSettings.disconnect(this._automaticScheduleConnect);
-    this.gSettings.disconnect(this._buttonLocationConnect);
-    this.gSettings.disconnect(this._buttonVisibilityConnect);
-    this.gSettings.disconnect(this._buttonBarManualPositionConnect);
-    this.gSettings.disconnect(this._buttonBarPositionValueConnect);
+    for (const connection of this._connections) {
+      this.gSettings.disconnect(connection);
+    }
+  }
 
-    this.gSettings.disconnect(this._scheduleStartHoursConnect);
-    this.gSettings.disconnect(this._scheduleStartMinutesConnect);
-    this.gSettings.disconnect(this._scheduleEndHoursConnect);
-    this.gSettings.disconnect(this._scheduleEndMinutesConnect);
+  _createConnection(settingsKey, handlerName) {
+    this._connections.push(this.gSettings.connect(`changed::${settingsKey}`, this[handlerName].bind(this)));
   }
 
   get bedtimeModeActive() {
@@ -114,37 +92,31 @@ var Settings = class {
 
   _onBedtimeModeActiveChanged() {
     logDebug(`Bedtime Mode Active changed to '${this.bedtimeModeActive}'`);
-
     this.emit("bedtime-mode-active-changed", this.bedtimeModeActive);
   }
 
   _onAutomaticScheduleChanged() {
     logDebug(`Automatic Schedule changed to '${this.automaticSchedule}'`);
-
     this.emit("automatic-schedule-changed", this.automaticSchedule);
   }
 
   _onButtonLocationChanged() {
     logDebug(`Button Location changed to '${this.buttonLocation}'`);
-
     this.emit("button-location-changed", this.buttonLocation);
   }
 
   _onButtonVisibilityChanged() {
     logDebug(`Button Visibility changed to '${this.buttonVisibility}'`);
-
     this.emit("button-visibility-changed", this.buttonVisibility);
   }
 
   _onButtonBarManualPositionChanged() {
     logDebug(`Button Bar Manual Position changed to '${this.buttonBarManualPosition}'`);
-
     this.emit("button-bar-manual-position-changed", this.buttonBarManualPosition);
   }
 
   _onButtonBarPositionValueChanged() {
     logDebug(`Button Bar Position Value changed to '${this.buttonBarPositionValue}'`);
-
     this.emit("button-bar-position-value-changed", this.buttonBarPositionValue);
   }
 

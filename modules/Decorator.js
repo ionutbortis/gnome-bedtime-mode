@@ -18,12 +18,7 @@ var Decorator = class {
     this._button = null;
     this._topBarItemsCheckLoopId = null;
 
-    this._bedtimeModeActiveConnect = null;
-    this._buttonLocationConnect = null;
-    this._buttonBarManualPositionConnect = null;
-    this._buttonBarPositionValueConnect = null;
-    this._buttonVisibilityConnect = null;
-    this._activeScheduleConnect = null;
+    this._connections = [];
   }
 
   enable() {
@@ -43,28 +38,24 @@ var Decorator = class {
   _connectSettings() {
     logDebug("Connecting Decorator to settings...");
 
-    this._bedtimeModeActiveConnect = extension.settings.connect("bedtime-mode-active-changed", this._onBedtimeModeActiveChanged.bind(this));
-    this._buttonLocationConnect = extension.settings.connect("button-location-changed", this._onButtonLocationChanged.bind(this));
-    this._buttonBarManualPositionConnect = extension.settings.connect(
-      "button-bar-manual-position-changed",
-      this._onButtonBarManualPositionChanged.bind(this)
-    );
-    this._buttonBarPositionValueConnect = extension.settings.connect(
-      "button-bar-position-value-changed",
-      this._onButtonBarPositionValueChanged.bind(this)
-    );
-    this._buttonVisibilityConnect = extension.settings.connect("button-visibility-changed", this._onButtonVisibilityChanged.bind(this));
-    this._activeScheduleConnect = extension.scheduler.connect("active-schedule-changed", this._onActiveScheduleChanged.bind(this));
+    this._createConnection(extension.settings, "bedtime-mode-active-changed", this._onBedtimeModeActiveChanged.name);
+    this._createConnection(extension.settings, "button-location-changed", this._onButtonLocationChanged.name);
+    this._createConnection(extension.settings, "button-bar-manual-position-changed", this._onButtonBarManualPositionChanged.name);
+    this._createConnection(extension.settings, "button-bar-position-value-changed", this._onButtonBarPositionValueChanged.name);
+    this._createConnection(extension.settings, "button-visibility-changed", this._onButtonVisibilityChanged.name);
+    this._createConnection(extension.scheduler, "active-schedule-changed", this._onActiveScheduleChanged.name);
   }
 
   _disconnectSettings() {
     logDebug("Disconnecting Decorator from settings...");
 
-    extension.settings.disconnect(this._bedtimeModeActiveConnect);
-    extension.settings.disconnect(this._buttonLocationConnect);
-    extension.settings.disconnect(this._buttonBarManualPositionConnect);
-    extension.settings.disconnect(this._buttonBarPositionValueConnect);
-    extension.scheduler.disconnect(this._activeScheduleConnect);
+    for (const connection of this._connections) {
+      connection.to.disconnect(connection.id);
+    }
+  }
+
+  _createConnection(to, signalKey, handlerName) {
+    this._connections.push({ to: to, id: to.connect(signalKey, this[handlerName].bind(this)) });
   }
 
   _addButton() {
