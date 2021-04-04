@@ -52,6 +52,7 @@ var Decorator = class {
     for (const connection of this._connections) {
       connection.to.disconnect(connection.id);
     }
+    this._connections.length = 0;
   }
 
   _createConnection(to, signalKey, handlerName) {

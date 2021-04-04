@@ -36,6 +36,7 @@ var Settings = class {
     for (const connection of this._connections) {
       this.gSettings.disconnect(connection);
     }
+    this._connections.length = 0;
   }
 
   _createConnection(settingsKey, handlerName) {
