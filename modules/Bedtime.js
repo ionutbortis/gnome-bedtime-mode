@@ -27,7 +27,7 @@ var Bedtime = class {
     this._connectSettings();
     this._addColorEffect();
 
-    if (extension.settings.bedtimeModeActive) this._turnOn();
+    extension.settings.bedtimeModeActive && this._turnOn();
   }
 
   disable() {

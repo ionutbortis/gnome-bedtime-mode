@@ -11,7 +11,7 @@ const Me = extensionUtils.getCurrentExtension();
 
 const extension = Me.imports.extension;
 
-const { loopRun, logDebug } = Me.imports.utils;
+const { logDebug } = Me.imports.utils;
 
 var Decorator = class {
   constructor() {
@@ -20,7 +20,8 @@ var Decorator = class {
 
     this._bedtimeModeActiveConnect = null;
     this._buttonLocationConnect = null;
-    this._buttonBarPositionOffsetConnect = null;
+    this._buttonBarManualPositionConnect = null;
+    this._buttonBarPositionValueConnect = null;
     this._buttonVisibilityConnect = null;
     this._activeScheduleConnect = null;
   }
@@ -37,7 +38,6 @@ var Decorator = class {
 
     this._disconnectSettings();
     this._removeButton();
-    this._removeLoops();
   }
 
   _connectSettings() {
@@ -45,9 +45,13 @@ var Decorator = class {
 
     this._bedtimeModeActiveConnect = extension.settings.connect("bedtime-mode-active-changed", this._onBedtimeModeActiveChanged.bind(this));
     this._buttonLocationConnect = extension.settings.connect("button-location-changed", this._onButtonLocationChanged.bind(this));
-    this._buttonBarPositionOffsetConnect = extension.settings.connect(
-      "button-bar-position-offset-changed",
-      this._onButtonBarPositionOffsetChanged.bind(this)
+    this._buttonBarManualPositionConnect = extension.settings.connect(
+      "button-bar-manual-position-changed",
+      this._onButtonBarManualPositionChanged.bind(this)
+    );
+    this._buttonBarPositionValueConnect = extension.settings.connect(
+      "button-bar-position-value-changed",
+      this._onButtonBarPositionValueChanged.bind(this)
     );
     this._buttonVisibilityConnect = extension.settings.connect("button-visibility-changed", this._onButtonVisibilityChanged.bind(this));
     this._activeScheduleConnect = extension.scheduler.connect("active-schedule-changed", this._onActiveScheduleChanged.bind(this));
@@ -58,7 +62,8 @@ var Decorator = class {
 
     extension.settings.disconnect(this._bedtimeModeActiveConnect);
     extension.settings.disconnect(this._buttonLocationConnect);
-    extension.settings.disconnect(this._buttonBarPositionOffsetConnect);
+    extension.settings.disconnect(this._buttonBarManualPositionConnect);
+    extension.settings.disconnect(this._buttonBarPositionValueConnect);
     extension.scheduler.disconnect(this._activeScheduleConnect);
   }
 
@@ -111,6 +116,7 @@ var Decorator = class {
     this._button.add_actor(icon);
     this._button.connect("button-press-event", () => this._toggleBedtimeMode());
     this._button.connect("touch-event", () => this._toggleBedtimeMode());
+    this._button.update = () => {};
 
     main.panel.addToStatusArea("BedtimeModeToggleButton", this._button, this._getTopBarPosition());
   }
@@ -123,7 +129,7 @@ var Decorator = class {
     this._button.connect("activate", () => this._toggleBedtimeMode());
     this._button.update = () => {
       this._button.label.text = this._getMenuItemLabel();
-      //this._button.setIcon(this._getButtonIcon());
+      this._button.setIcon(this._getButtonIcon());
     };
 
     const aggregateMenu = main.panel.statusArea.aggregateMenu;
@@ -140,31 +146,13 @@ var Decorator = class {
   }
 
   _getTopBarPosition() {
-    const currentCount = main.panel._rightBox.get_children().length;
+    const manualPosition = extension.settings.buttonBarManualPosition;
+    const manualValue = extension.settings.buttonBarPositionValue;
+    const defaultValue = main.panel._rightBox.get_n_children() - 1;
 
-    if (extension.settings.buttonBarPositionOffset > currentCount) {
-      // This happens after a gnome restart and we need to wait and recheck the top bar items count
-      this._topBarItemsCheckLoopId = loopRun(this._checkTopBarItems.bind(this), 1000);
-      return 0;
-    } else {
-      const computedPosition = currentCount - extension.settings.buttonBarPositionOffset;
-      logDebug(`Computed top bar position is '${computedPosition}'`);
-      logDebug(`Offset is '${extension.settings.buttonBarPositionOffset}', top bar count is '${currentCount}'`);
+    logDebug(`Get Top Bar position: manual={${manualPosition}, ${manualValue}} default=${defaultValue}`);
 
-      return computedPosition;
-    }
-  }
-
-  _checkTopBarItems() {
-    const currentCount = main.panel._rightBox.get_children().length;
-
-    if (extension.settings.buttonBarPositionOffset > currentCount) {
-      logDebug("Offset greater than bar items count, continue check loop");
-      return true; // continue loop
-    } else {
-      logDebug("Offset ok, redrawing button");
-      this._redrawButton();
-    }
+    return manualPosition ? manualValue : defaultValue;
   }
 
   _getMenuItemPosition(aggregateMenu) {
@@ -184,19 +172,16 @@ var Decorator = class {
     this._redrawButton();
   }
 
-  _onButtonBarPositionOffsetChanged() {
-    if (this._getTopBarPosition() <= 0) {
-      logDebug("Button is at the left most position, resetting offset to 0");
-      extension.settings.buttonBarPositionOffset = 0;
-      return;
-    }
-    this._redrawButton();
+  _onButtonBarManualPositionChanged() {
+    extension.settings.buttonLocation === "bar" && this._redrawButton();
+  }
+
+  _onButtonBarPositionValueChanged() {
+    extension.settings.buttonLocation === "bar" && this._redrawButton();
   }
 
   _onActiveScheduleChanged() {
-    if (extension.settings.buttonVisibility === "active-schedule") {
-      this._redrawButton();
-    }
+    extension.settings.buttonVisibility === "active-schedule" && this._redrawButton();
   }
 
   _updateButton() {
@@ -213,12 +198,5 @@ var Decorator = class {
 
   _toggleBedtimeMode() {
     extension.settings.bedtimeModeActive = !extension.settings.bedtimeModeActive;
-  }
-
-  _removeLoops() {
-    if (this._topBarItemsCheckLoopId) {
-      GLib.Source.remove(this._topBarItemsCheckLoopId);
-      this._topBarItemsCheckLoopId = null;
-    }
   }
 };

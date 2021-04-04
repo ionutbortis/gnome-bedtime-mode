@@ -15,7 +15,8 @@ var Settings = class {
     this._automaticScheduleConnect = null;
     this._buttonLocationConnect = null;
     this._buttonVisibilityConnect = null;
-    this._buttonBarPositionOffsetConnect = null;
+    this._buttonBarManualPositionConnect = null;
+    this._buttonBarPositionValueConnect = null;
 
     this._scheduleStartHoursConnect = null;
     this._scheduleStartMinutesConnect = null;
@@ -32,9 +33,13 @@ var Settings = class {
     this._automaticScheduleConnect = this.gSettings.connect("changed::automatic-schedule", this._onAutomaticScheduleChanged.bind(this));
     this._buttonVisibilityConnect = this.gSettings.connect("changed::ondemand-button-visibility", this._onButtonVisibilityChanged.bind(this));
     this._buttonLocationConnect = this.gSettings.connect("changed::ondemand-button-location", this._onButtonLocationChanged.bind(this));
-    this._buttonBarPositionOffsetConnect = this.gSettings.connect(
-      "changed::ondemand-button-bar-position-offset",
-      this._onButtonBarPositionOffsetChanged.bind(this)
+    this._buttonBarManualPositionConnect = this.gSettings.connect(
+      "changed::ondemand-button-bar-manual-position",
+      this._onButtonBarManualPositionChanged.bind(this)
+    );
+    this._buttonBarPositionValueConnect = this.gSettings.connect(
+      "changed::ondemand-button-bar-position-value",
+      this._onButtonBarPositionValueChanged.bind(this)
     );
 
     this._scheduleStartHoursConnect = this.gSettings.connect("changed::schedule-start-hours", this._onScheduleTimesChanged.bind(this));
@@ -50,7 +55,8 @@ var Settings = class {
     this.gSettings.disconnect(this._automaticScheduleConnect);
     this.gSettings.disconnect(this._buttonLocationConnect);
     this.gSettings.disconnect(this._buttonVisibilityConnect);
-    this.gSettings.disconnect(this._buttonBarPositionOffsetConnect);
+    this.gSettings.disconnect(this._buttonBarManualPositionConnect);
+    this.gSettings.disconnect(this._buttonBarPositionValueConnect);
 
     this.gSettings.disconnect(this._scheduleStartHoursConnect);
     this.gSettings.disconnect(this._scheduleStartMinutesConnect);
@@ -63,9 +69,7 @@ var Settings = class {
   }
 
   set bedtimeModeActive(value) {
-    if (value !== this.bedtimeModeActive) {
-      this.gSettings.set_boolean("bedtime-mode-active", value);
-    }
+    value !== this.bedtimeModeActive && this.gSettings.set_boolean("bedtime-mode-active", value);
   }
 
   get automaticSchedule() {
@@ -73,19 +77,15 @@ var Settings = class {
   }
 
   set automaticSchedule(value) {
-    if (value !== this.automaticSchedule) {
-      this.gSettings.set_boolean("automatic-schedule", value);
-    }
+    value !== this.automaticSchedule && this.gSettings.set_boolean("automatic-schedule", value);
   }
 
-  get buttonBarPositionOffset() {
-    return this.gSettings.get_int("ondemand-button-bar-position-offset");
+  get buttonBarManualPosition() {
+    return this.gSettings.get_boolean("ondemand-button-bar-manual-position");
   }
 
-  set buttonBarPositionOffset(value) {
-    if (value !== this.buttonBarPositionOffset) {
-      this.gSettings.set_int("ondemand-button-bar-position-offset", value);
-    }
+  get buttonBarPositionValue() {
+    return this.gSettings.get_int("ondemand-button-bar-position-value");
   }
 
   get buttonLocation() {
@@ -136,10 +136,16 @@ var Settings = class {
     this.emit("button-visibility-changed", this.buttonVisibility);
   }
 
-  _onButtonBarPositionOffsetChanged() {
-    logDebug(`Button Bar Position Offset changed to '${this.buttonBarPositionOffset}'`);
+  _onButtonBarManualPositionChanged() {
+    logDebug(`Button Bar Manual Position changed to '${this.buttonBarManualPosition}'`);
 
-    this.emit("button-bar-position-offset-changed", this.buttonBarPositionOffset);
+    this.emit("button-bar-manual-position-changed", this.buttonBarManualPosition);
+  }
+
+  _onButtonBarPositionValueChanged() {
+    logDebug(`Button Bar Position Value changed to '${this.buttonBarPositionValue}'`);
+
+    this.emit("button-bar-position-value-changed", this.buttonBarPositionValue);
   }
 
   _onScheduleTimesChanged() {

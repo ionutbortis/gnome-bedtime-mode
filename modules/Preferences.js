@@ -64,13 +64,13 @@ var Preferences = class {
 
     this._handleButtonPositionElements();
 
-    this._handleSpinner("schedule_start_hours_spin", "schedule-start-hours");
-    this._handleSpinner("schedule_start_minutes_spin", "schedule-start-minutes");
-    this._handleSpinner("schedule_end_hours_spin", "schedule-end-hours");
-    this._handleSpinner("schedule_end_minutes_spin", "schedule-end-minutes");
+    this._handleScheduleSpinner("schedule_start_hours_spin", "schedule-start-hours");
+    this._handleScheduleSpinner("schedule_start_minutes_spin", "schedule-start-minutes");
+    this._handleScheduleSpinner("schedule_end_hours_spin", "schedule-end-hours");
+    this._handleScheduleSpinner("schedule_end_minutes_spin", "schedule-end-minutes");
   }
 
-  _handleSpinner(spinnerId, settingsValueKey) {
+  _handleScheduleSpinner(spinnerId, settingsValueKey) {
     const spinner = this._builder.get_object(spinnerId);
 
     this._settings.gSettings.bind(settingsValueKey, spinner, "value", Gio.SettingsBindFlags.DEFAULT);
@@ -116,10 +116,12 @@ var Preferences = class {
     this._buttonPositionRow = this._builder.get_object("ondemand_button_position_row");
     this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar";
 
-    const positionButton = this._builder.get_object("ondemand_button_position");
-    positionButton.connect("clicked", () => {
-      this._settings.buttonBarPositionOffset++;
-    });
+    const manualPositionSwitch = this._builder.get_object("ondemand_button_manual_position_switch");
+    this._settings.gSettings.bind("ondemand-button-bar-manual-position", manualPositionSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
+
+    const manualPositionValueSpinner = this._builder.get_object("ondemand_button_manual_position_spin");
+    this._settings.gSettings.bind("ondemand-button-bar-position-value", manualPositionValueSpinner, "value", Gio.SettingsBindFlags.DEFAULT);
+    this._settings.gSettings.bind("ondemand-button-bar-manual-position", manualPositionValueSpinner, "sensitive", Gio.SettingsBindFlags.DEFAULT);
   }
 
   _disconnectSettings() {

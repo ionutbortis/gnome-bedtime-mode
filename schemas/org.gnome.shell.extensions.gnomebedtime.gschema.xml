@@ -40,10 +40,16 @@
             <summary>On-demand button location</summary>
             <description>Location where the on-demand button should be placed.</description>
         </key>
-        <key name="ondemand-button-bar-position-offset" type="i">
-            <default>1</default>
-            <summary>Top bar position offset for the On-demand button</summary>
-            <description>The offset specifies the position relative to the bar's right corner.</description>
+        <key name="ondemand-button-bar-manual-position" type="b">
+            <default>false</default>
+            <summary>Enable manual position for the On-Demand button</summary>
+            <description>Enables manual positioning in the Top Bar for the On-Demand buttton.</description>
+        </key>
+        <key name="ondemand-button-bar-position-value" type="i">
+            <default>0</default>
+            <summary>Top bar manual position for the On-demand button</summary>
+            <description>The manual position value for the On-Demad button. It should be a number from 0 to 99. 
+            0 will put the button on the left side of the icons group. A greater value will move the icon to the right.</description>
         </key>
         <key name="ondemand-button-visibility" type="s">
             <choices>

@@ -2,6 +2,10 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
+  <object class="GtkAdjustment" id="manual_position_value_adjustment">
+    <property name="upper">99</property>
+    <property name="step-increment">1</property>
+  </object>
   <object class="GtkAdjustment" id="schedule_end_hours_adjustment">
     <property name="upper">23</property>
     <property name="step-increment">1</property>
@@ -513,7 +517,7 @@
                         <property name="margin-end">16</property>
                         <property name="margin-top">16</property>
                         <property name="margin-bottom">16</property>
-                        <property name="spacing">30</property>
+                        <property name="spacing">15</property>
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
@@ -524,7 +528,7 @@
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="halign">start</property>
-                                <property name="label" translatable="yes">Top Bar Position</property>
+                                <property name="label" translatable="yes">Top Bar Manual Position</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -537,7 +541,7 @@
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="halign">start</property>
-                                <property name="label" translatable="yes">&lt;small&gt;Change button position at Top Bar. If clicked it will try to move the button one position to the left.&lt;/small&gt; </property>
+                                <property name="label" translatable="yes">&lt;small&gt;Manually change the button position in Top Bar. Zero is the start of the icons row.&lt;/small&gt; </property>
                                 <property name="use-markup">True</property>
                                 <property name="wrap">True</property>
                                 <property name="max-width-chars">50</property>
@@ -560,18 +564,47 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton" id="ondemand_button_position">
-                            <property name="label" translatable="yes">Move To The Left</property>
+                          <object class="GtkBox">
                             <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="receives-default">True</property>
+                            <property name="can-focus">False</property>
                             <property name="halign">end</property>
                             <property name="valign">center</property>
+                            <property name="spacing">10</property>
+                            <child>
+                              <object class="GtkSwitch" id="ondemand_button_manual_position_switch">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="halign">end</property>
+                                <property name="valign">center</property>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkSpinButton" id="ondemand_button_manual_position_spin">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="max-length">2</property>
+                                <property name="width-chars">2</property>
+                                <property name="text">0</property>
+                                <property name="adjustment">manual_position_value_adjustment</property>
+                                <property name="numeric">True</property>
+                                <property name="wrap">True</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
                           </object>
                           <packing>
                             <property name="expand">True</property>
                             <property name="fill">True</property>
-                            <property name="position">1</property>
+                            <property name="position">2</property>
                           </packing>
                         </child>
                       </object>
