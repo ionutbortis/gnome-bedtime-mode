@@ -8,7 +8,7 @@ Converts to grayscale the entire Gnome workspace by using a smooth transition. B
 
 This behaviour is similar to Android's bedtime mode which converts the phone screen to grayscale. It should somewhat make your device less appealing and limit the usage of it before bedtime. On my side, at least, it still requires a fair amount of self control in order to make that happen. 
 
-The extension has a nice Preferences (Settings) UI where you can customize it to your liking. You can set an automatic schedule for turning on/off the bedtime mode, add an On Demand button to Top Bar or System Menu. Just give it a try!
+The extension has a nice Preferences (Settings) UI where you can customize it to your liking. You can set an automatic schedule for turning on/off the Bedtime Mode, add an On Demand button to Top Bar or System Menu, etc. Just give it a try!
 
 ![](./extras/images/screenshot.png)
 
@@ -42,7 +42,7 @@ gnome-extensions disable gnomebedtime@ionutbortis.gmail.com
 
 # Keyboard shortcut
 
-If you want to use a keyboard shortcut in order to toggle the Bedtime Mode then you cand do this:
+If you want to use a keyboard shortcut in order to toggle the Bedtime Mode then you can do this:
 * Go to Settings -> Keyboard Shortcuts
 * Scroll to the end and press the "+" button
 * Fill the inputs with the following
@@ -58,10 +58,11 @@ bash -c 'schemadir=~/.local/share/gnome-shell/extensions/gnomebedtime@ionutborti
 # Credits 
 
 Credist for inspiration go to:
-- Desaturate All extension: https://extensions.gnome.org/extension/1102/desaturate-all/ (https://github.com/laerne/desaturate_all)
-- Tint All extension: https://extensions.gnome.org/extension/1471/tint-all/ (https://github.com/amarovita/tint-all)
+* [Desaturate All](https://extensions.gnome.org/extension/1102/desaturate-all/) extension | [Github URL](https://github.com/laerne/desaturate_all)
+* [Tint All](https://extensions.gnome.org/extension/1471/tint-all/) extension | [Github URL](https://github.com/amarovita/tint-all)
+* [Night Theme Switcher](https://extensions.gnome.org/extension/2236/night-theme-switcher/) extension | [Gitlab URL](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/)
 
-I wrote this extension because I wanted a smooth transition and the possibility to create an automatic schedule for it.
+I wrote this extension because I wanted a smooth transition and the possibility to create an automatic schedule for it. I'm a new linux user (using Ubuntu 20.04 on my daily driver laptop) and I liked the idea of extending the desktop to your linking.
 
 Many thanks to the creator of the [Night Theme Switcher](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/) extension. I used its code for reference since the Gnome Extensions Coding documentation is not that great.
 
