@@ -8,7 +8,7 @@ Converts to grayscale the entire Gnome workspace by using a smooth transition. B
 
 This behaviour is similar to Android's bedtime mode which converts the phone screen to grayscale. It should somewhat make your device less appealing and limit the usage of it before bedtime. On my side, at least, it still requires a fair amount of self control in order to make that happen. 
 
-The extension has a nice Preferences (Settings) UI where you can customize it to your liking. You can set an automatic schedule for turning on/off the Bedtime Mode, add an On Demand button to Top Bar or System Menu, etc. Just give it a try!
+The extension has a nice Preferences (Settings) UI where you can customize it to your liking. You can set an automatic schedule for turning on/off the Bedtime Mode, add an On Demand button to Top Bar or System Menu, etc. Just give it a try! :sunglasses:
 
 ![](./extras/images/screenshot.png)
 
@@ -62,7 +62,7 @@ Credits for inspiration go to:
 * [Tint All](https://extensions.gnome.org/extension/1471/tint-all/) extension | [Github URL](https://github.com/amarovita/tint-all)
 * [Night Theme Switcher](https://extensions.gnome.org/extension/2236/night-theme-switcher/) extension | [Gitlab URL](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/)
 
-I wrote this extension because I like and use daily the Android's Bedtime Mode and I wanted something similar for my laptop. I'm a new linux user (using only Ubuntu now on my daily driver laptop) and I liked the idea of extending the desktop to your linking. It was also a good way to improve my JavaScript coding skills.
+I wrote this extension because I like and use daily the Android's Bedtime Mode and I wanted something similar for my laptop. I'm a new linux user (using only Ubuntu now on my daily driver laptop) and I liked the idea of extending the desktop to your linking. It was also a good way to improve on my JavaScript coding skills.
 
-Many thanks to the creator of the [Night Theme Switcher](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/) extension. I used its code for reference since the Gnome Extensions Coding documentation is not that great.
+Many thanks to the creator of the [Night Theme Switcher](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/) extension. I used his code for reference since the Gnome Extensions Coding documentation is not that great.
 
