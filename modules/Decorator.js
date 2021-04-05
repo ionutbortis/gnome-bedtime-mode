@@ -16,8 +16,6 @@ const { logDebug } = Me.imports.utils;
 var Decorator = class {
   constructor() {
     this._button = null;
-    this._topBarItemsCheckLoopId = null;
-
     this._connections = [];
   }
 
@@ -55,8 +53,8 @@ var Decorator = class {
     this._connections.length = 0;
   }
 
-  _createConnection(to, signalKey, handlerName) {
-    this._connections.push({ to: to, id: to.connect(signalKey, this[handlerName].bind(this)) });
+  _createConnection(to, eventName, handlerName) {
+    this._connections.push({ to: to, id: to.connect(eventName, this[handlerName].bind(this)) });
   }
 
   _addButton() {
