@@ -7,10 +7,10 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="64"
-   height="64"
+   width="32"
+   height="32"
    version="1.1"
-   viewBox="0 0 64 64"
+   viewBox="0 0 32 32"
    id="svg899"
    sodipodi:docname="gnome-bedtime-icon.svg"
    inkscape:version="1.0.2 (394de47547, 2021-03-26)"
@@ -30,14 +30,15 @@
      inkscape:window-height="1043"
      id="namedview891"
      showgrid="false"
-     inkscape:zoom="8"
-     inkscape:cx="20.07108"
-     inkscape:cy="30.623157"
+     inkscape:zoom="15.336323"
+     inkscape:cx="13.6921"
+     inkscape:cy="16.271466"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1"
-     scale-x="1" />
+     scale-x="1"
+     inkscape:document-rotation="0" />
   <metadata
      id="metadata905">
     <rdf:RDF>
@@ -59,7 +60,7 @@
      style="display:inline">
     <g
        aria-label="z"
-       transform="matrix(1.9261513,0,0,1.9261512,-0.07338844,-7.0288058)"
+       transform="matrix(0.97592306,0,0,0.97592301,-0.21926868,-3.5320736)"
        id="text846-9-8"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:25.3467px;line-height:1.25;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.325267">
       <path
@@ -69,7 +70,7 @@
     </g>
     <g
        aria-label="z"
-       transform="matrix(1.9261513,0,0,1.9261512,0.69202989,-5.0443774)"
+       transform="matrix(0.97592306,0,0,0.97592301,0.16854582,-2.5266233)"
        id="text846-9"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:35.4141px;line-height:1.25;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.454458">
       <path
@@ -79,7 +80,7 @@
     </g>
     <g
        aria-label="z"
-       transform="matrix(1.9261513,0,0,1.9261512,0.31779079,-6.170641)"
+       transform="matrix(0.97592306,0,0,0.97592301,-0.02106989,-3.0972672)"
        id="text846"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48.5987px;line-height:1.25;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.623652">
       <path
@@ -94,12 +95,12 @@
      inkscape:label="main"
      style="display:inline">
     <path
-       d="m 18.768101,45.469753 13.529345,1.1e-5 q 4.982093,1e-5 5.164922,3.33663 l 0.0914,1.78258 q 0.09142,2.239656 -0.959849,3.519461 -1.051267,1.234093 -4.205068,1.188387 l -25.4589336,1e-6 Q 4.9645069,55.296758 3.5475819,53.879896 2.1306568,52.417267 2.1763641,50.726098 2.1763557,49.03493 3.1819238,47.618004 L 20.870631,22.936089 H 8.1183072 q -3.2909224,-6e-6 -4.5250182,-3.245216 l 2e-7,-0.182837 Q 2.7705586,17.131258 4.1874834,15.165847 5.6044083,13.154729 8.118307,13.15473 l 23.904892,-3e-6 q 2.011119,-5e-5 3.519461,1.50834 1.416924,1.508338 1.416924,3.33663 9e-6,1.828293 -1.005561,3.245215 z"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48.5987px;line-height:1.25;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi Bold';letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;stroke-width:1.20125"
+       d="m 9.3271489,23.067371 6.8549131,5e-6 q 2.524277,6e-6 2.61691,1.690571 l 0.04631,0.90318 q 0.04632,1.134766 -0.486327,1.783205 -0.532645,0.625278 -2.130582,0.60212 l -12.8992777,1e-6 q -0.9958136,-3.4e-5 -1.713727,-0.717915 -0.71791343,-0.74107 -0.69475484,-1.597934 -4.34e-6,-0.856865 0.50948684,-1.574778 L 10.392437,11.650239 H 3.9312177 q -1.6674117,-3e-6 -2.2926909,-1.644253 l 1e-7,-0.092633 Q 1.2216739,8.7091054 1.9395873,7.713291 2.6575006,6.6943178 3.9312176,6.6943184 l 12.1118924,-1.6e-6 q 1.018973,-2.53e-5 1.783205,0.7642306 0.717912,0.7642296 0.717912,1.6905707 4e-6,0.9263409 -0.509488,1.6442529 z"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48.5987px;line-height:1.25;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi Bold';letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;stroke-width:0.608638"
        id="path902-6" />
     <g
        aria-label="z"
-       transform="matrix(1.9261513,0,0,1.9261512,1.4724055,-4.10576)"
+       transform="matrix(0.97592306,0,0,0.97592301,0.56393868,-2.051054)"
        id="text846-9-7"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:35.4141px;line-height:1.25;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi Bold';letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;stroke-width:0.454458">
       <path
@@ -109,7 +110,7 @@
     </g>
     <g
        aria-label="z"
-       transform="matrix(1.9261513,0,0,1.9261512,0.8840039,-6.1098108)"
+       transform="matrix(0.97592306,0,0,0.97592301,0.2658133,-3.0664464)"
        id="text846-9-8-3"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:25.3467px;line-height:1.25;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi Bold';letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;stroke-width:0.325267">
       <path
