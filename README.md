@@ -62,7 +62,7 @@ Credits for inspiration go to:
 * [Tint All](https://extensions.gnome.org/extension/1471/tint-all/) extension | [Github URL](https://github.com/amarovita/tint-all)
 * [Night Theme Switcher](https://extensions.gnome.org/extension/2236/night-theme-switcher/) extension | [Gitlab URL](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/)
 
-I wrote this extension because I like and use daily the Android's Bedtime Mode and I wanted something similar for my laptop. I'm a new linux user (using only Ubuntu now on my daily driver laptop) and I liked the idea of extending the desktop to your linking. It was also a good way to up my JavaScript coding skills.
+I wrote this extension because I like and use daily the Android's Bedtime Mode and I wanted something similar for my laptop. I'm a new linux user (using only Ubuntu now on my daily driver laptop) and I liked the idea of extending the desktop to your linking. It was also a good way to improve my JavaScript coding skills.
 
 Many thanks to the creator of the [Night Theme Switcher](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/) extension. I used its code for reference since the Gnome Extensions Coding documentation is not that great.
 
