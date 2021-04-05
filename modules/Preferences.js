@@ -2,7 +2,6 @@
 
 const { Gio, GLib, Gtk } = imports.gi;
 const { extensionUtils } = imports.misc;
-
 const Me = extensionUtils.getCurrentExtension();
 
 const { logDebug } = Me.imports.utils;

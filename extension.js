@@ -1,7 +1,6 @@
 "use strict";
 
 const { extensionUtils } = imports.misc;
-
 const Me = extensionUtils.getCurrentExtension();
 
 const { logDebug } = Me.imports.utils;

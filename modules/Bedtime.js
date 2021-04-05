@@ -6,8 +6,8 @@ const { GLib, Clutter } = imports.gi;
 const { extensionUtils } = imports.misc;
 const Me = extensionUtils.getCurrentExtension();
 
-const { loopRun, logDebug } = Me.imports.utils;
 const extension = Me.imports.extension;
+const { loopRun, logDebug } = Me.imports.utils;
 
 var Bedtime = class {
   constructor() {

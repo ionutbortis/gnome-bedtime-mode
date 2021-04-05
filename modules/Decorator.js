@@ -6,11 +6,9 @@ const { Button: PanelMenuButton } = imports.ui.panelMenu;
 const { PopupImageMenuItem } = imports.ui.popupMenu;
 
 const { extensionUtils } = imports.misc;
-
 const Me = extensionUtils.getCurrentExtension();
 
 const extension = Me.imports.extension;
-
 const { logDebug } = Me.imports.utils;
 
 var Decorator = class {

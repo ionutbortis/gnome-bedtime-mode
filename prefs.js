@@ -1,7 +1,6 @@
 "use strict";
 
 const { extensionUtils } = imports.misc;
-
 const Me = extensionUtils.getCurrentExtension();
 
 const { Preferences } = Me.imports.modules.Preferences;
