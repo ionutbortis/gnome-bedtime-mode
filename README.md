@@ -57,7 +57,7 @@ bash -c 'schemadir=~/.local/share/gnome-shell/extensions/gnomebedtime@ionutborti
 
 # Credits 
 
-Credist for inspiration go to:
+Credits for inspiration go to:
 * [Desaturate All](https://extensions.gnome.org/extension/1102/desaturate-all/) extension | [Github URL](https://github.com/laerne/desaturate_all)
 * [Tint All](https://extensions.gnome.org/extension/1471/tint-all/) extension | [Github URL](https://github.com/amarovita/tint-all)
 * [Night Theme Switcher](https://extensions.gnome.org/extension/2236/night-theme-switcher/) extension | [Gitlab URL](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/)
