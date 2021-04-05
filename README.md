@@ -1,28 +1,37 @@
-# Gnome Bedtime
+
+
+# Gnome Bedtime  ![](./extras/images/gnome-bedtime-icon.svg)
 
 Hey Gnome, it's bedtime! 
 
-Converts to grayscale the entire Gnome workspace by using a smooth transition. 
+Converts to grayscale the entire Gnome workspace by using a smooth transition. Best to use during evening/night.
 
 This behaviour is similar to Android's bedtime mode which converts the phone screen to grayscale. It should somewhat make your device less appealing and limit the usage of it before bedtime. On my side, at least, it still requires a fair amount of self control in order to make that happen. 
 
+The extension has a nice Preferences (Settings) UI where you can customize it to your liking. You can set an automatic schedule for turning on/off the bedtime mode, add an On Demand button to Top Bar or System Menu. Just give it a try!
+
+![](./extras/images/screenshot.png)
+
 # Installation
 
-From the Gnome extensions website, by using this link:
-https://extensions.gnome.org/extension/4012/gnome-bedtime/
+From the official Gnome extensions website, by using this link:
+[Gnome Bedtime Page](https://extensions.gnome.org/extension/4012/gnome-bedtime/)
 
 Or
 
 Using a terminal, you can do the following sequence of commands:
 
 ```
-$ git clone https://github.com/ionutbortis/gnome-bedtime.git
-$ mv gnome-bedtime ~/.local/share/gnome-shell/extensions/gnomebedtime@ionutbortis.gmail.com
+git clone https://github.com/ionutbortis/gnome-bedtime.git
+
+extension_home=~/.local/share/gnome-shell/extensions/gnomebedtime@ionutbortis.gmail.com
+
+rm -rf $extension_home && mv gnome-bedtime/* $extension_home
 ```
 
-Then press `Alt`+`F2`, type `r` in the dialog window, then press `Enter`.
+Then press `Alt`+`F2`, type `r` in the dialog window and press `Enter`.
 
-You can now enable the extension by running `gnome-shell-extension-prefs`, or by
+You can now enable the extension by running the Extensions app (search and install it from your distro repos or get it from [here](https://flathub.org/apps/details/org.gnome.Extensions)), or by
 browsing to https://extensions.gnome.org/local.
 
 Alternatively, you can enable/disable the extension from command line:
@@ -31,16 +40,28 @@ gnome-extensions enable gnomebedtime@ionutbortis.gmail.com
 gnome-extensions disable gnomebedtime@ionutbortis.gmail.com
 ```
 
-Credits for inspiration go to:
+# Keyboard shortcut
+
+If you want to use a keyboard shortcut in order to toggle the Bedtime Mode then you cand do this:
+* Go to Settings -> Keyboard Shortcuts
+* Scroll to the end and press the "+" button
+* Fill the inputs with the following
+  * Name: Toggle Bedtime Mode
+  * Command:
+```
+bash -c 'schemadir=~/.local/share/gnome-shell/extensions/gnomebedtime@ionutbortis.gmail.com/schemas/; if [[ $(gsettings --schemadir $schemadir get org.gnome.shell.extensions.gnomebedtime bedtime-mode-active) == "true" ]]; then gsettings --schemadir $schemadir set org.gnome.shell.extensions.gnomebedtime bedtime-mode-active false; else gsettings --schemadir $schemadir set org.gnome.shell.extensions.gnomebedtime bedtime-mode-active true; fi'
+```
+  * Press Set Shortcut and use your preffered one
+  * Done!
+
+
+# Credits 
+
+Credist for inspiration go to:
 - Desaturate All extension: https://extensions.gnome.org/extension/1102/desaturate-all/ (https://github.com/laerne/desaturate_all)
 - Tint All extension: https://extensions.gnome.org/extension/1471/tint-all/ (https://github.com/amarovita/tint-all)
 
-I wrote this extension because I want to be able to switch it on and off from command line. Also, I added a smooth transition from normal to grayscale and back.
+I wrote this extension because I wanted a smooth transition and the possibility to create an automatic schedule for it.
 
-Because it can be enabled/disabled from command line, you can schedule it nicely with crontab, your own scripts or some other extensions that support scheduling.
+Many thanks to the creator of the [Night Theme Switcher](https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension/) extension. I used its code for reference since the Gnome Extensions Coding documentation is not that great.
 
-Night Theme Switcher extension (https://extensions.gnome.org/extension/2236/night-theme-switcher/) has a Manual Schedule section and you can set two commands for sunrise and sunset. Also, that extension offers the possibility to follow the Night Light settings and some other nice goodies.
-
-I might add some features in the future, don't be shy to drop some improvement ideas. 
-
-One thing I don't actually like is that the grayscale screen gets disabled when the user is locked out, the computer is suspended, etc., but this seems to be a requirement of the Gnome shell integration. Maybe I should create some configuration for the extension in order to override this, hmmm...
