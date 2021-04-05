@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="org.gnome.shell.extensions.gnomebedtime" path="/org/gnome/shell/extensions/gnomebedtime/">
+        <key name="bedtime-mode-active" type="b">
+            <default>true</default>
+            <summary>Bedtime Mode active flag</summary>
+            <description>This flag is used to enable/disable the bedtime mode.</description>
+        </key>
+        <key name="automatic-schedule" type="b">
+            <default>false</default>
+            <summary>Enable Automatic Schedule</summary>
+            <description>Enables automatic scheduling of the bedtime mode in the time range specified by the start and end times</description>
+        </key>
+        <key name="schedule-start-hours" type="i">
+            <default>22</default>
+            <summary>Schedule start time hours</summary>
+            <description>The hours at which the bedtime mode will be enabled.</description>
+        </key>
+        <key name="schedule-start-minutes" type="i">
+            <default>0</default>
+            <summary>Schedule start time minutes</summary>
+            <description>The minutes at which the bedtime mode will be enabled.</description>
+        </key>
+        <key name="schedule-end-hours" type="i">
+            <default>7</default>
+            <summary>Schedule end time hours</summary>
+            <description>The hours at which the bedtime mode will be disabled.</description>
+        </key>
+        <key name="schedule-end-minutes" type="i">
+            <default>0</default>
+            <summary>Schedule end time minutes</summary>
+            <description>The minutes at which the bedtime mode will be disabled.</description>
+        </key>
+        <key name="ondemand-button-location" type="s">
+            <choices>
+                <choice value="bar"/>
+                <choice value="menu"/>
+            </choices>
+            <default>"bar"</default>
+            <summary>On-demand button location</summary>
+            <description>Location where the on-demand button should be placed.</description>
+        </key>
+        <key name="ondemand-button-bar-manual-position" type="b">
+            <default>false</default>
+            <summary>Enable manual position for the On-Demand button</summary>
+            <description>Enables manual positioning in the Top Bar for the On-Demand buttton.</description>
+        </key>
+        <key name="ondemand-button-bar-position-value" type="i">
+            <default>0</default>
+            <summary>Top bar manual position for the On-demand button</summary>
+            <description>The manual position value for the On-Demad button. It should be a number from 0 to 99. 
+            0 will put the button on the left side of the icons group. A greater value will move the icon to the right.</description>
+        </key>
+        <key name="ondemand-button-visibility" type="s">
+            <choices>
+                <choice value="always"/>
+                <choice value="active-schedule"/>
+                <choice value="never"/>
+            </choices>
+            <default>"always"</default>
+            <summary>On-demand button visibility</summary>
+            <description>If the value is set to "active-schedule" then the button will be displayed only when 
+            "automatic-schedule" is enabled and the configured schedule is active.
+            </description>
+        </key>
+    </schema>
+</schemalist>

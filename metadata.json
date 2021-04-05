@@ -1,10 +1,11 @@
 {
+  "description": "Hey Gnome, it's bedtime! Converts to grayscale the entire Gnome workspace by using a smooth transition.",
   "name": "Gnome Bedtime",
-  "description": "Hey Gnome, it's bedtime! Converts to grayscale the entire Gnome workspace.",
-  "uuid": "gnomebedtime@ionutbortis.gmail.com",
-  "url": "https://github.com/ionutbortis/gnome-bedtime",
+  "settings-schema": "org.gnome.shell.extensions.gnomebedtime",
   "shell-version": [
-    "3.36"
+    "3.36", "3.38"
   ],
-  "version": 1
+  "url": "https://github.com/ionutbortis/gnome-bedtime",
+  "uuid": "gnomebedtime@ionutbortis.gmail.com",
+  "version": 2
 }
