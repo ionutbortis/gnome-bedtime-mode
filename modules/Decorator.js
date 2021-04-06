@@ -1,9 +1,9 @@
 "use strict";
 
 const { Gio, GLib, St } = imports.gi;
-const { main } = imports.ui;
 const { Button: PanelMenuButton } = imports.ui.panelMenu;
 const { PopupImageMenuItem } = imports.ui.popupMenu;
+const MainPanel = imports.ui.main.panel;
 
 const { extensionUtils } = imports.misc;
 const Me = extensionUtils.getCurrentExtension();
@@ -45,9 +45,7 @@ var Decorator = class {
   _disconnectSettings() {
     logDebug("Disconnecting Decorator from settings...");
 
-    for (const connection of this._connections) {
-      connection.to.disconnect(connection.id);
-    }
+    this._connections.forEach((connection) => connection.to.disconnect(connection.id));
     this._connections.length = 0;
   }
 
@@ -106,7 +104,7 @@ var Decorator = class {
     this._button.connect("touch-event", () => this._toggleBedtimeMode());
     this._button.update = () => {};
 
-    main.panel.addToStatusArea("BedtimeModeToggleButton", this._button, this._getTopBarPosition());
+    MainPanel.addToStatusArea("BedtimeModeToggleButton", this._button, this._getTopBarPosition());
   }
 
   _addButtonToMenu() {
@@ -120,7 +118,7 @@ var Decorator = class {
       this._button.setIcon(this._getButtonIcon());
     };
 
-    const aggregateMenu = main.panel.statusArea.aggregateMenu;
+    const aggregateMenu = MainPanel.statusArea.aggregateMenu;
 
     aggregateMenu.menu.addMenuItem(this._button, this._getMenuItemPosition(aggregateMenu));
   }
@@ -134,9 +132,12 @@ var Decorator = class {
   }
 
   _getTopBarPosition() {
+    const aggregateMenuFinder = (x) => x.get_child() === MainPanel.statusArea.aggregateMenu;
+    const aggregateMenuIndex = MainPanel._rightBox.get_children().findIndex(aggregateMenuFinder);
+
+    const defaultValue = aggregateMenuIndex > -1 ? aggregateMenuIndex : 0;
     const manualPosition = extension.settings.buttonBarManualPosition;
     const manualValue = extension.settings.buttonBarPositionValue;
-    const defaultValue = main.panel._rightBox.get_n_children() - 1;
 
     logDebug(`Get Top Bar position: manual={${manualPosition}, ${manualValue}} default=${defaultValue}`);
 

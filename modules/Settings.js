@@ -33,9 +33,7 @@ var Settings = class {
   disable() {
     logDebug("Disconnecting settings signals...");
 
-    for (const connection of this._connections) {
-      this.gSettings.disconnect(connection);
-    }
+    this._connections.forEach((connection) => this.gSettings.disconnect(connection));
     this._connections.length = 0;
   }
 
