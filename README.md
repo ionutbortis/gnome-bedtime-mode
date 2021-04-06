@@ -1,4 +1,4 @@
-
+[EGO]:https://extensions.gnome.org/extension/4012/gnome-bedtime/
 
 # Gnome Bedtime  ![](./extras/images/gnome-bedtime-icon.svg)
 
@@ -14,8 +14,9 @@ The extension has a nice Preferences (Settings) UI where you can customize it to
 
 # Installation
 
-From the official Gnome extensions website, by using this link:
-[Gnome Bedtime Page](https://extensions.gnome.org/extension/4012/gnome-bedtime/)
+From the official GNOME Shell Extensions website:
+
+[<img src="https://raw.githubusercontent.com/andyholmes/gnome-shell-extensions-badge/master/get-it-on-ego.svg?sanitize=true" alt="Get it on GNOME Extensions" height="100" align="middle">][EGO]
 
 Or
 
