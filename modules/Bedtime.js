@@ -1,7 +1,7 @@
 "use strict";
 
-const Main = imports.ui.main;
 const { GLib, Clutter } = imports.gi;
+const UiGroup = imports.ui.main.layoutManager.uiGroup;
 
 const { extensionUtils } = imports.misc;
 const Me = extensionUtils.getCurrentExtension();
@@ -9,13 +9,15 @@ const Me = extensionUtils.getCurrentExtension();
 const extension = Me.imports.extension;
 const { loopRun, logDebug } = Me.imports.utils;
 
+const EFFECT_NAME = "desaturate-effect";
+
 var Bedtime = class {
   constructor() {
-    this._transitions = 50;
-    this._transitionDelayMillis = 50;
+    this._transitions = 100;
+    this._transitionDelayMillis = 25;
 
     this._transitionStep = 0;
-    this._transitionTimerId = null;
+    this._transitionLoopSource = null;
 
     this._colorEffect = new Clutter.DesaturateEffect();
     this._colorEffect.factor = 0;
@@ -25,14 +27,14 @@ var Bedtime = class {
 
   enable() {
     this._connectSettings();
-    this._addColorEffect();
 
     extension.settings.bedtimeModeActive && this._turnOn();
   }
 
   disable() {
     this._disconnectSettings();
-    this._cleanUp();
+
+    extension.settings.bedtimeModeActive ? this._turnOff() : this._cleanUp();
   }
 
   _connectSettings() {
@@ -54,29 +56,32 @@ var Bedtime = class {
   _turnOn() {
     logDebug("Turning on Bedtime Mode...");
 
-    this._transitionStep = 0;
-    this._transitionTimerId = loopRun(this._smoothOn.bind(this), this._transitionDelayMillis);
+    this._destroyTransitionLoopSource();
+    this._addColorEffect();
+
+    this._transitionLoopSource = loopRun(this._smoothOn.bind(this), this._transitionDelayMillis);
   }
 
   _turnOff() {
     logDebug("Turning off Bedtime Mode...");
 
-    this._transitionStep = this._transitions;
-    this._transitionTimerId = loopRun(this._smoothOff.bind(this), this._transitionDelayMillis);
+    this._destroyTransitionLoopSource();
+
+    this._transitionLoopSource = loopRun(this._smoothOff.bind(this), this._transitionDelayMillis);
   }
 
   _smoothOn() {
     if (this._transitionStep < this._transitions) this._transitionStep++;
     this._changeEffectFactor();
 
-    return this._transitionStep < this._transitions;
+    return this._transitionStep < this._transitions || this._destroyTransitionLoopSource();
   }
 
   _smoothOff() {
     if (this._transitionStep > 0) this._transitionStep--;
     this._changeEffectFactor();
 
-    return this._transitionStep > 0;
+    return this._transitionStep > 0 || this._cleanUp();
   }
 
   _changeEffectFactor() {
@@ -84,24 +89,25 @@ var Bedtime = class {
   }
 
   _addColorEffect() {
-    Main.uiGroup.add_effect(this._colorEffect);
+    UiGroup.get_effect(EFFECT_NAME) || UiGroup.add_effect_with_name(EFFECT_NAME, this._colorEffect);
   }
 
   _removeColorEffect() {
-    Main.uiGroup.remove_effect(this._colorEffect);
-    this._colorEffect = null;
+    UiGroup.get_effect(EFFECT_NAME) && UiGroup.remove_effect_by_name(EFFECT_NAME);
   }
 
-  _removeTransitionTimer() {
-    if (this._transitionTimerId) {
-      GLib.Source.remove(this._transitionTimerId);
-      this._transitionTimerId = null;
+  _destroyTransitionLoopSource() {
+    if (this._transitionLoopSource) {
+      logDebug(`Destroying Transition Loop Source ${this._transitionLoopSource.get_id()}`);
+
+      this._transitionLoopSource.destroy();
+      this._transitionLoopSource = null;
     }
   }
 
   _cleanUp() {
     logDebug("Cleaning up Bedtime Mode related changes...");
     this._removeColorEffect();
-    this._removeTransitionTimer();
+    this._destroyTransitionLoopSource();
   }
 };

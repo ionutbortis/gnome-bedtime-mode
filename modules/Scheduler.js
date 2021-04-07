@@ -12,7 +12,7 @@ const { loopRun, logDebug } = Me.imports.utils;
 var Scheduler = class {
   constructor() {
     this._timerLoopMillis = 2 * 1000;
-    this._timerId = null;
+    this._timerLoopSource = null;
 
     this._activeSchedule = false;
 
@@ -55,15 +55,14 @@ var Scheduler = class {
   _enableTimer() {
     if (extension.settings.automaticSchedule) {
       extension.settings.bedtimeModeActive = this._isCurrentTimeOnSchedule();
-      this._timerId = loopRun(this._checkScheduleLoop.bind(this), this._timerLoopMillis);
+
+      this._timerLoopSource = loopRun(this._checkScheduleLoop.bind(this), this._timerLoopMillis);
     }
   }
 
   _disableTimer() {
-    if (this._timerId) {
-      GLib.Source.remove(this._timerId);
-      this._timerId = null;
-    }
+    this._timerLoopSource && this._timerLoopSource.destroy();
+    this._timerLoopSource = null;
   }
 
   _checkScheduleLoop() {

@@ -18,16 +18,20 @@ function logDebug(message) {
 
 /**
  * This runs in a loop the provided function at the specified interval.
- * The function is run multiple times if it returns true. The loop is stopped
- * when the supplied function to run returns false.
+ *
+ * The loop is active until the function returns true.
+ * Otherwise (false/no return/other return value) the loop is stopped.
  *
  * @param {*} func The function to loop at the specified interval
- * @param {*} interval The time in ms at which to loop call the function
+ * @param {*} interval The time in ms at which to call the function
  * @param  {...any} args Optional arguments to the function
+ * @returns The corresponding GLib.Source object which needs be destroyed later on
  */
 function loopRun(func, interval, ...args) {
   const wrappedFunc = () => {
     return func.apply(this, args);
   };
-  return GLib.timeout_add(GLib.PRIORITY_DEFAULT, interval, wrappedFunc);
+
+  const loopSourceId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, interval, wrappedFunc);
+  return GLib.main_context_default().find_source_by_id(loopSourceId);
 }
