@@ -71,14 +71,14 @@ var Bedtime = class {
   }
 
   _smoothOn() {
-    if (this._transitionStep < this._transitions) this._transitionStep++;
+    this._transitionStep < this._transitions && this._transitionStep++;
     this._changeEffectFactor();
 
     return this._transitionStep < this._transitions || this._destroyTransitionLoopSource();
   }
 
   _smoothOff() {
-    if (this._transitionStep > 0) this._transitionStep--;
+    this._transitionStep > 0 && this._transitionStep--;
     this._changeEffectFactor();
 
     return this._transitionStep > 0 || this._cleanUp();
