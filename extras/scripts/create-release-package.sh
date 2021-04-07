@@ -21,6 +21,9 @@ zip_exclusions=(
 )
 name_prefix=gnome-bedtime
 
+echo "Compiling the extension settings schemas..."
+glib-compile-schemas $SOURCE_CODE_ROOT/schemas/
+
 rm -f "$dest_folder"/"$name_prefix"*.zip
 
 package_file="$dest_folder"/"$name_prefix"_"$version".zip
