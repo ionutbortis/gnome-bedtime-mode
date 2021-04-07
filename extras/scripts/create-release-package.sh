@@ -1,6 +1,8 @@
 #!/bin/bash
 
-read  -n 1 -p "Did you changed version and description in the metadata.json file?" input
+read  -n 1 -p "Did you prepare the metadata.json file? (y/n) " user_input
+echo
+if [[ $user_input == "n" ]]; then exit 0; fi
 
 usage="./create-release-package.sh [version] [dest_folder]"
 if [ $# -lt 2 ]; then
