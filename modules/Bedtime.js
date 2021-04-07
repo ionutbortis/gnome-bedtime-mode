@@ -9,7 +9,7 @@ const Me = extensionUtils.getCurrentExtension();
 const extension = Me.imports.extension;
 const { loopRun, logDebug } = Me.imports.utils;
 
-const EFFECT_NAME = "desaturate-effect";
+const EFFECT_NAME = "bedtime-mode-desaturate-effect";
 
 var Bedtime = class {
   constructor() {
