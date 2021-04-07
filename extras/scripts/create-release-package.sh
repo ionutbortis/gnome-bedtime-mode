@@ -1,5 +1,7 @@
 #!/bin/bash
 
+read  -n 1 -p "Did you changed version and description in the metadata.json file?" input
+
 usage="./create-release-package.sh [version] [dest_folder]"
 if [ $# -lt 2 ]; then
     echo "Invalid number of arguments! Script usage:"
