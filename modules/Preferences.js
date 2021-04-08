@@ -114,7 +114,7 @@ var Preferences = class {
 
   _handleButtonPositionElements() {
     this._buttonPositionRow = this._builder.get_object("ondemand_button_position_row");
-    this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar";
+    this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar" && this._settings.buttonVisibility !== "never";
 
     const manualPositionSwitch = this._builder.get_object("ondemand_button_manual_position_switch");
     this._settings.gSettings.bind("ondemand-button-bar-manual-position", manualPositionSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
