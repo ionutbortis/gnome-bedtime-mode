@@ -60,6 +60,7 @@ var Preferences = class {
     this._settings.gSettings.bind("ondemand-button-visibility", this._buttonVisibilityCombo, "active_id", Gio.SettingsBindFlags.DEFAULT);
 
     this._buttonLocationRow = this._builder.get_object("ondemand_button_location_row");
+    this._buttonLocationRow.sensitive = this._settings.buttonVisibility !== "never";
 
     this._handleButtonPositionElements();
 
