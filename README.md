@@ -20,17 +20,17 @@ From the official GNOME Shell Extensions website:
 
 Or
 
-[LATEST]:https://github.com/ionutbortis/gnome-bedtime/releases/download/v3.0/gnome-bedtime_3.0.zip
+[LATEST]:https://github.com/ionutbortis/gnome-bedtime/releases/download/v4.0/gnome-bedtime_4.0.zip
 
-You can download the [latest release package][LATEST] and manually install it to your extensions folder. Supported Gnome versions are 3.36 and 3.38.
+You can download the [latest release package][LATEST] and manually install it to your extensions folder. Supported Gnome versions are 3.36, 3.38 and yes, Gnome 40!
 
 ```
-wget https://github.com/ionutbortis/gnome-bedtime/releases/download/v3.0/gnome-bedtime_3.0.zip
+wget https://github.com/ionutbortis/gnome-bedtime/releases/download/v4.0/gnome-bedtime_4.0.zip
 # (Or manually download via browser and run the next commands from the download folder)
 
 extension_home=~/.local/share/gnome-shell/extensions/gnomebedtime@ionutbortis.gmail.com
 
-mkdir -p $extension_home && rm -rf $extension_home/* && unzip gnome-bedtime_3.0.zip -d $extension_home
+mkdir -p $extension_home && rm -rf $extension_home/* && unzip gnome-bedtime_4.0.zip -d $extension_home
 ```
 
 Then press `Alt`+`F2`, type `r` in the dialog window and press `Enter`.
