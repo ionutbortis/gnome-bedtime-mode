@@ -10,8 +10,6 @@ const Config = Me.imports.config;
 const [major] = imports.misc.config.PACKAGE_VERSION.split(".");
 const shellVersion = Number.parseInt(major);
 
-const UiFileName = shellVersion >= 40 ? "preferences-gtk4.ui" : "preferences.ui";
-
 /**
  * Output a debug message to the console if the debug config is active.
  *
@@ -22,10 +20,11 @@ function logDebug(message) {
 }
 
 /**
- * @returns The proper Ui File depending on the running Gnome Shell version.
+ * @returns The proper Preferences Ui File according to the running Gnome Shell version.
  */
-function getUiFile() {
-  return GLib.build_filenamev([Me.path, "ui", UiFileName]);
+function getPreferencesUiFile() {
+  const prefsUiFileName = shellVersion >= 40 ? "preferences-gtk4.ui" : "preferences.ui";
+  return GLib.build_filenamev([Me.path, "ui", prefsUiFileName]);
 }
 
 /**
