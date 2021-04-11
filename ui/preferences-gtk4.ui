@@ -22,7 +22,6 @@
     <property name="step-increment">1</property>
   </object>
   <object class="GtkBox" id="preferences">
-    <property name="can-focus">0</property>
     <property name="margin-start">20</property>
     <property name="margin-end">20</property>
     <property name="margin-top">20</property>
@@ -32,16 +31,13 @@
     <property name="baseline-position">top</property>
     <child>
       <object class="GtkBox">
-        <property name="can-focus">0</property>
         <property name="orientation">vertical</property>
         <property name="spacing">8</property>
         <child>
           <object class="GtkBox">
-            <property name="can-focus">0</property>
             <property name="margin-bottom">5</property>
             <child>
               <object class="GtkLabel">
-                <property name="can-focus">0</property>
                 <property name="halign">start</property>
                 <property name="label" translatable="yes">Automatic Schedule</property>
                 <attributes>
@@ -60,11 +56,9 @@
         </child>
         <child>
           <object class="GtkFrame" id="schedule_times_frame">
-            <property name="can-focus">0</property>
             <property name="child">
               <object class="GtkListBox">
                 <property name="width-request">600</property>
-                <property name="can-focus">0</property>
                 <property name="selection-mode">none</property>
                 <child>
                   <object class="GtkListBoxRow">
@@ -72,7 +66,6 @@
                     <property name="selectable">0</property>
                     <property name="child">
                       <object class="GtkBox">
-                        <property name="can-focus">0</property>
                         <property name="margin-start">16</property>
                         <property name="margin-end">16</property>
                         <property name="margin-top">16</property>
@@ -80,11 +73,9 @@
                         <property name="spacing">30</property>
                         <child>
                           <object class="GtkBox">
-                            <property name="can-focus">0</property>
                             <property name="orientation">vertical</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="can-focus">0</property>
                                 <property name="halign">start</property>
                                 <property name="label" translatable="yes">Start Time</property>
                               </object>
@@ -92,7 +83,6 @@
                             <child>
                               <object class="GtkLabel">
                                 <property name="valign">center</property>
-                                <property name="can-focus">0</property>
                                 <property name="halign">start</property>
                                 <property name="label" translatable="yes">&lt;small&gt;Specifies the time when Bedtime Mode will be automatically turned on.&lt;/small&gt; </property>
                                 <property name="use-markup">1</property>
@@ -109,12 +99,10 @@
                         <child>
                           <object class="GtkBox">
                             <property name="hexpand">1</property>
-                            <property name="can-focus">0</property>
                             <property name="halign">end</property>
                             <property name="spacing">8</property>
                             <child>
                               <object class="GtkSpinButton" id="schedule_start_hours_spin">
-                                <!-- property name="max-length">2</property -->
                                 <property name="width-chars">2</property>
                                 <property name="text">0</property>
                                 <property name="orientation">vertical</property>
@@ -125,13 +113,11 @@
                             </child>
                             <child>
                               <object class="GtkLabel">
-                                <property name="can-focus">0</property>
                                 <property name="label" translatable="yes">:</property>
                               </object>
                             </child>
                             <child>
                               <object class="GtkSpinButton" id="schedule_start_minutes_spin">
-                                <!-- property name="max-length">2</property -->
                                 <property name="width-chars">2</property>
                                 <property name="text">0</property>
                                 <property name="orientation">vertical</property>
@@ -152,7 +138,6 @@
                     <property name="selectable">0</property>
                     <property name="child">
                       <object class="GtkSeparator">
-                        <property name="can-focus">0</property>
                       </object>
                     </property>
                   </object>
@@ -163,7 +148,6 @@
                     <property name="selectable">0</property>
                     <property name="child">
                       <object class="GtkBox">
-                        <property name="can-focus">0</property>
                         <property name="margin-start">16</property>
                         <property name="margin-end">16</property>
                         <property name="margin-top">16</property>
@@ -171,11 +155,9 @@
                         <property name="spacing">30</property>
                         <child>
                           <object class="GtkBox">
-                            <property name="can-focus">0</property>
                             <property name="orientation">vertical</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="can-focus">0</property>
                                 <property name="halign">start</property>
                                 <property name="label" translatable="yes">End Time</property>
                               </object>
@@ -183,7 +165,6 @@
                             <child>
                               <object class="GtkLabel">
                                 <property name="valign">center</property>
-                                <property name="can-focus">0</property>
                                 <property name="halign">start</property>
                                 <property name="label" translatable="yes">&lt;small&gt;Specifies the time when Bedtime Mode will be automatically turned off.&lt;/small&gt; </property>
                                 <property name="use-markup">1</property>
@@ -200,12 +181,10 @@
                         <child>
                           <object class="GtkBox">
                             <property name="hexpand">1</property>
-                            <property name="can-focus">0</property>
                             <property name="halign">end</property>
                             <property name="spacing">8</property>
                             <child>
                               <object class="GtkSpinButton" id="schedule_end_hours_spin">
-                                <!-- property name="max-length">2</property -->
                                 <property name="width-chars">2</property>
                                 <property name="text">0</property>
                                 <property name="orientation">vertical</property>
@@ -216,13 +195,11 @@
                             </child>
                             <child>
                               <object class="GtkLabel">
-                                <property name="can-focus">0</property>
                                 <property name="label" translatable="yes">:</property>
                               </object>
                             </child>
                             <child>
                               <object class="GtkSpinButton" id="schedule_end_minutes_spin">
-                                <!-- property name="max-length">2</property -->
                                 <property name="width-chars">2</property>
                                 <property name="text">0</property>
                                 <property name="orientation">vertical</property>
@@ -248,12 +225,10 @@
     </child>
     <child>
       <object class="GtkBox" id="ondemand">
-        <property name="can-focus">0</property>
         <property name="orientation">vertical</property>
         <property name="spacing">8</property>
         <child>
           <object class="GtkLabel">
-            <property name="can-focus">0</property>
             <property name="halign">start</property>
             <property name="margin-bottom">5</property>
             <property name="label" translatable="yes">On-Demand</property>
@@ -264,10 +239,8 @@
         </child>
         <child>
           <object class="GtkFrame">
-            <property name="can-focus">0</property>
             <property name="child">
               <object class="GtkListBox">
-                <property name="can-focus">0</property>
                 <property name="selection-mode">none</property>
                 <child>
                   <object class="GtkListBoxRow" id="ondemand_button_location_row">
@@ -275,7 +248,6 @@
                     <property name="selectable">0</property>
                     <property name="child">
                       <object class="GtkBox">
-                        <property name="can-focus">0</property>
                         <property name="margin-start">16</property>
                         <property name="margin-end">16</property>
                         <property name="margin-top">16</property>
@@ -283,11 +255,9 @@
                         <property name="spacing">30</property>
                         <child>
                           <object class="GtkBox">
-                            <property name="can-focus">0</property>
                             <property name="orientation">vertical</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="can-focus">0</property>
                                 <property name="halign">start</property>
                                 <property name="label" translatable="yes">Button Location</property>
                               </object>
@@ -295,9 +265,8 @@
                             <child>
                               <object class="GtkLabel">
                                 <property name="valign">center</property>
-                                <property name="can-focus">0</property>
                                 <property name="halign">start</property>
-                                <property name="label" translatable="yes">&lt;small&gt;Add a button to Top Bar or System Menu. The button can be used to manually toggle the Bedtime Mode.&lt;/small&gt; </property>
+                                <property name="label" translatable="yes">&lt;small&gt;Add a button to Top Bar or System Menu. The button can be used1to manually toggle the Bedtime Mode.&lt;/small&gt; </property>
                                 <property name="use-markup">1</property>
                                 <property name="wrap">1</property>
                                 <property name="max-width-chars">50</property>
@@ -312,7 +281,6 @@
                         <child>
                           <object class="GtkComboBoxText" id="ondemand_button_location_combo">
                             <property name="hexpand">1</property>
-                            <property name="can-focus">0</property>
                             <property name="halign">end</property>
                             <property name="valign">center</property>
                             <property name="active">1</property>
@@ -333,7 +301,6 @@
                     <property name="selectable">0</property>
                     <property name="child">
                       <object class="GtkSeparator">
-                        <property name="can-focus">0</property>
                       </object>
                     </property>
                   </object>
@@ -344,7 +311,6 @@
                     <property name="selectable">0</property>
                     <property name="child">
                       <object class="GtkBox">
-                        <property name="can-focus">0</property>
                         <property name="margin-start">16</property>
                         <property name="margin-end">16</property>
                         <property name="margin-top">16</property>
@@ -352,11 +318,9 @@
                         <property name="spacing">15</property>
                         <child>
                           <object class="GtkBox">
-                            <property name="can-focus">0</property>
                             <property name="orientation">vertical</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="can-focus">0</property>
                                 <property name="halign">start</property>
                                 <property name="label" translatable="yes">Top Bar Manual Position</property>
                               </object>
@@ -364,7 +328,6 @@
                             <child>
                               <object class="GtkLabel">
                                 <property name="valign">center</property>
-                                <property name="can-focus">0</property>
                                 <property name="halign">start</property>
                                 <property name="label" translatable="yes">&lt;small&gt;Manually change the button position in Top Bar. Zero is the start of the icons row.&lt;/small&gt; </property>
                                 <property name="use-markup">1</property>
@@ -381,7 +344,6 @@
                         <child>
                           <object class="GtkBox">
                             <property name="hexpand">1</property>
-                            <property name="can-focus">0</property>
                             <property name="halign">end</property>
                             <property name="valign">center</property>
                             <property name="spacing">10</property>
@@ -394,7 +356,6 @@
                             </child>
                             <child>
                               <object class="GtkSpinButton" id="ondemand_button_manual_position_spin">
-                                <!-- property name="max-length">2</property -->
                                 <property name="width-chars">2</property>
                                 <property name="text">0</property>
                                 <property name="adjustment">manual_position_value_adjustment</property>
@@ -414,7 +375,6 @@
                     <property name="selectable">0</property>
                     <property name="child">
                       <object class="GtkSeparator">
-                        <property name="can-focus">0</property>
                       </object>
                     </property>
                   </object>
@@ -425,7 +385,6 @@
                     <property name="selectable">0</property>
                     <property name="child">
                       <object class="GtkBox">
-                        <property name="can-focus">0</property>
                         <property name="margin-start">16</property>
                         <property name="margin-end">16</property>
                         <property name="margin-top">16</property>
@@ -433,11 +392,9 @@
                         <property name="spacing">30</property>
                         <child>
                           <object class="GtkBox">
-                            <property name="can-focus">0</property>
                             <property name="orientation">vertical</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="can-focus">0</property>
                                 <property name="halign">start</property>
                                 <property name="label" translatable="yes">Show Button</property>
                               </object>
@@ -445,7 +402,6 @@
                             <child>
                               <object class="GtkLabel">
                                 <property name="valign">center</property>
-                                <property name="can-focus">0</property>
                                 <property name="halign">start</property>
                                 <property name="label" translatable="yes">&lt;small&gt;Choose to always show or hide the button or display it only when the schedule is active.&lt;/small&gt; </property>
                                 <property name="use-markup">1</property>
@@ -462,7 +418,6 @@
                         <child>
                           <object class="GtkComboBoxText" id="ondemand_button_visibility_combo">
                             <property name="hexpand">1</property>
-                            <property name="can-focus">0</property>
                             <property name="halign">end</property>
                             <property name="valign">center</property>
                             <property name="active">0</property>
@@ -484,7 +439,6 @@
                     <property name="selectable">0</property>
                     <property name="child">
                       <object class="GtkSeparator">
-                        <property name="can-focus">0</property>
                       </object>
                     </property>
                   </object>
@@ -495,7 +449,6 @@
                     <property name="selectable">0</property>
                     <property name="child">
                       <object class="GtkBox">
-                        <property name="can-focus">0</property>
                         <property name="margin-start">16</property>
                         <property name="margin-end">16</property>
                         <property name="margin-top">16</property>
@@ -503,11 +456,9 @@
                         <property name="spacing">30</property>
                         <child>
                           <object class="GtkBox">
-                            <property name="can-focus">0</property>
                             <property name="orientation">vertical</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="can-focus">0</property>
                                 <property name="halign">start</property>
                                 <property name="label" translatable="yes">Start Bedtime Mode Now</property>
                               </object>
