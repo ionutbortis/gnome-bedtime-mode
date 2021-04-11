@@ -4,7 +4,7 @@ const { Gio, GLib, Gtk } = imports.gi;
 const { extensionUtils } = imports.misc;
 const Me = extensionUtils.getCurrentExtension();
 
-const { logDebug } = Me.imports.utils;
+const { getUiFile, logDebug } = Me.imports.utils;
 const { Settings } = Me.imports.modules.Settings;
 
 var Preferences = class {
@@ -21,7 +21,7 @@ var Preferences = class {
     this._settings.enable();
 
     this._builder = new Gtk.Builder();
-    this._builder.add_from_file(GLib.build_filenamev([Me.path, "ui", "preferences.ui"]));
+    this._builder.add_from_file(getUiFile());
 
     this.widget = this._builder.get_object("preferences");
     this.widget.connect("destroy", () => this._cleanUp());

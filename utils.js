@@ -5,7 +5,12 @@ const { GLib } = imports.gi;
 const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
-const config = Me.imports.config;
+const Config = Me.imports.config;
+
+const [major] = imports.misc.config.PACKAGE_VERSION.split(".");
+const shellVersion = Number.parseInt(major);
+
+const UiFileName = shellVersion >= 40 ? "preferences-gtk4.ui" : "preferences.ui";
 
 /**
  * Output a debug message to the console if the debug config is active.
@@ -13,7 +18,14 @@ const config = Me.imports.config;
  * @param {string} message The message to log.
  */
 function logDebug(message) {
-  if (config.debug) log(`[DEBUG] ${Me.metadata.name}: ${message}`);
+  if (Config.debug) log(`[DEBUG] ${Me.metadata.name}: ${message}`);
+}
+
+/**
+ * @returns The proper Ui File depending on the running Gnome Shell version.
+ */
+function getUiFile() {
+  return GLib.build_filenamev([Me.path, "ui", UiFileName]);
 }
 
 /**
