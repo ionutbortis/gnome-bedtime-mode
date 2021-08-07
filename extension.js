@@ -49,4 +49,6 @@ function disable() {
 
 function init() {
   logDebug("Initializing extension...");
+
+  extensionUtils.initTranslations(Me.metadata['gettext-domain']);
 }

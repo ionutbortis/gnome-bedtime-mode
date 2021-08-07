@@ -8,6 +8,9 @@ const MainPanel = imports.ui.main.panel;
 const { extensionUtils } = imports.misc;
 const Me = extensionUtils.getCurrentExtension();
 
+const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
+const _ = Gettext.gettext;
+
 const extension = Me.imports.extension;
 const { logDebug } = Me.imports.utils;
 
@@ -128,7 +131,7 @@ var Decorator = class {
   }
 
   _getMenuItemLabel() {
-    return extension.settings.bedtimeModeActive ? "Turn Off Bedtime Mode" : "Turn On Bedtime Mode";
+    return extension.settings.bedtimeModeActive ? _("Turn Off Bedtime Mode") : _("Turn On Bedtime Mode");
   }
 
   _getTopBarPosition() {
