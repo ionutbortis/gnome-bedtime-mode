@@ -1,0 +1,132 @@
+# Spanish translation.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-07 18:07+0200\n"
+"PO-Revision-Date: 2021-08-07 19:52+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.3\n"
+"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: modules/Decorator.js:135
+msgid "Turn Off Bedtime Mode"
+msgstr "Apagar modo descanso"
+
+#: modules/Decorator.js:135
+msgid "Turn On Bedtime Mode"
+msgstr "Encender modo descanso"
+
+#: ui/preferences-gtk4.ui:42 ui/preferences.ui:51
+msgid "Automatic Schedule"
+msgstr "Horario automático"
+
+#: ui/preferences-gtk4.ui:80 ui/preferences.ui:118
+msgid "Start Time"
+msgstr "Hora de inicio"
+
+#: ui/preferences-gtk4.ui:87 ui/preferences.ui:131
+msgid ""
+"<small>Specifies the time when Bedtime Mode will be automatically turned on."
+"</small> "
+msgstr ""
+"<small>Especifica la hora a la que se activará automáticamente el modo "
+"descanso.</small> "
+
+#: ui/preferences-gtk4.ui:116 ui/preferences-gtk4.ui:198 ui/preferences.ui:181
+#: ui/preferences.ui:320
+msgid ":"
+msgstr ":"
+
+#: ui/preferences-gtk4.ui:162 ui/preferences.ui:257
+msgid "End Time"
+msgstr "Hora de fin"
+
+#: ui/preferences-gtk4.ui:169 ui/preferences.ui:270
+msgid ""
+"<small>Specifies the time when Bedtime Mode will be automatically turned off."
+"</small> "
+msgstr ""
+"<small>Especifica la hora en la que el modo descanso se apagará "
+"automáticamente.</small> "
+
+#: ui/preferences-gtk4.ui:234 ui/preferences.ui:388
+msgid "On-Demand"
+msgstr "A la carta"
+
+#: ui/preferences-gtk4.ui:262 ui/preferences.ui:434
+msgid "Button Location"
+msgstr "Ubicación del botón"
+
+#: ui/preferences-gtk4.ui:269
+msgid ""
+"<small>Add a button to Top Bar or System Menu. The button can be used1to "
+"manually toggle the Bedtime Mode.</small> "
+msgstr ""
+"<small>Añade un botón a la barra superior o al menú del sistema. El botón se "
+"puede utilizar para alternar manualmente el modo descanso.</small> "
+
+#: ui/preferences-gtk4.ui:289 ui/preferences.ui:478
+msgid "Top Bar"
+msgstr "Barra superior"
+
+#: ui/preferences-gtk4.ui:290 ui/preferences.ui:479
+msgid "System Menu"
+msgstr "Menú del sistema"
+
+#: ui/preferences-gtk4.ui:325 ui/preferences.ui:531
+msgid "Top Bar Manual Position"
+msgstr "Posición manual en la barra superior"
+
+#: ui/preferences-gtk4.ui:332 ui/preferences.ui:544
+msgid ""
+"<small>Manually change the button position in Top Bar. Zero is the start of "
+"the icons row.</small> "
+msgstr ""
+"<small>Cambia manualmente la posición del botón en la barra superior. El "
+"cero es el inicio de la fila de iconos.</small> "
+
+#: ui/preferences-gtk4.ui:399 ui/preferences.ui:653
+msgid "Show Button"
+msgstr "Mostrar el botón"
+
+#: ui/preferences-gtk4.ui:406 ui/preferences.ui:666
+msgid ""
+"<small>Choose to always show or hide the button or display it only when the "
+"schedule is active.</small> "
+msgstr ""
+"<small>Muestra u oculta siempre el botón o sólo lo muestra cuando la "
+"programación esté activa.</small> "
+
+#: ui/preferences-gtk4.ui:426 ui/preferences.ui:697
+msgid "Always"
+msgstr "Siempre"
+
+#: ui/preferences-gtk4.ui:427 ui/preferences.ui:698
+msgid "On Active Schedule"
+msgstr "En horario activo"
+
+#: ui/preferences-gtk4.ui:428 ui/preferences.ui:699
+msgid "Never"
+msgstr "Nunca"
+
+#: ui/preferences-gtk4.ui:463 ui/preferences.ui:751
+msgid "Start Bedtime Mode Now"
+msgstr "Iniciar el modo descanso ahora"
+
+#: ui/preferences.ui:447
+msgid ""
+"<small>Add a button to Top Bar or System Menu. The button can be used to "
+"manually toggle the Bedtime Mode.</small> "
+msgstr ""
+"<small>Añada un botón a la barra superior o al menú del sistema. El botón se "
+"puede utilizar para alternar manualmente el modo descanso.</small> "
