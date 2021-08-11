@@ -3,6 +3,7 @@
 
   "name": "Gnome Bedtime",
   "settings-schema": "org.gnome.shell.extensions.gnomebedtime",
+  "gettext-domain": "gnomebedtime",
   "shell-version": [
     "3.36", "3.38", "40"
   ],

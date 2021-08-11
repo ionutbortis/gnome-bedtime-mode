@@ -21,6 +21,7 @@ var Preferences = class {
     this._settings.enable();
 
     this._builder = new Gtk.Builder();
+    this._builder.set_translation_domain(Me.metadata['gettext-domain']);
     this._builder.add_from_file(getPreferencesUiFile());
 
     this.widget = this._builder.get_object("preferences");
