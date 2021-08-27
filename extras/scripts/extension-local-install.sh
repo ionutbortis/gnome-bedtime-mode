@@ -1,7 +1,8 @@
 #!/bin/bash
-echo "Installing Gnome Bedtime extension to local extensions folder..."
 
-SOURCE_CODE_ROOT=~/work/java/projects/gnome-bedtime
+EXTENSIONS_HOME=~/.local/share/gnome-shell/extensions
+
+EXTENSION_UUID=gnomebedtime@ionutbortis.gmail.com
 
 # Get the 'extension_debug' script param. Usage:
 # ./extension-local-install.sh --extension_debug true
@@ -15,8 +16,7 @@ while [ $# -gt 0 ]; do
   shift
 done
 
-EXTENSIONS_HOME=~/.local/share/gnome-shell/extensions
-EXTENSION_UUID=gnomebedtime@ionutbortis.gmail.com
+echo "Installing Bedtime Mode extension to local extensions folder..."
 
 rsync_exclusions=(
   --exclude ".git*"
@@ -24,11 +24,14 @@ rsync_exclusions=(
 )
 my_extension_home=$EXTENSIONS_HOME/$EXTENSION_UUID
 
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+source_code_root="$script_dir/../.."
+
 # Compile the extension settings schemas
-glib-compile-schemas $SOURCE_CODE_ROOT/schemas/
+glib-compile-schemas $source_code_root/schemas/
 
 # Replace the local extension with the one from the local github repo
-rm -rf $my_extension_home && rsync -av "${rsync_exclusions[@]}" $SOURCE_CODE_ROOT/* $my_extension_home
+rm -rf $my_extension_home && rsync -av "${rsync_exclusions[@]}" $source_code_root/* $my_extension_home
 
 sleep 1s
 
