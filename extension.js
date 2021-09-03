@@ -8,12 +8,12 @@ const { logDebug } = Me.imports.utils;
 const { Settings } = Me.imports.modules.Settings;
 const { Scheduler } = Me.imports.modules.Scheduler;
 const { Decorator } = Me.imports.modules.Decorator;
-const { Bedtime } = Me.imports.modules.Bedtime;
+const { Colorizer } = Me.imports.modules.Colorizer;
 
 var settings = null;
 var scheduler = null;
 var decorator = null;
-var bedtime = null;
+var colorizer = null;
 
 function enable() {
   logDebug("Enabling extension...");
@@ -21,12 +21,12 @@ function enable() {
   settings = new Settings();
   scheduler = new Scheduler();
   decorator = new Decorator();
-  bedtime = new Bedtime();
+  colorizer = new Colorizer();
 
   settings.enable();
   scheduler.enable();
   decorator.enable();
-  bedtime.enable();
+  colorizer.enable();
 
   logDebug("Extension enabled");
 }
@@ -35,12 +35,12 @@ function disable() {
   logDebug("Disabling extension...");
 
   decorator.disable();
-  bedtime.disable();
+  colorizer.disable();
   scheduler.disable();
   settings.disable();
 
   decorator = null;
-  bedtime = null;
+  colorizer = null;
   scheduler = null;
   settings = null;
 
@@ -50,5 +50,5 @@ function disable() {
 function init() {
   logDebug("Initializing extension...");
 
-  extensionUtils.initTranslations(Me.metadata['gettext-domain']);
+  extensionUtils.initTranslations(Me.metadata["gettext-domain"]);
 }

@@ -63,5 +63,15 @@
             "automatic-schedule" is enabled and the configured schedule is active.
             </description>
         </key>
+        <key name="color-tone-preset" type="s">
+            <default>"grayscale"</default>
+            <summary>Color tone preset</summary>
+            <description>The color tone preset that is selected to be used during the active Bedtime Mode.</description>
+        </key>
+        <key name="color-tone-factor" type="i">
+            <default>100</default>
+            <summary>Color tone percentage factor</summary>
+            <description>The percentage of how much the selected color tone preset is to be applied.</description>
+        </key>
     </schema>
 </schemalist>

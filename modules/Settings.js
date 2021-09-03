@@ -28,6 +28,8 @@ var Settings = class {
     this._createConnection("schedule-start-minutes", this._onScheduleTimesChanged.name);
     this._createConnection("schedule-end-hours", this._onScheduleTimesChanged.name);
     this._createConnection("schedule-end-minutes", this._onScheduleTimesChanged.name);
+    this._createConnection("color-tone-preset", this._onColorTonePresetChanged.name);
+    this._createConnection("color-tone-factor", this._onColorToneFactorChanged.name);
   }
 
   disable() {
@@ -89,6 +91,14 @@ var Settings = class {
     return this.gSettings.get_int("schedule-end-minutes");
   }
 
+  get colorTonePreset() {
+    return this.gSettings.get_string("color-tone-preset");
+  }
+
+  get colorToneFactor() {
+    return this.gSettings.get_int("color-tone-factor");
+  }
+
   _onBedtimeModeActiveChanged() {
     logDebug(`Bedtime Mode Active changed to '${this.bedtimeModeActive}'`);
     this.emit("bedtime-mode-active-changed", this.bedtimeModeActive);
@@ -125,6 +135,16 @@ var Settings = class {
     logDebug(`Schedule Times changed to: ${start} ${end}`);
 
     this.emit("schedule-times-changed", {});
+  }
+
+  _onColorTonePresetChanged() {
+    logDebug(`Color Tone Preset changed to '${this.colorTonePreset}'`);
+    this.emit("color-tone-preset-changed", this.colorTonePreset);
+  }
+
+  _onColorToneFactorChanged() {
+    logDebug(`Color Tone Factor changed to '${this.colorToneFactor}'`);
+    this.emit("color-tone-factor-changed", this.colorToneFactor);
   }
 };
 

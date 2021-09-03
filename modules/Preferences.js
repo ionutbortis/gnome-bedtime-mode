@@ -1,11 +1,12 @@
 "use strict";
 
-const { Gio, GLib, Gtk } = imports.gi;
+const { Gio, GLib, Gtk, GObject } = imports.gi;
 const { extensionUtils } = imports.misc;
 const Me = extensionUtils.getCurrentExtension();
 
 const { getPreferencesUiFile, logDebug } = Me.imports.utils;
 const { Settings } = Me.imports.modules.Settings;
+const ColorTonePresets = Me.imports.modules.ColorTone.PRESETS;
 
 var Preferences = class {
   constructor() {
@@ -21,7 +22,7 @@ var Preferences = class {
     this._settings.enable();
 
     this._builder = new Gtk.Builder();
-    this._builder.set_translation_domain(Me.metadata['gettext-domain']);
+    this._builder.set_translation_domain(Me.metadata["gettext-domain"]);
     this._builder.add_from_file(getPreferencesUiFile());
 
     this.widget = this._builder.get_object("preferences");
@@ -69,6 +70,8 @@ var Preferences = class {
     this._handleScheduleSpinner("schedule_start_minutes_spin", "schedule-start-minutes");
     this._handleScheduleSpinner("schedule_end_hours_spin", "schedule-end-hours");
     this._handleScheduleSpinner("schedule_end_minutes_spin", "schedule-end-minutes");
+
+    this._handleColorToneElements();
   }
 
   _handleScheduleSpinner(spinnerId, settingsValueKey) {
@@ -123,6 +126,15 @@ var Preferences = class {
     const manualPositionValueSpinner = this._builder.get_object("ondemand_button_manual_position_spin");
     this._settings.gSettings.bind("ondemand-button-bar-position-value", manualPositionValueSpinner, "value", Gio.SettingsBindFlags.DEFAULT);
     this._settings.gSettings.bind("ondemand-button-bar-manual-position", manualPositionValueSpinner, "sensitive", Gio.SettingsBindFlags.DEFAULT);
+  }
+
+  _handleColorToneElements() {
+    const colorToneCombo = this._builder.get_object("color_tone_presets_combo");
+    ColorTonePresets.forEach((preset) => colorToneCombo.append(preset.id, preset.displayName));
+    this._settings.gSettings.bind("color-tone-preset", colorToneCombo, "active_id", Gio.SettingsBindFlags.DEFAULT);
+
+    const colorToneFactorSpinner = this._builder.get_object("color_tone_factor_spin");
+    this._settings.gSettings.bind("color-tone-factor", colorToneFactorSpinner, "value", Gio.SettingsBindFlags.DEFAULT);
   }
 
   _disconnectSettings() {

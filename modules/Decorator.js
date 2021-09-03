@@ -8,7 +8,7 @@ const MainPanel = imports.ui.main.panel;
 const { extensionUtils } = imports.misc;
 const Me = extensionUtils.getCurrentExtension();
 
-const Gettext = imports.gettext.domain(Me.metadata['gettext-domain']);
+const Gettext = imports.gettext.domain(Me.metadata["gettext-domain"]);
 const _ = Gettext.gettext;
 
 const extension = Me.imports.extension;

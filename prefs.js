@@ -6,7 +6,7 @@ const Me = extensionUtils.getCurrentExtension();
 const { Preferences } = Me.imports.modules.Preferences;
 
 function init() {
-  extensionUtils.initTranslations(Me.metadata['gettext-domain']);
+  extensionUtils.initTranslations(Me.metadata["gettext-domain"]);
 }
 
 function buildPrefsWidget() {
