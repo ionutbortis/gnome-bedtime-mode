@@ -6,9 +6,6 @@ const UiGroup = imports.ui.main.layoutManager.uiGroup;
 const { extensionUtils } = imports.misc;
 const Me = extensionUtils.getCurrentExtension();
 
-const Gettext = imports.gettext.domain(Me.metadata["gettext-domain"]);
-const _ = Gettext.gettext;
-
 const extension = Me.imports.extension;
 const { loopRun, logDebug } = Me.imports.utils;
 

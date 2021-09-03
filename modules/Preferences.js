@@ -46,32 +46,22 @@ var Preferences = class {
     this._buttonVisibilityConnect = this._settings.connect("button-visibility-changed", this._onButtonVisibilityChanged.bind(this));
     this._buttonLocationConnect = this._settings.connect("button-location-changed", this._onButtonLocationChanged.bind(this));
 
-    const bedtimeModeSwitch = this._builder.get_object("bedtime_mode_switch");
-    this._settings.gSettings.bind("bedtime-mode-active", bedtimeModeSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
+    this._handleScheduleElements();
+    this._handleOnDemandElements();
+    this._handleColorToneElements();
+  }
 
+  _handleScheduleElements() {
     const autoScheduleSwitch = this._builder.get_object("automatic_schedule_switch");
     this._settings.gSettings.bind("automatic-schedule", autoScheduleSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
 
     const scheduleTimesFrame = this._builder.get_object("schedule_times_frame");
     this._settings.gSettings.bind("automatic-schedule", scheduleTimesFrame, "sensitive", Gio.SettingsBindFlags.DEFAULT);
 
-    const buttonLocationCombo = this._builder.get_object("ondemand_button_location_combo");
-    this._settings.gSettings.bind("ondemand-button-location", buttonLocationCombo, "active_id", Gio.SettingsBindFlags.DEFAULT);
-
-    this._buttonVisibilityCombo = this._builder.get_object("ondemand_button_visibility_combo");
-    this._settings.gSettings.bind("ondemand-button-visibility", this._buttonVisibilityCombo, "active_id", Gio.SettingsBindFlags.DEFAULT);
-
-    this._buttonLocationRow = this._builder.get_object("ondemand_button_location_row");
-    this._buttonLocationRow.sensitive = this._settings.buttonVisibility !== "never";
-
-    this._handleButtonPositionElements();
-
     this._handleScheduleSpinner("schedule_start_hours_spin", "schedule-start-hours");
     this._handleScheduleSpinner("schedule_start_minutes_spin", "schedule-start-minutes");
     this._handleScheduleSpinner("schedule_end_hours_spin", "schedule-end-hours");
     this._handleScheduleSpinner("schedule_end_minutes_spin", "schedule-end-minutes");
-
-    this._handleColorToneElements();
   }
 
   _handleScheduleSpinner(spinnerId, settingsValueKey) {
@@ -84,6 +74,43 @@ var Preferences = class {
       spinner.set_text(text);
       return true;
     });
+  }
+
+  _handleOnDemandElements() {
+    const bedtimeModeSwitch = this._builder.get_object("bedtime_mode_switch");
+    this._settings.gSettings.bind("bedtime-mode-active", bedtimeModeSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
+
+    const buttonLocationCombo = this._builder.get_object("ondemand_button_location_combo");
+    this._settings.gSettings.bind("ondemand-button-location", buttonLocationCombo, "active_id", Gio.SettingsBindFlags.DEFAULT);
+
+    this._buttonVisibilityCombo = this._builder.get_object("ondemand_button_visibility_combo");
+    this._settings.gSettings.bind("ondemand-button-visibility", this._buttonVisibilityCombo, "active_id", Gio.SettingsBindFlags.DEFAULT);
+
+    this._buttonLocationRow = this._builder.get_object("ondemand_button_location_row");
+    this._buttonLocationRow.sensitive = this._settings.buttonVisibility !== "never";
+
+    this._handleButtonPositionElements();
+  }
+
+  _handleButtonPositionElements() {
+    this._buttonPositionRow = this._builder.get_object("ondemand_button_position_row");
+    this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar" && this._settings.buttonVisibility !== "never";
+
+    const manualPositionSwitch = this._builder.get_object("ondemand_button_manual_position_switch");
+    this._settings.gSettings.bind("ondemand-button-bar-manual-position", manualPositionSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
+
+    const manualPositionValueSpinner = this._builder.get_object("ondemand_button_manual_position_spin");
+    this._settings.gSettings.bind("ondemand-button-bar-position-value", manualPositionValueSpinner, "value", Gio.SettingsBindFlags.DEFAULT);
+    this._settings.gSettings.bind("ondemand-button-bar-manual-position", manualPositionValueSpinner, "sensitive", Gio.SettingsBindFlags.DEFAULT);
+  }
+
+  _handleColorToneElements() {
+    const colorToneCombo = this._builder.get_object("color_tone_presets_combo");
+    ColorTonePresets.forEach((preset) => colorToneCombo.append(preset.id, preset.displayName));
+    this._settings.gSettings.bind("color-tone-preset", colorToneCombo, "active_id", Gio.SettingsBindFlags.DEFAULT);
+
+    const colorToneFactorSpinner = this._builder.get_object("color_tone_factor_spin");
+    this._settings.gSettings.bind("color-tone-factor", colorToneFactorSpinner, "value", Gio.SettingsBindFlags.DEFAULT);
   }
 
   _onAutomaticScheduleChanged() {
@@ -114,27 +141,6 @@ var Preferences = class {
 
   _onButtonLocationChanged() {
     this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar";
-  }
-
-  _handleButtonPositionElements() {
-    this._buttonPositionRow = this._builder.get_object("ondemand_button_position_row");
-    this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar" && this._settings.buttonVisibility !== "never";
-
-    const manualPositionSwitch = this._builder.get_object("ondemand_button_manual_position_switch");
-    this._settings.gSettings.bind("ondemand-button-bar-manual-position", manualPositionSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
-
-    const manualPositionValueSpinner = this._builder.get_object("ondemand_button_manual_position_spin");
-    this._settings.gSettings.bind("ondemand-button-bar-position-value", manualPositionValueSpinner, "value", Gio.SettingsBindFlags.DEFAULT);
-    this._settings.gSettings.bind("ondemand-button-bar-manual-position", manualPositionValueSpinner, "sensitive", Gio.SettingsBindFlags.DEFAULT);
-  }
-
-  _handleColorToneElements() {
-    const colorToneCombo = this._builder.get_object("color_tone_presets_combo");
-    ColorTonePresets.forEach((preset) => colorToneCombo.append(preset.id, preset.displayName));
-    this._settings.gSettings.bind("color-tone-preset", colorToneCombo, "active_id", Gio.SettingsBindFlags.DEFAULT);
-
-    const colorToneFactorSpinner = this._builder.get_object("color_tone_factor_spin");
-    this._settings.gSettings.bind("color-tone-factor", colorToneFactorSpinner, "value", Gio.SettingsBindFlags.DEFAULT);
   }
 
   _disconnectSettings() {
