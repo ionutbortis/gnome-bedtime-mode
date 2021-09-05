@@ -24,6 +24,7 @@ var Settings = class {
     this._createConnection("ondemand-button-location", this._onButtonLocationChanged.name);
     this._createConnection("ondemand-button-bar-manual-position", this._onButtonBarManualPositionChanged.name);
     this._createConnection("ondemand-button-bar-position-value", this._onButtonBarPositionValueChanged.name);
+    this._createConnection("ondemand-button-bar-onoff-indicator", this._onButtonBarOnOffIndicatorChanged.name);
     this._createConnection("schedule-start-hours", this._onScheduleTimesChanged.name);
     this._createConnection("schedule-start-minutes", this._onScheduleTimesChanged.name);
     this._createConnection("schedule-end-hours", this._onScheduleTimesChanged.name);
@@ -65,6 +66,10 @@ var Settings = class {
 
   get buttonBarPositionValue() {
     return this.gSettings.get_int("ondemand-button-bar-position-value");
+  }
+
+  get buttonBarOnOffIndicator() {
+    return this.gSettings.get_boolean("ondemand-button-bar-onoff-indicator");
   }
 
   get buttonLocation() {
@@ -127,6 +132,11 @@ var Settings = class {
   _onButtonBarPositionValueChanged() {
     logDebug(`Button Bar Position Value changed to '${this.buttonBarPositionValue}'`);
     this.emit("button-bar-position-value-changed", this.buttonBarPositionValue);
+  }
+
+  _onButtonBarOnOffIndicatorChanged() {
+    logDebug(`Button Bar On/Off Indicator changed to '${this.buttonBarOnOffIndicator}'`);
+    this.emit("button-bar-onoff-indicator-changed", this.buttonBarOnOffIndicator);
   }
 
   _onScheduleTimesChanged() {

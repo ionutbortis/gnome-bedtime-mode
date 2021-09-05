@@ -34,15 +34,13 @@
     <property name="spacing">30</property>
     <property name="baseline-position">top</property>
     <child>
-      <object class="GtkScrolledWindow">
-        <property name="width-request">600</property>
+      <object class="GtkScrolledWindow" id="main_scrolling_container">
         <property name="visible">True</property>
         <property name="can-focus">True</property>
         <property name="vexpand">True</property>
         <property name="hscrollbar-policy">never</property>
-        <property name="min-content-height">500</property>
+        <property name="min-content-height">460</property>
         <property name="max-content-height">700</property>
-        <property name="propagate-natural-height">True</property>
         <child>
           <object class="GtkViewport">
             <property name="visible">True</property>
@@ -111,7 +109,6 @@
                         <property name="label-xalign">0</property>
                         <child>
                           <object class="GtkListBox">
-                            <property name="width-request">600</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="selection-mode">none</property>
@@ -601,6 +598,97 @@
                                           <item id="bar" translatable="yes">Top Bar</item>
                                           <item id="menu" translatable="yes">System Menu</item>
                                         </items>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">True</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkListBoxRow">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="activatable">False</property>
+                                <property name="selectable">False</property>
+                                <child>
+                                  <object class="GtkSeparator">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkListBoxRow" id="ondemand_button_appearance_row">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="activatable">False</property>
+                                <property name="selectable">False</property>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="margin-start">16</property>
+                                    <property name="margin-end">16</property>
+                                    <property name="margin-top">16</property>
+                                    <property name="margin-bottom">16</property>
+                                    <property name="spacing">15</property>
+                                    <child>
+                                      <object class="GtkBox">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="halign">start</property>
+                                            <property name="label" translatable="yes">Top Bar On/Off Indicator</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="halign">start</property>
+                                            <property name="label" translatable="yes">&lt;small&gt;Change the button appearance in Top Bar when Bedtime Mode is active/inactive.&lt;/small&gt; </property>
+                                            <property name="use-markup">True</property>
+                                            <property name="wrap">True</property>
+                                            <property name="max-width-chars">50</property>
+                                            <property name="xalign">0</property>
+                                            <style>
+                                              <class name="dim-label"/>
+                                            </style>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">False</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkSwitch" id="ondemand_button_onoff_indicator_switch">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="halign">end</property>
+                                        <property name="valign">center</property>
                                       </object>
                                       <packing>
                                         <property name="expand">True</property>

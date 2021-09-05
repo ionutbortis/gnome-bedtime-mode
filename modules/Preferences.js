@@ -4,7 +4,7 @@ const { Gio, Gtk } = imports.gi;
 const { extensionUtils } = imports.misc;
 const Me = extensionUtils.getCurrentExtension();
 
-const { getPreferencesUiFile, logDebug } = Me.imports.utils;
+const { getPreferencesUiFile, logDebug, ShellVersion } = Me.imports.utils;
 const { Settings } = Me.imports.modules.Settings;
 const ColorTonePresets = Me.imports.modules.ColorTone.PRESETS;
 
@@ -12,6 +12,7 @@ var Preferences = class {
   constructor() {
     this._buttonLocationRow = null;
     this._buttonPositionRow = null;
+    this._buttonAppearanceRow = null;
     this._buttonVisibilityCombo = null;
 
     this._automaticScheduleConnect = null;
@@ -26,9 +27,19 @@ var Preferences = class {
     this._builder.add_from_file(getPreferencesUiFile());
 
     this.widget = this._builder.get_object("preferences");
+    this.widget.connect("realize", () => this._handleWidgetSize());
     this.widget.connect("destroy", () => this._cleanUp());
 
     this._connectSettings();
+  }
+
+  _handleWidgetSize() {
+    const window = ShellVersion < 40 ? this.widget.get_toplevel() : this.widget.get_root();
+
+    window.default_width = 650;
+    window.default_height = 750;
+
+    ShellVersion < 40 && window.resize(window.default_width, window.default_height);
   }
 
   _cleanUp() {
@@ -89,6 +100,12 @@ var Preferences = class {
     this._buttonLocationRow = this._builder.get_object("ondemand_button_location_row");
     this._buttonLocationRow.sensitive = this._settings.buttonVisibility !== "never";
 
+    const buttonOnOfIndicatorSwitch = this._builder.get_object("ondemand_button_onoff_indicator_switch");
+    this._settings.gSettings.bind("ondemand-button-bar-onoff-indicator", buttonOnOfIndicatorSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
+
+    this._buttonAppearanceRow = this._builder.get_object("ondemand_button_appearance_row");
+    this._buttonAppearanceRow.sensitive = this._settings.buttonLocation === "bar" && this._settings.buttonVisibility !== "never";
+
     this._handleButtonPositionElements();
   }
 
@@ -125,22 +142,26 @@ var Preferences = class {
         this._settings.automaticSchedule = true;
         this._buttonLocationRow.sensitive = true;
         this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar";
+        this._buttonAppearanceRow.sensitive = this._settings.buttonLocation === "bar";
         break;
 
       case "always":
         this._buttonLocationRow.sensitive = true;
         this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar";
+        this._buttonAppearanceRow.sensitive = this._settings.buttonLocation === "bar";
         break;
 
       case "never":
         this._buttonLocationRow.sensitive = false;
         this._buttonPositionRow.sensitive = false;
+        this._buttonAppearanceRow.sensitive = false;
         break;
     }
   }
 
   _onButtonLocationChanged() {
     this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar";
+    this._buttonAppearanceRow.sensitive = this._settings.buttonLocation === "bar";
   }
 
   _disconnectSettings() {

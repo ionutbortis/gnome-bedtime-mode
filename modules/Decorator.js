@@ -41,6 +41,7 @@ var Decorator = class {
     this._createConnection(extension.settings, "button-location-changed", this._onButtonLocationChanged.name);
     this._createConnection(extension.settings, "button-bar-manual-position-changed", this._onButtonBarManualPositionChanged.name);
     this._createConnection(extension.settings, "button-bar-position-value-changed", this._onButtonBarPositionValueChanged.name);
+    this._createConnection(extension.settings, "button-bar-onoff-indicator-changed", this._onButtonBarOnOffIndicatorChanged.name);
     this._createConnection(extension.settings, "button-visibility-changed", this._onButtonVisibilityChanged.name);
     this._createConnection(extension.scheduler, "active-schedule-changed", this._onActiveScheduleChanged.name);
   }
@@ -105,7 +106,10 @@ var Decorator = class {
     this._button.add_actor(icon);
     this._button.connect("button-press-event", () => this._toggleBedtimeMode());
     this._button.connect("touch-event", () => this._toggleBedtimeMode());
-    this._button.update = () => {};
+    this._button.opacity = this._getButtonOpacity();
+    this._button.update = () => {
+      this._button.opacity = this._getButtonOpacity();
+    };
 
     MainPanel.addToStatusArea("BedtimeModeToggleButton", this._button, this._getTopBarPosition());
   }
@@ -128,6 +132,15 @@ var Decorator = class {
 
   _getButtonIcon() {
     return Gio.icon_new_for_string(GLib.build_filenamev([Me.path, "icons", "status", "bedtime-mode-symbolic.svg"]));
+  }
+
+  _getButtonOpacity() {
+    const fullOpacity = 255;
+    const reducedOpacity = 0.35 * 255;
+
+    if (!extension.settings.buttonBarOnOffIndicator) return fullOpacity;
+
+    return extension.settings.bedtimeModeActive ? fullOpacity : reducedOpacity;
   }
 
   _getMenuItemLabel() {
@@ -170,6 +183,10 @@ var Decorator = class {
 
   _onButtonBarPositionValueChanged() {
     extension.settings.buttonLocation === "bar" && this._redrawButton();
+  }
+
+  _onButtonBarOnOffIndicatorChanged() {
+    extension.settings.buttonLocation === "bar" && this._updateButton();
   }
 
   _onActiveScheduleChanged() {
