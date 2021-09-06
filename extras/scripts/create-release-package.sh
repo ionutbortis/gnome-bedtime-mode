@@ -13,13 +13,13 @@ fi
 version="$1"
 dest_folder="$2"
 
-SOURCE_CODE_ROOT=~/work/java/projects/gnome-bedtime
+SOURCE_CODE_ROOT=~/work/java/projects/gnome-bedtime-mode
 zip_exclusions=(
   --exclude='*.git*'
   --exclude='*extras/*'
-  --exclude='*ui/preferences.ui~'
+  --exclude='*ui/*/preferences.ui~'
 )
-name_prefix=gnome-bedtime
+name_prefix=gnome-bedtime-mode
 
 echo "Compiling the extension settings schemas..."
 glib-compile-schemas $SOURCE_CODE_ROOT/schemas/
