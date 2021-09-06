@@ -24,8 +24,9 @@ function logDebug(message) {
  * @returns The proper Preferences Ui File according to the running Gnome Shell version.
  */
 function getPreferencesUiFile() {
-  const prefsUiFileName = ShellVersion >= 40 ? "preferences-gtk4.ui" : "preferences.ui";
-  return GLib.build_filenamev([Me.path, "ui", prefsUiFileName]);
+  const prefsUiFolder = ShellVersion < 40 ? "gtk3" : "gtk4";
+
+  return GLib.build_filenamev([Me.path, "ui", prefsUiFolder, "preferences.ui"]);
 }
 
 /**
