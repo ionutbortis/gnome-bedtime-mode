@@ -15,9 +15,6 @@ var Scheduler = class {
     this._timerLoopSource = null;
 
     this._activeSchedule = false;
-
-    this._automaticScheduleConnect = null;
-    this._scheduleTimesConnect = null;
   }
 
   get activeSchedule() {
@@ -27,29 +24,20 @@ var Scheduler = class {
   enable() {
     logDebug("Enabling Scheduler...");
 
-    this._connectSettings();
+    this._createConnections();
     this._enableTimer();
   }
 
   disable() {
     logDebug("Disabling Scheduler...");
-
-    this._disconnectSettings();
     this._disableTimer();
   }
 
-  _connectSettings() {
-    logDebug("Connecting Scheduler to settings...");
+  _createConnections() {
+    logDebug("Creating connections for Scheduler...");
 
-    this._automaticScheduleConnect = extension.settings.connect("automatic-schedule-changed", this._onAutomaticScheduleChanged.bind(this));
-    this._scheduleTimesConnect = extension.settings.connect("schedule-times-changed", this._onScheduleTimesChanged.bind(this));
-  }
-
-  _disconnectSettings() {
-    logDebug("Disconnecting Scheduler from settings...");
-
-    extension.settings.disconnect(this._automaticScheduleConnect);
-    extension.settings.disconnect(this._scheduleTimesConnect);
+    extension.signalManager.connect(this, extension.settings, "automatic-schedule-changed", this._onAutomaticScheduleChanged.name);
+    extension.signalManager.connect(this, extension.settings, "schedule-times-changed", this._onScheduleTimesChanged.name);
   }
 
   _enableTimer() {

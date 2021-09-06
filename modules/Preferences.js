@@ -6,6 +6,8 @@ const Me = extensionUtils.getCurrentExtension();
 
 const { getPreferencesUiFile, logDebug, ShellVersion } = Me.imports.utils;
 const { Settings } = Me.imports.modules.Settings;
+const { SignalManager } = Me.imports.modules.SignalManager;
+
 const ColorTonePresets = Me.imports.modules.ColorTone.PRESETS;
 
 var Preferences = class {
@@ -15,11 +17,10 @@ var Preferences = class {
     this._buttonAppearanceRow = null;
     this._buttonVisibilityCombo = null;
 
-    this._automaticScheduleConnect = null;
-    this._buttonVisibilityConnect = null;
-    this._buttonLocationConnect = null;
+    this._signalManager = new SignalManager();
+    this._signalManager.enable();
 
-    this._settings = new Settings();
+    this._settings = new Settings(this._signalManager);
     this._settings.enable();
 
     this._builder = new Gtk.Builder();
@@ -30,7 +31,8 @@ var Preferences = class {
     this.widget.connect("realize", () => this._handleWidgetSize());
     this.widget.connect("destroy", () => this._cleanUp());
 
-    this._connectSettings();
+    this._createConnections();
+    this._handleUIElements();
   }
 
   _handleWidgetSize() {
@@ -43,20 +45,23 @@ var Preferences = class {
   }
 
   _cleanUp() {
-    this._disconnectSettings();
-
     this._settings.disable();
+    this._signalManager.disable();
+
     this._settings = null;
+    this._signalManager = null;
     this._builder = null;
   }
 
-  _connectSettings() {
-    logDebug("Connecting Preferences to settings...");
+  _createConnections() {
+    logDebug("Creating connections for Preferences...");
 
-    this._automaticScheduleConnect = this._settings.connect("automatic-schedule-changed", this._onAutomaticScheduleChanged.bind(this));
-    this._buttonVisibilityConnect = this._settings.connect("button-visibility-changed", this._onButtonVisibilityChanged.bind(this));
-    this._buttonLocationConnect = this._settings.connect("button-location-changed", this._onButtonLocationChanged.bind(this));
+    this._signalManager.connect(this, this._settings, "automatic-schedule-changed", this._onAutomaticScheduleChanged.name);
+    this._signalManager.connect(this, this._settings, "button-visibility-changed", this._onButtonVisibilityChanged.name);
+    this._signalManager.connect(this, this._settings, "button-location-changed", this._onButtonLocationChanged.name);
+  }
 
+  _handleUIElements() {
     this._handleScheduleElements();
     this._handleOnDemandElements();
     this._handleColorToneElements();
@@ -162,13 +167,5 @@ var Preferences = class {
   _onButtonLocationChanged() {
     this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar";
     this._buttonAppearanceRow.sensitive = this._settings.buttonLocation === "bar";
-  }
-
-  _disconnectSettings() {
-    logDebug("Disconnecting Preferences from settings...");
-
-    this._settings.disconnect(this._automaticScheduleConnect);
-    this._settings.disconnect(this._buttonVisibilityConnect);
-    this._settings.disconnect(this._buttonLocationConnect);
   }
 };

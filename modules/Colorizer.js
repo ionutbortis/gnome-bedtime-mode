@@ -27,39 +27,24 @@ var Colorizer = class {
 
     this._desaturateEffect = new Clutter.DesaturateEffect();
     this._desaturateEffect.factor = 0;
-
-    this._connections = [];
   }
 
   enable() {
-    this._connectSettings();
+    this._createConnections();
 
     extension.settings.bedtimeModeActive && this._turnOn();
   }
 
   disable() {
-    this._disconnectSettings();
-
     extension.settings.bedtimeModeActive ? this._turnOff() : this._cleanUp();
   }
 
-  _connectSettings() {
-    logDebug("Connecting Colorizer to settings...");
+  _createConnections() {
+    logDebug("Creating connections for Colorizer...");
 
-    this._createConnection(extension.settings, "bedtime-mode-active-changed", this._onBedtimeModeActiveChanged.name);
-    this._createConnection(extension.settings, "color-tone-preset-changed", this._onColorTonePresetChanged.name);
-    this._createConnection(extension.settings, "color-tone-factor-changed", this._onColorToneFactorChanged.name);
-  }
-
-  _disconnectSettings() {
-    logDebug("Disconnecting Colorizer from settings...");
-
-    this._connections.forEach((connection) => connection.to.disconnect(connection.id));
-    this._connections.length = 0;
-  }
-
-  _createConnection(to, eventName, handlerName) {
-    this._connections.push({ to: to, id: to.connect(eventName, this[handlerName].bind(this)) });
+    extension.signalManager.connect(this, extension.settings, "bedtime-mode-active-changed", this._onBedtimeModeActiveChanged.name);
+    extension.signalManager.connect(this, extension.settings, "color-tone-preset-changed", this._onColorTonePresetChanged.name);
+    extension.signalManager.connect(this, extension.settings, "color-tone-factor-changed", this._onColorToneFactorChanged.name);
   }
 
   _onBedtimeModeActiveChanged(_settings, _bedtimeModeActive) {

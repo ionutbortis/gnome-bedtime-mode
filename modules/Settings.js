@@ -5,18 +5,22 @@ const { extensionUtils } = imports.misc;
 
 const Me = extensionUtils.getCurrentExtension();
 
+const { SignalManager } = Me.imports.modules.SignalManager;
 const { logDebug } = Me.imports.utils;
 
 var Settings = class {
-  constructor() {
-    logDebug("Initializing Settings...");
+  constructor(signalManager) {
+    this._signalManager = signalManager;
 
-    this._connections = [];
     this.gSettings = extensionUtils.getSettings();
   }
 
   enable() {
-    logDebug("Connecting settings signals...");
+    this._createConnections();
+  }
+
+  _createConnections() {
+    logDebug("Creating connections for Settings...");
 
     this._createConnection("bedtime-mode-active", this._onBedtimeModeActiveChanged.name);
     this._createConnection("automatic-schedule", this._onAutomaticScheduleChanged.name);
@@ -33,15 +37,13 @@ var Settings = class {
     this._createConnection("color-tone-factor", this._onColorToneFactorChanged.name);
   }
 
-  disable() {
-    logDebug("Disconnecting settings signals...");
-
-    this._connections.forEach((connection) => this.gSettings.disconnect(connection));
-    this._connections.length = 0;
+  _createConnection(settingsKey, handlerName) {
+    this._signalManager.connect(this, this.gSettings, `changed::${settingsKey}`, handlerName);
   }
 
-  _createConnection(settingsKey, handlerName) {
-    this._connections.push(this.gSettings.connect(`changed::${settingsKey}`, this[handlerName].bind(this)));
+  disable() {
+    this._signalManager = null;
+    this.gSettings = null;
   }
 
   get bedtimeModeActive() {
