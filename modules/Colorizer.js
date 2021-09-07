@@ -3,13 +3,12 @@
 const { Clutter } = imports.gi;
 const UiGroup = imports.ui.main.layoutManager.uiGroup;
 
-const { extensionUtils } = imports.misc;
-const Me = extensionUtils.getCurrentExtension();
+const Me = imports.misc.extensionUtils.getCurrentExtension();
 
 const extension = Me.imports.extension;
-const { loopRun, logDebug } = Me.imports.utils;
 
 const { ColorTone } = Me.imports.modules.ColorTone;
+const { loopRun, logDebug } = Me.imports.utils;
 
 const COLORIZE_EFFECT_NAME = "bedtime-mode-colorize-effect";
 const DESATURATE_EFFECT_NAME = "bedtime-mode-desaturate-effect";

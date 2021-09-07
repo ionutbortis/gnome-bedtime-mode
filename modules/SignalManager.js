@@ -1,8 +1,6 @@
 "use strict";
 
-const { extensionUtils } = imports.misc;
-const Me = extensionUtils.getCurrentExtension();
-
+const Me = imports.misc.extensionUtils.getCurrentExtension();
 const { logDebug } = Me.imports.utils;
 
 var SignalManager = class {

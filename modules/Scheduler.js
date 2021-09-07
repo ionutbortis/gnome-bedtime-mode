@@ -2,9 +2,8 @@
 
 const Signals = imports.signals;
 const { GLib } = imports.gi;
-const { extensionUtils } = imports.misc;
 
-const Me = extensionUtils.getCurrentExtension();
+const Me = imports.misc.extensionUtils.getCurrentExtension();
 
 const extension = Me.imports.extension;
 const { loopRun, logDebug } = Me.imports.utils;

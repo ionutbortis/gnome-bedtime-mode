@@ -1,8 +1,8 @@
 "use strict";
 
 const { Gio, Gtk } = imports.gi;
-const { extensionUtils } = imports.misc;
-const Me = extensionUtils.getCurrentExtension();
+
+const Me = imports.misc.extensionUtils.getCurrentExtension();
 
 const { getPreferencesUiFile, logDebug, ShellVersion } = Me.imports.utils;
 const { Settings } = Me.imports.modules.Settings;

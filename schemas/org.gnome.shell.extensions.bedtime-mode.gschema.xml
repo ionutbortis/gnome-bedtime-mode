@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-    <schema id="org.gnome.shell.extensions.bedtimemode" path="/org/gnome/shell/extensions/bedtimemode/">
+    <schema id="org.gnome.shell.extensions.bedtime-mode" path="/org/gnome/shell/extensions/bedtime-mode/">
         <key name="bedtime-mode-active" type="b">
             <default>true</default>
             <summary>Bedtime Mode active flag</summary>

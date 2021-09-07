@@ -1,7 +1,7 @@
 "use strict";
 
-const { extensionUtils } = imports.misc;
-const Me = extensionUtils.getCurrentExtension();
+const ExtensionUtils = imports.misc.extensionUtils;
+const Me = ExtensionUtils.getCurrentExtension();
 
 const { logDebug } = Me.imports.utils;
 
@@ -56,5 +56,5 @@ function disable() {
 function init() {
   logDebug("Initializing extension...");
 
-  extensionUtils.initTranslations(Me.metadata["gettext-domain"]);
+  ExtensionUtils.initTranslations();
 }

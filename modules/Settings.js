@@ -1,9 +1,9 @@
 "use strict";
 
 const Signals = imports.signals;
-const { extensionUtils } = imports.misc;
+const ExtensionUtils = imports.misc.extensionUtils;
 
-const Me = extensionUtils.getCurrentExtension();
+const Me = ExtensionUtils.getCurrentExtension();
 
 const { SignalManager } = Me.imports.modules.SignalManager;
 const { logDebug } = Me.imports.utils;
@@ -12,7 +12,7 @@ var Settings = class {
   constructor(signalManager) {
     this._signalManager = signalManager;
 
-    this.gSettings = extensionUtils.getSettings();
+    this.gSettings = ExtensionUtils.getSettings();
   }
 
   enable() {

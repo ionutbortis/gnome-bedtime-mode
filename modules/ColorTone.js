@@ -2,11 +2,8 @@
 
 const { Clutter } = imports.gi;
 
-const { extensionUtils } = imports.misc;
-const Me = extensionUtils.getCurrentExtension();
-
-const Gettext = imports.gettext.domain(Me.metadata["gettext-domain"]);
-const _ = Gettext.gettext;
+const Me = imports.misc.extensionUtils.getCurrentExtension();
+const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
 
 var ColorTone = class {
   constructor(presetId, toneFactor) {
