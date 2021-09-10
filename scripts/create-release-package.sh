@@ -4,8 +4,8 @@ SCRIPTS_FOLDER="$(dirname "$(realpath -s "$0")")"
 
 source $SCRIPTS_FOLDER/common-vars.sh "$@"
 
-if [ -z ${skip_metadata_prompt+x} ]; then
-  read  -n 1 -p "Did you prepare the metadata.json file? (y/n) " user_input
+if [ -z "${skip_metadata_prompt+set}" ]; then
+  read -n 1 -p "Did you prepare the metadata.json file? (y/n) " user_input
   echo
   if [[ $user_input == "n" ]]; then exit 1; fi
 fi

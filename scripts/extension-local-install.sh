@@ -18,7 +18,7 @@ if [ $create_exit_status -ne 0 ]; then exit $create_exit_status; fi
 echo "Installing '$EXTENSION_NAME' extension to local extensions folder..."
 gnome-extensions install --force $PACKAGE_FILE
 
-if [ ! -v ${enable_extension_debug} ]; then
+if [ -n "${enable_extension_debug+set}" ]; then
   echo "Enabling extension debug logs..."
   echo "debug = true;" >> "$EXTENSION_INSTALL_FOLDER"/config.js
 fi
