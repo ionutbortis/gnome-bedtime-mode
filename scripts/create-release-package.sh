@@ -1,38 +1,31 @@
 #!/bin/bash
 
-read  -n 1 -p "Did you prepare the metadata.json file? (y/n) " user_input
-echo
-if [[ $user_input == "n" ]]; then exit 0; fi
+source common-vars.sh "$@"
 
-usage="./create-release-package.sh [version] [dest_folder]"
-if [ $# -lt 2 ]; then
-    echo "Invalid number of arguments! Script usage:"
-    echo $usage
-    exit 1
+if [ -z ${skip_metadata_prompt+x} ]; then
+  read  -n 1 -p "Did you prepare the metadata.json file? (y/n) " user_input
+  echo
+  if [[ $user_input == "n" ]]; then exit 0; fi
 fi
-version="$1"
-dest_folder="$2"
 
-SOURCE_CODE_ROOT=~/work/java/projects/gnome-bedtime-mode
-zip_exclusions=(
-  --exclude='*.git*'
-  --exclude='*extras/*'
-  --exclude='*ui/*/preferences.ui~'
-)
-name_prefix=gnome-bedtime-mode
+echo "Removing ui temp files and old packages, if any..."
+rm -rf "$PROJECT_ROOT"/src/ui/*/preferences.ui~
+rm -rf "$PROJECT_ROOT"/"$PACKAGE_NAME_PREFIX"*.zip
 
-echo "Compiling the extension settings schemas..."
-glib-compile-schemas $SOURCE_CODE_ROOT/schemas/
+echo "Packing the extension..."
+gnome-extensions pack \
+    --force \
+    --extra-source=$PROJECT_ROOT/src/icons \
+    --extra-source=$PROJECT_ROOT/src/modules \
+    --extra-source=$PROJECT_ROOT/src/schemas \
+    --extra-source=$PROJECT_ROOT/src/ui \
+    --extra-source=$PROJECT_ROOT/src/config.js \
+    --extra-source=$PROJECT_ROOT/src/utils.js \
+    --podir=$PROJECT_ROOT/po/ \
+    --gettext-domain=$EXTENSION_DOMAIN \
+    --out-dir=$PROJECT_ROOT \
+    $PROJECT_ROOT/src
 
-rm -f "$dest_folder"/"$name_prefix"*.zip
+mv "$PROJECT_ROOT"/"$EXTENSION_UUID".shell-extension.zip $PACKAGE_FILE
 
-package_file="$dest_folder"/"$name_prefix"_"$version".zip
-
-echo "Creating release package: $package_file"
-cd $SOURCE_CODE_ROOT && zip -r "${zip_exclusions[@]}" $package_file .
-
-echo "Installing package to local extensions folder..."
-my_extension_home=~/.local/share/gnome-shell/extensions/gnomebedtime@ionutbortis.gmail.com
-rm -rf $my_extension_home/* && unzip -q $package_file -d $my_extension_home
-
-echo "Done. Hit ALT+F2 and type 'r' to restart the gnome shell and check that extension works properly."
+echo "Package created: $PACKAGE_FILE"

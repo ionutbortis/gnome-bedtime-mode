@@ -1,52 +1,29 @@
 #!/bin/bash
 
-EXTENSIONS_HOME=~/.local/share/gnome-shell/extensions
+# In order to skip the metadata prompt when creating the release package
+# and to enable the extension debug logs, use this command:
+#
+# extension-local-install.sh --enable_extension_debug --skip_metadata_prompt
 
-EXTENSION_UUID=gnomebedtime@ionutbortis.gmail.com
+source common-vars.sh "$@"
 
-# Get the 'extension_debug' script param. Usage:
-# ./extension-local-install.sh --extension_debug true
-extension_debug=false
+echo "Calling the create release package script..."
+$PROJECT_ROOT/scripts/create-release-package.sh "$@"
 
-while [ $# -gt 0 ]; do
-  if [[ $1 == *"--"* ]]; then
-    param="${1/--/}"
-    declare $param="$2"
-  fi
-  shift
-done
+echo "Installing '$EXTENSION_NAME' extension to local extensions folder..."
+gnome-extensions install --force $PACKAGE_FILE
 
-echo "Installing Bedtime Mode extension to local extensions folder..."
-
-rsync_exclusions=(
-  --exclude ".git*"
-  --exclude "extras"
-)
-my_extension_home=$EXTENSIONS_HOME/$EXTENSION_UUID
-
-script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-source_code_root="$script_dir/../.."
-
-# Compile the extension settings schemas
-glib-compile-schemas $source_code_root/schemas/
-
-# Replace the local extension with the one from the local github repo
-rm -rf $my_extension_home && rsync -av "${rsync_exclusions[@]}" $source_code_root/* $my_extension_home
-
-sleep 1s
-
-# Turn on extension debug if the script 'extension_debug' param is true
-if [[ $extension_debug == true ]]; then
-  echo "Enabling extension debug. 'extension_debug' script param is: $extension_debug"
-  echo "debug = true;" >> $my_extension_home/config.js
+if [ ! -v ${enable_extension_debug} ]; then
+  echo "Enabling extension debug logs..."
+  echo "debug = true;" >> $MY_EXTENSION_HOME/config.js
 fi
 
-# Disable the extension
+echo "Disabling '$EXTENSION_NAME' extension..."
 gnome-extensions disable $EXTENSION_UUID
 
-# Restart the gnome shell
+echo "Restarting gnome shell..."
 killall -3 gnome-shell
 sleep 5s
 
-# Enable the extension
+echo "Enabling '$EXTENSION_NAME' extension..."
 gnome-extensions enable $EXTENSION_UUID
