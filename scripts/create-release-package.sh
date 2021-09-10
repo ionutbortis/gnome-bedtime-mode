@@ -1,11 +1,13 @@
 #!/bin/bash
 
-source common-vars.sh "$@"
+SCRIPTS_FOLDER="$(dirname "$(realpath -s "$0")")"
+
+source $SCRIPTS_FOLDER/common-vars.sh "$@"
 
 if [ -z ${skip_metadata_prompt+x} ]; then
   read  -n 1 -p "Did you prepare the metadata.json file? (y/n) " user_input
   echo
-  if [[ $user_input == "n" ]]; then exit 0; fi
+  if [[ $user_input == "n" ]]; then exit 1; fi
 fi
 
 echo "Removing ui temp files and old packages, if any..."

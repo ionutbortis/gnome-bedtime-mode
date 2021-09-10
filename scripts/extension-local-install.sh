@@ -5,17 +5,22 @@
 #
 # extension-local-install.sh --enable_extension_debug --skip_metadata_prompt
 
-source common-vars.sh "$@"
+SCRIPTS_FOLDER="$(dirname "$(realpath -s "$0")")"
+
+source $SCRIPTS_FOLDER/common-vars.sh "$@"
 
 echo "Calling the create release package script..."
-$PROJECT_ROOT/scripts/create-release-package.sh "$@"
+$SCRIPTS_FOLDER/create-release-package.sh "$@"
+
+create_exit_status=$?
+if [ $create_exit_status -ne 0 ]; then exit $create_exit_status; fi
 
 echo "Installing '$EXTENSION_NAME' extension to local extensions folder..."
 gnome-extensions install --force $PACKAGE_FILE
 
 if [ ! -v ${enable_extension_debug} ]; then
   echo "Enabling extension debug logs..."
-  echo "debug = true;" >> $MY_EXTENSION_HOME/config.js
+  echo "debug = true;" >> "$EXTENSION_INSTALL_FOLDER"/config.js
 fi
 
 echo "Disabling '$EXTENSION_NAME' extension..."

@@ -8,23 +8,21 @@ while [ $# -gt 0 ]; do
   shift
 done
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-PROJECT_ROOT="$( cd $SCRIPT_DIR/.. &> /dev/null && pwd )"
+SCRIPTS_FOLDER="$(dirname "$(realpath -s "$0")")"
+PROJECT_ROOT="$( cd $SCRIPTS_FOLDER/.. &> /dev/null && pwd )"
 
-getExtensionMetadataJsonValue() {
+get_extension_metadata_json_value() {
   echo $( cat $PROJECT_ROOT/src/metadata.json | \
           python3 -c "import sys, json; print(json.load(sys.stdin)['$1'])" )
 }
-EXTENSION_NAME="$(getExtensionMetadataJsonValue 'name')"
-EXTENSION_UUID="$(getExtensionMetadataJsonValue 'uuid')"
-EXTENSION_DOMAIN="$(getExtensionMetadataJsonValue 'gettext-domain')"
-EXTENSION_VERSION="$(getExtensionMetadataJsonValue 'version')"
-EXTENSION_URL="$(getExtensionMetadataJsonValue 'url')"
+EXTENSION_NAME="$(get_extension_metadata_json_value 'name')"
+EXTENSION_UUID="$(get_extension_metadata_json_value 'uuid')"
+EXTENSION_DOMAIN="$(get_extension_metadata_json_value 'gettext-domain')"
+EXTENSION_VERSION="$(get_extension_metadata_json_value 'version')"
+EXTENSION_URL="$(get_extension_metadata_json_value 'url')"
 
 PACKAGE_NAME_PREFIX=${EXTENSION_URL##*/}
 
 PACKAGE_FILE="$PROJECT_ROOT"/"$PACKAGE_NAME_PREFIX"_"$EXTENSION_VERSION".zip
 
-EXTENSIONS_HOME=~/.local/share/gnome-shell/extensions
-
-MY_EXTENSION_HOME=$EXTENSIONS_HOME/$EXTENSION_UUID
+EXTENSION_INSTALL_FOLDER=~/.local/share/gnome-shell/extensions/"$EXTENSION_UUID"
