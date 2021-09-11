@@ -9,7 +9,8 @@ while [ $# -gt 0 ]; do
 done
 
 SCRIPTS_FOLDER="$(dirname "$(realpath -s "$0")")"
-PROJECT_ROOT="$( cd $SCRIPTS_FOLDER/.. &> /dev/null && pwd )"
+PROJECT_ROOT="$(dirname "$SCRIPTS_FOLDER")"
+BUILD_FOLDER="$PROJECT_ROOT"/build
 
 get_extension_metadata_json_value() {
   echo $( cat $PROJECT_ROOT/src/metadata.json | \
@@ -23,6 +24,6 @@ EXTENSION_URL="$(get_extension_metadata_json_value 'url')"
 
 PACKAGE_NAME_PREFIX=${EXTENSION_URL##*/}
 
-PACKAGE_FILE="$PROJECT_ROOT"/"$PACKAGE_NAME_PREFIX"_"$EXTENSION_VERSION".zip
+PACKAGE_FILE="$BUILD_FOLDER"/"$PACKAGE_NAME_PREFIX"_"$EXTENSION_VERSION".zip
 
 EXTENSION_INSTALL_FOLDER=~/.local/share/gnome-shell/extensions/"$EXTENSION_UUID"
