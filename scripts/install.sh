@@ -1,19 +1,19 @@
 #!/bin/bash
 
-# In order to skip the metadata prompt when creating the release package
+# In order to skip the metadata prompt when building the package
 # and to enable the extension debug logs, use this command:
 #
-# extension-local-install.sh --enable_extension_debug --skip_metadata_prompt
+# install.sh --enable_extension_debug --skip_metadata_prompt
 
 SCRIPTS_FOLDER="$(dirname "$(realpath -s "$0")")"
 
-source $SCRIPTS_FOLDER/common-vars.sh "$@"
+source $SCRIPTS_FOLDER/_common-vars.sh "$@"
 
-echo "Calling the create release package script..."
-$SCRIPTS_FOLDER/create-release-package.sh "$@"
+echo "Calling the build script..."
+$SCRIPTS_FOLDER/build.sh "$@"
 
-create_exit_status=$?
-if [ $create_exit_status -ne 0 ]; then exit $create_exit_status; fi
+build_exit_status=$?
+if [ $build_exit_status -ne 0 ]; then exit $build_exit_status; fi
 
 echo "Installing '$EXTENSION_NAME' extension to local extensions folder..."
 gnome-extensions install --force $PACKAGE_FILE
