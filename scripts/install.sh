@@ -23,12 +23,8 @@ if [ -n "${enable_extension_debug+set}" ]; then
   echo "debug = true;" >> "$EXTENSION_INSTALL_FOLDER"/config.js
 fi
 
-echo "Disabling '$EXTENSION_NAME' extension..."
-gnome-extensions disable $EXTENSION_UUID
+echo "Enabling '$EXTENSION_NAME' extension..."
+gnome-extensions enable $EXTENSION_UUID
 
 echo "Restarting gnome shell..."
 killall -3 gnome-shell
-sleep 5s
-
-echo "Enabling '$EXTENSION_NAME' extension..."
-gnome-extensions enable $EXTENSION_UUID
