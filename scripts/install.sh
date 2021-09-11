@@ -7,7 +7,7 @@
 
 SCRIPTS_FOLDER="$(dirname "$(realpath -s "$0")")"
 
-source $SCRIPTS_FOLDER/_common-vars.sh "$@"
+source $SCRIPTS_FOLDER/_vars.sh "$@"
 
 echo "Calling the build script..."
 $SCRIPTS_FOLDER/build.sh "$@"

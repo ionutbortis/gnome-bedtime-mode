@@ -2,7 +2,7 @@
 
 SCRIPTS_FOLDER="$(dirname "$(realpath -s "$0")")"
 
-source $SCRIPTS_FOLDER/_common-vars.sh "$@"
+source $SCRIPTS_FOLDER/_vars.sh "$@"
 
 if [ ! -n "${skip_metadata_prompt+set}" ]; then
   read -n 1 -p "Did you prepare the metadata.json file? (y/n) " user_input
