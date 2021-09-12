@@ -32,7 +32,7 @@ msgstr "Verde"
 
 #: src/modules/ColorTone.js:75
 msgid "Cyan"
-msgstr "Albastru"
+msgstr "Turcoaz"
 
 #: src/modules/ColorTone.js:81
 msgid "Sepia"
@@ -143,7 +143,7 @@ msgid ""
 "<small>Manually change the button position in Top Bar. Zero is the start of "
 "the icons row.</small>"
 msgstr ""
-"<small>Modificare manuală a poziției butonului în bara de sus. Zero înseamnă "
+"<small>Poziționare manuală a butonului în bara de sus. Zero înseamnă "
 "începutul rândului de pictograme.</small>"
 
 #: src/ui/gtk3/preferences.ui:856 src/ui/gtk4/preferences.ui:531
