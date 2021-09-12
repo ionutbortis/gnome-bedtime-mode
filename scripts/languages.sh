@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# To create a new translation file (locale_code.po) use this:
+#
+# languages.sh --new-locale=desired_locale_code
+
 SCRIPTS_FOLDER="$( dirname "$(realpath -s "$0")" )"
 
 source $SCRIPTS_FOLDER/_vars.sh "$@"
@@ -31,6 +35,9 @@ xgettext \
     --from-code=UTF-8 \
     --files-from="$PO_FOLDER"/POTFILES \
     --output="$EXTENSION_POT_FILE"
+
+echo "Replacing charset line in order to use UTF-8..."
+sed -i '17s/.*/"Content-Type: text\/plain; charset=UTF-8\\n"/' "$EXTENSION_POT_FILE"
 
 echo "Extension POT file: $EXTENSION_POT_FILE"
 
