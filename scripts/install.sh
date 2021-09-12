@@ -3,9 +3,9 @@
 # In order to skip the metadata prompt when building the package
 # and to enable the extension debug logs, use this command:
 #
-# install.sh --enable_extension_debug --skip_metadata_prompt
+# install.sh --enable-debug-log --skip-metadata-prompt
 
-SCRIPTS_FOLDER="$(dirname "$(realpath -s "$0")")"
+SCRIPTS_FOLDER="$( dirname "$(realpath -s "$0")" )"
 
 source $SCRIPTS_FOLDER/_vars.sh "$@"
 
@@ -18,7 +18,7 @@ if [ $build_exit_status -ne 0 ]; then exit $build_exit_status; fi
 echo "Installing '$EXTENSION_NAME' extension to local extensions folder..."
 gnome-extensions install --force $PACKAGE_FILE
 
-if [ -n "${enable_extension_debug+set}" ]; then
+if [ -n "${enable_debug_log+set}" ]; then
   echo "Enabling extension debug logs..."
   echo "debug = true;" >> "$EXTENSION_INSTALL_FOLDER"/config.js
 fi

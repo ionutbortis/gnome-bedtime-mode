@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SCRIPTS_FOLDER="$(dirname "$(realpath -s "$0")")"
+SCRIPTS_FOLDER="$( dirname "$(realpath -s "$0")" )"
 
 source $SCRIPTS_FOLDER/_vars.sh "$@"
 

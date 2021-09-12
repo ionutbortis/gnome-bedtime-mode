@@ -1,5 +1,5 @@
-modules/ColorTone.js
-modules/Decorator.js
+src/modules/ColorTone.js
+src/modules/Decorator.js
 
-ui/gtk3/preferences.ui
-ui/gtk4/preferences.ui
+src/ui/gtk3/preferences.ui
+src/ui/gtk4/preferences.ui
