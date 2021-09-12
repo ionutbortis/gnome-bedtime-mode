@@ -3,6 +3,7 @@
 const { Gio, Gtk } = imports.gi;
 
 const Me = imports.misc.extensionUtils.getCurrentExtension();
+const _ = imports.gettext.domain(Me.metadata["gettext-domain"]).gettext;
 
 const { getPreferencesUiFile, logDebug, ShellVersion } = Me.imports.utils;
 const { Settings } = Me.imports.modules.Settings;
@@ -128,7 +129,8 @@ var Preferences = class {
 
   _handleColorToneElements() {
     const colorToneCombo = this._builder.get_object("color_tone_presets_combo");
-    ColorTonePresets.forEach((preset) => colorToneCombo.append(preset.id, preset.displayName));
+    ColorTonePresets.forEach((preset) => colorToneCombo.append(preset.id, _(preset.displayName)));
+
     this._settings.gSettings.bind("color-tone-preset", colorToneCombo, "active_id", Gio.SettingsBindFlags.DEFAULT);
 
     const colorToneFactorSpinner = this._builder.get_object("color_tone_factor_spin");

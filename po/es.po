@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-12 14:47+0300\n"
+"POT-Creation-Date: 2021-09-12 21:30+0300\n"
 "PO-Revision-Date: 2021-08-07 19:52+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: \n"
@@ -57,10 +57,10 @@ msgstr "Hora de inicio"
 #: src/ui/gtk3/preferences.ui:153 src/ui/gtk4/preferences.ui:103
 msgid ""
 "<small>Specifies the time when Bedtime Mode will be automatically turned on."
-"</small> "
+"</small>"
 msgstr ""
 "<small>Especifica la hora a la que se activará automáticamente el modo "
-"descanso.</small> "
+"descanso.</small>"
 
 #: src/ui/gtk3/preferences.ui:279 src/ui/gtk4/preferences.ui:180
 msgid "End Time"
@@ -69,10 +69,10 @@ msgstr "Hora de fin"
 #: src/ui/gtk3/preferences.ui:292 src/ui/gtk4/preferences.ui:187
 msgid ""
 "<small>Specifies the time when Bedtime Mode will be automatically turned off."
-"</small> "
+"</small>"
 msgstr ""
 "<small>Especifica la hora en la que el modo descanso se apagará "
-"automáticamente.</small> "
+"automáticamente.</small>"
 
 #: src/ui/gtk3/preferences.ui:410 src/ui/gtk4/preferences.ui:254
 msgid "On-Demand"
@@ -85,10 +85,10 @@ msgstr "Mostrar el botón"
 #: src/ui/gtk3/preferences.ui:469 src/ui/gtk4/preferences.ui:289
 msgid ""
 "<small>Choose to always show or hide the button or display it only when the "
-"schedule is active.</small> "
+"schedule is active.</small>"
 msgstr ""
 "<small>Muestra u oculta siempre el botón o sólo lo muestra cuando la "
-"programación esté activa.</small> "
+"programación esté activa.</small>"
 
 #: src/ui/gtk3/preferences.ui:500 src/ui/gtk4/preferences.ui:309
 msgid "Always"
@@ -109,10 +109,10 @@ msgstr "Ubicación del botón"
 #: src/ui/gtk3/preferences.ui:567 src/ui/gtk4/preferences.ui:353
 msgid ""
 "<small>Add a button to Top Bar or System Menu. The button can be used to "
-"manually toggle the Bedtime Mode.</small> "
+"manually toggle the Bedtime Mode.</small>"
 msgstr ""
 "<small>Añada un botón a la barra superior o al menú del sistema. El botón se "
-"puede utilizar para alternar manualmente el modo descanso.</small> "
+"puede utilizar para alternar manualmente el modo descanso.</small>"
 
 #: src/ui/gtk3/preferences.ui:598 src/ui/gtk4/preferences.ui:373
 msgid "Top Bar"
@@ -129,10 +129,8 @@ msgstr ""
 #: src/ui/gtk3/preferences.ui:664 src/ui/gtk4/preferences.ui:416
 msgid ""
 "<small>Change the button appearance in Top Bar when Bedtime Mode is active/"
-"inactive.</small> "
+"inactive.</small>"
 msgstr ""
-""
-""
 
 #: src/ui/gtk3/preferences.ui:742 src/ui/gtk4/preferences.ui:466
 msgid "Top Bar Manual Position"
@@ -141,13 +139,13 @@ msgstr "Posición manual en la barra superior"
 #: src/ui/gtk3/preferences.ui:755 src/ui/gtk4/preferences.ui:473
 msgid ""
 "<small>Manually change the button position in Top Bar. Zero is the start of "
-"the icons row.</small> "
+"the icons row.</small>"
 msgstr ""
 "<small>Cambia manualmente la posición del botón en la barra superior. El "
 "cero es el inicio de la fila de iconos.</small> "
 
 #: src/ui/gtk3/preferences.ui:856 src/ui/gtk4/preferences.ui:531
-msgid "Color Preset and Factor"
+msgid "Color Preset and Apply Factor"
 msgstr ""
 
 #: src/ui/gtk3/preferences.ui:903 src/ui/gtk4/preferences.ui:560
@@ -157,19 +155,17 @@ msgstr ""
 #: src/ui/gtk3/preferences.ui:916 src/ui/gtk4/preferences.ui:567
 msgid ""
 "<small>Select the color preset to be used when Bedtime Mode is active.</"
-"small> "
+"small>"
 msgstr ""
-""
-""
 
 #: src/ui/gtk3/preferences.ui:996 src/ui/gtk4/preferences.ui:619
-msgid "Color Factor"
+msgid "Color Apply Factor"
 msgstr ""
 
 #: src/ui/gtk3/preferences.ui:1009 src/ui/gtk4/preferences.ui:626
 msgid ""
 "<small>The percentage of how much of the selected color preset is to be "
-"applied.</small> "
+"applied.</small>"
 msgstr ""
 
 #: src/ui/gtk3/preferences.ui:1102 src/ui/gtk4/preferences.ui:682

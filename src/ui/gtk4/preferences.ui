@@ -100,7 +100,7 @@
                                           <object class="GtkLabel">
                                             <property name="valign">center</property>
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">&lt;small&gt;Specifies the time when Bedtime Mode will be automatically turned on.&lt;/small&gt; </property>
+                                            <property name="label" translatable="yes">&lt;small&gt;Specifies the time when Bedtime Mode will be automatically turned on.&lt;/small&gt;</property>
                                             <property name="use-markup">1</property>
                                             <property name="wrap">1</property>
                                             <property name="max-width-chars">55</property>
@@ -184,7 +184,7 @@
                                           <object class="GtkLabel">
                                             <property name="valign">center</property>
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">&lt;small&gt;Specifies the time when Bedtime Mode will be automatically turned off.&lt;/small&gt; </property>
+                                            <property name="label" translatable="yes">&lt;small&gt;Specifies the time when Bedtime Mode will be automatically turned off.&lt;/small&gt;</property>
                                             <property name="use-markup">1</property>
                                             <property name="wrap">1</property>
                                             <property name="max-width-chars">55</property>
@@ -286,7 +286,7 @@
                                           <object class="GtkLabel">
                                             <property name="valign">center</property>
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">&lt;small&gt;Choose to always show or hide the button or display it only when the schedule is active.&lt;/small&gt; </property>
+                                            <property name="label" translatable="yes">&lt;small&gt;Choose to always show or hide the button or display it only when the schedule is active.&lt;/small&gt;</property>
                                             <property name="use-markup">1</property>
                                             <property name="wrap">1</property>
                                             <property name="max-width-chars">50</property>
@@ -350,7 +350,7 @@
                                           <object class="GtkLabel">
                                             <property name="valign">center</property>
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">&lt;small&gt;Add a button to Top Bar or System Menu. The button can be used to manually toggle the Bedtime Mode.&lt;/small&gt; </property>
+                                            <property name="label" translatable="yes">&lt;small&gt;Add a button to Top Bar or System Menu. The button can be used to manually toggle the Bedtime Mode.&lt;/small&gt;</property>
                                             <property name="use-markup">1</property>
                                             <property name="wrap">1</property>
                                             <property name="max-width-chars">50</property>
@@ -413,7 +413,7 @@
                                           <object class="GtkLabel">
                                             <property name="valign">center</property>
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">&lt;small&gt;Change the button appearance in Top Bar when Bedtime Mode is active/inactive.&lt;/small&gt; </property>
+                                            <property name="label" translatable="yes">&lt;small&gt;Change the button appearance in Top Bar when Bedtime Mode is active/inactive.&lt;/small&gt;</property>
                                             <property name="use-markup">1</property>
                                             <property name="wrap">1</property>
                                             <property name="max-width-chars">50</property>
@@ -470,7 +470,7 @@
                                           <object class="GtkLabel">
                                             <property name="valign">center</property>
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">&lt;small&gt;Manually change the button position in Top Bar. Zero is the start of the icons row.&lt;/small&gt; </property>
+                                            <property name="label" translatable="yes">&lt;small&gt;Manually change the button position in Top Bar. Zero is the start of the icons row.&lt;/small&gt;</property>
                                             <property name="use-markup">1</property>
                                             <property name="wrap">1</property>
                                             <property name="max-width-chars">50</property>
@@ -528,7 +528,7 @@
                       <object class="GtkLabel">
                         <property name="halign">start</property>
                         <property name="margin-bottom">5</property>
-                        <property name="label" translatable="yes">Color Preset and Factor</property>
+                        <property name="label" translatable="yes">Color Preset and Apply Factor</property>
                         <attributes>
                           <attribute name="weight" value="bold"></attribute>
                         </attributes>
@@ -564,7 +564,7 @@
                                           <object class="GtkLabel">
                                             <property name="valign">center</property>
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">&lt;small&gt;Select the color preset to be used when Bedtime Mode is active.&lt;/small&gt; </property>
+                                            <property name="label" translatable="yes">&lt;small&gt;Select the color preset to be used when Bedtime Mode is active.&lt;/small&gt;</property>
                                             <property name="use-markup">1</property>
                                             <property name="wrap">1</property>
                                             <property name="max-width-chars">50</property>
@@ -616,14 +616,14 @@
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">Color Factor</property>
+                                            <property name="label" translatable="yes">Color Apply Factor</property>
                                           </object>
                                         </child>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="valign">center</property>
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">&lt;small&gt;The percentage of how much of the selected color preset is to be applied.&lt;/small&gt; </property>
+                                            <property name="label" translatable="yes">&lt;small&gt;The percentage of how much of the selected color preset is to be applied.&lt;/small&gt;</property>
                                             <property name="use-markup">1</property>
                                             <property name="wrap">1</property>
                                             <property name="max-width-chars">50</property>

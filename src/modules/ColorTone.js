@@ -3,7 +3,7 @@
 const { Clutter } = imports.gi;
 
 const Me = imports.misc.extensionUtils.getCurrentExtension();
-const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+const _ = imports.gettext.domain(Me.metadata["gettext-domain"]).gettext;
 
 var ColorTone = class {
   constructor(presetId, toneFactor) {

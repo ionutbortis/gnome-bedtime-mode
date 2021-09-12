@@ -6,7 +6,7 @@ const { PopupImageMenuItem } = imports.ui.popupMenu;
 const MainPanel = imports.ui.main.panel;
 
 const Me = imports.misc.extensionUtils.getCurrentExtension();
-const _ = imports.gettext.domain(Me.metadata.uuid).gettext;
+const _ = imports.gettext.domain(Me.metadata["gettext-domain"]).gettext;
 
 const extension = Me.imports.extension;
 const { logDebug } = Me.imports.utils;

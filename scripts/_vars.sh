@@ -11,7 +11,6 @@ while [ $# -gt 0 ]; do
     parts=(${1/=/ })
     name=$( echo ${parts[0]/--/} | tr '-' '_' ) 
     value=${parts[1]}
-
     declare $name=$value
   fi
   shift
