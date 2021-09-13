@@ -87,8 +87,8 @@ msgid ""
 "<small>Choose to always show or hide the button or display it only when the "
 "schedule is active.</small>"
 msgstr ""
-"<small>Alege ca întotdeauna să afișezi (sau să ascunzi) butonul sau să-l "
-"afișezi doar când programul automat este activ.</small>"
+"<small>Alege ca butonul să fie întotdeauna afișat (sau ascuns) sau să fie "
+"afișat doar când programul automat este activ.</small>"
 
 #: src/ui/gtk3/preferences.ui:500 src/ui/gtk4/preferences.ui:309
 msgid "Always"
@@ -96,7 +96,7 @@ msgstr "Întotdeauna"
 
 #: src/ui/gtk3/preferences.ui:501 src/ui/gtk4/preferences.ui:310
 msgid "On Active Schedule"
-msgstr "Program automat activ"
+msgstr "În program activ"
 
 #: src/ui/gtk3/preferences.ui:502 src/ui/gtk4/preferences.ui:311
 msgid "Never"

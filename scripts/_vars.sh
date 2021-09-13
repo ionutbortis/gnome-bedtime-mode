@@ -8,10 +8,12 @@
 
 while [ $# -gt 0 ]; do
   if [[ $1 == *"--"* ]]; then
-    parts=(${1/=/ })
-    name=$( echo ${parts[0]/--/} | tr '-' '_' ) 
-    value=${parts[1]}
-    declare $name=$value
+    argument_split=(${1/=/ })
+
+    var_name=$( echo ${argument_split[0]/--/} | tr '-' '_' ) 
+    var_value=${argument_split[1]}
+
+    declare $var_name=$var_value
   fi
   shift
 done

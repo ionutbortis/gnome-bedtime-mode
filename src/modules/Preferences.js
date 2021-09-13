@@ -29,14 +29,14 @@ var Preferences = class {
     this._builder.add_from_file(getPreferencesUiFile());
 
     this.widget = this._builder.get_object("preferences");
-    this.widget.connect("realize", () => this._handleWidgetSize());
+    this.widget.connect("realize", () => this._handleWindowSize());
     this.widget.connect("destroy", () => this._cleanUp());
 
     this._createConnections();
     this._handleUIElements();
   }
 
-  _handleWidgetSize() {
+  _handleWindowSize() {
     const window = ShellVersion < 40 ? this.widget.get_toplevel() : this.widget.get_root();
 
     window.default_width = 650;
