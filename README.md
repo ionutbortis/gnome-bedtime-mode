@@ -74,7 +74,7 @@ bash -c 'schema_id=org.gnome.shell.extensions.bedtime-mode; schema_dir=~/.local/
 
 # How can you contribute?
 
-Help is always needed so if you found this extension helpful to you, the best way to contribute is to help with the creation of new translations (see next section).
+Help is always needed so if you found this extension helpful, the best way to contribute is to help with the creation of new translations (see next section).
 
 If you encounter some bugs, please submit them as issues here on github. Also, feature requests or improvement ideas are welcomed.
 
@@ -101,20 +101,20 @@ Then, you just need to use a tool for opening the .po file and translate the tex
 
 When the new .po file is fully translated run the install script and the extension should be packaged with the new translations and installed to your Gnome shell.
 
-Please **be aware** that the script is also trying to restart the gnome shell and if you are on Wayland (Gnome 40+) all your opened windows will be closed! So first, you might want save your work before running the install script:
+Please **be aware** that the script is also trying to restart the gnome shell and if you are on Wayland (Gnome 40+) all your opened windows will be closed! So first, you might want to save your work before running the install script:
 
 ```
 ./scripts/install.sh
 ```
 
-If the new translations look fine push the changes to your forked repo and create a pull request to the `next-release` branch on the original repository.
+If the new translations look fine push the changes and create a pull request to the `next-release` branch on the original repository.
 
 That's it! You are now an official contributor to this extension, YAAY! :partying_face: :tada: :pray:
 
 # Translators hall of fame :trophy:
 
-- Spanish: [Óscar](https://github.com/oscfdezdz)
-- Romanian & English: myself
+- Spanish: [Óscar](https://github.com/oscfdezdz) :medal_sports:
+- Romanian & English: myself :medal_sports:
 
 # Credits
 
