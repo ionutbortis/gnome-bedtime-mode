@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Run this script without any arguments in order to update the 
+# extension POT file and the existing translation PO files.
+#
 # To create a new translation file (locale_code.po) use this:
 #
 # languages.sh --new-locale=desired_locale_code
@@ -33,8 +36,11 @@ fi
 echo "Generating extension POT file..."
 xgettext \
     --from-code=UTF-8 \
-    --files-from="$PO_FOLDER"/POTFILES \
-    --output="$EXTENSION_POT_FILE"
+    --package-name="$PACKAGE_NAME_PREFIX" \
+    --package-version="$EXTENSION_VERSION" \
+    --msgid-bugs-address="$MY_EMAIL_ADDRESS" \
+    --output="$EXTENSION_POT_FILE" \
+    ./src/*.js ./src/**/*.js ./src/ui/**/*.ui
 
 echo "Replacing charset line in order to use UTF-8..."
 sed -i '17s/.*/"Content-Type: text\/plain; charset=UTF-8\\n"/' "$EXTENSION_POT_FILE"

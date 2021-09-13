@@ -18,6 +18,8 @@ while [ $# -gt 0 ]; do
   shift
 done
 
+MY_EMAIL_ADDRESS=ionutbortis@gmail.com
+
 SCRIPTS_FOLDER="$( dirname "$(realpath -s "$0")" )"
 PROJECT_ROOT="$( dirname "$SCRIPTS_FOLDER" )"
 BUILD_FOLDER="$PROJECT_ROOT"/build

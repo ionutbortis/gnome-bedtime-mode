@@ -1,13 +1,13 @@
 # Romanian translations for PACKAGE package.
 # Copyright (C) 2021 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the gnome-bedtime-mode package.
 # Ionut Bortis <ionutbortis@gmail.com>, 2021.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-12 21:30+0300\n"
+"Project-Id-Version: gnome-bedtime-mode 4\n"
+"Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
+"POT-Creation-Date: 2021-09-13 13:28+0300\n"
 "PO-Revision-Date: 2021-09-12 18:25+0300\n"
 "Last-Translator: Ionut Bortis <ionutbortis@gmail.com>\n"
 "Language-Team: Romanian\n"
