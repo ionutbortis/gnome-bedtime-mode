@@ -4,12 +4,6 @@ SCRIPTS_FOLDER="$( dirname "$(realpath -s "$0")" )"
 
 source $SCRIPTS_FOLDER/_vars.sh "$@"
 
-if [ ! -n "${skip_metadata_prompt+set}" ]; then
-  read -n 1 -p "Did you prepare the metadata.json file? (y/n) " user_input
-  echo
-  if [ $user_input == "n" ]; then exit 1; fi
-fi
-
 echo "Removing ui temp files and build folder..."
 rm -rf "$PROJECT_ROOT"/src/ui/*/preferences.ui~
 rm -rf "$BUILD_FOLDER" && mkdir -p "$BUILD_FOLDER"

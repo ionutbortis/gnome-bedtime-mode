@@ -4,7 +4,7 @@
 # (The -- prefix is stripped and dashes are replaced with underscores)
 # 
 # --new-locale=ro => $new_locale=ro
-# --skip-metadata-prompt => $skip_metadata_prompt
+# --enable-debug-log => $enable_debug_log
 
 while [ $# -gt 0 ]; do
   if [[ $1 == *"--"* ]]; then
