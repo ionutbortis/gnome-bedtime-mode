@@ -31,7 +31,7 @@ Or
 
 [latest]: https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v5.0/gnome-bedtime-mode_5.0.zip
 
-You can download the [latest release package][latest] and manually install it to your extensions folder. Supported Gnome versions are 3.36, 3.38 and 40!
+You can download the [latest release package][latest] and manually install it to your extensions folder. Supported Gnome versions are 3.36, 3.38, 40 and 41!
 
 ```
 wget https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v5.0/gnome-bedtime-mode_5.0.zip

@@ -26,12 +26,8 @@ echo "Disabling $EXTENSION_NAME extension..."
 gnome-extensions disable $EXTENSION_UUID
 
 echo "Restarting gnome shell..."
-
-restart_output=`busctl --user call org.gnome.Shell \
-  /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'`
-
-if [ "$restart_output" == 'bs true ""' ]; then echo "Restart completed.";
-else echo "Restart output: $restart_output"; fi
+pkill -3 gnome-shell
+sleep 5s
 
 echo "Enabling $EXTENSION_NAME extension..."
 gnome-extensions enable $EXTENSION_UUID
