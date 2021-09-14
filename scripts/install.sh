@@ -26,8 +26,16 @@ echo "Disabling $EXTENSION_NAME extension..."
 gnome-extensions disable $EXTENSION_UUID
 
 echo "Restarting gnome shell..."
-busctl --user call org.gnome.Shell \
-    /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'
+
+restart_output=`busctl --user call org.gnome.Shell \
+  /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'`
+
+if [ "$restart_output" == 'bs true ""' ]; then echo "Restart completed.";
+else echo "Restart output: $restart_output"; fi
 
 echo "Enabling $EXTENSION_NAME extension..."
 gnome-extensions enable $EXTENSION_UUID
+
+if [[ $( gnome-extensions list --enabled | grep "$EXTENSION_UUID") = "$EXTENSION_UUID" ]] 
+then echo "$EXTENSION_NAME extension was successfully installed!";
+else echo "Error: Extension $EXTENSION_NAME is not enabled! Please check the journalctl logs."; fi
