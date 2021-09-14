@@ -11,9 +11,11 @@ The extension has a nice Preferences (Settings) UI where you can customize it to
 - Set an automatic schedule for turning on/off the Bedtime Mode
 - Add an On Demand button to Top Bar or System Menu to manually toggle the mode
 - Control the On Demand button visibility, appearance and position in Top Bar
-- Choose another color preset and apply factor, if you fancy a different color scheme
+- Choose another color preset and apply factor, if you prefer a different color scheme
 
-Just give it a try! :sunglasses:
+Multi language support is also available. Please check the [Translators hall of fame](#translators) section for the supported languages list and [Guide for translators](#guide-for-translators) section if you want to contribute with a translation for your native language.
+
+Peace! :sun_with_face:
 
 ![](./extras/images/screenshot.png)
 
@@ -110,6 +112,8 @@ Please **be aware** that the script is also trying to restart the gnome shell an
 If the new translations look fine push the changes and create a pull request to the `next-release` branch on the original repository.
 
 That's it! You are now an official contributor to this extension, YAAY! :partying_face: :tada: :pray:
+
+<a name="translators">
 
 # Translators hall of fame :trophy:
 
