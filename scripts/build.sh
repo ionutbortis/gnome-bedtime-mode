@@ -16,6 +16,7 @@ create_package() {
 
   gnome-extensions pack \
     --force \
+    --extra-source=$PROJECT_ROOT/LICENSE \
     --extra-source=$PROJECT_ROOT/src/icons \
     --extra-source=$PROJECT_ROOT/src/modules \
     --extra-source=$PROJECT_ROOT/src/schemas \
