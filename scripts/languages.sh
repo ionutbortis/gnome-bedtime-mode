@@ -16,6 +16,13 @@ EXTENSION_POT_FILE="$PO_FOLDER"/"$EXTENSION_DOMAIN".pot
 
 cd "$PROJECT_ROOT"
 
+check_gettext_package_availability() {
+  if ! command -v xgettext &> /dev/null; then
+    echo "ERROR: Could not find xgettext. Please check if the 'gettext' package is installed!"
+    exit 1
+  fi
+}
+
 create_new_translation_file() {
   local new_translation_file="$PO_FOLDER"/"$new_locale".po
 
@@ -65,6 +72,8 @@ update_translations_po_files() {
     echo "WARNING: Some translations have unclear strings and need update: ${fuzzy[*]}"
   fi
 }
+
+check_gettext_package_availability
 
 [ -n "$new_locale" ] && create_new_translation_file
 generate_extension_pot_file

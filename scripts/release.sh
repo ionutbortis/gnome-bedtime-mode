@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 SCRIPTS_FOLDER="$( dirname "$(realpath -s "$0")" )"
 
