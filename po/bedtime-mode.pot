@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-bedtime-mode 5\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
-"POT-Creation-Date: 2021-09-15 18:50+0300\n"
+"POT-Creation-Date: 2021-09-15 21:00+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,32 +17,32 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/ColorTone.js:57
-msgid "Grayscale"
-msgstr ""
-
-#: src/modules/ColorTone.js:63
-msgid "Amber"
-msgstr ""
-
-#: src/modules/ColorTone.js:69
-msgid "Green"
-msgstr ""
-
-#: src/modules/ColorTone.js:75
-msgid "Cyan"
-msgstr ""
-
-#: src/modules/ColorTone.js:81
-msgid "Sepia"
-msgstr ""
-
 #: src/modules/Decorator.js:131
 msgid "Turn Off Bedtime Mode"
 msgstr ""
 
 #: src/modules/Decorator.js:131
 msgid "Turn On Bedtime Mode"
+msgstr ""
+
+#: src/modules/Presets.js:9
+msgid "Grayscale"
+msgstr ""
+
+#: src/modules/Presets.js:15
+msgid "Amber"
+msgstr ""
+
+#: src/modules/Presets.js:21
+msgid "Green"
+msgstr ""
+
+#: src/modules/Presets.js:27
+msgid "Cyan"
+msgstr ""
+
+#: src/modules/Presets.js:33
+msgid "Sepia"
 msgstr ""
 
 #: src/ui/gtk3/preferences.ui:74 src/ui/gtk4/preferences.ui:59

@@ -9,7 +9,7 @@ const { getPreferencesUiFile, logDebug, ShellVersion } = Me.imports.utils;
 const { Settings } = Me.imports.modules.Settings;
 const { SignalManager } = Me.imports.modules.SignalManager;
 
-const ColorTonePresets = Me.imports.modules.ColorTone.PRESETS;
+const ColorTonePresets = Me.imports.modules.Presets.ColorTones;
 
 var Preferences = class {
   constructor() {

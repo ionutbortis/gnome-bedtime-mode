@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-bedtime-mode 4\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
-"POT-Creation-Date: 2021-09-13 13:28+0300\n"
+"POT-Creation-Date: 2021-09-15 21:00+0300\n"
 "PO-Revision-Date: 2021-09-13 18:51+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: \n"
@@ -18,26 +18,6 @@ msgstr ""
 "X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/ColorTone.js:57
-msgid "Grayscale"
-msgstr "Escala de grises"
-
-#: src/modules/ColorTone.js:63
-msgid "Amber"
-msgstr "Ámbar"
-
-#: src/modules/ColorTone.js:69
-msgid "Green"
-msgstr "Verde"
-
-#: src/modules/ColorTone.js:75
-msgid "Cyan"
-msgstr "Cian"
-
-#: src/modules/ColorTone.js:81
-msgid "Sepia"
-msgstr "Sepia"
-
 #: src/modules/Decorator.js:131
 msgid "Turn Off Bedtime Mode"
 msgstr "Apagar modo descanso"
@@ -45,6 +25,26 @@ msgstr "Apagar modo descanso"
 #: src/modules/Decorator.js:131
 msgid "Turn On Bedtime Mode"
 msgstr "Encender modo descanso"
+
+#: src/modules/Presets.js:9
+msgid "Grayscale"
+msgstr "Escala de grises"
+
+#: src/modules/Presets.js:15
+msgid "Amber"
+msgstr "Ámbar"
+
+#: src/modules/Presets.js:21
+msgid "Green"
+msgstr "Verde"
+
+#: src/modules/Presets.js:27
+msgid "Cyan"
+msgstr "Cian"
+
+#: src/modules/Presets.js:33
+msgid "Sepia"
+msgstr "Sepia"
 
 #: src/ui/gtk3/preferences.ui:74 src/ui/gtk4/preferences.ui:59
 msgid "Automatic Schedule"
