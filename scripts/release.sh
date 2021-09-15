@@ -73,6 +73,7 @@ update_readme_release_package_version() {
   echo "Updating README.md release package version..."
 
   local readme_file="$PROJECT_ROOT"/README.md
+  sed -i 's/v'"$CURRENT_RELEASE_VERSION"'\.0/v'"$NEW_RELEASE_VERSION"'\.0/g' "$readme_file"
   sed -i 's/'"$CURRENT_RELEASE_VERSION"'\.0\.zip/'"$NEW_RELEASE_VERSION"'\.0\.zip/g' "$readme_file"
 }
 
