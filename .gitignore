@@ -1,1 +1,4 @@
-ui/preferences.ui~
+po/*.po~
+src/ui/gtk3/preferences.ui~
+src/ui/gtk4/preferences.ui~
+build/

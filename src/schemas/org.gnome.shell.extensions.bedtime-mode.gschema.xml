@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-    <schema id="org.gnome.shell.extensions.gnomebedtime" path="/org/gnome/shell/extensions/gnomebedtime/">
+    <schema id="org.gnome.shell.extensions.bedtime-mode" path="/org/gnome/shell/extensions/bedtime-mode/">
         <key name="bedtime-mode-active" type="b">
             <default>true</default>
             <summary>Bedtime Mode active flag</summary>
@@ -31,6 +31,18 @@
             <summary>Schedule end time minutes</summary>
             <description>The minutes at which the bedtime mode will be disabled.</description>
         </key>
+        <key name="ondemand-button-visibility" type="s">
+            <choices>
+                <choice value="always"/>
+                <choice value="active-schedule"/>
+                <choice value="never"/>
+            </choices>
+            <default>"always"</default>
+            <summary>On-demand button visibility</summary>
+            <description>If the value is set to "active-schedule" then the button will be displayed only when 
+            "automatic-schedule" is enabled and the configured schedule is active.
+            </description>
+        </key>
         <key name="ondemand-button-location" type="s">
             <choices>
                 <choice value="bar"/>
@@ -51,17 +63,20 @@
             <description>The manual position value for the On-Demad button. It should be a number from 0 to 99. 
             0 will put the button on the left side of the icons group. A greater value will move the icon to the right.</description>
         </key>
-        <key name="ondemand-button-visibility" type="s">
-            <choices>
-                <choice value="always"/>
-                <choice value="active-schedule"/>
-                <choice value="never"/>
-            </choices>
-            <default>"always"</default>
-            <summary>On-demand button visibility</summary>
-            <description>If the value is set to "active-schedule" then the button will be displayed only when 
-            "automatic-schedule" is enabled and the configured schedule is active.
-            </description>
+        <key name="ondemand-button-bar-onoff-indicator" type="b">
+            <default>true</default>
+            <summary>Enable On/Off indicator for the On-demand button</summary>
+            <description>Enables the change of the button appearance in Top Bar when Bedtime Mode is active/inactive.</description>
+        </key>
+        <key name="color-tone-preset" type="s">
+            <default>"grayscale"</default>
+            <summary>Color tone preset</summary>
+            <description>The color tone preset that is selected to be used during the active Bedtime Mode.</description>
+        </key>
+        <key name="color-tone-factor" type="i">
+            <default>100</default>
+            <summary>Color tone percentage factor</summary>
+            <description>The percentage of how much the selected color tone preset is to be applied.</description>
         </key>
     </schema>
 </schemalist>

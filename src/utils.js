@@ -8,7 +8,8 @@ const Me = extensionUtils.getCurrentExtension();
 const Config = Me.imports.config;
 
 const [major] = imports.misc.config.PACKAGE_VERSION.split(".");
-const shellVersion = Number.parseInt(major);
+
+var ShellVersion = Number.parseInt(major);
 
 /**
  * Output a debug message to the console if the debug config is active.
@@ -23,8 +24,9 @@ function logDebug(message) {
  * @returns The proper Preferences Ui File according to the running Gnome Shell version.
  */
 function getPreferencesUiFile() {
-  const prefsUiFileName = shellVersion >= 40 ? "preferences-gtk4.ui" : "preferences.ui";
-  return GLib.build_filenamev([Me.path, "ui", prefsUiFileName]);
+  const prefsUiFolder = ShellVersion < 40 ? "gtk3" : "gtk4";
+
+  return GLib.build_filenamev([Me.path, "ui", prefsUiFolder, "preferences.ui"]);
 }
 
 /**

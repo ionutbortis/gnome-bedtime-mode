@@ -1,22 +1,26 @@
 "use strict";
 
 const Signals = imports.signals;
-const { extensionUtils } = imports.misc;
+const ExtensionUtils = imports.misc.extensionUtils;
 
-const Me = extensionUtils.getCurrentExtension();
+const Me = ExtensionUtils.getCurrentExtension();
 
+const { SignalManager } = Me.imports.modules.SignalManager;
 const { logDebug } = Me.imports.utils;
 
 var Settings = class {
-  constructor() {
-    logDebug("Initializing Settings...");
+  constructor(signalManager) {
+    this._signalManager = signalManager;
 
-    this._connections = [];
-    this.gSettings = extensionUtils.getSettings();
+    this.gSettings = ExtensionUtils.getSettings();
   }
 
   enable() {
-    logDebug("Connecting settings signals...");
+    this._createConnections();
+  }
+
+  _createConnections() {
+    logDebug("Creating connections for Settings...");
 
     this._createConnection("bedtime-mode-active", this._onBedtimeModeActiveChanged.name);
     this._createConnection("automatic-schedule", this._onAutomaticScheduleChanged.name);
@@ -24,21 +28,22 @@ var Settings = class {
     this._createConnection("ondemand-button-location", this._onButtonLocationChanged.name);
     this._createConnection("ondemand-button-bar-manual-position", this._onButtonBarManualPositionChanged.name);
     this._createConnection("ondemand-button-bar-position-value", this._onButtonBarPositionValueChanged.name);
+    this._createConnection("ondemand-button-bar-onoff-indicator", this._onButtonBarOnOffIndicatorChanged.name);
     this._createConnection("schedule-start-hours", this._onScheduleTimesChanged.name);
     this._createConnection("schedule-start-minutes", this._onScheduleTimesChanged.name);
     this._createConnection("schedule-end-hours", this._onScheduleTimesChanged.name);
     this._createConnection("schedule-end-minutes", this._onScheduleTimesChanged.name);
-  }
-
-  disable() {
-    logDebug("Disconnecting settings signals...");
-
-    this._connections.forEach((connection) => this.gSettings.disconnect(connection));
-    this._connections.length = 0;
+    this._createConnection("color-tone-preset", this._onColorTonePresetChanged.name);
+    this._createConnection("color-tone-factor", this._onColorToneFactorChanged.name);
   }
 
   _createConnection(settingsKey, handlerName) {
-    this._connections.push(this.gSettings.connect(`changed::${settingsKey}`, this[handlerName].bind(this)));
+    this._signalManager.connect(this, this.gSettings, `changed::${settingsKey}`, handlerName);
+  }
+
+  disable() {
+    this._signalManager = null;
+    this.gSettings = null;
   }
 
   get bedtimeModeActive() {
@@ -65,6 +70,10 @@ var Settings = class {
     return this.gSettings.get_int("ondemand-button-bar-position-value");
   }
 
+  get buttonBarOnOffIndicator() {
+    return this.gSettings.get_boolean("ondemand-button-bar-onoff-indicator");
+  }
+
   get buttonLocation() {
     return this.gSettings.get_string("ondemand-button-location");
   }
@@ -87,6 +96,14 @@ var Settings = class {
 
   get scheduleEndMinutes() {
     return this.gSettings.get_int("schedule-end-minutes");
+  }
+
+  get colorTonePreset() {
+    return this.gSettings.get_string("color-tone-preset");
+  }
+
+  get colorToneFactor() {
+    return this.gSettings.get_int("color-tone-factor");
   }
 
   _onBedtimeModeActiveChanged() {
@@ -119,12 +136,27 @@ var Settings = class {
     this.emit("button-bar-position-value-changed", this.buttonBarPositionValue);
   }
 
+  _onButtonBarOnOffIndicatorChanged() {
+    logDebug(`Button Bar On/Off Indicator changed to '${this.buttonBarOnOffIndicator}'`);
+    this.emit("button-bar-onoff-indicator-changed", this.buttonBarOnOffIndicator);
+  }
+
   _onScheduleTimesChanged() {
     const start = `Start=${this.scheduleStartHours}:${this.scheduleStartMinutes}`;
     const end = `End=${this.scheduleEndHours}:${this.scheduleEndMinutes}`;
     logDebug(`Schedule Times changed to: ${start} ${end}`);
 
     this.emit("schedule-times-changed", {});
+  }
+
+  _onColorTonePresetChanged() {
+    logDebug(`Color Tone Preset changed to '${this.colorTonePreset}'`);
+    this.emit("color-tone-preset-changed", this.colorTonePreset);
+  }
+
+  _onColorToneFactorChanged() {
+    logDebug(`Color Tone Factor changed to '${this.colorToneFactor}'`);
+    this.emit("color-tone-factor-changed", this.colorToneFactor);
   }
 };
 

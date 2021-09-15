@@ -5,8 +5,8 @@ const { Button: PanelMenuButton } = imports.ui.panelMenu;
 const { PopupImageMenuItem } = imports.ui.popupMenu;
 const MainPanel = imports.ui.main.panel;
 
-const { extensionUtils } = imports.misc;
-const Me = extensionUtils.getCurrentExtension();
+const Me = imports.misc.extensionUtils.getCurrentExtension();
+const _ = imports.gettext.domain(Me.metadata["gettext-domain"]).gettext;
 
 const extension = Me.imports.extension;
 const { logDebug } = Me.imports.utils;
@@ -14,43 +14,31 @@ const { logDebug } = Me.imports.utils;
 var Decorator = class {
   constructor() {
     this._button = null;
-    this._connections = [];
   }
 
   enable() {
     logDebug("Enabling Decorator...");
 
-    this._connectSettings();
+    this._createConnections();
     this._addButton();
   }
 
   disable() {
     logDebug("Disabling Decorator...");
 
-    this._disconnectSettings();
     this._removeButton();
   }
 
-  _connectSettings() {
-    logDebug("Connecting Decorator to settings...");
+  _createConnections() {
+    logDebug("Creating connections for Decorator...");
 
-    this._createConnection(extension.settings, "bedtime-mode-active-changed", this._onBedtimeModeActiveChanged.name);
-    this._createConnection(extension.settings, "button-location-changed", this._onButtonLocationChanged.name);
-    this._createConnection(extension.settings, "button-bar-manual-position-changed", this._onButtonBarManualPositionChanged.name);
-    this._createConnection(extension.settings, "button-bar-position-value-changed", this._onButtonBarPositionValueChanged.name);
-    this._createConnection(extension.settings, "button-visibility-changed", this._onButtonVisibilityChanged.name);
-    this._createConnection(extension.scheduler, "active-schedule-changed", this._onActiveScheduleChanged.name);
-  }
-
-  _disconnectSettings() {
-    logDebug("Disconnecting Decorator from settings...");
-
-    this._connections.forEach((connection) => connection.to.disconnect(connection.id));
-    this._connections.length = 0;
-  }
-
-  _createConnection(to, eventName, handlerName) {
-    this._connections.push({ to: to, id: to.connect(eventName, this[handlerName].bind(this)) });
+    extension.signalManager.connect(this, extension.settings, "bedtime-mode-active-changed", this._onBedtimeModeActiveChanged.name);
+    extension.signalManager.connect(this, extension.settings, "button-location-changed", this._onButtonLocationChanged.name);
+    extension.signalManager.connect(this, extension.settings, "button-bar-manual-position-changed", this._onButtonBarManualPositionChanged.name);
+    extension.signalManager.connect(this, extension.settings, "button-bar-position-value-changed", this._onButtonBarPositionValueChanged.name);
+    extension.signalManager.connect(this, extension.settings, "button-bar-onoff-indicator-changed", this._onButtonBarOnOffIndicatorChanged.name);
+    extension.signalManager.connect(this, extension.settings, "button-visibility-changed", this._onButtonVisibilityChanged.name);
+    extension.signalManager.connect(this, extension.scheduler, "active-schedule-changed", this._onActiveScheduleChanged.name);
   }
 
   _addButton() {
@@ -102,7 +90,10 @@ var Decorator = class {
     this._button.add_actor(icon);
     this._button.connect("button-press-event", () => this._toggleBedtimeMode());
     this._button.connect("touch-event", () => this._toggleBedtimeMode());
-    this._button.update = () => {};
+    this._button.opacity = this._getButtonOpacity();
+    this._button.update = () => {
+      this._button.opacity = this._getButtonOpacity();
+    };
 
     MainPanel.addToStatusArea("BedtimeModeToggleButton", this._button, this._getTopBarPosition());
   }
@@ -127,8 +118,17 @@ var Decorator = class {
     return Gio.icon_new_for_string(GLib.build_filenamev([Me.path, "icons", "status", "bedtime-mode-symbolic.svg"]));
   }
 
+  _getButtonOpacity() {
+    const fullOpacity = 255;
+    const reducedOpacity = 0.35 * 255;
+
+    if (!extension.settings.buttonBarOnOffIndicator) return fullOpacity;
+
+    return extension.settings.bedtimeModeActive ? fullOpacity : reducedOpacity;
+  }
+
   _getMenuItemLabel() {
-    return extension.settings.bedtimeModeActive ? "Turn Off Bedtime Mode" : "Turn On Bedtime Mode";
+    return extension.settings.bedtimeModeActive ? _("Turn Off Bedtime Mode") : _("Turn On Bedtime Mode");
   }
 
   _getTopBarPosition() {
@@ -167,6 +167,10 @@ var Decorator = class {
 
   _onButtonBarPositionValueChanged() {
     extension.settings.buttonLocation === "bar" && this._redrawButton();
+  }
+
+  _onButtonBarOnOffIndicatorChanged() {
+    extension.settings.buttonLocation === "bar" && this._updateButton();
   }
 
   _onActiveScheduleChanged() {

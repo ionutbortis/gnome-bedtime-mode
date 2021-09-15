@@ -1,11 +1,13 @@
 "use strict";
 
-const { extensionUtils } = imports.misc;
-const Me = extensionUtils.getCurrentExtension();
+const ExtensionUtils = imports.misc.extensionUtils;
+const Me = ExtensionUtils.getCurrentExtension();
 
 const { Preferences } = Me.imports.modules.Preferences;
 
-function init() {}
+function init() {
+  ExtensionUtils.initTranslations();
+}
 
 function buildPrefsWidget() {
   const preferences = new Preferences();
