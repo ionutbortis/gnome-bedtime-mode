@@ -8,10 +8,10 @@ display_release_checklist() {
   echo
   echo "$EXTENSION_NAME extension release checklist 👀 :"
   echo
-  echo " ✔ Run scripts/languages.sh and check if new translations are needed."
   echo " ✔ Manual test the extension on all the supported Gnome versions."
   echo " ✔ Check texts/metadata-json-description.text file for possible text updates."
   echo " ✔ Update README.md to include relevant new info, if needed."
+  echo " ✔ Check if new translations are needed."
   echo
   echo "📌 After script run check the changes to metadata.json and README.md files 📌"
   echo
@@ -76,6 +76,12 @@ update_readme_release_package_version() {
   sed -i 's/'"$CURRENT_RELEASE_VERSION"'\.0\.zip/'"$NEW_RELEASE_VERSION"'\.0\.zip/g' "$readme_file"
 }
 
+check_translations() {
+  echo "Checking translations..."
+
+  $SCRIPTS_FOLDER/languages.sh
+}
+
 build_and_install_extension() {
   $SCRIPTS_FOLDER/install.sh --enable-debug-log "$@"
 }
@@ -87,5 +93,6 @@ compute_new_release_version
 update_extension_metadata_version
 update_extension_metadata_description
 update_readme_release_package_version
+check_translations
 
 build_and_install_extension
