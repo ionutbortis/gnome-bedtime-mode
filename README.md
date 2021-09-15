@@ -29,17 +29,17 @@ From the official GNOME Shell Extensions website:
 
 Or
 
-[latest]: https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v5.0/gnome-bedtime-mode_4.0.zip
+[latest]: https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v5.0/gnome-bedtime-mode_5.0.zip
 
 You can download the [latest release package][latest] and manually install it to your extensions folder. Supported Gnome versions are 3.36, 3.38, 40 and 41!
 
 ```
-wget https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v5.0/gnome-bedtime-mode_4.0.zip
+wget https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v5.0/gnome-bedtime-mode_5.0.zip
 # (Or manually download via browser and run the next commands from the download folder)
 
 extension_home=~/.local/share/gnome-shell/extensions/gnomebedtime@ionutbortis.gmail.com
 
-mkdir -p $extension_home && rm -rf $extension_home/* && unzip gnome-bedtime-mode_4.0.zip -d $extension_home
+mkdir -p $extension_home && rm -rf $extension_home/* && unzip gnome-bedtime-mode_5.0.zip -d $extension_home
 ```
 
 Next:
