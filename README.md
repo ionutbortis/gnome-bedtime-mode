@@ -117,8 +117,8 @@ That's it! You are now an official contributor to this extension, YAAY! :partyin
 
 # Translators hall of fame :trophy:
 
-- Spanish: [Óscar](https://github.com/oscfdezdz) :medal_sports:
-- Romanian & English: myself :medal_sports:
+- Spanish: [Óscar Fernández Díaz](https://github.com/oscfdezdz) :medal_sports:
+- Romanian & English: [Ionuț Florin Bortiș](https://github.com/ionutbortis) (myself) :medal_sports:
 
 # Credits
 

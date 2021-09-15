@@ -1,5 +1,5 @@
 # The contents of this file will go to the extension's metadata.json file into the "description" field.
-# The release script has to create on line of text from this in order to keep the json file valid.
+# The release script has to create one line of text from this in order to keep the json file valid.
 # All carriage returns are converted to literal '\n' strings in order to be properly displayed on the 
 # gnome extensions website. All the lines starting with # are ignored.
 #
