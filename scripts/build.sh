@@ -7,7 +7,7 @@ source $SCRIPTS_FOLDER/_vars.sh "$@"
 pre_build_cleanup() {
   echo "Removing ui temp files and build folder..."
 
-  rm -rf "$PROJECT_ROOT"/src/ui/*/preferences.ui~
+  rm -rf "$PROJECT_ROOT"/src/ui/*/*.ui~
   rm -rf "$BUILD_FOLDER" && mkdir -p "$BUILD_FOLDER"
 }
 

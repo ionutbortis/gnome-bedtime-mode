@@ -12,7 +12,7 @@ build_extension() {
   echo "Calling the build script..."
   $SCRIPTS_FOLDER/build.sh "$@"
 
-  build_exit_status=$?
+  local build_exit_status=$?
   if [ $build_exit_status -ne 0 ]; then exit $build_exit_status; fi
 }
 
@@ -41,7 +41,7 @@ reload_extension() {
 check_extension_status() {
   if [[ $( gnome-extensions list --enabled | grep "$EXTENSION_UUID") = "$EXTENSION_UUID" ]] 
   then echo "$EXTENSION_NAME extension was successfully installed!";
-  else echo "Error: Extension $EXTENSION_NAME is not enabled! Please check the journalctl logs."; fi
+  else echo "ERROR: Extension $EXTENSION_NAME is not enabled! Please check the journalctl logs."; fi
 }
 
 build_extension
