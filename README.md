@@ -38,6 +38,8 @@ wget https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v6.0/gn
 # (Or manually download via browser and run the next command from the download folder)
 
 gnome-extensions install --force gnome-bedtime-mode_6.0.zip
+
+rm gnome-bedtime-mode_6.0.zip
 ```
 
 Next:
@@ -45,14 +47,20 @@ Next:
 - On Gnome 3.36 and 3.38 press `Alt`+`F2`, type `r` in the dialog window and press `Enter`
 - On Gnome 40+ you need to log out and log in again into your user account
 
-You can now enable the extension by running the Extensions app (search and install it from your distro repos or get it from [here](https://flathub.org/apps/details/org.gnome.Extensions)), or by
+You can now enable/disable the extension by running the Extensions app (search and install it from your distro repos or get it from [here](https://flathub.org/apps/details/org.gnome.Extensions)), or by
 browsing to https://extensions.gnome.org/local.
 
-Alternatively, you can enable/disable the extension from command line:
+Alternatively, you can do this from command line:
 
 ```
 gnome-extensions enable gnomebedtime@ionutbortis.gmail.com
 gnome-extensions disable gnomebedtime@ionutbortis.gmail.com
+```
+
+To open the extension's Preferences (Settings) UI, use the Extensions app or run this command:
+
+```
+gnome-extensions prefs gnomebedtime@ionutbortis.gmail.com
 ```
 
 # Keyboard shortcut
