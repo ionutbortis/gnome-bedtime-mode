@@ -35,6 +35,8 @@ EXTENSION_UUID="$( get_extension_metadata_json_value 'uuid' )"
 EXTENSION_DOMAIN="$( get_extension_metadata_json_value 'gettext-domain' )"
 EXTENSION_VERSION="$( get_extension_metadata_json_value 'version' )"
 EXTENSION_URL="$( get_extension_metadata_json_value 'url' )"
+EXTENSION_SHELL_VERSIONS="$(get_extension_metadata_json_value 'shell-version' )"
+SUPPORTED_GNOME_VERSIONS=${EXTENSION_SHELL_VERSIONS:1:-1}
 
 PACKAGE_NAME_PREFIX=${EXTENSION_URL##*/}
 

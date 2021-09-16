@@ -35,11 +35,9 @@ You can download the [latest release package][latest] and manually install it to
 
 ```
 wget https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v6.0/gnome-bedtime-mode_6.0.zip
-# (Or manually download via browser and run the next commands from the download folder)
+# (Or manually download via browser and run the next command from the download folder)
 
-extension_home=~/.local/share/gnome-shell/extensions/gnomebedtime@ionutbortis.gmail.com
-
-mkdir -p $extension_home && rm -rf $extension_home/* && unzip gnome-bedtime-mode_6.0.zip -d $extension_home
+gnome-extensions install --force gnome-bedtime-mode_6.0.zip
 ```
 
 Next:

@@ -9,8 +9,8 @@ display_release_checklist() {
   echo
   echo "$EXTENSION_NAME extension release checklist 👀 :"
   echo
-  echo " ✔ Manual test the extension on all the supported Gnome versions."
-  echo " ✔ Check texts/metadata-json-description.text file for possible text updates."
+  echo " ✔ Manual test the extension on Gnome versions $SUPPORTED_GNOME_VERSIONS 👈"
+  echo " ✔ Check texts/metadata-json-description.txt file for possible text updates."
   echo " ✔ Update README.md to include relevant new info, if needed."
   echo " ✔ Check if new translations are needed."
   echo
@@ -80,12 +80,11 @@ update_readme_release_package_version() {
 
 check_translations() {
   echo "Checking translations..."
-
   $SCRIPTS_FOLDER/languages.sh
 }
 
 build_and_install_extension() {
-  $SCRIPTS_FOLDER/install.sh --enable-debug-log "$@"
+  $SCRIPTS_FOLDER/install.sh --enable-debug-log
 }
 
 display_release_checklist
