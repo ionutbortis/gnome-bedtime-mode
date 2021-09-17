@@ -6,26 +6,22 @@
 # --new-locale=ro => $new_locale=ro
 # --enable-debug-log => $enable_debug_log
 # 
-convert_script_args_to_vars() {
-  while [ $# -gt 0 ]; do
-    if [[ $1 == *"--"* ]]; then
-      argument_split=(${1/=/ })
+while [ $# -gt 0 ]; do
+  if [[ $1 == *"--"* ]]; then
+    argument_split=(${1/=/ })
 
-      var_name=$( echo ${argument_split[0]/--/} | tr '-' '_' ) 
-      var_value=${argument_split[1]}
+    var_name=$( echo ${argument_split[0]/--/} | tr '-' '_' ) 
+    var_value=${argument_split[1]}
 
-      declare $var_name=$var_value
-    fi
-    shift
-  done
-}
+    declare $var_name=$var_value
+  fi
+  shift
+done
 
 get_extension_metadata_json_value() {
   echo $( cat $EXTENSION_METADATA_JSON_FILE | \
           python3 -c "import sys, json; print(json.load(sys.stdin)['$1'])" )
 }
-
-convert_script_args_to_vars
 
 MY_EMAIL_ADDRESS=ionutbortis@gmail.com
 

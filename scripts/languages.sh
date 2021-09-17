@@ -18,7 +18,7 @@ cd "$PROJECT_ROOT"
 
 check_gettext_package_availability() {
   if ! command -v xgettext &> /dev/null; then
-    echo "ERROR: Could not find xgettext. Please check if the 'gettext' package is installed!"
+    echo "ERROR: Could not find xgettext! Please ensure the 'gettext' package is installed."
     exit 1
   fi
 }
