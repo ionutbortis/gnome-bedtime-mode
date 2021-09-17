@@ -9,12 +9,12 @@ display_release_checklist() {
   echo
   echo "$EXTENSION_NAME extension release checklist 👀 :"
   echo
-  echo " ✔ Manual test the extension on Gnome versions $SUPPORTED_GNOME_VERSIONS 👈"
-  echo " ✔ Check texts/metadata-json-description.txt file for possible text updates."
-  echo " ✔ Update README.md to include relevant new info, if needed."
+  echo " ✔ Manual test the extension on Gnome versions $SUPPORTED_GNOME_VERSIONS. 👈"
+  echo " ✔ Check '${EXTENSION_DESCRIPTION_FILE#${PROJECT_ROOT}/}' file for possible text updates."
+  echo " ✔ Update 'README.md' to include relevant new info, if needed."
   echo " ✔ Check if new translations are needed."
   echo
-  echo "📌 After script run check the changes to metadata.json and README.md files 📌"
+  echo "📌 After script run check the changes to 'metadata.json' and 'README.md' files 📌"
   echo
 }
 
@@ -58,7 +58,7 @@ update_extension_metadata_description() {
   
   local description_temp_file=$(mktemp)
 
-  cp "$PROJECT_ROOT"/texts/metadata-json-description.txt "$description_temp_file"
+  cp "$EXTENSION_DESCRIPTION_FILE" "$description_temp_file"
 
   sed -i '/^#/d' "$description_temp_file"
 
