@@ -1,0 +1,175 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-bedtime-mode package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-bedtime-mode 6\n"
+"Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
+"POT-Creation-Date: 2021-09-15 21:21+0300\n"
+"PO-Revision-Date: 2021-09-19 14:18+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl\n"
+
+#: src/modules/Decorator.js:131
+msgid "Turn Off Bedtime Mode"
+msgstr "Nachtkastmodus uitschakelen"
+
+#: src/modules/Decorator.js:131
+msgid "Turn On Bedtime Mode"
+msgstr "Nachtkastmodus inschakelen"
+
+#: src/modules/Presets.js:9
+msgid "Grayscale"
+msgstr "Zwart-wit"
+
+#: src/modules/Presets.js:15
+msgid "Amber"
+msgstr "Amber"
+
+#: src/modules/Presets.js:21
+msgid "Green"
+msgstr "Groen"
+
+#: src/modules/Presets.js:27
+msgid "Cyan"
+msgstr "Groenblauw"
+
+#: src/modules/Presets.js:33
+msgid "Sepia"
+msgstr "Sepia"
+
+#: src/ui/gtk3/preferences.ui:74 src/ui/gtk4/preferences.ui:59
+msgid "Automatic Schedule"
+msgstr "Automatisch schema"
+
+#: src/ui/gtk3/preferences.ui:140 src/ui/gtk4/preferences.ui:96
+msgid "Start Time"
+msgstr "Starttijd"
+
+#: src/ui/gtk3/preferences.ui:153 src/ui/gtk4/preferences.ui:103
+msgid ""
+"<small>Specifies the time when Bedtime Mode will be automatically turned on."
+"</small>"
+msgstr ""
+"<small>Geef aan hoe laat de nachtkastmodus moet worden ingeschakeld.</small>"
+
+#: src/ui/gtk3/preferences.ui:279 src/ui/gtk4/preferences.ui:180
+msgid "End Time"
+msgstr "Eindtijd"
+
+#: src/ui/gtk3/preferences.ui:292 src/ui/gtk4/preferences.ui:187
+msgid ""
+"<small>Specifies the time when Bedtime Mode will be automatically turned off."
+"</small>"
+msgstr ""
+"<small>Geef aan hoe laat de nachtkastmodus moet worden uitgeschakeld.</small>"
+
+#: src/ui/gtk3/preferences.ui:410 src/ui/gtk4/preferences.ui:254
+msgid "On-Demand"
+msgstr "Op verzoek"
+
+#: src/ui/gtk3/preferences.ui:456 src/ui/gtk4/preferences.ui:282
+msgid "Show Button"
+msgstr "Knop tonen"
+
+#: src/ui/gtk3/preferences.ui:469 src/ui/gtk4/preferences.ui:289
+msgid ""
+"<small>Choose to always show or hide the button or display it only when the "
+"schedule is active.</small>"
+msgstr ""
+"<small>Geef aan of de knop altijd moet worden getoond of worden verborgen, "
+"of alleen als er een schema actief is.</small>"
+
+#: src/ui/gtk3/preferences.ui:500 src/ui/gtk4/preferences.ui:309
+msgid "Always"
+msgstr "Altijd"
+
+#: src/ui/gtk3/preferences.ui:501 src/ui/gtk4/preferences.ui:310
+msgid "On Active Schedule"
+msgstr "Tijdens schema"
+
+#: src/ui/gtk3/preferences.ui:502 src/ui/gtk4/preferences.ui:311
+msgid "Never"
+msgstr "Nooit"
+
+#: src/ui/gtk3/preferences.ui:554 src/ui/gtk4/preferences.ui:346
+msgid "Button Location"
+msgstr "Knoplocatie"
+
+#: src/ui/gtk3/preferences.ui:567 src/ui/gtk4/preferences.ui:353
+msgid ""
+"<small>Add a button to Top Bar or System Menu. The button can be used to "
+"manually toggle the Bedtime Mode.</small>"
+msgstr ""
+"<small>Toon een knop op de bovenbalk of in het systeemmenu. Met deze knop "
+"kan de nachtkastmodus worden in- of uitgeschakeld.</small>"
+
+#: src/ui/gtk3/preferences.ui:598 src/ui/gtk4/preferences.ui:373
+msgid "Top Bar"
+msgstr "Bovenbalk"
+
+#: src/ui/gtk3/preferences.ui:599 src/ui/gtk4/preferences.ui:374
+msgid "System Menu"
+msgstr "Systeemmenu"
+
+#: src/ui/gtk3/preferences.ui:651 src/ui/gtk4/preferences.ui:409
+msgid "Top Bar On/Off Indicator"
+msgstr "Aan-/Uitindicator op bovenbalk"
+
+#: src/ui/gtk3/preferences.ui:664 src/ui/gtk4/preferences.ui:416
+msgid ""
+"<small>Change the button appearance in Top Bar when Bedtime Mode is active/"
+"inactive.</small>"
+msgstr ""
+"<small>Bepaal hoe de knop eruitziet als de knop actief of inactief is.</"
+"small>"
+
+#: src/ui/gtk3/preferences.ui:742 src/ui/gtk4/preferences.ui:466
+msgid "Top Bar Manual Position"
+msgstr "Eigen locatie op bovenbalk"
+
+#: src/ui/gtk3/preferences.ui:755 src/ui/gtk4/preferences.ui:473
+msgid ""
+"<small>Manually change the button position in Top Bar. Zero is the start of "
+"the icons row.</small>"
+msgstr ""
+"<small>Kies een eigen locatie op de bovenbalk. 0 = begin van de "
+"pictogrammenrij.</small>"
+
+#: src/ui/gtk3/preferences.ui:856 src/ui/gtk4/preferences.ui:531
+msgid "Color Preset and Apply Factor"
+msgstr "Kleurinstelling en gebruiksfactor"
+
+#: src/ui/gtk3/preferences.ui:903 src/ui/gtk4/preferences.ui:560
+msgid "Color Preset"
+msgstr "Kleurinstelling"
+
+#: src/ui/gtk3/preferences.ui:916 src/ui/gtk4/preferences.ui:567
+msgid ""
+"<small>Select the color preset to be used when Bedtime Mode is active.</"
+"small>"
+msgstr ""
+"<small>Kies de te gebruiken kleuren als de nachtkastmodus is ingeschakeld.</"
+"small>"
+
+#: src/ui/gtk3/preferences.ui:996 src/ui/gtk4/preferences.ui:619
+msgid "Color Apply Factor"
+msgstr "Gebruiksfactor"
+
+#: src/ui/gtk3/preferences.ui:1009 src/ui/gtk4/preferences.ui:626
+msgid ""
+"<small>The percentage of how much of the selected color preset is to be "
+"applied.</small>"
+msgstr "<small>Hoeveel (in procenten) kleur er moet worden gebruikt.</small>"
+
+#: src/ui/gtk3/preferences.ui:1102 src/ui/gtk4/preferences.ui:682
+msgid "Start Bedtime Mode Now"
+msgstr "Nachtkastmodus inschakelen"
