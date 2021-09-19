@@ -124,6 +124,7 @@ That's it! You are now an official contributor to this extension, YAAY! :partyin
 # Translators hall of fame :trophy:
 
 - Spanish: [Óscar Fernández Díaz](https://github.com/oscfdezdz) :medal_sports:
+- Dutch: [Heimen Stoffels](https://github.com/Vistaus) :medal_sports:
 - Romanian & English: [Ionuț Florin Bortiș](https://github.com/ionutbortis) (myself) :medal_sports:
 
 # Credits
