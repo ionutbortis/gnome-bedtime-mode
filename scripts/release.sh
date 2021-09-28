@@ -36,9 +36,9 @@ replace_line_in_file() {
 }
 
 compute_new_release_version() {
-  local latest_git_tag=`git tag | tail -1`
+  local latest_git_tag=$(git tag | tail -1)
 
-  CURRENT_RELEASE_VERSION=`echo "$latest_git_tag" | sed -r 's/v([0-9]*).*/\1/g'`
+  CURRENT_RELEASE_VERSION=$(echo "$latest_git_tag" | sed -r 's/v([0-9]*).*/\1/g')
   
   NEW_RELEASE_VERSION="$((CURRENT_RELEASE_VERSION+1))"
 
@@ -62,7 +62,7 @@ update_extension_metadata_description() {
 
   sed -i '/^#/d' "$description_temp_file"
 
-  local description_text=`sed 's/$/\\\\n/' "$description_temp_file" | tr -d '\n'`
+  local description_text=$(sed 's/$/\\\\n/' "$description_temp_file" | tr -d '\n')
   local description_json_line="  \"description\": \"${description_text}\","
 
   replace_line_in_file "$EXTENSION_METADATA_JSON_FILE" 2 "$description_json_line" 
