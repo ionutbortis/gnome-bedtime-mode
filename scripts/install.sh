@@ -6,11 +6,11 @@
 
 SCRIPTS_FOLDER="$( dirname "$(realpath -s "$0")" )"
 
-source $SCRIPTS_FOLDER/_vars.sh "$@"
+source "$SCRIPTS_FOLDER/_vars.sh" "$@"
 
 build_extension() {
   echo "Calling the build script..."
-  $SCRIPTS_FOLDER/build.sh "$@"
+  "$SCRIPTS_FOLDER/build.sh" "$@"
 
   local build_exit_status=$?
   if [ $build_exit_status -ne 0 ]; then exit $build_exit_status; fi
@@ -18,7 +18,7 @@ build_extension() {
 
 install_extension() {
   echo "Installing $EXTENSION_NAME extension to local extensions folder..."
-  gnome-extensions install --force $PACKAGE_FILE
+  gnome-extensions install --force "$PACKAGE_FILE"
 
   if [ -n "${enable_debug_log+set}" ]; then
     echo "Enabling extension debug logs..."
@@ -28,14 +28,14 @@ install_extension() {
 
 reload_extension() {
   echo "Disabling $EXTENSION_NAME extension..."
-  gnome-extensions disable $EXTENSION_UUID
+  gnome-extensions disable "$EXTENSION_UUID"
 
   echo "Restarting gnome shell..."
   pkill -3 gnome-shell
   sleep 5s
 
   echo "Enabling $EXTENSION_NAME extension..."
-  gnome-extensions enable $EXTENSION_UUID
+  gnome-extensions enable "$EXTENSION_UUID"
 }
 
 check_extension_status() {
