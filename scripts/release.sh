@@ -3,7 +3,7 @@ set -e
 
 SCRIPTS_FOLDER="$( dirname "$(realpath -s "$0")" )"
 
-source $SCRIPTS_FOLDER/_vars.sh "$@"
+source "$SCRIPTS_FOLDER/_vars.sh" "$@"
 
 display_release_checklist() {
   echo
@@ -73,18 +73,18 @@ update_extension_metadata_description() {
 update_readme_with_new_release_version() {
   echo "Updating README.md with the new release version..."
 
-  local readme_file="$PROJECT_ROOT"/README.md
+  local readme_file="$PROJECT_ROOT/README.md"
   sed -i 's/v'"$CURRENT_RELEASE_VERSION"'\.0/v'"$NEW_RELEASE_VERSION"'\.0/g' "$readme_file"
   sed -i 's/'"$CURRENT_RELEASE_VERSION"'\.0\.zip/'"$NEW_RELEASE_VERSION"'\.0\.zip/g' "$readme_file"
 }
 
 check_translations() {
   echo "Checking translations..."
-  $SCRIPTS_FOLDER/languages.sh
+  "$SCRIPTS_FOLDER/languages.sh"
 }
 
 build_and_install_extension() {
-  $SCRIPTS_FOLDER/install.sh --enable-debug-log
+  "$SCRIPTS_FOLDER/install.sh" --enable-debug-log
 }
 
 display_release_checklist

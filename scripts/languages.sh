@@ -9,10 +9,10 @@
 
 SCRIPTS_FOLDER="$( dirname "$(realpath -s "$0")" )"
 
-source $SCRIPTS_FOLDER/_vars.sh "$@"
+source "$SCRIPTS_FOLDER/_vars.sh" "$@"
 
-PO_FOLDER="$PROJECT_ROOT"/po
-EXTENSION_POT_FILE="$PO_FOLDER"/"$EXTENSION_DOMAIN".pot
+PO_FOLDER="$PROJECT_ROOT/po"
+EXTENSION_POT_FILE="$PO_FOLDER/$EXTENSION_DOMAIN.pot"
 
 cd "$PROJECT_ROOT"
 
@@ -31,7 +31,7 @@ create_new_translation_file() {
     exit 1
   fi
 
-  echo "Creating new translation file for locale '"$new_locale"'..."
+  echo "Creating new translation file for locale '$new_locale'..."
   msginit \
       --input="$EXTENSION_POT_FILE" \
       --locale="$new_locale" \
