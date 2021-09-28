@@ -19,7 +19,7 @@ display_release_checklist() {
 }
 
 prompt_user() {
-  read -n 1 -p "Ready for release? (y/n) " user_input
+  read -rn 1 -p "Ready for release? (y/n) " user_input
   echo
   if [ -n "${user_input+set}" ] && [ "$user_input" != "y" ]; then exit 1; fi
 }
