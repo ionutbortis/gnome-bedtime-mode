@@ -19,8 +19,7 @@ while [ $# -gt 0 ]; do
 done
 
 get_extension_metadata_json_value() {
-  echo $( cat $EXTENSION_METADATA_JSON_FILE | \
-          python3 -c "import sys, json; print(json.load(sys.stdin)['$1'])" )
+  python3 -c "import sys, json; print(json.load(sys.stdin)['$1'])" < "$EXTENSION_METADATA_JSON_FILE"
 }
 
 MY_EMAIL_ADDRESS=ionutbortis@gmail.com
