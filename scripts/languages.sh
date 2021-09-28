@@ -14,7 +14,7 @@ source "$SCRIPTS_FOLDER/_vars.sh" "$@"
 PO_FOLDER="$PROJECT_ROOT/po"
 EXTENSION_POT_FILE="$PO_FOLDER/$EXTENSION_DOMAIN.pot"
 
-cd "$PROJECT_ROOT"
+cd "$PROJECT_ROOT" || { echo "ERROR: Failed to cd to project root!"; exit 1; }
 
 check_gettext_package_availability() {
   if ! command -v xgettext &> /dev/null; then
