@@ -62,7 +62,7 @@ update_extension_metadata_description() {
 
   sed -i '/^#/d' "$description_temp_file"
 
-  local description_text=$(sed 's/$/\\\\n/' "$description_temp_file" | tr -d '\n')
+  local description_text=$(sed 's/$/\\n/' "$description_temp_file" | tr -d '\n')
   local description_json_line="  \"description\": \"${description_text}\","
 
   replace_line_in_file "$EXTENSION_METADATA_JSON_FILE" 2 "$description_json_line" 

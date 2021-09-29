@@ -8,12 +8,12 @@
 # 
 while [ $# -gt 0 ]; do
   if [[ $1 == *"--"* ]]; then
-    argument_split=("${1/=/ }")
+    argument_split=(${1/=/ })
 
     var_name=$( echo "${argument_split[0]/--/}" | tr '-' '_' ) 
     var_value=${argument_split[1]}
 
-    declare "$var_name"="$var_value"
+    declare $var_name=$var_value
   fi
   shift
 done
@@ -41,6 +41,6 @@ SUPPORTED_GNOME_VERSIONS=${EXTENSION_SHELL_VERSIONS:1:-1}
 PACKAGE_NAME_PREFIX=${EXTENSION_URL##*/}
 PACKAGE_FILE="$BUILD_FOLDER"/"$PACKAGE_NAME_PREFIX"_"$EXTENSION_VERSION".0.zip
 
-EXTENSION_INSTALL_FOLDER=~"/.local/share/gnome-shell/extensions/$EXTENSION_UUID"
+EXTENSION_INSTALL_FOLDER=~/.local/share/gnome-shell/extensions/"$EXTENSION_UUID"
 
 EXTENSION_DESCRIPTION_FILE="$PROJECT_ROOT/texts/extension-description.txt"

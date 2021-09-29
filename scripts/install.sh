@@ -22,7 +22,7 @@ install_extension() {
 
   if [ -n "${enable_debug_log+set}" ]; then
     echo "Enabling extension debug logs..."
-    echo "debug = true;" >> "$EXTENSION_INSTALL_FOLDER"/config.js
+    echo "debug = true;" >> "$EXTENSION_INSTALL_FOLDER/config.js"
   fi
 }
 
