@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: gnome-bedtime-mode 6\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
 "POT-Creation-Date: 2021-09-15 21:21+0300\n"
-"PO-Revision-Date: 2021-10-03 00:12+0200\n"
+"PO-Revision-Date: 2021-10-04 00:12+0200\n"
 "Last-Translator: Philipp Kiemle <philipp.kiemle@gmail.com>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "Graustufen"
 
 #: src/modules/Presets.js:15
 msgid "Amber"
-msgstr "orange"
+msgstr "Orange"
 
 #: src/modules/Presets.js:21
 msgid "Green"
@@ -149,7 +149,7 @@ msgstr ""
 
 #: src/ui/gtk3/preferences.ui:856 src/ui/gtk4/preferences.ui:531
 msgid "Color Preset and Apply Factor"
-msgstr ""
+msgstr "Farb-Voreinstellung und Intensität"
 
 #: src/ui/gtk3/preferences.ui:903 src/ui/gtk4/preferences.ui:560
 msgid "Color Preset"
@@ -165,7 +165,7 @@ msgstr ""
 
 #: src/ui/gtk3/preferences.ui:996 src/ui/gtk4/preferences.ui:619
 msgid "Color Apply Factor"
-msgstr ""
+msgstr "Farbintensität"
 
 #: src/ui/gtk3/preferences.ui:1009 src/ui/gtk4/preferences.ui:626
 msgid ""
