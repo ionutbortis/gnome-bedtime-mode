@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-bedtime-mode 6\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
-"POT-Creation-Date: 2021-10-25 15:33+0300\n"
+"POT-Creation-Date: 2021-10-25 17:11+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -158,7 +158,7 @@ msgid ""
 msgstr ""
 
 #: src/ui/gtk3/preferences.ui:1094 src/ui/gtk4/preferences.ui:683
-msgid "Intensity Change on Scrolling"
+msgid "Intensity Change by Scrolling"
 msgstr ""
 
 #: src/ui/gtk3/preferences.ui:1107 src/ui/gtk4/preferences.ui:690

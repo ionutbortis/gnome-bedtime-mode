@@ -1091,7 +1091,7 @@
                                             <property name="visible">True</property>
                                             <property name="can-focus">False</property>
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">Intensity Change on Scrolling</property>
+                                            <property name="label" translatable="yes">Intensity Change by Scrolling</property>
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>

@@ -680,7 +680,7 @@
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">Intensity Change on Scrolling</property>
+                                            <property name="label" translatable="yes">Intensity Change by Scrolling</property>
                                           </object>
                                         </child>
                                         <child>

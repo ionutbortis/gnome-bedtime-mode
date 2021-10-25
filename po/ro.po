@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-bedtime-mode 4\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
-"POT-Creation-Date: 2021-10-25 15:16+0300\n"
+"POT-Creation-Date: 2021-10-25 17:11+0300\n"
 "PO-Revision-Date: 2021-10-25 15:29+0300\n"
 "Last-Translator: Ionut Bortis <ionutbortis@gmail.com>\n"
 "Language-Team: Romanian\n"
@@ -174,7 +174,7 @@ msgstr ""
 "<small>Procentajul cu care să se aplice culoarea prestabilită aleasă.</small>"
 
 #: src/ui/gtk3/preferences.ui:1094 src/ui/gtk4/preferences.ui:683
-msgid "Intensity Change on Scrolling"
+msgid "Intensity Change by Scrolling"
 msgstr "Schimbarea intensității prin derulare"
 
 #: src/ui/gtk3/preferences.ui:1107 src/ui/gtk4/preferences.ui:690
