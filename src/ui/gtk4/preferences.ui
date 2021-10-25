@@ -528,7 +528,7 @@
                       <object class="GtkLabel">
                         <property name="halign">start</property>
                         <property name="margin-bottom">5</property>
-                        <property name="label" translatable="yes">Color Preset and Apply Factor</property>
+                        <property name="label" translatable="yes">Color Preset and Intensity</property>
                         <attributes>
                           <attribute name="weight" value="bold"></attribute>
                         </attributes>
@@ -616,7 +616,7 @@
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">Color Apply Factor</property>
+                                            <property name="label" translatable="yes">Color Intensity</property>
                                           </object>
                                         </child>
                                         <child>
@@ -646,6 +646,64 @@
                                         <property name="adjustment">color_tone_factor_adjustment</property>
                                         <property name="numeric">1</property>
                                         <property name="value">10</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkListBoxRow">
+                                <property name="activatable">0</property>
+                                <property name="selectable">0</property>
+                                <property name="child">
+                                  <object class="GtkSeparator">
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkListBoxRow" id="ondemand_button_scroll_row">
+                                <property name="activatable">0</property>
+                                <property name="selectable">0</property>
+                                <property name="child">
+                                  <object class="GtkBox">
+                                    <property name="valign">start</property>
+                                    <property name="margin-start">16</property>
+                                    <property name="margin-end">16</property>
+                                    <property name="margin-top">16</property>
+                                    <property name="margin-bottom">16</property>
+                                    <property name="spacing">30</property>
+                                    <child>
+                                      <object class="GtkBox">
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="halign">start</property>
+                                            <property name="label" translatable="yes">Intensity Change on Scrolling</property>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="valign">center</property>
+                                            <property name="halign">start</property>
+                                            <property name="label" translatable="yes">&lt;small&gt;Enable Color Intensity change by scrolling up or down over the button in Top Bar when Bedtime Mode is active.&lt;/small&gt;</property>
+                                            <property name="use-markup">1</property>
+                                            <property name="wrap">1</property>
+                                            <property name="max-width-chars">50</property>
+                                            <property name="xalign">0</property>
+                                            <style>
+                                              <class name="dim-label"/>
+                                            </style>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkSwitch" id="ondemand_button_scroll_enabled_switch">
+                                        <property name="hexpand">1</property>
+                                        <property name="halign">end</property>
+                                        <property name="valign">center</property>
                                       </object>
                                     </child>
                                   </object>
