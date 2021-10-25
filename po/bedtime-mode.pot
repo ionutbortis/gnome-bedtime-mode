@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-bedtime-mode 6\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
-"POT-Creation-Date: 2021-09-29 23:34+0200\n"
+"POT-Creation-Date: 2021-10-25 15:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/Decorator.js:131
+#: src/modules/Decorator.js:156
 msgid "Turn Off Bedtime Mode"
 msgstr ""
 
-#: src/modules/Decorator.js:131
+#: src/modules/Decorator.js:156
 msgid "Turn On Bedtime Mode"
 msgstr ""
 
@@ -134,7 +134,7 @@ msgid ""
 msgstr ""
 
 #: src/ui/gtk3/preferences.ui:856 src/ui/gtk4/preferences.ui:531
-msgid "Color Preset and Apply Factor"
+msgid "Color Preset and Intensity"
 msgstr ""
 
 #: src/ui/gtk3/preferences.ui:903 src/ui/gtk4/preferences.ui:560
@@ -148,7 +148,7 @@ msgid ""
 msgstr ""
 
 #: src/ui/gtk3/preferences.ui:996 src/ui/gtk4/preferences.ui:619
-msgid "Color Apply Factor"
+msgid "Color Intensity"
 msgstr ""
 
 #: src/ui/gtk3/preferences.ui:1009 src/ui/gtk4/preferences.ui:626
@@ -157,6 +157,16 @@ msgid ""
 "applied.</small>"
 msgstr ""
 
-#: src/ui/gtk3/preferences.ui:1102 src/ui/gtk4/preferences.ui:682
+#: src/ui/gtk3/preferences.ui:1094 src/ui/gtk4/preferences.ui:683
+msgid "Intensity Change on Scrolling"
+msgstr ""
+
+#: src/ui/gtk3/preferences.ui:1107 src/ui/gtk4/preferences.ui:690
+msgid ""
+"<small>Enable Color Intensity change by scrolling up or down over the button "
+"in Top Bar when Bedtime Mode is active.</small>"
+msgstr ""
+
+#: src/ui/gtk3/preferences.ui:1194 src/ui/gtk4/preferences.ui:740
 msgid "Start Bedtime Mode Now"
 msgstr ""

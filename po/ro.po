@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-bedtime-mode 4\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
-"POT-Creation-Date: 2021-09-15 21:00+0300\n"
-"PO-Revision-Date: 2021-09-12 18:25+0300\n"
+"POT-Creation-Date: 2021-10-25 15:16+0300\n"
+"PO-Revision-Date: 2021-10-25 15:29+0300\n"
 "Last-Translator: Ionut Bortis <ionutbortis@gmail.com>\n"
 "Language-Team: Romanian\n"
 "Language: ro\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Gtranslator 3.36.0\n"
 
-#: src/modules/Decorator.js:131
+#: src/modules/Decorator.js:156
 msgid "Turn Off Bedtime Mode"
 msgstr "Oprește modul Ora de culcare"
 
-#: src/modules/Decorator.js:131
+#: src/modules/Decorator.js:156
 msgid "Turn On Bedtime Mode"
 msgstr "Pornește modul Ora de culcare"
 
@@ -147,8 +147,8 @@ msgstr ""
 "începutul rândului de pictograme.</small>"
 
 #: src/ui/gtk3/preferences.ui:856 src/ui/gtk4/preferences.ui:531
-msgid "Color Preset and Apply Factor"
-msgstr "Culoare prestabilită și factor de aplicare"
+msgid "Color Preset and Intensity"
+msgstr "Culoare prestabilită și intensitate"
 
 #: src/ui/gtk3/preferences.ui:903 src/ui/gtk4/preferences.ui:560
 msgid "Color Preset"
@@ -163,8 +163,8 @@ msgstr ""
 "culcare este activ.</small>"
 
 #: src/ui/gtk3/preferences.ui:996 src/ui/gtk4/preferences.ui:619
-msgid "Color Apply Factor"
-msgstr "Factorul de aplicare a culorii"
+msgid "Color Intensity"
+msgstr "Intensitatea culorii"
 
 #: src/ui/gtk3/preferences.ui:1009 src/ui/gtk4/preferences.ui:626
 msgid ""
@@ -173,6 +173,19 @@ msgid ""
 msgstr ""
 "<small>Procentajul cu care să se aplice culoarea prestabilită aleasă.</small>"
 
-#: src/ui/gtk3/preferences.ui:1102 src/ui/gtk4/preferences.ui:682
+#: src/ui/gtk3/preferences.ui:1094 src/ui/gtk4/preferences.ui:683
+msgid "Intensity Change on Scrolling"
+msgstr "Schimbarea intensității prin derulare"
+
+#: src/ui/gtk3/preferences.ui:1107 src/ui/gtk4/preferences.ui:690
+msgid ""
+"<small>Enable Color Intensity change by scrolling up or down over the button "
+"in Top Bar when Bedtime Mode is active.</small>"
+msgstr ""
+"<small>Permite schimbarea intensității culorii prin derularea în sus sau în "
+"jos, deasupra butonului din bara de sus, când modul Ora de culcare este "
+"activ.</small>"
+
+#: src/ui/gtk3/preferences.ui:1194 src/ui/gtk4/preferences.ui:740
 msgid "Start Bedtime Mode Now"
 msgstr "Pornește acum modul Ora de culcare"

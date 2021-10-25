@@ -7,22 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-bedtime-mode 6\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
-"POT-Creation-Date: 2021-09-15 21:21+0300\n"
+"POT-Creation-Date: 2021-10-25 15:16+0300\n"
 "PO-Revision-Date: 2021-09-19 14:18+0200\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.0\n"
-"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: nl\n"
 
-#: src/modules/Decorator.js:131
+#: src/modules/Decorator.js:156
 msgid "Turn Off Bedtime Mode"
 msgstr "Nachtkastmodus uitschakelen"
 
-#: src/modules/Decorator.js:131
+#: src/modules/Decorator.js:156
 msgid "Turn On Bedtime Mode"
 msgstr "Nachtkastmodus inschakelen"
 
@@ -145,7 +145,8 @@ msgstr ""
 "pictogrammenrij.</small>"
 
 #: src/ui/gtk3/preferences.ui:856 src/ui/gtk4/preferences.ui:531
-msgid "Color Preset and Apply Factor"
+#, fuzzy
+msgid "Color Preset and Intensity"
 msgstr "Kleurinstelling en gebruiksfactor"
 
 #: src/ui/gtk3/preferences.ui:903 src/ui/gtk4/preferences.ui:560
@@ -161,8 +162,9 @@ msgstr ""
 "small>"
 
 #: src/ui/gtk3/preferences.ui:996 src/ui/gtk4/preferences.ui:619
-msgid "Color Apply Factor"
-msgstr "Gebruiksfactor"
+#, fuzzy
+msgid "Color Intensity"
+msgstr "Kleurinstelling"
 
 #: src/ui/gtk3/preferences.ui:1009 src/ui/gtk4/preferences.ui:626
 msgid ""
@@ -170,6 +172,22 @@ msgid ""
 "applied.</small>"
 msgstr "<small>Hoeveel (in procenten) kleur er moet worden gebruikt.</small>"
 
-#: src/ui/gtk3/preferences.ui:1102 src/ui/gtk4/preferences.ui:682
+#: src/ui/gtk3/preferences.ui:1094 src/ui/gtk4/preferences.ui:683
+msgid "Intensity Change on Scrolling"
+msgstr ""
+
+#: src/ui/gtk3/preferences.ui:1107 src/ui/gtk4/preferences.ui:690
+#, fuzzy
+msgid ""
+"<small>Enable Color Intensity change by scrolling up or down over the button "
+"in Top Bar when Bedtime Mode is active.</small>"
+msgstr ""
+"<small>Bepaal hoe de knop eruitziet als de knop actief of inactief is.</"
+"small>"
+
+#: src/ui/gtk3/preferences.ui:1194 src/ui/gtk4/preferences.ui:740
 msgid "Start Bedtime Mode Now"
 msgstr "Nachtkastmodus inschakelen"
+
+#~ msgid "Color Apply Factor"
+#~ msgstr "Gebruiksfactor"

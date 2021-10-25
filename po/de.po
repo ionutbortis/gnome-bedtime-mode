@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-bedtime-mode 6\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
-"POT-Creation-Date: 2021-09-15 21:21+0300\n"
+"POT-Creation-Date: 2021-10-25 15:16+0300\n"
 "PO-Revision-Date: 2021-10-04 00:12+0200\n"
 "Last-Translator: Philipp Kiemle <philipp.kiemle@gmail.com>\n"
 "Language: de\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 20.12.3\n"
 
-#: src/modules/Decorator.js:131
+#: src/modules/Decorator.js:156
 msgid "Turn Off Bedtime Mode"
 msgstr "Schlafenszeitmodus ausschalten"
 
-#: src/modules/Decorator.js:131
+#: src/modules/Decorator.js:156
 msgid "Turn On Bedtime Mode"
 msgstr "Schlafenszeitmodus einschalten"
 
@@ -59,8 +59,8 @@ msgid ""
 "<small>Specifies the time when Bedtime Mode will be automatically turned on."
 "</small>"
 msgstr ""
-"<small>Die Zeit, wann der Schlafenszeitmodus automatisch eingeschaltet wird.<"
-"/small>"
+"<small>Die Zeit, wann der Schlafenszeitmodus automatisch eingeschaltet wird."
+"</small>"
 
 #: src/ui/gtk3/preferences.ui:279 src/ui/gtk4/preferences.ui:180
 msgid "End Time"
@@ -71,8 +71,8 @@ msgid ""
 "<small>Specifies the time when Bedtime Mode will be automatically turned off."
 "</small>"
 msgstr ""
-"<small>Die Zeit, wann der Schlafenszeitmodus automatisch ausgeschaltet wird.<"
-"/small>"
+"<small>Die Zeit, wann der Schlafenszeitmodus automatisch ausgeschaltet wird."
+"</small>"
 
 #: src/ui/gtk3/preferences.ui:410 src/ui/gtk4/preferences.ui:254
 msgid "On-Demand"
@@ -87,8 +87,8 @@ msgid ""
 "<small>Choose to always show or hide the button or display it only when the "
 "schedule is active.</small>"
 msgstr ""
-"<small>Wählen Sie, ob der Knopf immer angezeigt / versteckt werden soll, oder"
-" ob er automatisch bei aktiviertem Zeitplan erscheinen soll.</small>"
+"<small>Wählen Sie, ob der Knopf immer angezeigt / versteckt werden soll, "
+"oder ob er automatisch bei aktiviertem Zeitplan erscheinen soll.</small>"
 
 #: src/ui/gtk3/preferences.ui:500 src/ui/gtk4/preferences.ui:309
 msgid "Always"
@@ -111,9 +111,9 @@ msgid ""
 "<small>Add a button to Top Bar or System Menu. The button can be used to "
 "manually toggle the Bedtime Mode.</small>"
 msgstr ""
-"<small>Einen Knopf zur oberen Leiste oder dem Systemmenü hinzufügen. Dieser"
-" Knopf kann zum manuellen Umschalten des Schlafenszeitmodus verwendet"
-" werden.</small>"
+"<small>Einen Knopf zur oberen Leiste oder dem Systemmenü hinzufügen. Dieser "
+"Knopf kann zum manuellen Umschalten des Schlafenszeitmodus verwendet werden."
+"</small>"
 
 #: src/ui/gtk3/preferences.ui:598 src/ui/gtk4/preferences.ui:373
 msgid "Top Bar"
@@ -132,8 +132,8 @@ msgid ""
 "<small>Change the button appearance in Top Bar when Bedtime Mode is active/"
 "inactive.</small>"
 msgstr ""
-"<small>Das Erscheinungsbild des Knopfes ändern, wenn der Schlafenszeitmodus"
-" aktiviert / deaktiviert ist.</small>"
+"<small>Das Erscheinungsbild des Knopfes ändern, wenn der Schlafenszeitmodus "
+"aktiviert / deaktiviert ist.</small>"
 
 #: src/ui/gtk3/preferences.ui:742 src/ui/gtk4/preferences.ui:466
 msgid "Top Bar Manual Position"
@@ -144,11 +144,12 @@ msgid ""
 "<small>Manually change the button position in Top Bar. Zero is the start of "
 "the icons row.</small>"
 msgstr ""
-"<small>Die Position des Knopfes in der oberen Leiste manuell ändern. »0« ist"
-" der Beginn der Symbol-Reihe.</small>"
+"<small>Die Position des Knopfes in der oberen Leiste manuell ändern. »0« ist "
+"der Beginn der Symbol-Reihe.</small>"
 
 #: src/ui/gtk3/preferences.ui:856 src/ui/gtk4/preferences.ui:531
-msgid "Color Preset and Apply Factor"
+#, fuzzy
+msgid "Color Preset and Intensity"
 msgstr "Farb-Voreinstellung und Intensität"
 
 #: src/ui/gtk3/preferences.ui:903 src/ui/gtk4/preferences.ui:560
@@ -160,21 +161,38 @@ msgid ""
 "<small>Select the color preset to be used when Bedtime Mode is active.</"
 "small>"
 msgstr ""
-"<small>Wählen Sie die zu nutzende Farb-Voreinstellung, wenn die Schlafenszeit"
-" aktiviert ist</small>"
+"<small>Wählen Sie die zu nutzende Farb-Voreinstellung, wenn die "
+"Schlafenszeit aktiviert ist</small>"
 
 #: src/ui/gtk3/preferences.ui:996 src/ui/gtk4/preferences.ui:619
-msgid "Color Apply Factor"
-msgstr "Farbintensität"
+#, fuzzy
+msgid "Color Intensity"
+msgstr "Farb-Voreinstellung"
 
 #: src/ui/gtk3/preferences.ui:1009 src/ui/gtk4/preferences.ui:626
 msgid ""
 "<small>The percentage of how much of the selected color preset is to be "
 "applied.</small>"
 msgstr ""
-"<small>Der Anteil, zu dem die gewählte Farb-Voreinstellung angewendet wird.<"
-"/small>"
+"<small>Der Anteil, zu dem die gewählte Farb-Voreinstellung angewendet wird.</"
+"small>"
 
-#: src/ui/gtk3/preferences.ui:1102 src/ui/gtk4/preferences.ui:682
+#: src/ui/gtk3/preferences.ui:1094 src/ui/gtk4/preferences.ui:683
+msgid "Intensity Change on Scrolling"
+msgstr ""
+
+#: src/ui/gtk3/preferences.ui:1107 src/ui/gtk4/preferences.ui:690
+#, fuzzy
+msgid ""
+"<small>Enable Color Intensity change by scrolling up or down over the button "
+"in Top Bar when Bedtime Mode is active.</small>"
+msgstr ""
+"<small>Das Erscheinungsbild des Knopfes ändern, wenn der Schlafenszeitmodus "
+"aktiviert / deaktiviert ist.</small>"
+
+#: src/ui/gtk3/preferences.ui:1194 src/ui/gtk4/preferences.ui:740
 msgid "Start Bedtime Mode Now"
 msgstr "Schlafenszeitmodus jetzt aktivieren"
+
+#~ msgid "Color Apply Factor"
+#~ msgstr "Farbintensität"
