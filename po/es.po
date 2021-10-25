@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gnome-bedtime-mode 4\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
 "POT-Creation-Date: 2021-10-25 17:11+0300\n"
-"PO-Revision-Date: 2021-09-13 18:51+0200\n"
+"PO-Revision-Date: 2021-10-25 16:29+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -147,9 +147,8 @@ msgstr ""
 "cero es el inicio de la fila de iconos.</small>"
 
 #: src/ui/gtk3/preferences.ui:856 src/ui/gtk4/preferences.ui:531
-#, fuzzy
 msgid "Color Preset and Intensity"
-msgstr "Preajuste de color y factor de aplicación"
+msgstr "Preajuste de color e intensidad"
 
 #: src/ui/gtk3/preferences.ui:903 src/ui/gtk4/preferences.ui:560
 msgid "Color Preset"
@@ -164,9 +163,8 @@ msgstr ""
 "el modo descanso.</small>"
 
 #: src/ui/gtk3/preferences.ui:996 src/ui/gtk4/preferences.ui:619
-#, fuzzy
 msgid "Color Intensity"
-msgstr "Preajuste de color"
+msgstr "Intensidad del color"
 
 #: src/ui/gtk3/preferences.ui:1009 src/ui/gtk4/preferences.ui:626
 msgid ""
@@ -178,20 +176,17 @@ msgstr ""
 
 #: src/ui/gtk3/preferences.ui:1094 src/ui/gtk4/preferences.ui:683
 msgid "Intensity Change by Scrolling"
-msgstr ""
+msgstr "Cambio de intensidad por desplazamiento"
 
 #: src/ui/gtk3/preferences.ui:1107 src/ui/gtk4/preferences.ui:690
-#, fuzzy
 msgid ""
 "<small>Enable Color Intensity change by scrolling up or down over the button "
 "in Top Bar when Bedtime Mode is active.</small>"
 msgstr ""
-"<small>Cambia la apariencia del botón en la barra superior cuando el modo "
-"descanso está activo/inactivo.</small>"
+"<small>Activa el cambio de intensidad del color desplazándose hacia arriba o "
+"hacia abajo sobre el botón de la barra superior cuando el modo de descanso "
+"está activo.</small>"
 
 #: src/ui/gtk3/preferences.ui:1194 src/ui/gtk4/preferences.ui:740
 msgid "Start Bedtime Mode Now"
 msgstr "Iniciar el modo descanso ahora"
-
-#~ msgid "Color Apply Factor"
-#~ msgstr "Factor de aplicación del color"
