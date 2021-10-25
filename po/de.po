@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: gnome-bedtime-mode 6\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
 "POT-Creation-Date: 2021-10-25 17:11+0300\n"
-"PO-Revision-Date: 2021-10-04 00:12+0200\n"
+"PO-Revision-Date: 2021-10-25 16:41+0200\n"
 "Last-Translator: Philipp Kiemle <philipp.kiemle@gmail.com>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -148,7 +148,6 @@ msgstr ""
 "der Beginn der Symbol-Reihe.</small>"
 
 #: src/ui/gtk3/preferences.ui:856 src/ui/gtk4/preferences.ui:531
-#, fuzzy
 msgid "Color Preset and Intensity"
 msgstr "Farb-Voreinstellung und Intensität"
 
@@ -165,9 +164,8 @@ msgstr ""
 "Schlafenszeit aktiviert ist</small>"
 
 #: src/ui/gtk3/preferences.ui:996 src/ui/gtk4/preferences.ui:619
-#, fuzzy
 msgid "Color Intensity"
-msgstr "Farb-Voreinstellung"
+msgstr "Farbintensität"
 
 #: src/ui/gtk3/preferences.ui:1009 src/ui/gtk4/preferences.ui:626
 msgid ""
@@ -179,16 +177,16 @@ msgstr ""
 
 #: src/ui/gtk3/preferences.ui:1094 src/ui/gtk4/preferences.ui:683
 msgid "Intensity Change by Scrolling"
-msgstr ""
+msgstr "Änderung der Farbintensität durch Scrollen"
 
 #: src/ui/gtk3/preferences.ui:1107 src/ui/gtk4/preferences.ui:690
-#, fuzzy
 msgid ""
 "<small>Enable Color Intensity change by scrolling up or down over the button "
 "in Top Bar when Bedtime Mode is active.</small>"
 msgstr ""
-"<small>Das Erscheinungsbild des Knopfes ändern, wenn der Schlafenszeitmodus "
-"aktiviert / deaktiviert ist.</small>"
+"<small>Aktivieren Sie das Ändern der Farbintensität, indem Sie mit dem"
+" Mausrad über dem Knopf in der oberen Leiste nach oben oder unten scrollen,"
+" wenn der Schlafenszeitmodus aktiviert ist.</small>"
 
 #: src/ui/gtk3/preferences.ui:1194 src/ui/gtk4/preferences.ui:740
 msgid "Start Bedtime Mode Now"
