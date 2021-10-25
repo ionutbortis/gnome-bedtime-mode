@@ -16,6 +16,7 @@ var Preferences = class {
     this._buttonLocationRow = null;
     this._buttonPositionRow = null;
     this._buttonAppearanceRow = null;
+    this._buttonScrollRow = null;
     this._buttonVisibilityCombo = null;
 
     this._signalManager = new SignalManager();
@@ -135,6 +136,12 @@ var Preferences = class {
 
     const colorToneFactorSpinner = this._builder.get_object("color_tone_factor_spin");
     this._settings.gSettings.bind("color-tone-factor", colorToneFactorSpinner, "value", Gio.SettingsBindFlags.DEFAULT);
+
+    this._buttonScrollRow = this._builder.get_object("ondemand_button_scroll_row");
+    this._buttonScrollRow.sensitive = this._settings.buttonLocation === "bar" && this._settings.buttonVisibility !== "never";
+
+    const buttonScrollEnabledSwitch = this._builder.get_object("ondemand_button_scroll_enabled_switch");
+    this._settings.gSettings.bind("ondemand-button-bar-scroll-enabled", buttonScrollEnabledSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
   }
 
   _onAutomaticScheduleChanged() {
@@ -150,18 +157,21 @@ var Preferences = class {
         this._buttonLocationRow.sensitive = true;
         this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar";
         this._buttonAppearanceRow.sensitive = this._settings.buttonLocation === "bar";
+        this._buttonScrollRow.sensitive = this._settings.buttonLocation === "bar";
         break;
 
       case "always":
         this._buttonLocationRow.sensitive = true;
         this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar";
         this._buttonAppearanceRow.sensitive = this._settings.buttonLocation === "bar";
+        this._buttonScrollRow.sensitive = this._settings.buttonLocation === "bar";
         break;
 
       case "never":
         this._buttonLocationRow.sensitive = false;
         this._buttonPositionRow.sensitive = false;
         this._buttonAppearanceRow.sensitive = false;
+        this._buttonScrollRow.sensitive = false;
         break;
     }
   }
@@ -169,5 +179,6 @@ var Preferences = class {
   _onButtonLocationChanged() {
     this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar";
     this._buttonAppearanceRow.sensitive = this._settings.buttonLocation === "bar";
+    this._buttonScrollRow.sensitive = this._settings.buttonLocation === "bar";
   }
 };

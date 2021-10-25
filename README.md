@@ -11,7 +11,8 @@ The extension has a nice Preferences (Settings) UI where you can customize it to
 - Set an automatic schedule for turning on/off the Bedtime Mode
 - Add an On Demand button to Top Bar or System Menu to manually toggle the mode
 - Control the On Demand button visibility, appearance and position in Top Bar
-- Choose another color preset and apply factor, if you prefer a different color scheme
+- Choose another color preset and intensity, if you prefer a different color scheme
+- Change color intensity by scrolling over the On Demand button in Top Bar when Bedtime Mode is active
 
 Multi language support is also available. Please check the [Translators hall of fame](#translators) section for the supported languages list and [Guide for translators](#guide-for-translators) section if you want to contribute with a translation for your native language.
 
@@ -109,7 +110,7 @@ Then, you just need to use a tool for opening the .po file and translate the tex
 
 When the new .po file is fully translated run the install script and the extension should be packaged with the new translations and installed to your Gnome shell.
 
-Please **be aware** that the script is also trying to restart the gnome shell and if you are on Wayland (Gnome 40+) all your opened windows will be closed! So first, you might want to save your work before running the install script:
+Please **be aware** that the script is also trying to restart the Gnome shell and if you are on Wayland (Gnome 40+) all your opened windows will be closed! So first, you might want to save your work before running the install script:
 
 ```
 ./scripts/install.sh
@@ -117,7 +118,7 @@ Please **be aware** that the script is also trying to restart the gnome shell an
 
 If the new translations look fine push the changes and create a pull request to the `next-release` branch on the original repository.
 
-That's it! You are now an official contributor to this extension, YAAY! :partying_face: :tada: :pray:
+That's it! You are now an official contributor to this extension, YaaY! :partying_face: :tada: :pray:
 
 <a name="translators">
 
@@ -125,6 +126,7 @@ That's it! You are now an official contributor to this extension, YAAY! :partyin
 
 - Spanish: [Óscar Fernández Díaz](https://github.com/oscfdezdz) :medal_sports:
 - Dutch: [Heimen Stoffels](https://github.com/Vistaus) :medal_sports:
+- German: [Philipp Kiemle](https://github.com/daPhipz) :medal_sports:
 - Romanian & English: [Ionuț Florin Bortiș](https://github.com/ionutbortis) (myself) :medal_sports:
 
 # Credits

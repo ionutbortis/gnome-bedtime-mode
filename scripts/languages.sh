@@ -5,7 +5,7 @@
 #
 # To create a new translation file (locale_code.po) use this:
 #
-# languages.sh --new-locale=desired_locale_code
+# ./languages.sh --new-locale=desired_locale_code
 
 SCRIPTS_FOLDER="$( dirname "$(realpath -s "$0")" )"
 

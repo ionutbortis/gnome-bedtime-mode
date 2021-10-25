@@ -2,7 +2,7 @@
 
 # In order to enable the extension debug logs, use this command:
 #
-# install.sh --enable-debug-log
+# ./install.sh --enable-debug-log
 
 SCRIPTS_FOLDER="$( dirname "$(realpath -s "$0")" )"
 

@@ -68,6 +68,12 @@
             <summary>Enable On/Off indicator for the On-demand button</summary>
             <description>Enables the change of the button appearance in Top Bar when Bedtime Mode is active/inactive.</description>
         </key>
+        <key name="ondemand-button-bar-scroll-enabled" type="b">
+            <default>false</default>
+            <summary>Enable color tone factor change by scrolling over the On-demand button</summary>
+            <description>Enables color tone factor change by scrolling over the on-demand button in Top Bar when 
+            Bedtime Mode is active. Scrolling up will increase the factor and scrolling down will decrease it.</description>
+        </key>
         <key name="color-tone-preset" type="s">
             <default>"grayscale"</default>
             <summary>Color tone preset</summary>

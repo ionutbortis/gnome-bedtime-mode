@@ -11,9 +11,10 @@ The extension has a nice Settings UI where you can customize it to your liking:
 - Set an automatic schedule for turning on/off the Bedtime Mode
 - Add an On Demand button to Top Bar or System Menu to manually toggle the mode
 - Control the On Demand button visibility, appearance and position in Top Bar
-- Choose another color preset and apply factor, if you prefer a different color scheme
+- Choose another color preset and intensity, if you prefer a different color scheme
+- Change color intensity by scrolling over the On Demand button in Top Bar when Bedtime Mode is active.
 
-Multi language support is also available, please check the GitHub page if you want to help with the translations. So far, the extension is fully translated to English, Spanish and Romanian.
+Multi language support is also available, please check the GitHub page if you want to help with the translations. So far, the extension is fully translated to Spanish, Dutch, German, Romanian and English.
 
 If you want to use a keyboard shortcut in order to toggle the Bedtime Mode then you can use this command for the shortcut:
 

@@ -1,6 +1,6 @@
 "use strict";
 
-const { Gio, GLib, St } = imports.gi;
+const { Gio, GLib, St, Clutter } = imports.gi;
 const { Button: PanelMenuButton } = imports.ui.panelMenu;
 const { PopupImageMenuItem } = imports.ui.popupMenu;
 const MainPanel = imports.ui.main.panel;
@@ -90,6 +90,7 @@ var Decorator = class {
     this._button.add_actor(icon);
     this._button.connect("button-press-event", () => this._toggleBedtimeMode());
     this._button.connect("touch-event", () => this._toggleBedtimeMode());
+    this._button.connect("scroll-event", (_actor, _event) => this._handleButtonScroll(_event));
     this._button.opacity = this._getButtonOpacity();
     this._button.update = () => {
       this._button.opacity = this._getButtonOpacity();
@@ -120,11 +121,35 @@ var Decorator = class {
 
   _getButtonOpacity() {
     const fullOpacity = 255;
-    const reducedOpacity = 0.35 * 255;
+    const reducedOpacity = 0.35 * fullOpacity;
 
     if (!extension.settings.buttonBarOnOffIndicator) return fullOpacity;
 
     return extension.settings.bedtimeModeActive ? fullOpacity : reducedOpacity;
+  }
+
+  _handleButtonScroll(event) {
+    if (!(extension.settings.buttonBarScrollEnabled && extension.settings.bedtimeModeActive)) return;
+
+    switch (event.get_scroll_direction()) {
+      case Clutter.ScrollDirection.UP:
+        this._increaseColorToneFactor();
+        break;
+
+      case Clutter.ScrollDirection.DOWN:
+        this._decreaseColorToneFactor();
+        break;
+    }
+  }
+
+  _increaseColorToneFactor() {
+    if (extension.settings.colorToneFactor <= 95) extension.settings.colorToneFactor += 5;
+    else extension.settings.colorToneFactor = 100;
+  }
+
+  _decreaseColorToneFactor() {
+    if (extension.settings.colorToneFactor >= 15) extension.settings.colorToneFactor -= 5;
+    else extension.settings.colorToneFactor = 10;
   }
 
   _getMenuItemLabel() {

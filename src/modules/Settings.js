@@ -29,6 +29,7 @@ var Settings = class {
     this._createConnection("ondemand-button-bar-manual-position", this._onButtonBarManualPositionChanged.name);
     this._createConnection("ondemand-button-bar-position-value", this._onButtonBarPositionValueChanged.name);
     this._createConnection("ondemand-button-bar-onoff-indicator", this._onButtonBarOnOffIndicatorChanged.name);
+    this._createConnection("ondemand-button-bar-scroll-enabled", this._onButtonBarScrollEnabledChanged.name);
     this._createConnection("schedule-start-hours", this._onScheduleTimesChanged.name);
     this._createConnection("schedule-start-minutes", this._onScheduleTimesChanged.name);
     this._createConnection("schedule-end-hours", this._onScheduleTimesChanged.name);
@@ -74,6 +75,10 @@ var Settings = class {
     return this.gSettings.get_boolean("ondemand-button-bar-onoff-indicator");
   }
 
+  get buttonBarScrollEnabled() {
+    return this.gSettings.get_boolean("ondemand-button-bar-scroll-enabled");
+  }
+
   get buttonLocation() {
     return this.gSettings.get_string("ondemand-button-location");
   }
@@ -104,6 +109,10 @@ var Settings = class {
 
   get colorToneFactor() {
     return this.gSettings.get_int("color-tone-factor");
+  }
+
+  set colorToneFactor(value) {
+    value !== this.colorToneFactor && this.gSettings.set_int("color-tone-factor", value);
   }
 
   _onBedtimeModeActiveChanged() {
@@ -139,6 +148,11 @@ var Settings = class {
   _onButtonBarOnOffIndicatorChanged() {
     logDebug(`Button Bar On/Off Indicator changed to '${this.buttonBarOnOffIndicator}'`);
     this.emit("button-bar-onoff-indicator-changed", this.buttonBarOnOffIndicator);
+  }
+
+  _onButtonBarScrollEnabledChanged() {
+    logDebug(`Button Bar Scroll Enabled changed to '${this.buttonBarScrollEnabled}'`);
+    this.emit("button-bar-scroll-enabled-changed", this.buttonBarScrollEnabled);
   }
 
   _onScheduleTimesChanged() {
