@@ -191,6 +191,3 @@ msgstr ""
 #: src/ui/gtk3/preferences.ui:1194 src/ui/gtk4/preferences.ui:740
 msgid "Start Bedtime Mode Now"
 msgstr "Schlafenszeitmodus jetzt aktivieren"
-
-#~ msgid "Color Apply Factor"
-#~ msgstr "Farbintensität"
