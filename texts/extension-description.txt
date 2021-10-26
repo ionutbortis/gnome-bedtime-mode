@@ -12,7 +12,7 @@ The extension has a nice Settings UI where you can customize it to your liking:
 - Add an On Demand button to Top Bar or System Menu to manually toggle the mode
 - Control the On Demand button visibility, appearance and position in Top Bar
 - Choose another color preset and intensity, if you prefer a different color scheme
-- Change color intensity by scrolling over the On Demand button in Top Bar when Bedtime Mode is active.
+- Change color intensity on the fly by scrolling over the On Demand button in Top Bar
 
 Multi language support is also available, please check the GitHub page if you want to help with the translations. So far, the extension is fully translated to Spanish, Dutch, German, Romanian and English.
 
