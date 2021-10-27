@@ -105,20 +105,20 @@ var Preferences = class {
     this._settings.gSettings.bind("ondemand-button-visibility", this._buttonVisibilityCombo, "active_id", Gio.SettingsBindFlags.DEFAULT);
 
     this._buttonLocationRow = this._builder.get_object("ondemand_button_location_row");
-    this._buttonLocationRow.sensitive = this._settings.buttonVisibility !== "never";
+    this._buttonLocationRow.sensitive = this._isButtonVisible();
 
     const buttonOnOfIndicatorSwitch = this._builder.get_object("ondemand_button_onoff_indicator_switch");
     this._settings.gSettings.bind("ondemand-button-bar-onoff-indicator", buttonOnOfIndicatorSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
 
     this._buttonAppearanceRow = this._builder.get_object("ondemand_button_appearance_row");
-    this._buttonAppearanceRow.sensitive = this._settings.buttonLocation === "bar" && this._settings.buttonVisibility !== "never";
+    this._buttonAppearanceRow.sensitive = this._isButtonVisible() && this._isButtonLocatedInTopBar();
 
     this._handleButtonPositionElements();
   }
 
   _handleButtonPositionElements() {
     this._buttonPositionRow = this._builder.get_object("ondemand_button_position_row");
-    this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar" && this._settings.buttonVisibility !== "never";
+    this._buttonPositionRow.sensitive = this._isButtonVisible() && this._isButtonLocatedInTopBar();
 
     const manualPositionSwitch = this._builder.get_object("ondemand_button_manual_position_switch");
     this._settings.gSettings.bind("ondemand-button-bar-manual-position", manualPositionSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
@@ -138,7 +138,7 @@ var Preferences = class {
     this._settings.gSettings.bind("color-tone-factor", colorToneFactorSpinner, "value", Gio.SettingsBindFlags.DEFAULT);
 
     this._buttonScrollRow = this._builder.get_object("ondemand_button_scroll_row");
-    this._buttonScrollRow.sensitive = this._settings.buttonLocation === "bar" && this._settings.buttonVisibility !== "never";
+    this._buttonScrollRow.sensitive = this._isButtonVisible() && this._isButtonLocatedInTopBar();
 
     const buttonScrollEnabledSwitch = this._builder.get_object("ondemand_button_scroll_enabled_switch");
     this._settings.gSettings.bind("ondemand-button-bar-scroll-enabled", buttonScrollEnabledSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
@@ -154,17 +154,18 @@ var Preferences = class {
     switch (this._settings.buttonVisibility) {
       case "active-schedule":
         this._settings.automaticSchedule = true;
+
         this._buttonLocationRow.sensitive = true;
-        this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar";
-        this._buttonAppearanceRow.sensitive = this._settings.buttonLocation === "bar";
-        this._buttonScrollRow.sensitive = this._settings.buttonLocation === "bar";
+        this._buttonPositionRow.sensitive = this._isButtonLocatedInTopBar();
+        this._buttonAppearanceRow.sensitive = this._isButtonLocatedInTopBar();
+        this._buttonScrollRow.sensitive = this._isButtonLocatedInTopBar();
         break;
 
       case "always":
         this._buttonLocationRow.sensitive = true;
-        this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar";
-        this._buttonAppearanceRow.sensitive = this._settings.buttonLocation === "bar";
-        this._buttonScrollRow.sensitive = this._settings.buttonLocation === "bar";
+        this._buttonPositionRow.sensitive = this._isButtonLocatedInTopBar();
+        this._buttonAppearanceRow.sensitive = this._isButtonLocatedInTopBar();
+        this._buttonScrollRow.sensitive = this._isButtonLocatedInTopBar();
         break;
 
       case "never":
@@ -177,8 +178,16 @@ var Preferences = class {
   }
 
   _onButtonLocationChanged() {
-    this._buttonPositionRow.sensitive = this._settings.buttonLocation === "bar";
-    this._buttonAppearanceRow.sensitive = this._settings.buttonLocation === "bar";
-    this._buttonScrollRow.sensitive = this._settings.buttonLocation === "bar";
+    this._buttonPositionRow.sensitive = this._isButtonLocatedInTopBar();
+    this._buttonAppearanceRow.sensitive = this._isButtonLocatedInTopBar();
+    this._buttonScrollRow.sensitive = this._isButtonLocatedInTopBar();
+  }
+
+  _isButtonVisible() {
+    return this._settings.buttonVisibility !== "never";
+  }
+
+  _isButtonLocatedInTopBar() {
+    return this._settings.buttonLocation === "bar";
   }
 };
