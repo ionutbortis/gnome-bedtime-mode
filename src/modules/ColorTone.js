@@ -38,17 +38,14 @@ var ColorTone = class {
   }
 
   _computeByFactor(colorValue) {
-    return Math.round(127 + ((colorValue - 127) * this._getFactorInExpectedFormat()) / 255);
-  }
-
-  _getFactorInExpectedFormat() {
-    return this._toneFactor * 2.55;
+    return Math.round(127 + ((colorValue - 127) * this._toneFactor) / 100);
   }
 
   _findPreset(presetId) {
     const preset = ColorTonePresets.find(({ id }) => id === presetId);
 
-    if (preset) return preset;
-    else throw new Error(`Color Tone Preset id '${presetId}' is not configured`);
+    if (!preset) throw new Error(`Color Tone Preset id '${presetId}' is not configured`);
+
+    return preset;
   }
 };

@@ -5,7 +5,6 @@ const ExtensionUtils = imports.misc.extensionUtils;
 
 const Me = ExtensionUtils.getCurrentExtension();
 
-const { SignalManager } = Me.imports.modules.SignalManager;
 const { logDebug } = Me.imports.utils;
 
 var Settings = class {
