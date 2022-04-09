@@ -19,6 +19,10 @@ function buildPrefsWidget() {
 // The plan is to redesign the UI according to Libadwaita principles
 // and support new features only for Gnome 42 and onward.
 function fillPreferencesWindow(window) {
+  const emptyPage = new imports.gi.Adw.PreferencesPage();
+  emptyPage.add(new imports.gi.Adw.PreferencesGroup());
+  window.add(emptyPage);
+
   const box = new imports.gi.Gtk.Box({
     orientation: imports.gi.Gtk.Orientation.VERTICAL,
   });
