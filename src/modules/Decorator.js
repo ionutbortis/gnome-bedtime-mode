@@ -146,21 +146,16 @@ var Decorator = class {
   }
 
   _getTopBarPosition() {
-    const aggregateMenuFinder = (entry) => entry.get_child() === MainPanel.statusArea.aggregateMenu;
-    const aggregateMenuIndex = MainPanel._rightBox.get_children().findIndex(aggregateMenuFinder);
+    const quickSettingsMenuFinder = (entry) => entry.get_child() === MainPanel.statusArea.quickSettings;
+    const quickSettingsMenuIndex = MainPanel._rightBox.get_children().findIndex(quickSettingsMenuFinder);
 
-    const defaultValue = aggregateMenuIndex > -1 ? aggregateMenuIndex : 0;
+    const defaultValue = quickSettingsMenuIndex > -1 ? quickSettingsMenuIndex : 0;
     const manualPosition = extension.settings.buttonBarManualPosition;
     const manualValue = extension.settings.buttonBarPositionValue;
 
     logDebug(`Get Top Bar position: manual={${manualPosition}, ${manualValue}} default=${defaultValue}`);
 
     return manualPosition ? manualValue : defaultValue;
-  }
-
-  _getMenuItemPosition(aggregateMenu) {
-    const items = aggregateMenu.menu._getMenuItems();
-    return items.indexOf(aggregateMenu._system.menu) - 1;
   }
 
   _onBedtimeModeActiveChanged() {
