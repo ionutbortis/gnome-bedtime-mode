@@ -1,6 +1,6 @@
 "use strict";
 
-const { GLib } = imports.gi;
+const { GLib, Gio } = imports.gi;
 
 const { extensionUtils } = imports.misc;
 
@@ -47,4 +47,11 @@ function loopRun(func, interval, ...args) {
 
   const loopSourceId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, interval, wrappedFunc);
   return GLib.main_context_default().find_source_by_id(loopSourceId);
+}
+
+/**
+ * @returns The Gio.Icon object constructed from the proper extension's svg icon path.
+ */
+function getExtensionIcon() {
+  return Gio.icon_new_for_string(GLib.build_filenamev([Me.path, "icons", "status", "bedtime-mode-symbolic.svg"]));
 }

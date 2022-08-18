@@ -9,7 +9,9 @@ const Me = imports.misc.extensionUtils.getCurrentExtension();
 const _ = imports.gettext.domain(Me.metadata["gettext-domain"]).gettext;
 
 const extension = Me.imports.extension;
-const { logDebug } = Me.imports.utils;
+const { getExtensionIcon, logDebug } = Me.imports.utils;
+
+const { QuickSetting } = Me.imports.modules.QuickSetting;
 
 var Decorator = class {
   constructor() {
@@ -81,7 +83,7 @@ var Decorator = class {
     logDebug("Adding On-demand button to Top Bar...");
 
     const icon = new St.Icon({
-      gicon: this._getButtonIcon(),
+      gicon: getExtensionIcon(),
       style_class: "system-status-icon",
     });
 
@@ -102,21 +104,8 @@ var Decorator = class {
   _addButtonToMenu() {
     logDebug("Adding On-demand button to System Menu...");
 
-    this._button = new PopupImageMenuItem(this._getMenuItemLabel(), this._getButtonIcon());
-
-    this._button.connect("activate", () => this._toggleBedtimeMode());
-    this._button.update = () => {
-      this._button.label.text = this._getMenuItemLabel();
-      this._button.setIcon(this._getButtonIcon());
-    };
-
-    const aggregateMenu = MainPanel.statusArea.aggregateMenu;
-
-    aggregateMenu.menu.addMenuItem(this._button, this._getMenuItemPosition(aggregateMenu));
-  }
-
-  _getButtonIcon() {
-    return Gio.icon_new_for_string(GLib.build_filenamev([Me.path, "icons", "status", "bedtime-mode-symbolic.svg"]));
+    this._button = new QuickSetting();
+    this._button.create();
   }
 
   _getButtonOpacity() {
@@ -203,7 +192,7 @@ var Decorator = class {
   }
 
   _updateButton() {
-    if (this._button) {
+    if (this._button && this._button.update) {
       logDebug("Updating On-demand button state...");
       this._button.update();
     }
