@@ -1,9 +1,7 @@
-const { Gio, GLib, GObject } = imports.gi;
-
-const Main = imports.ui.main;
-const MainPanel = Main.panel;
-
+const { Gio, GObject } = imports.gi;
 const { QuickToggle, SystemIndicator } = imports.ui.quickSettings;
+
+const MainPanel = imports.ui.main.panel;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
@@ -42,9 +40,13 @@ var QuickSetting = class {
   }
 
   create() {
+    const quickSettingsMenuGrid = this._quickSettingsPanel.menu._grid;
+
+    const nightLightToggleFinder = (entry) => entry.iconName === "night-light-symbolic";
+    const nightLightToggleIndex = quickSettingsMenuGrid.get_children().findIndex(nightLightToggleFinder);
+
     this._indicator = new Indicator();
-    this._quickSettingsPanel._indicators.add_child(this._indicator);
-    this._quickSettingsPanel._addItems(this._indicator.quickSettingsItems);
+    quickSettingsMenuGrid.insert_child_at_index(this._indicator.quickSettingsItems[0], nightLightToggleIndex);
   }
 
   destroy() {
