@@ -1,5 +1,5 @@
 const { Gio, GObject } = imports.gi;
-const { QuickToggle, SystemIndicator } = imports.ui.quickSettings;
+const { QuickToggle } = imports.ui.quickSettings;
 
 const MainPanel = imports.ui.main.panel;
 
@@ -25,17 +25,9 @@ const BedtimeModeToggle = GObject.registerClass(
   }
 );
 
-const Indicator = GObject.registerClass(
-  class Indicator extends SystemIndicator {
-    _init() {
-      super._init();
-      this.quickSettingsItems.push(new BedtimeModeToggle());
-    }
-  }
-);
-
 var QuickSetting = class {
   constructor() {
+    this._toggle = null;
     this._quickSettingsPanel = MainPanel.statusArea.quickSettings;
   }
 
@@ -45,13 +37,12 @@ var QuickSetting = class {
     const nightLightToggleFinder = (entry) => entry.iconName === "night-light-symbolic";
     const nightLightToggleIndex = quickSettingsMenuGrid.get_children().findIndex(nightLightToggleFinder);
 
-    this._indicator = new Indicator();
-    quickSettingsMenuGrid.insert_child_at_index(this._indicator.quickSettingsItems[0], nightLightToggleIndex);
+    this._toggle = new BedtimeModeToggle();
+    quickSettingsMenuGrid.insert_child_at_index(this._toggle, nightLightToggleIndex);
   }
 
   destroy() {
-    this._indicator.quickSettingsItems.forEach((item) => item.destroy());
-    this._indicator.destroy();
-    this._indicator = null;
+    this._toggle?.destroy();
+    this._toggle = null;
   }
 };
