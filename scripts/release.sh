@@ -50,7 +50,7 @@ update_extension_metadata_version() {
   echo "Updating extension metadata version..."
 
   local version_json_line="  \"version\": $NEW_RELEASE_VERSION"
-  replace_line_in_file "$EXTENSION_METADATA_JSON_FILE" 12 "$version_json_line"
+  replace_line_in_file "$EXTENSION_METADATA_JSON_FILE" 10 "$version_json_line"
 }
 
 update_extension_metadata_description() {
