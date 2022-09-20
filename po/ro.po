@@ -1,14 +1,14 @@
 # Romanian translations for PACKAGE package.
 # Copyright (C) 2021 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-bedtime-mode package.
-# Ionut Bortis <ionutbortis@gmail.com>, 2021.
+# Ionut Bortis <ionutbortis@gmail.com>, 2021-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-bedtime-mode 4\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
-"POT-Creation-Date: 2021-10-25 17:11+0300\n"
-"PO-Revision-Date: 2021-10-25 15:29+0300\n"
+"POT-Creation-Date: 2022-09-20 17:19+0300\n"
+"PO-Revision-Date: 2022-09-20 17:24+0300\n"
 "Last-Translator: Ionut Bortis <ionutbortis@gmail.com>\n"
 "Language-Team: Romanian\n"
 "Language: ro\n"
@@ -17,14 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Gtranslator 3.36.0\n"
-
-#: src/modules/Decorator.js:156
-msgid "Turn Off Bedtime Mode"
-msgstr "Oprește modul Ora de culcare"
-
-#: src/modules/Decorator.js:156
-msgid "Turn On Bedtime Mode"
-msgstr "Pornește modul Ora de culcare"
 
 #: src/modules/Presets.js:9
 msgid "Grayscale"
@@ -46,15 +38,19 @@ msgstr "Turcoaz"
 msgid "Sepia"
 msgstr "Sepia"
 
-#: src/ui/gtk3/preferences.ui:74 src/ui/gtk4/preferences.ui:59
+#: src/modules/QuickSetting.js:17
+msgid "Bedtime Mode"
+msgstr "Modul Ora de culcare"
+
+#: src/ui/gtk4/preferences.ui:59
 msgid "Automatic Schedule"
 msgstr "Program automat"
 
-#: src/ui/gtk3/preferences.ui:140 src/ui/gtk4/preferences.ui:96
+#: src/ui/gtk4/preferences.ui:96
 msgid "Start Time"
 msgstr "Ora de început"
 
-#: src/ui/gtk3/preferences.ui:153 src/ui/gtk4/preferences.ui:103
+#: src/ui/gtk4/preferences.ui:103
 msgid ""
 "<small>Specifies the time when Bedtime Mode will be automatically turned on."
 "</small>"
@@ -62,11 +58,11 @@ msgstr ""
 "<small>Definește ora la care modul Ora de culcare va fi pornit automat.</"
 "small>"
 
-#: src/ui/gtk3/preferences.ui:279 src/ui/gtk4/preferences.ui:180
+#: src/ui/gtk4/preferences.ui:180
 msgid "End Time"
 msgstr "Ora de sfârșit"
 
-#: src/ui/gtk3/preferences.ui:292 src/ui/gtk4/preferences.ui:187
+#: src/ui/gtk4/preferences.ui:187
 msgid ""
 "<small>Specifies the time when Bedtime Mode will be automatically turned off."
 "</small>"
@@ -74,15 +70,15 @@ msgstr ""
 "<small>Definește ora la care modul Ora de culcare va fi oprit automat.</"
 "small>"
 
-#: src/ui/gtk3/preferences.ui:410 src/ui/gtk4/preferences.ui:254
+#: src/ui/gtk4/preferences.ui:254
 msgid "On-Demand"
 msgstr "La cerere"
 
-#: src/ui/gtk3/preferences.ui:456 src/ui/gtk4/preferences.ui:282
+#: src/ui/gtk4/preferences.ui:282
 msgid "Show Button"
 msgstr "Arată butonul"
 
-#: src/ui/gtk3/preferences.ui:469 src/ui/gtk4/preferences.ui:289
+#: src/ui/gtk4/preferences.ui:289
 msgid ""
 "<small>Choose to always show or hide the button or display it only when the "
 "schedule is active.</small>"
@@ -90,23 +86,23 @@ msgstr ""
 "<small>Alege ca butonul să fie întotdeauna afișat (sau ascuns) sau să fie "
 "afișat doar când programul automat este activ.</small>"
 
-#: src/ui/gtk3/preferences.ui:500 src/ui/gtk4/preferences.ui:309
+#: src/ui/gtk4/preferences.ui:309
 msgid "Always"
 msgstr "Întotdeauna"
 
-#: src/ui/gtk3/preferences.ui:501 src/ui/gtk4/preferences.ui:310
+#: src/ui/gtk4/preferences.ui:310
 msgid "On Active Schedule"
 msgstr "În program activ"
 
-#: src/ui/gtk3/preferences.ui:502 src/ui/gtk4/preferences.ui:311
+#: src/ui/gtk4/preferences.ui:311
 msgid "Never"
 msgstr "Niciodată"
 
-#: src/ui/gtk3/preferences.ui:554 src/ui/gtk4/preferences.ui:346
+#: src/ui/gtk4/preferences.ui:346
 msgid "Button Location"
 msgstr "Locația butonului"
 
-#: src/ui/gtk3/preferences.ui:567 src/ui/gtk4/preferences.ui:353
+#: src/ui/gtk4/preferences.ui:353
 msgid ""
 "<small>Add a button to Top Bar or System Menu. The button can be used to "
 "manually toggle the Bedtime Mode.</small>"
@@ -114,19 +110,19 @@ msgstr ""
 "<small>Adaugă un buton în bara de sus sau în meniul sistemului. El poate fi "
 "utilizat ca să pornești sau să oprești manual modul Ora de culcare.</small>"
 
-#: src/ui/gtk3/preferences.ui:598 src/ui/gtk4/preferences.ui:373
+#: src/ui/gtk4/preferences.ui:373
 msgid "Top Bar"
 msgstr "Bara de sus"
 
-#: src/ui/gtk3/preferences.ui:599 src/ui/gtk4/preferences.ui:374
+#: src/ui/gtk4/preferences.ui:374
 msgid "System Menu"
 msgstr "Meniul sistemului"
 
-#: src/ui/gtk3/preferences.ui:651 src/ui/gtk4/preferences.ui:409
+#: src/ui/gtk4/preferences.ui:409
 msgid "Top Bar On/Off Indicator"
 msgstr "Indicator de funcționare în bara de sus"
 
-#: src/ui/gtk3/preferences.ui:664 src/ui/gtk4/preferences.ui:416
+#: src/ui/gtk4/preferences.ui:416
 msgid ""
 "<small>Change the button appearance in Top Bar when Bedtime Mode is active/"
 "inactive.</small>"
@@ -134,11 +130,11 @@ msgstr ""
 "<small>Schimbă aspectul butonului în bara de sus când modul Ora de culcare "
 "este activ sau inactiv.</small>"
 
-#: src/ui/gtk3/preferences.ui:742 src/ui/gtk4/preferences.ui:466
+#: src/ui/gtk4/preferences.ui:466
 msgid "Top Bar Manual Position"
 msgstr "Poziție manuală în bara de sus"
 
-#: src/ui/gtk3/preferences.ui:755 src/ui/gtk4/preferences.ui:473
+#: src/ui/gtk4/preferences.ui:473
 msgid ""
 "<small>Manually change the button position in Top Bar. Zero is the start of "
 "the icons row.</small>"
@@ -146,15 +142,15 @@ msgstr ""
 "<small>Poziționare manuală a butonului în bara de sus. Zero înseamnă "
 "începutul rândului de pictograme.</small>"
 
-#: src/ui/gtk3/preferences.ui:856 src/ui/gtk4/preferences.ui:531
+#: src/ui/gtk4/preferences.ui:531
 msgid "Color Preset and Intensity"
 msgstr "Culoare prestabilită și intensitate"
 
-#: src/ui/gtk3/preferences.ui:903 src/ui/gtk4/preferences.ui:560
+#: src/ui/gtk4/preferences.ui:560
 msgid "Color Preset"
 msgstr "Culoare prestabilită"
 
-#: src/ui/gtk3/preferences.ui:916 src/ui/gtk4/preferences.ui:567
+#: src/ui/gtk4/preferences.ui:567
 msgid ""
 "<small>Select the color preset to be used when Bedtime Mode is active.</"
 "small>"
@@ -162,22 +158,22 @@ msgstr ""
 "<small>Alege culoarea prestabilită care să fie folosită când modul Ora de "
 "culcare este activ.</small>"
 
-#: src/ui/gtk3/preferences.ui:996 src/ui/gtk4/preferences.ui:619
+#: src/ui/gtk4/preferences.ui:619
 msgid "Color Intensity"
 msgstr "Intensitatea culorii"
 
-#: src/ui/gtk3/preferences.ui:1009 src/ui/gtk4/preferences.ui:626
+#: src/ui/gtk4/preferences.ui:626
 msgid ""
 "<small>The percentage of how much of the selected color preset is to be "
 "applied.</small>"
 msgstr ""
 "<small>Procentajul cu care să se aplice culoarea prestabilită aleasă.</small>"
 
-#: src/ui/gtk3/preferences.ui:1094 src/ui/gtk4/preferences.ui:683
+#: src/ui/gtk4/preferences.ui:683
 msgid "Intensity Change by Scrolling"
 msgstr "Schimbarea intensității prin derulare"
 
-#: src/ui/gtk3/preferences.ui:1107 src/ui/gtk4/preferences.ui:690
+#: src/ui/gtk4/preferences.ui:690
 msgid ""
 "<small>Enable Color Intensity change by scrolling up or down over the button "
 "in Top Bar when Bedtime Mode is active.</small>"
@@ -186,6 +182,6 @@ msgstr ""
 "jos, deasupra butonului din bara de sus, când modul Ora de culcare este "
 "activ.</small>"
 
-#: src/ui/gtk3/preferences.ui:1194 src/ui/gtk4/preferences.ui:740
+#: src/ui/gtk4/preferences.ui:740
 msgid "Start Bedtime Mode Now"
 msgstr "Pornește acum modul Ora de culcare"

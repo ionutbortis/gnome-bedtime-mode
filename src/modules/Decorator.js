@@ -141,10 +141,6 @@ var Decorator = class {
     else extension.settings.colorToneFactor = 10;
   }
 
-  _getMenuItemLabel() {
-    return extension.settings.bedtimeModeActive ? _("Turn Off Bedtime Mode") : _("Turn On Bedtime Mode");
-  }
-
   _getTopBarPosition() {
     const quickSettingsMenuFinder = (entry) => entry.get_child() === MainPanel.statusArea.quickSettings;
     const quickSettingsMenuIndex = MainPanel._rightBox.get_children().findIndex(quickSettingsMenuFinder);
