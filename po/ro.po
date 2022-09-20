@@ -40,7 +40,7 @@ msgstr "Sepia"
 
 #: src/modules/QuickSetting.js:17
 msgid "Bedtime Mode"
-msgstr "Modul Ora de culcare"
+msgstr "Mod Ora de culcare"
 
 #: src/ui/gtk4/preferences.ui:59
 msgid "Automatic Schedule"
