@@ -9,7 +9,7 @@ This behaviour is similar to Android's bedtime mode which converts the phone scr
 The extension has a nice Preferences (Settings) UI where you can customize it to your liking:
 
 - Set an automatic schedule for turning on/off the Bedtime Mode
-- Add an On Demand button to Top Bar or System Menu to manually toggle the mode
+- Add an On Demand button to Top Bar or a Quick Settings toggle to manually enable/disable the mode
 - Control the On Demand button visibility, appearance and position in Top Bar
 - Choose another color preset and intensity, if you prefer a different color scheme
 - Change color intensity on the fly by scrolling over the On Demand button in Top Bar
