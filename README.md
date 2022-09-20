@@ -30,23 +30,22 @@ From the official GNOME Shell Extensions website:
 
 Or
 
-[latest]: https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v10.0/gnome-bedtime-mode_10.0.zip
+[latest]: https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v11.0/gnome-bedtime-mode_11.0.zip
 
-You can download the [latest release package][latest] and manually install it to your extensions folder. Supported Gnome versions are 3.36, 3.38, 40, 41 and 42!
+You can download the [latest release package][latest] and manually install it to your extensions folder. The latest package only supports Gnome version 43!
+
+For older Gnome versions please use the official [GNOME Shell Extensions website][ego] mentioned above.
 
 ```
-wget https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v10.0/gnome-bedtime-mode_10.0.zip
+wget https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v11.0/gnome-bedtime-mode_11.0.zip
 # (Or manually download via browser and run the next commands from the download folder)
 
-gnome-extensions install --force gnome-bedtime-mode_10.0.zip
+gnome-extensions install --force gnome-bedtime-mode_11.0.zip
 
-rm gnome-bedtime-mode_10.0.zip
+rm gnome-bedtime-mode_11.0.zip
 ```
 
-Next:
-
-- On Gnome 3.36 and 3.38 press `Alt`+`F2`, type `r` in the dialog window and press `Enter`
-- On Gnome 40+ you need to log out and log in again into your user account
+Next, you need to log out and log in again into your user account
 
 You can now enable/disable the extension by running the Extensions app (search and install it from your distro repos or get it from [here](https://flathub.org/apps/details/org.gnome.Extensions)), or by
 browsing to https://extensions.gnome.org/local.
