@@ -67,8 +67,9 @@ gnome-extensions prefs gnomebedtime@ionutbortis.gmail.com
 
 If you want to use a keyboard shortcut in order to toggle the Bedtime Mode then you can do this:
 
-- Go to Settings -> Keyboard Shortcuts
-- Scroll to the end and press the "+" button
+- Go to "Settings -> Keyboard -> Keyboard Shortcuts"
+- Click on "View and Customize Shortcuts"
+- Go to "Custom Shortcuts" and click "Add Shortcut" or the "+" button
 - Fill the inputs with the following
   - Name: Toggle Bedtime Mode
   - Command:
@@ -77,7 +78,7 @@ If you want to use a keyboard shortcut in order to toggle the Bedtime Mode then 
 bash -c 'schema_id=org.gnome.shell.extensions.bedtime-mode; schema_dir=~/.local/share/gnome-shell/extensions/gnomebedtime@ionutbortis.gmail.com/schemas/; if [[ $(gsettings --schemadir $schema_dir get $schema_id bedtime-mode-active) == "true" ]]; then turn_on=false; else turn_on=true; fi; gsettings --schemadir $schema_dir set $schema_id bedtime-mode-active $turn_on;'
 ```
 
-- Press Set Shortcut and use your preffered one
+- Press "Set Shortcut" and use your preffered one
 - Done!
 
 # How can you contribute?
