@@ -28,21 +28,20 @@ const BedtimeModeToggle = GObject.registerClass(
 var QuickSetting = class {
   constructor() {
     this._toggle = null;
-    this._quickSettingsPanel = MainPanel.statusArea.quickSettings;
+    this._quickSettingsMenuGrid = MainPanel.statusArea.quickSettings.menu._grid;
   }
 
   create() {
-    const quickSettingsMenuGrid = this._quickSettingsPanel.menu._grid;
-
     const nightLightToggleFinder = (entry) => entry.iconName === "night-light-symbolic";
-    const nightLightToggleIndex = quickSettingsMenuGrid.get_children().findIndex(nightLightToggleFinder);
+    const nightLightToggleIndex = this._quickSettingsMenuGrid.get_children().findIndex(nightLightToggleFinder);
 
     this._toggle = new BedtimeModeToggle();
-    quickSettingsMenuGrid.insert_child_at_index(this._toggle, nightLightToggleIndex);
+    this._quickSettingsMenuGrid.insert_child_at_index(this._toggle, nightLightToggleIndex);
   }
 
   destroy() {
     this._toggle?.destroy();
     this._toggle = null;
+    this._quickSettingsMenuGrid = null;
   }
 };
