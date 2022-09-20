@@ -36,7 +36,7 @@ replace_line_in_file() {
 }
 
 compute_new_release_version() {
-  local latest_git_tag=$(git tag | tail -1)
+  local latest_git_tag=$(git tag --list --sort=version:refname 'v*' | tail -1)
 
   CURRENT_RELEASE_VERSION=$(echo "$latest_git_tag" | sed -r 's/v([0-9]*).*/\1/g')
   
