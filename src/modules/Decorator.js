@@ -157,7 +157,9 @@ var Decorator = class {
   }
 
   _getTopBarPosition() {
-    const aggregateMenuFinder = (entry) => entry.get_child() === MainPanel.statusArea.aggregateMenu;
+    const aggregateMenuFinder = (entry) => {
+      return entry.get_child && entry.get_child() === MainPanel.statusArea.aggregateMenu;
+    };
     const aggregateMenuIndex = MainPanel._rightBox.get_children().findIndex(aggregateMenuFinder);
 
     const defaultValue = aggregateMenuIndex > -1 ? aggregateMenuIndex : 0;
