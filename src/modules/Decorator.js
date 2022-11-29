@@ -142,7 +142,9 @@ var Decorator = class {
   }
 
   _getTopBarPosition() {
-    const quickSettingsMenuFinder = (entry) => entry.get_child() === MainPanel.statusArea.quickSettings;
+    const quickSettingsMenuFinder = (entry) => {
+      return entry.get_child && entry.get_child() === MainPanel.statusArea.quickSettings;
+    };
     const quickSettingsMenuIndex = MainPanel._rightBox.get_children().findIndex(quickSettingsMenuFinder);
 
     const defaultValue = quickSettingsMenuIndex > -1 ? quickSettingsMenuIndex : 0;
