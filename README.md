@@ -30,19 +30,19 @@ From the official GNOME Shell Extensions website:
 
 Or
 
-[latest]: https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v13.0/gnome-bedtime-mode_13.0.zip
+[latest]: https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v14.0/gnome-bedtime-mode_14.0.zip
 
-You can download the [latest release package][latest] and manually install it to your extensions folder. The latest package only supports Gnome version 43!
+You can download the [latest release package][latest] and manually install it to your extensions folder. The latest package only supports Gnome version '44'!
 
 For older Gnome versions please use the official [GNOME Shell Extensions website][ego] mentioned above.
 
 ```
-wget https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v13.0/gnome-bedtime-mode_13.0.zip
+wget https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v14.0/gnome-bedtime-mode_14.0.zip
 # (Or manually download via browser and run the next commands from the download folder)
 
-gnome-extensions install --force gnome-bedtime-mode_13.0.zip
+gnome-extensions install --force gnome-bedtime-mode_14.0.zip
 
-rm gnome-bedtime-mode_13.0.zip
+rm gnome-bedtime-mode_14.0.zip
 ```
 
 Next, you need to log out and log in again into your user account
@@ -108,15 +108,19 @@ Enter your email address when prompted and a new translation file should be succ
 
 Then, you just need to use a tool for opening the .po file and translate the texts. Popular choices are [ Gtranslator](https://flathub.org/apps/details/org.gnome.Gtranslator) and [POEdit](https://flathub.org/apps/details/net.poedit.Poedit).
 
-When the new .po file is fully translated run the install script and the extension should be packaged with the new translations and installed to your Gnome shell.
-
-Please **be aware** that the script is also trying to restart the Gnome shell and if you are on Wayland (Gnome 40+) all your opened windows will be closed! So first, you might want to save your work before running the install script:
+When the new .po file is fully translated run the install script and the extension should be packaged with the new translations and installed to your Gnome shell:
 
 ```
 ./scripts/install.sh
 ```
 
-If the new translations look fine push the changes and create a pull request to the `next-release` branch on the original repository.
+After running the install script you need to re-login and manually enable the extension via an app or command line:
+
+```
+gnome-extensions enable gnomebedtime@ionutbortis.gmail.com
+```
+
+Open the extension preferences and check if all the texts are properly translated. If the new translations look fine push the changes and create a pull request to the `next-release` branch on the original repository.
 
 That's it! You are now an official contributor to this extension, YaaY! :partying_face: :tada: :pray:
 
