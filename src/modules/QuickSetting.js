@@ -14,7 +14,7 @@ const BedtimeModeToggle = GObject.registerClass(
   class BedtimeModeToggle extends QuickToggle {
     _init() {
       super._init({
-        label: _("Bedtime Mode"),
+        title: _("Bedtime Mode"),
         gicon: getExtensionIcon(),
         toggleMode: true,
       });

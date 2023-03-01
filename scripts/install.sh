@@ -24,27 +24,9 @@ install_extension() {
     echo "Enabling extension debug logs..."
     echo "debug = true;" >> "$EXTENSION_INSTALL_FOLDER/config.js"
   fi
-}
 
-reload_extension() {
-  echo "Disabling $EXTENSION_NAME extension..."
-  gnome-extensions disable "$EXTENSION_UUID"
-
-  echo "Restarting gnome shell..."
-  pkill -3 gnome-shell
-  sleep 5s
-
-  echo "Enabling $EXTENSION_NAME extension..."
-  gnome-extensions enable "$EXTENSION_UUID"
-}
-
-check_extension_status() {
-  if [[ $( gnome-extensions list --enabled | grep "$EXTENSION_UUID") = "$EXTENSION_UUID" ]] 
-  then echo "$EXTENSION_NAME extension was successfully installed!";
-  else echo "ERROR: Extension $EXTENSION_NAME is not enabled! Please check the journalctl logs."; fi
+  echo "Please re-login and, if needed, manually enable the extension afterwards."
 }
 
 build_extension
 install_extension
-reload_extension
-check_extension_status

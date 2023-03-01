@@ -29,6 +29,7 @@ PROJECT_ROOT="$( dirname "$SCRIPTS_FOLDER" )"
 BUILD_FOLDER="$PROJECT_ROOT/build"
 
 EXTENSION_METADATA_JSON_FILE="$PROJECT_ROOT/src/metadata.json"
+README_FILE="$PROJECT_ROOT/README.md"
 
 EXTENSION_NAME="$( get_extension_metadata_json_value 'name' )"
 EXTENSION_UUID="$( get_extension_metadata_json_value 'uuid' )"

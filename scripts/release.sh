@@ -70,12 +70,17 @@ update_extension_metadata_description() {
   rm "$description_temp_file"
 }
 
+update_readme_with_supported_gnome_versions() {
+  echo "Updating README.md with supported Gnome versions..."
+
+  sed -i 's/version .*!/version '"$SUPPORTED_GNOME_VERSIONS"'!/g' "$README_FILE"
+}
+
 update_readme_with_new_release_version() {
   echo "Updating README.md with the new release version..."
 
-  local readme_file="$PROJECT_ROOT/README.md"
-  sed -i 's/v'"$CURRENT_RELEASE_VERSION"'\.0/v'"$NEW_RELEASE_VERSION"'\.0/g' "$readme_file"
-  sed -i 's/'"$CURRENT_RELEASE_VERSION"'\.0\.zip/'"$NEW_RELEASE_VERSION"'\.0\.zip/g' "$readme_file"
+  sed -i 's/v'"$CURRENT_RELEASE_VERSION"'\.0/v'"$NEW_RELEASE_VERSION"'\.0/g' "$README_FILE"
+  sed -i 's/'"$CURRENT_RELEASE_VERSION"'\.0\.zip/'"$NEW_RELEASE_VERSION"'\.0\.zip/g' "$README_FILE"
 }
 
 check_translations() {
@@ -93,6 +98,7 @@ prompt_user
 compute_new_release_version
 update_extension_metadata_version
 update_extension_metadata_description
+update_readme_with_supported_gnome_versions
 update_readme_with_new_release_version
 check_translations
 
