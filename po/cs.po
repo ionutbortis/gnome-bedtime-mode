@@ -1,0 +1,183 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-bedtime-mode package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-bedtime-mode 14\n"
+"Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
+"POT-Creation-Date: 2023-03-01 18:54+0200\n"
+"PO-Revision-Date: 2023-04-12 18:03+0200\n"
+"Last-Translator: Kryštof Černý <cleerline1mc@gmail.com>\n"
+"Language-Team: \n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: src/modules/Presets.js:9
+msgid "Grayscale"
+msgstr "Odstíny šedi"
+
+#: src/modules/Presets.js:15
+msgid "Amber"
+msgstr "Jantarová"
+
+#: src/modules/Presets.js:21
+msgid "Green"
+msgstr "Zelená"
+
+#: src/modules/Presets.js:27
+msgid "Cyan"
+msgstr "Azurová"
+
+#: src/modules/Presets.js:33
+msgid "Sepia"
+msgstr "Sépiová"
+
+#: src/modules/QuickSetting.js:17
+msgid "Bedtime Mode"
+msgstr "Režim večerky"
+
+#: src/ui/gtk4/preferences.ui:59
+msgid "Automatic Schedule"
+msgstr "Automatický plán"
+
+#: src/ui/gtk4/preferences.ui:96
+msgid "Start Time"
+msgstr "Čas začátku"
+
+#: src/ui/gtk4/preferences.ui:103
+msgid ""
+"<small>Specifies the time when Bedtime Mode will be automatically turned on."
+"</small>"
+msgstr ""
+"<small>Určete čas, kdy bude režim večerky automaticky aktivován.</small>"
+
+#: src/ui/gtk4/preferences.ui:180
+msgid "End Time"
+msgstr "Čas konce"
+
+#: src/ui/gtk4/preferences.ui:187
+msgid ""
+"<small>Specifies the time when Bedtime Mode will be automatically turned off."
+"</small>"
+msgstr ""
+"<small>Určete čas, kdy bude režim večerky automaticky deaktivován.</small>"
+
+#: src/ui/gtk4/preferences.ui:254
+msgid "On-Demand"
+msgstr "Ruční ovládání"
+
+#: src/ui/gtk4/preferences.ui:282
+msgid "Show Button"
+msgstr "Zobrazit tlačítko"
+
+#: src/ui/gtk4/preferences.ui:289
+msgid ""
+"<small>Choose to always show or hide the button or display it only when the "
+"schedule is active.</small>"
+msgstr ""
+"<small>Zvolte, jestli tlačítko bude vždy zobrazeno nebo skryto nebo jen když "
+"bude plán aktivní.</small>"
+
+#: src/ui/gtk4/preferences.ui:309
+msgid "Always"
+msgstr "Vždy"
+
+#: src/ui/gtk4/preferences.ui:310
+msgid "On Active Schedule"
+msgstr "Při aktivním plánu"
+
+#: src/ui/gtk4/preferences.ui:311
+msgid "Never"
+msgstr "Nikdy"
+
+#: src/ui/gtk4/preferences.ui:346
+msgid "Button Location"
+msgstr "Umístění tlačítka"
+
+#: src/ui/gtk4/preferences.ui:353
+msgid ""
+"<small>Add a button to Top Bar or System Menu. The button can be used to "
+"manually toggle the Bedtime Mode.</small>"
+msgstr ""
+"<small>Přidejte tlačítko na horní panel nebo do systémového menu. Tlačítko "
+"může být použito pro ruční přepnutí režimu večerky</small>"
+
+#: src/ui/gtk4/preferences.ui:373
+msgid "Top Bar"
+msgstr "Horní panel"
+
+#: src/ui/gtk4/preferences.ui:374
+msgid "System Menu"
+msgstr "Systémové menu"
+
+#: src/ui/gtk4/preferences.ui:409
+msgid "Top Bar On/Off Indicator"
+msgstr "Indikátor zapnutí horního panelu"
+
+#: src/ui/gtk4/preferences.ui:416
+msgid ""
+"<small>Change the button appearance in Top Bar when Bedtime Mode is active/"
+"inactive.</small>"
+msgstr ""
+"<small>Změňte vzhled tlačítka v horním panelu, když je režim večerky "
+"(ne)aktivní</small>"
+
+#: src/ui/gtk4/preferences.ui:466
+msgid "Top Bar Manual Position"
+msgstr "Ruční nastavení polohy v horním panelu"
+
+#: src/ui/gtk4/preferences.ui:473
+msgid ""
+"<small>Manually change the button position in Top Bar. Zero is the start of "
+"the icons row.</small>"
+msgstr ""
+"<small>Nastavte ručně polohu tlačítka v horním panelu. Nula je začátek řádku "
+"ikon.</small>"
+
+#: src/ui/gtk4/preferences.ui:531
+msgid "Color Preset and Intensity"
+msgstr "Barevná předvolba a intenzita"
+
+#: src/ui/gtk4/preferences.ui:560
+msgid "Color Preset"
+msgstr "Barevná předvolba"
+
+#: src/ui/gtk4/preferences.ui:567
+msgid ""
+"<small>Select the color preset to be used when Bedtime Mode is active.</"
+"small>"
+msgstr ""
+"<small>Vyberte barevnou předvolbu, která bude použita, když je režim večerky "
+"aktivní aktivní</small>"
+
+#: src/ui/gtk4/preferences.ui:619
+msgid "Color Intensity"
+msgstr "Barevná intenzita"
+
+#: src/ui/gtk4/preferences.ui:626
+msgid ""
+"<small>The percentage of how much of the selected color preset is to be "
+"applied.</small>"
+msgstr "<small>Podíl aplikace vybrané barevné předvolby</small>"
+
+#: src/ui/gtk4/preferences.ui:683
+msgid "Intensity Change by Scrolling"
+msgstr "Změna intenzity scrollováním"
+
+#: src/ui/gtk4/preferences.ui:690
+msgid ""
+"<small>Enable Color Intensity change by scrolling up or down over the button "
+"in Top Bar when Bedtime Mode is active.</small>"
+msgstr ""
+"<small>Povolte změnu intenzity scrollem na tlačítku v horním panelu při "
+"aktivním režimu večerky</small>"
+
+#: src/ui/gtk4/preferences.ui:740
+msgid "Start Bedtime Mode Now"
+msgstr "Spustit nyní režim večerky"
