@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-bedtime-mode 4\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
-"POT-Creation-Date: 2022-09-20 17:19+0300\n"
+"POT-Creation-Date: 2023-04-18 11:33+0300\n"
 "PO-Revision-Date: 2022-09-20 17:25+0300\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: \n"
@@ -38,7 +38,7 @@ msgstr "Cian"
 msgid "Sepia"
 msgstr "Sepia"
 
-#: src/modules/QuickSetting.js:17
+#: src/modules/QuickSetting.js:18 src/modules/QuickSetting.js:19
 msgid "Bedtime Mode"
 msgstr "Modo descanso"
 

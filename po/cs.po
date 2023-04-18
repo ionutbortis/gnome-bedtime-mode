@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-bedtime-mode 14\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
-"POT-Creation-Date: 2023-03-01 18:54+0200\n"
+"POT-Creation-Date: 2023-04-18 11:33+0300\n"
 "PO-Revision-Date: 2023-04-12 18:03+0200\n"
 "Last-Translator: Kryštof Černý <cleerline1mc@gmail.com>\n"
 "Language-Team: \n"
@@ -38,7 +38,7 @@ msgstr "Azurová"
 msgid "Sepia"
 msgstr "Sépiová"
 
-#: src/modules/QuickSetting.js:17
+#: src/modules/QuickSetting.js:18 src/modules/QuickSetting.js:19
 msgid "Bedtime Mode"
 msgstr "Režim večerky"
 

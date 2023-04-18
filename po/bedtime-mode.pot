@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-bedtime-mode 14\n"
+"Project-Id-Version: gnome-bedtime-mode 15\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
-"POT-Creation-Date: 2023-03-01 18:54+0200\n"
+"POT-Creation-Date: 2023-04-18 12:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr ""
 msgid "Sepia"
 msgstr ""
 
-#: src/modules/QuickSetting.js:17
+#: src/modules/QuickSetting.js:18 src/modules/QuickSetting.js:19
 msgid "Bedtime Mode"
 msgstr ""
 

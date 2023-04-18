@@ -5,7 +5,7 @@
 #
 Hey Gnome, it's bedtime! Converts to grayscale the entire Gnome workspace by using a smooth transition. Best to use during evening/night.
 
-This behaviour is similar to Android's bedtime mode which converts the phone screen to grayscale. It should somewhat make your device less appealing and limit the usage of it before bedtime. On my side, at least, it still requires a fair amount of self control in order to make that happen.
+This behavior is similar to Android's bedtime mode which converts the phone screen to grayscale. It should somewhat make your device less appealing and limit the usage of it before bedtime. On my side, at least, it still requires a fair amount of self control in order to make that happen.
 
 The extension has a nice Settings UI where you can customize it to your liking:
 - Set an automatic schedule for turning on/off the Bedtime Mode
@@ -14,7 +14,7 @@ The extension has a nice Settings UI where you can customize it to your liking:
 - Choose another color preset and intensity, if you prefer a different color scheme
 - Change color intensity on the fly by scrolling over the On Demand button in Top Bar
 
-Multi language support is also available, please check the GitHub page if you want to help with the translations. So far, the extension is fully translated to Spanish, Dutch, German, Romanian and English.
+Multi language support is also available, please check the GitHub page if you want to help with the translations. So far, the extension is fully translated to Spanish, Dutch, German, Czech, Romanian and English.
 
 If you want to use a keyboard shortcut in order to toggle the Bedtime Mode then you can use this command for the shortcut:
 

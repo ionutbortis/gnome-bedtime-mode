@@ -4,7 +4,7 @@ Hey Gnome, it's bedtime!
 
 Converts to grayscale the entire Gnome workspace by using a smooth transition. Best to use during evening/night.
 
-This behaviour is similar to Android's bedtime mode which converts the phone screen to grayscale. It should somewhat make your device less appealing and limit the usage of it before bedtime. On my side, at least, it still requires a fair amount of self control in order to make that happen.
+This behavior is similar to Android's bedtime mode which converts the phone screen to grayscale. It should somewhat make your device less appealing and limit the usage of it before bedtime. On my side, at least, it still requires a fair amount of self control in order to make that happen.
 
 The extension has a nice Preferences (Settings) UI where you can customize it to your liking:
 
@@ -30,19 +30,19 @@ From the official GNOME Shell Extensions website:
 
 Or
 
-[latest]: https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v14.0/gnome-bedtime-mode_14.0.zip
+[latest]: https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v15.0/gnome-bedtime-mode_15.0.zip
 
-You can download the [latest release package][latest] and manually install it to your extensions folder. The latest package only supports Gnome version '44'!
+You can download the [latest release package][latest] and manually install it to your extensions folder. The latest package only supports Gnome versions '43' and '44'!
 
 For older Gnome versions please use the official [GNOME Shell Extensions website][ego] mentioned above.
 
 ```
-wget https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v14.0/gnome-bedtime-mode_14.0.zip
+wget https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v15.0/gnome-bedtime-mode_15.0.zip
 # (Or manually download via browser and run the next commands from the download folder)
 
-gnome-extensions install --force gnome-bedtime-mode_14.0.zip
+gnome-extensions install --force gnome-bedtime-mode_15.0.zip
 
-rm gnome-bedtime-mode_14.0.zip
+rm gnome-bedtime-mode_15.0.zip
 ```
 
 Next, you need to log out and log in again into your user account
@@ -78,7 +78,7 @@ If you want to use a keyboard shortcut in order to toggle the Bedtime Mode then 
 bash -c 'schema_id=org.gnome.shell.extensions.bedtime-mode; schema_dir=~/.local/share/gnome-shell/extensions/gnomebedtime@ionutbortis.gmail.com/schemas/; if [[ $(gsettings --schemadir $schema_dir get $schema_id bedtime-mode-active) == "true" ]]; then turn_on=false; else turn_on=true; fi; gsettings --schemadir $schema_dir set $schema_id bedtime-mode-active $turn_on;'
 ```
 
-- Press "Set Shortcut" and use your preffered one
+- Press "Set Shortcut" and use your preferred one
 - Done!
 
 # How can you contribute?
@@ -104,7 +104,7 @@ Run the `languages.sh` script with the `--new-locale=xx` argument in order to cr
 ./scripts/languages.sh --new-locale=xx
 ```
 
-Enter your email address when prompted and a new translation file should be succesfully generated into the `gnome-bedtime-mode/po` folder. It will have the name of the new locale and the `.po` extension.
+Enter your email address when prompted and a new translation file should be successfully generated into the `gnome-bedtime-mode/po` folder. It will have the name of the new locale and the `.po` extension.
 
 Then, you just need to use a tool for opening the .po file and translate the texts. Popular choices are [ Gtranslator](https://flathub.org/apps/details/org.gnome.Gtranslator) and [POEdit](https://flathub.org/apps/details/net.poedit.Poedit).
 
@@ -131,6 +131,7 @@ That's it! You are now an official contributor to this extension, YaaY! :partyin
 - Spanish: [Óscar Fernández Díaz](https://github.com/oscfdezdz) :medal_sports:
 - Dutch: [Heimen Stoffels](https://github.com/Vistaus) :medal_sports:
 - German: [Philipp Kiemle](https://github.com/daPhipz) :medal_sports:
+- Czech: [Kryštof Černý](https://github.com/cewbdex) :medal_sports:
 - Romanian & English: [Ionuț Florin Bortiș](https://github.com/ionutbortis) (myself) :medal_sports:
 
 # Credits
