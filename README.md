@@ -30,19 +30,19 @@ From the official GNOME Shell Extensions website:
 
 Or
 
-[latest]: https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v15.0/gnome-bedtime-mode_15.0.zip
+[latest]: https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v16.0/gnome-bedtime-mode_16.0.zip
 
 You can download the [latest release package][latest] and manually install it to your extensions folder. The latest package only supports Gnome versions '43' and '44'!
 
 For older Gnome versions please use the official [GNOME Shell Extensions website][ego] mentioned above.
 
 ```
-wget https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v15.0/gnome-bedtime-mode_15.0.zip
+wget https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v16.0/gnome-bedtime-mode_16.0.zip
 # (Or manually download via browser and run the next commands from the download folder)
 
-gnome-extensions install --force gnome-bedtime-mode_15.0.zip
+gnome-extensions install --force gnome-bedtime-mode_16.0.zip
 
-rm gnome-bedtime-mode_15.0.zip
+rm gnome-bedtime-mode_16.0.zip
 ```
 
 Next, you need to log out and log in again into your user account
