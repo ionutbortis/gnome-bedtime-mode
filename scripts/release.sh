@@ -11,7 +11,7 @@ display_release_checklist() {
   echo
   echo " ✔ Manual test the extension on Gnome versions $SUPPORTED_GNOME_VERSIONS. 👈"
   echo " ✔ Check '${EXTENSION_DESCRIPTION_FILE#${PROJECT_ROOT}/}' file for possible text updates."
-  echo " ✔ Update 'README.md' to include relevant new info, if needed."
+  echo " ✔ Update 'README.md' to include relevant new info and check supported versions text."
   echo " ✔ Check if new translations are needed."
   echo
   echo "📌 After script run check the changes to 'metadata.json' and 'README.md' files 📌"
