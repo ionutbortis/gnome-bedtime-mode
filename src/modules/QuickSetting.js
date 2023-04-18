@@ -6,18 +6,19 @@ const MainPanel = imports.ui.main.panel;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 
-const { getExtensionIcon } = Me.imports.utils;
+const { ShellVersion, getExtensionIcon } = Me.imports.utils;
 
 const _ = imports.gettext.domain(Me.metadata["gettext-domain"]).gettext;
 
 const BedtimeModeToggle = GObject.registerClass(
   class BedtimeModeToggle extends QuickToggle {
     _init() {
-      super._init({
-        title: _("Bedtime Mode"),
-        gicon: getExtensionIcon(),
-        toggleMode: true,
-      });
+      const initObj =
+        ShellVersion >= 44
+          ? { title: _("Bedtime Mode"), gicon: getExtensionIcon(), toggleMode: true }
+          : { label: _("Bedtime Mode"), gicon: getExtensionIcon(), toggleMode: true };
+
+      super._init(initObj);
 
       this._settings = ExtensionUtils.getSettings();
       this._settings.bind("bedtime-mode-active", this, "checked", Gio.SettingsBindFlags.DEFAULT);
