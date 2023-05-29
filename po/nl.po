@@ -39,6 +39,10 @@ msgstr "Groenblauw"
 msgid "Sepia"
 msgstr "Sepia"
 
+#: src/modules/Presets.js:39
+msgid "Red"
+msgstr "Rood"
+
 #: src/modules/QuickSetting.js:18 src/modules/QuickSetting.js:19
 msgid "Bedtime Mode"
 msgstr "Nachtkastmodus"
