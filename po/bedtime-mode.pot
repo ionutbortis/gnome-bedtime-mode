@@ -37,6 +37,10 @@ msgstr ""
 msgid "Sepia"
 msgstr ""
 
+#: src/modules/Presets.js:39
+msgid "Red"
+msgstr ""
+
 #: src/modules/QuickSetting.js:18 src/modules/QuickSetting.js:19
 msgid "Bedtime Mode"
 msgstr ""
