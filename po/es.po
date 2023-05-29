@@ -38,6 +38,10 @@ msgstr "Cian"
 msgid "Sepia"
 msgstr "Sepia"
 
+#: src/modules/Presets.js:39
+msgid "Red"
+msgstr "Rojo"
+
 #: src/modules/QuickSetting.js:18 src/modules/QuickSetting.js:19
 msgid "Bedtime Mode"
 msgstr "Modo descanso"

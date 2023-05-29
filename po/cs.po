@@ -38,6 +38,10 @@ msgstr "Azurová"
 msgid "Sepia"
 msgstr "Sépiová"
 
+#: src/modules/Presets.js:39
+msgid "Red"
+msgstr "Červená"
+
 #: src/modules/QuickSetting.js:18 src/modules/QuickSetting.js:19
 msgid "Bedtime Mode"
 msgstr "Režim večerky"
