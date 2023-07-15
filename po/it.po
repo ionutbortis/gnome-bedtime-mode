@@ -1,0 +1,183 @@
+# ITALIAN TRANSLATION.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-bedtime-mode package.
+# ALBANO BATTISTELLA <ALBANOBATTISTELLA@GMAIL.COM>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-bedtime-mode 16\n"
+"Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
+"POT-Creation-Date: 2023-04-18 12:51+0300\n"
+"PO-Revision-Date: 2023-07-15 20:36+0100\n"
+"Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
+"Language-Team: Italian <LL@li.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/Presets.js:9
+msgid "Grayscale"
+msgstr "Scala di grigi"
+
+#: src/modules/Presets.js:15
+msgid "Amber"
+msgstr "Ambra"
+
+#: src/modules/Presets.js:21
+msgid "Green"
+msgstr "Verde"
+
+#: src/modules/Presets.js:27
+msgid "Cyan"
+msgstr "Ciano"
+
+#: src/modules/Presets.js:33
+msgid "Sepia"
+msgstr "Seppia"
+
+#: src/modules/QuickSetting.js:18 src/modules/QuickSetting.js:19
+msgid "Bedtime Mode"
+msgstr "Modalità notte"
+
+#: src/ui/gtk4/preferences.ui:59
+msgid "Automatic Schedule"
+msgstr "Pianificazione automatica"
+
+#: src/ui/gtk4/preferences.ui:96
+msgid "Start Time"
+msgstr "Ora di inizio"
+
+#: src/ui/gtk4/preferences.ui:103
+msgid ""
+"<small>Specifies the time when Bedtime Mode will be automatically turned on."
+"</small>"
+msgstr ""
+"<small>Specifica l'ora in cui la modalità La modalità notte verrà attivata automaticamente."
+"</small>"
+
+#: src/ui/gtk4/preferences.ui:180
+msgid "End Time"
+msgstr "Ora di fine"
+
+#: src/ui/gtk4/preferences.ui:187
+msgid ""
+"<small>Specifies the time when Bedtime Mode will be automatically turned off."
+"</small>"
+msgstr ""
+
+#: src/ui/gtk4/preferences.ui:254
+msgid "On-Demand"
+msgstr ""
+
+#: src/ui/gtk4/preferences.ui:282
+msgid "Show Button"
+msgstr "Mostra pulsante"
+
+#: src/ui/gtk4/preferences.ui:289
+msgid ""
+"<small>Choose to always show or hide the button or display it only when the "
+"schedule is active.</small>"
+msgstr ""
+"<small>Scegli di mostrare o nascondere sempre il pulsante o di visualizzarlo solo quando "
+"il programma è attivo.</small>"
+
+#: src/ui/gtk4/preferences.ui:309
+msgid "Always"
+msgstr "Sempre"
+
+#: src/ui/gtk4/preferences.ui:310
+msgid "On Active Schedule"
+msgstr "Su programma attivo"
+
+#: src/ui/gtk4/preferences.ui:311
+msgid "Never"
+msgstr "Mai"
+
+#: src/ui/gtk4/preferences.ui:346
+msgid "Button Location"
+msgstr "Posizione del pulsante"
+
+#: src/ui/gtk4/preferences.ui:353
+msgid ""
+"<small>Add a button to Top Bar or System Menu. The button can be used to "
+"manually toggle the Bedtime Mode.</small>"
+msgstr ""
+"<small>Aggiungi un pulsante alla barra superiore o al menu di sistema. Il pulsante può essere utilizzato per "
+"attiva manualmente la modalità notte.</small>"
+
+#: src/ui/gtk4/preferences.ui:373
+msgid "Top Bar"
+msgstr "Barra superiore"
+
+#: src/ui/gtk4/preferences.ui:374
+msgid "System Menu"
+msgstr "Menù di sistema"
+
+#: src/ui/gtk4/preferences.ui:409
+msgid "Top Bar On/Off Indicator"
+msgstr ""Indicatore On/Off della barra superiore"
+
+#: src/ui/gtk4/preferences.ui:416
+msgid ""
+"<small>Change the button appearance in Top Bar when Bedtime Mode is active/"
+"inactive.</small>"
+msgstr ""
+"<small>Cambia l'aspetto del pulsante nella barra superiore quando la modalità notte è attiva/"
+"inattiva.</small>"
+
+#: src/ui/gtk4/preferences.ui:466
+msgid "Top Bar Manual Position"
+msgstr "Posizione manuale della barra superiore"
+
+#: src/ui/gtk4/preferences.ui:473
+msgid ""
+"<small>Manually change the button position in Top Bar. Zero is the start of "
+"the icons row.</small>"
+msgstr ""
+"<small>Cambia manualmente la posizione del pulsante nella barra superiore. Zero è l'inizio della "
+"la riga delle icone.</small>"
+
+#: src/ui/gtk4/preferences.ui:531
+msgid "Color Preset and Intensity"
+msgstr "Colore preimpostato e intensità"
+
+#: src/ui/gtk4/preferences.ui:560
+msgid "Color Preset"
+msgstr "Colore preimpostato"
+
+#: src/ui/gtk4/preferences.ui:567
+msgid ""
+"<small>Select the color preset to be used when Bedtime Mode is active.</"
+"small>"
+msgstr ""
+"<small>Seleziona il colore preimpostato da utilizzare quando la modalità notte è attiva.</"
+"small>"
+
+#: src/ui/gtk4/preferences.ui:619
+msgid "Color Intensity"
+msgstr "Intensità del colore"
+
+#: src/ui/gtk4/preferences.ui:626
+msgid ""
+"<small>The percentage of how much of the selected color preset is to be "
+"applied.</small>"
+msgstr ""
+"<small>La percentuale di quanto deve essere il colore preimpostato selezionato "
+"applicato.</small>"
+
+#: src/ui/gtk4/preferences.ui:683
+msgid "Intensity Change by Scrolling"
+msgstr "Cambio di intensità tramite scorrimento"
+
+#: src/ui/gtk4/preferences.ui:690
+msgid ""
+"<small>Enable Color Intensity change by scrolling up or down over the button "
+"in Top Bar when Bedtime Mode is active.</small>"
+msgstr ""
+"<small>Abilita la modifica dell'intensità del colore scorrendo verso l'alto o verso il basso sul pulsante "
+"nella barra superiore quando la modalità notte è attiva.</small>"
+
+#: src/ui/gtk4/preferences.ui:740
+msgid "Start Bedtime Mode Now"
+msgstr "Avvia ora la modalità notte"
