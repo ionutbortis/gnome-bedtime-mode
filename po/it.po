@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gnome-bedtime-mode 16\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
 "POT-Creation-Date: 2023-04-18 12:51+0300\n"
-"PO-Revision-Date: 2023-07-15 20:36+0100\n"
+"PO-Revision-Date: 2023-07-16 16:36+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
 "Language: it\n"
@@ -65,10 +65,12 @@ msgid ""
 "<small>Specifies the time when Bedtime Mode will be automatically turned off."
 "</small>"
 msgstr ""
+"<small>Specifica l'ora in cui la modalità notte verrà disattivata automaticamente."
+"</small>"
 
 #: src/ui/gtk4/preferences.ui:254
 msgid "On-Demand"
-msgstr ""
+msgstr "On-Demand"
 
 #: src/ui/gtk4/preferences.ui:282
 msgid "Show Button"
