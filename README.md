@@ -128,6 +128,7 @@ That's it! You are now an official contributor to this extension, YaaY! :partyin
 
 # Translators hall of fame :trophy:
 
+- Italian: [Albano Battistella](https://github.com/albanobattistella) :medal_sports:
 - Spanish: [Óscar Fernández Díaz](https://github.com/oscfdezdz) :medal_sports:
 - Dutch: [Heimen Stoffels](https://github.com/Vistaus) :medal_sports:
 - German: [Philipp Kiemle](https://github.com/daPhipz) :medal_sports:

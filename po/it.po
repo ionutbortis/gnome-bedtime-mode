@@ -36,6 +36,10 @@ msgstr "Ciano"
 msgid "Sepia"
 msgstr "Seppia"
 
+#: src/modules/Presets.js:39
+msgid "Red"
+msgstr "Rosso"
+
 #: src/modules/QuickSetting.js:18 src/modules/QuickSetting.js:19
 msgid "Bedtime Mode"
 msgstr "Modalità notte"
@@ -70,7 +74,7 @@ msgstr ""
 
 #: src/ui/gtk4/preferences.ui:254
 msgid "On-Demand"
-msgstr "On-Demand"
+msgstr "Su richiesta"
 
 #: src/ui/gtk4/preferences.ui:282
 msgid "Show Button"
@@ -118,7 +122,7 @@ msgstr "Menù di sistema"
 
 #: src/ui/gtk4/preferences.ui:409
 msgid "Top Bar On/Off Indicator"
-msgstr ""Indicatore On/Off della barra superiore"
+msgstr "Indicatore On/Off della barra superiore"
 
 #: src/ui/gtk4/preferences.ui:416
 msgid ""
