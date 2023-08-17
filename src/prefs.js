@@ -1,32 +1,28 @@
 "use strict";
 
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
+import GLib from "gi://GLib";
+import Adw from "gi://Adw";
+import Gtk from "gi://Gtk";
 
-const { Preferences } = Me.imports.modules.Preferences;
+import { ExtensionPreferences } from "resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js";
 
-function init() {
-  ExtensionUtils.initTranslations();
-}
+import { Preferences } from "./ui/Preferences.js";
 
-function buildPrefsWidget() {
-  const preferences = new Preferences();
-  return preferences.widget;
-}
+export default class BedtimeModePreferences extends ExtensionPreferences {
+  fillPreferencesWindow(window) {
+    const emptyPage = new Adw.PreferencesPage();
+    emptyPage.add(new Adw.PreferencesGroup());
+    window.add(emptyPage);
 
-// This is a temporary workaround in order to fix the Libadwaita
-// nested GtkScrolledWindow issue on Gnome 42.
-// The plan is to redesign the UI according to Libadwaita principles
-// and support new features only for Gnome 42 and onward.
-function fillPreferencesWindow(window) {
-  const emptyPage = new imports.gi.Adw.PreferencesPage();
-  emptyPage.add(new imports.gi.Adw.PreferencesGroup());
-  window.add(emptyPage);
+    const box = new Gtk.Box({
+      orientation: Gtk.Orientation.VERTICAL,
+    });
+    box.append(new Adw.HeaderBar());
+    box.append(new Preferences(this).widget);
+    window.set_content(box);
+  }
 
-  const box = new imports.gi.Gtk.Box({
-    orientation: imports.gi.Gtk.Orientation.VERTICAL,
-  });
-  box.append(new imports.gi.Adw.HeaderBar());
-  box.append(buildPrefsWidget());
-  window.set_content(box);
+  get uiFile() {
+    return GLib.build_filenamev([this.path, "ui", "preferences.ui"]);
+  }
 }

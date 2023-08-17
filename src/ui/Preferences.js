@@ -1,18 +1,17 @@
 "use strict";
 
-const { Gio, Gtk } = imports.gi;
+import Gio from "gi://Gio";
+import Gtk from "gi://Gtk";
 
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-const _ = imports.gettext.domain(Me.metadata["gettext-domain"]).gettext;
+import { gettext as _ } from "resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js";
 
-const { getPreferencesUiFile, logDebug, ShellVersion } = Me.imports.utils;
-const { Settings } = Me.imports.modules.Settings;
-const { SignalManager } = Me.imports.modules.SignalManager;
+import { Settings } from "../modules/Settings.js";
+import { ColorTones as ColorTonePresets } from "../model/Presets.js";
+import { SignalManager } from "../events/SignalManager.js";
+import { logDebug } from "../utils.js";
 
-const ColorTonePresets = Me.imports.modules.Presets.ColorTones;
-
-var Preferences = class {
-  constructor() {
+export class Preferences {
+  constructor(extension) {
     this._buttonLocationRow = null;
     this._buttonPositionRow = null;
     this._buttonAppearanceRow = null;
@@ -20,14 +19,14 @@ var Preferences = class {
     this._buttonVisibilityCombo = null;
 
     this._signalManager = new SignalManager();
-    this._signalManager.enable();
+    extension.signalManager = this._signalManager;
 
-    this._settings = new Settings(this._signalManager);
+    this._settings = new Settings(extension);
     this._settings.enable();
 
     this._builder = new Gtk.Builder();
-    this._builder.set_translation_domain(Me.metadata["gettext-domain"]);
-    this._builder.add_from_file(getPreferencesUiFile());
+    this._builder.set_translation_domain(extension.metadata["gettext-domain"]);
+    this._builder.add_from_file(extension.uiFile);
 
     this.widget = this._builder.get_object("preferences");
     this.widget.connect("realize", () => this._handleWindowSize());
@@ -38,12 +37,10 @@ var Preferences = class {
   }
 
   _handleWindowSize() {
-    const window = ShellVersion < 40 ? this.widget.get_toplevel() : this.widget.get_root();
+    const window = this.widget.get_root();
 
     window.default_width = 650;
     window.default_height = 750;
-
-    ShellVersion < 40 && window.resize(window.default_width, window.default_height);
   }
 
   _cleanUp() {
@@ -58,8 +55,18 @@ var Preferences = class {
   _createConnections() {
     logDebug("Creating connections for Preferences...");
 
-    this._signalManager.connect(this, this._settings, "automatic-schedule-changed", this._onAutomaticScheduleChanged.name);
-    this._signalManager.connect(this, this._settings, "button-visibility-changed", this._onButtonVisibilityChanged.name);
+    this._signalManager.connect(
+      this,
+      this._settings,
+      "automatic-schedule-changed",
+      this._onAutomaticScheduleChanged.name
+    );
+    this._signalManager.connect(
+      this,
+      this._settings,
+      "button-visibility-changed",
+      this._onButtonVisibilityChanged.name
+    );
     this._signalManager.connect(this, this._settings, "button-location-changed", this._onButtonLocationChanged.name);
   }
 
@@ -99,16 +106,31 @@ var Preferences = class {
     this._settings.gSettings.bind("bedtime-mode-active", bedtimeModeSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
 
     const buttonLocationCombo = this._builder.get_object("ondemand_button_location_combo");
-    this._settings.gSettings.bind("ondemand-button-location", buttonLocationCombo, "active_id", Gio.SettingsBindFlags.DEFAULT);
+    this._settings.gSettings.bind(
+      "ondemand-button-location",
+      buttonLocationCombo,
+      "active_id",
+      Gio.SettingsBindFlags.DEFAULT
+    );
 
     this._buttonVisibilityCombo = this._builder.get_object("ondemand_button_visibility_combo");
-    this._settings.gSettings.bind("ondemand-button-visibility", this._buttonVisibilityCombo, "active_id", Gio.SettingsBindFlags.DEFAULT);
+    this._settings.gSettings.bind(
+      "ondemand-button-visibility",
+      this._buttonVisibilityCombo,
+      "active_id",
+      Gio.SettingsBindFlags.DEFAULT
+    );
 
     this._buttonLocationRow = this._builder.get_object("ondemand_button_location_row");
     this._buttonLocationRow.sensitive = this._isButtonVisible();
 
     const buttonOnOfIndicatorSwitch = this._builder.get_object("ondemand_button_onoff_indicator_switch");
-    this._settings.gSettings.bind("ondemand-button-bar-onoff-indicator", buttonOnOfIndicatorSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
+    this._settings.gSettings.bind(
+      "ondemand-button-bar-onoff-indicator",
+      buttonOnOfIndicatorSwitch,
+      "active",
+      Gio.SettingsBindFlags.DEFAULT
+    );
 
     this._buttonAppearanceRow = this._builder.get_object("ondemand_button_appearance_row");
     this._buttonAppearanceRow.sensitive = this._isButtonVisible() && this._isButtonLocatedInTopBar();
@@ -121,11 +143,26 @@ var Preferences = class {
     this._buttonPositionRow.sensitive = this._isButtonVisible() && this._isButtonLocatedInTopBar();
 
     const manualPositionSwitch = this._builder.get_object("ondemand_button_manual_position_switch");
-    this._settings.gSettings.bind("ondemand-button-bar-manual-position", manualPositionSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
+    this._settings.gSettings.bind(
+      "ondemand-button-bar-manual-position",
+      manualPositionSwitch,
+      "active",
+      Gio.SettingsBindFlags.DEFAULT
+    );
 
     const manualPositionValueSpinner = this._builder.get_object("ondemand_button_manual_position_spin");
-    this._settings.gSettings.bind("ondemand-button-bar-position-value", manualPositionValueSpinner, "value", Gio.SettingsBindFlags.DEFAULT);
-    this._settings.gSettings.bind("ondemand-button-bar-manual-position", manualPositionValueSpinner, "sensitive", Gio.SettingsBindFlags.DEFAULT);
+    this._settings.gSettings.bind(
+      "ondemand-button-bar-position-value",
+      manualPositionValueSpinner,
+      "value",
+      Gio.SettingsBindFlags.DEFAULT
+    );
+    this._settings.gSettings.bind(
+      "ondemand-button-bar-manual-position",
+      manualPositionValueSpinner,
+      "sensitive",
+      Gio.SettingsBindFlags.DEFAULT
+    );
   }
 
   _handleColorToneElements() {
@@ -141,7 +178,12 @@ var Preferences = class {
     this._buttonScrollRow.sensitive = this._isButtonVisible() && this._isButtonLocatedInTopBar();
 
     const buttonScrollEnabledSwitch = this._builder.get_object("ondemand_button_scroll_enabled_switch");
-    this._settings.gSettings.bind("ondemand-button-bar-scroll-enabled", buttonScrollEnabledSwitch, "active", Gio.SettingsBindFlags.DEFAULT);
+    this._settings.gSettings.bind(
+      "ondemand-button-bar-scroll-enabled",
+      buttonScrollEnabledSwitch,
+      "active",
+      Gio.SettingsBindFlags.DEFAULT
+    );
   }
 
   _onAutomaticScheduleChanged() {
@@ -190,4 +232,4 @@ var Preferences = class {
   _isButtonLocatedInTopBar() {
     return this._settings.buttonLocation === "bar";
   }
-};
+}

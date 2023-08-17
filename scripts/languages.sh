@@ -49,7 +49,7 @@ generate_extension_pot_file() {
       --package-version="$EXTENSION_VERSION" \
       --msgid-bugs-address="$MY_EMAIL_ADDRESS" \
       --output="$EXTENSION_POT_FILE" \
-      ./src/*.js ./src/**/*.js ./src/ui/**/*.ui
+      ./src/*.js ./src/**/*.js ./src/ui/*.ui
 
   echo "Replacing charset line in order to use UTF-8..."
   sed -i '17s/.*/"Content-Type: text\/plain; charset=UTF-8\\n"/' "$EXTENSION_POT_FILE"

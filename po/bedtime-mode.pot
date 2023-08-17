@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-bedtime-mode 17\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
-"POT-Creation-Date: 2023-08-03 15:14+0300\n"
+"POT-Creation-Date: 2023-08-21 16:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,156 +17,156 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/Presets.js:9
+#: src/model/Presets.js:8
 msgid "Grayscale"
 msgstr ""
 
-#: src/modules/Presets.js:15
+#: src/model/Presets.js:14
 msgid "Amber"
 msgstr ""
 
-#: src/modules/Presets.js:21
+#: src/model/Presets.js:20
 msgid "Green"
 msgstr ""
 
-#: src/modules/Presets.js:27
+#: src/model/Presets.js:26
 msgid "Cyan"
 msgstr ""
 
-#: src/modules/Presets.js:33
+#: src/model/Presets.js:32
 msgid "Sepia"
 msgstr ""
 
-#: src/modules/Presets.js:39
+#: src/model/Presets.js:38
 msgid "Red"
 msgstr ""
 
-#: src/modules/QuickSetting.js:18 src/modules/QuickSetting.js:19
+#: src/ui/QuickSetting.js:16
 msgid "Bedtime Mode"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:59
+#: src/ui/preferences.ui:59
 msgid "Automatic Schedule"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:96
+#: src/ui/preferences.ui:96
 msgid "Start Time"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:103
+#: src/ui/preferences.ui:103
 msgid ""
 "<small>Specifies the time when Bedtime Mode will be automatically turned on."
 "</small>"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:180
+#: src/ui/preferences.ui:180
 msgid "End Time"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:187
+#: src/ui/preferences.ui:187
 msgid ""
 "<small>Specifies the time when Bedtime Mode will be automatically turned off."
 "</small>"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:254
+#: src/ui/preferences.ui:254
 msgid "On-Demand"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:282
+#: src/ui/preferences.ui:282
 msgid "Show Button"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:289
+#: src/ui/preferences.ui:289
 msgid ""
 "<small>Choose to always show or hide the button or display it only when the "
 "schedule is active.</small>"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:309
+#: src/ui/preferences.ui:309
 msgid "Always"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:310
+#: src/ui/preferences.ui:310
 msgid "On Active Schedule"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:311
+#: src/ui/preferences.ui:311
 msgid "Never"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:346
+#: src/ui/preferences.ui:346
 msgid "Button Location"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:353
+#: src/ui/preferences.ui:353
 msgid ""
 "<small>Add a button to Top Bar or System Menu. The button can be used to "
 "manually toggle the Bedtime Mode.</small>"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:373
+#: src/ui/preferences.ui:373
 msgid "Top Bar"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:374
+#: src/ui/preferences.ui:374
 msgid "System Menu"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:409
+#: src/ui/preferences.ui:409
 msgid "Top Bar On/Off Indicator"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:416
+#: src/ui/preferences.ui:416
 msgid ""
 "<small>Change the button appearance in Top Bar when Bedtime Mode is active/"
 "inactive.</small>"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:466
+#: src/ui/preferences.ui:466
 msgid "Top Bar Manual Position"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:473
+#: src/ui/preferences.ui:473
 msgid ""
 "<small>Manually change the button position in Top Bar. Zero is the start of "
 "the icons row.</small>"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:531
+#: src/ui/preferences.ui:531
 msgid "Color Preset and Intensity"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:560
+#: src/ui/preferences.ui:560
 msgid "Color Preset"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:567
+#: src/ui/preferences.ui:567
 msgid ""
 "<small>Select the color preset to be used when Bedtime Mode is active.</"
 "small>"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:619
+#: src/ui/preferences.ui:619
 msgid "Color Intensity"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:626
+#: src/ui/preferences.ui:626
 msgid ""
 "<small>The percentage of how much of the selected color preset is to be "
 "applied.</small>"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:683
+#: src/ui/preferences.ui:683
 msgid "Intensity Change by Scrolling"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:690
+#: src/ui/preferences.ui:690
 msgid ""
 "<small>Enable Color Intensity change by scrolling up or down over the button "
 "in Top Bar when Bedtime Mode is active.</small>"
 msgstr ""
 
-#: src/ui/gtk4/preferences.ui:740
+#: src/ui/preferences.ui:740
 msgid "Start Bedtime Mode Now"
 msgstr ""

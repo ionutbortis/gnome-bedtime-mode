@@ -1,27 +1,28 @@
 "use strict";
 
-const { Clutter } = imports.gi;
-const UiGroup = imports.ui.main.layoutManager.uiGroup;
+import Clutter from "gi://Clutter";
+import * as Main from "resource:///org/gnome/shell/ui/main.js";
 
-const Me = imports.misc.extensionUtils.getCurrentExtension();
+import { ModuleBase } from "./ModuleBase.js";
+import { ColorTone } from "../model/ColorTone.js";
+import { loopRun, logDebug } from "../utils.js";
 
-const extension = Me.imports.extension;
-
-const { ColorTone } = Me.imports.modules.ColorTone;
-const { loopRun, logDebug } = Me.imports.utils;
+const UiGroup = Main.layoutManager.uiGroup;
 
 const COLORIZE_EFFECT_NAME = "bedtime-mode-colorize-effect";
 const DESATURATE_EFFECT_NAME = "bedtime-mode-desaturate-effect";
 
-var Colorizer = class {
-  constructor() {
-    this._transitions = extension.settings.colorToneFactor;
+export class Colorizer extends ModuleBase {
+  constructor(extension) {
+    super(extension);
+
+    this._transitions = this.extension.settings.colorToneFactor;
     this._transitionDelayMillis = 25;
 
     this._transitionStep = 0;
     this._transitionLoopSource = null;
 
-    this._colorTone = new ColorTone(extension.settings.colorTonePreset, 0);
+    this._colorTone = new ColorTone(this.extension.settings.colorTonePreset, 0);
     this._colorizeEffect = new Clutter.BrightnessContrastEffect();
 
     this._desaturateEffect = new Clutter.DesaturateEffect();
@@ -31,19 +32,24 @@ var Colorizer = class {
   enable() {
     this._createConnections();
 
-    extension.settings.bedtimeModeActive && this._turnOn();
+    this.extension.settings.bedtimeModeActive && this._turnOn();
   }
 
   disable() {
-    extension.settings.bedtimeModeActive ? this._turnOff() : this._cleanUp();
+    this.extension.settings.bedtimeModeActive ? this._turnOff() : this._cleanUp();
   }
 
   _createConnections() {
     logDebug("Creating connections for Colorizer...");
 
-    extension.signalManager.connect(this, extension.settings, "bedtime-mode-active-changed", this._onBedtimeModeActiveChanged.name);
-    extension.signalManager.connect(this, extension.settings, "color-tone-preset-changed", this._onColorTonePresetChanged.name);
-    extension.signalManager.connect(this, extension.settings, "color-tone-factor-changed", this._onColorToneFactorChanged.name);
+    this.extension.signalManager.connect(
+      this,
+      this.extension.settings,
+      "bedtime-mode-active-changed",
+      this._onBedtimeModeActiveChanged.name
+    );
+    this.extension.signalManager.connect(this, this.extension.settings, "color-tone-preset-changed", this._onColorTonePresetChanged.name);
+    this.extension.signalManager.connect(this, this.extension.settings, "color-tone-factor-changed", this._onColorToneFactorChanged.name);
   }
 
   _onBedtimeModeActiveChanged(_settings, _bedtimeModeActive) {
@@ -51,16 +57,16 @@ var Colorizer = class {
   }
 
   _onColorTonePresetChanged() {
-    this._colorTone = new ColorTone(extension.settings.colorTonePreset, extension.settings.colorToneFactor);
+    this._colorTone = new ColorTone(this.extension.settings.colorTonePreset, this.extension.settings.colorToneFactor);
     this._updateEffectsFactor();
   }
 
   _onColorToneFactorChanged() {
-    this._transitions = extension.settings.colorToneFactor;
+    this._transitions = this.extension.settings.colorToneFactor;
 
     if (this._transitionInProgress()) return;
 
-    if (extension.settings.bedtimeModeActive) this._transitionStep = this._transitions;
+    if (this.extension.settings.bedtimeModeActive) this._transitionStep = this._transitions;
 
     this._updateEffectsFactor();
   }
@@ -138,4 +144,4 @@ var Colorizer = class {
     this._removeColorEffects();
     this._destroyTransitionLoopSource();
   }
-};
+}

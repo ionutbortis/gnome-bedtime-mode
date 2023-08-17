@@ -1,13 +1,10 @@
 "use strict";
 
-const { Clutter } = imports.gi;
+import Clutter from "gi://Clutter";
 
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-const _ = imports.gettext.domain(Me.metadata["gettext-domain"]).gettext;
+import { ColorTones as ColorTonePresets } from "./Presets.js";
 
-const ColorTonePresets = Me.imports.modules.Presets.ColorTones;
-
-var ColorTone = class {
+export class ColorTone {
   constructor(presetId, toneFactor) {
     this._toneFactor = toneFactor;
 
@@ -48,4 +45,4 @@ var ColorTone = class {
 
     return preset;
   }
-};
+}

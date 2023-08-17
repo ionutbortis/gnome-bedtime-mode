@@ -7,7 +7,7 @@ source "$SCRIPTS_FOLDER/_vars.sh" "$@"
 pre_build_cleanup() {
   echo "Removing ui temp files and build folder..."
 
-  rm -rf "$PROJECT_ROOT"/src/ui/*/*.ui~
+  rm -rf "$PROJECT_ROOT"/src/ui/*.ui~
   rm -rf "$BUILD_FOLDER" && mkdir -p "$BUILD_FOLDER"
 }
 
@@ -18,6 +18,8 @@ create_package() {
     --force \
     --extra-source="$PROJECT_ROOT/LICENSE" \
     --extra-source="$PROJECT_ROOT/src/icons" \
+    --extra-source="$PROJECT_ROOT/src/events" \
+    --extra-source="$PROJECT_ROOT/src/model" \
     --extra-source="$PROJECT_ROOT/src/modules" \
     --extra-source="$PROJECT_ROOT/src/schemas" \
     --extra-source="$PROJECT_ROOT/src/ui" \

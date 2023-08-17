@@ -32,7 +32,7 @@ Or
 
 [latest]: https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v17.0/gnome-bedtime-mode_17.0.zip
 
-You can download the [latest release package][latest] and manually install it to your extensions folder. The latest package only supports Gnome versions '43' and '44'!
+You can download the [latest release package][latest] and manually install it to your extensions folder. The latest package only supports Gnome version '45'!
 
 For older Gnome versions please use the official [GNOME Shell Extensions website][ego] mentioned above.
 

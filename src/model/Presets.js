@@ -1,9 +1,8 @@
 "use strict";
 
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-const _ = imports.gettext.domain(Me.metadata["gettext-domain"]).gettext;
+const _ = (text) => text;
 
-var ColorTones = [
+export const ColorTones = [
   {
     id: "grayscale",
     displayName: _("Grayscale"),
@@ -39,5 +38,5 @@ var ColorTones = [
     displayName: _("Red"),
     brightness: { red: 127, green: 0, blue: 0, alpha: 255 },
     contrast: { red: 127, green: 127, blue: 127, alpha: 255 },
-  }
+  },
 ];

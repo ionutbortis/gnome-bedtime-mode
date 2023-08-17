@@ -22,7 +22,8 @@ install_extension() {
 
   if [ -n "${enable_debug_log+set}" ]; then
     echo "Enabling extension debug logs..."
-    echo "debug = true;" >> "$EXTENSION_INSTALL_FOLDER/config.js"
+
+    sed -i "s|debug.*|debug = true;|g" "$EXTENSION_INSTALL_FOLDER/config.js" 
   fi
 
   echo "Please re-login and, if needed, manually enable the extension afterwards."

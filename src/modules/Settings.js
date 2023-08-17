@@ -1,17 +1,15 @@
 "use strict";
 
 const Signals = imports.signals;
-const ExtensionUtils = imports.misc.extensionUtils;
 
-const Me = ExtensionUtils.getCurrentExtension();
+import { ModuleBase } from "./ModuleBase.js";
+import { logDebug } from "../utils.js";
 
-const { logDebug } = Me.imports.utils;
+export class Settings extends ModuleBase {
+  constructor(extension) {
+    super(extension);
 
-var Settings = class {
-  constructor(signalManager) {
-    this._signalManager = signalManager;
-
-    this.gSettings = ExtensionUtils.getSettings();
+    this.gSettings = this.extension.getSettings();
   }
 
   enable() {
@@ -38,11 +36,10 @@ var Settings = class {
   }
 
   _createConnection(settingsKey, handlerName) {
-    this._signalManager.connect(this, this.gSettings, `changed::${settingsKey}`, handlerName);
+    this.extension.signalManager.connect(this, this.gSettings, `changed::${settingsKey}`, handlerName);
   }
 
   disable() {
-    this._signalManager = null;
     this.gSettings = null;
   }
 
@@ -171,6 +168,6 @@ var Settings = class {
     logDebug(`Color Tone Factor changed to '${this.colorToneFactor}'`);
     this.emit("color-tone-factor-changed", this.colorToneFactor);
   }
-};
+}
 
 Signals.addSignalMethods(Settings.prototype);

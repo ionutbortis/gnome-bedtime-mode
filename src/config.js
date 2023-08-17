@@ -1,3 +1,3 @@
 "use strict";
 
-var debug = false;
+export const debug = false;
