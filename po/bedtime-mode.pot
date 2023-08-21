@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-bedtime-mode 17\n"
+"Project-Id-Version: gnome-bedtime-mode 18\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
-"POT-Creation-Date: 2023-08-21 16:53+0300\n"
+"POT-Creation-Date: 2023-08-21 17:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
