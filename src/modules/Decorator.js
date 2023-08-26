@@ -11,87 +11,52 @@ import { QuickSetting } from "../ui/QuickSetting.js";
 import { logDebug } from "../utils.js";
 
 export class Decorator extends ModuleBase {
+  #button;
+
   constructor(extension) {
     super(extension);
-
-    this._button = null;
   }
 
   enable() {
     logDebug("Enabling Decorator...");
 
-    this._createConnections();
-    this._addButton();
+    this.#createConnections();
+    this.#addButton();
   }
 
   disable() {
     logDebug("Disabling Decorator...");
 
-    this._removeButton();
+    this.#removeButton();
   }
 
-  _createConnections() {
+  #createConnections() {
     logDebug("Creating connections for Decorator...");
 
-    this.extension.signalManager.connect(
-      this,
-      this.extension.settings,
-      "bedtime-mode-active-changed",
-      this._onBedtimeModeActiveChanged.name
-    );
-    this.extension.signalManager.connect(
-      this,
-      this.extension.settings,
-      "button-location-changed",
-      this._onButtonLocationChanged.name
-    );
-    this.extension.signalManager.connect(
-      this,
-      this.extension.settings,
-      "button-bar-manual-position-changed",
-      this._onButtonBarManualPositionChanged.name
-    );
-    this.extension.signalManager.connect(
-      this,
-      this.extension.settings,
-      "button-bar-position-value-changed",
-      this._onButtonBarPositionValueChanged.name
-    );
-    this.extension.signalManager.connect(
-      this,
-      this.extension.settings,
-      "button-bar-onoff-indicator-changed",
-      this._onButtonBarOnOffIndicatorChanged.name
-    );
-    this.extension.signalManager.connect(
-      this,
-      this.extension.settings,
-      "button-visibility-changed",
-      this._onButtonVisibilityChanged.name
-    );
-    this.extension.signalManager.connect(
-      this,
-      this.extension.scheduler,
-      "active-schedule-changed",
-      this._onActiveScheduleChanged.name
-    );
+    this.createConnection(this.extension.settings, "bedtime-mode-active-changed", this.onBedtimeModeActiveChanged.name);
+    this.createConnection(this.extension.settings, "button-location-changed", this.onButtonLocationChanged.name);
+    this.createConnection(this.extension.settings, "button-bar-manual-position-changed", this.onButtonBarManualPositionChanged.name);
+    this.createConnection(this.extension.settings, "button-bar-position-value-changed", this.onButtonBarPositionValueChanged.name);
+    this.createConnection(this.extension.settings, "button-bar-onoff-indicator-changed", this.onButtonBarOnOffIndicatorChanged.name);
+    this.createConnection(this.extension.settings, "button-visibility-changed", this.onButtonVisibilityChanged.name);
+    this.createConnection(this.extension.scheduler, "active-schedule-changed", this.onActiveScheduleChanged.name);
   }
 
-  _addButton() {
-    if (!this._shouldDisplayButton()) return;
+  #addButton() {
+    if (!this.#shouldDisplayButton()) return;
 
     switch (this.extension.settings.buttonLocation) {
       case "bar":
-        this._addButtonToBar();
+        this.#addButtonToBar();
         break;
 
       case "menu":
-        this._addButtonToMenu();
+        this.#addButtonToMenu();
         break;
     }
   }
 
-  _shouldDisplayButton() {
+  #shouldDisplayButton() {
     switch (this.extension.settings.buttonVisibility) {
       case "active-schedule":
         return this.extension.scheduler.activeSchedule;
@@ -104,16 +69,16 @@ export class Decorator extends ModuleBase {
     }
   }
 
-  _removeButton() {
-    if (this._button) {
+  #removeButton() {
+    if (this.#button) {
       logDebug("Removing On-demand button...");
 
-      this._button.destroy();
-      this._button = null;
+      this.#button.destroy();
+      this.#button = null;
     }
   }
 
-  _addButtonToBar() {
+  #addButtonToBar() {
     logDebug("Adding On-demand button to Top Bar...");
 
     const extensionIcon = this.extension.icon;
@@ -122,28 +87,28 @@ export class Decorator extends ModuleBase {
       style_class: "system-status-icon",
     });
 
-    this._button = new PanelMenuButton(0.0);
+    this.#button = new PanelMenuButton(0.0);
 
-    this._button.add_actor(icon);
-    this._button.connect("button-press-event", () => this._toggleBedtimeMode());
-    this._button.connect("touch-event", () => this._toggleBedtimeMode());
-    this._button.connect("scroll-event", (_actor, _event) => this._handleButtonScroll(_event));
-    this._button.opacity = this._getButtonOpacity();
-    this._button.update = () => {
-      this._button.opacity = this._getButtonOpacity();
+    this.#button.add_actor(icon);
+    this.#button.connect("button-press-event", () => this.#toggleBedtimeMode());
+    this.#button.connect("touch-event", () => this.#toggleBedtimeMode());
+    this.#button.connect("scroll-event", (_actor, _event) => this.#handleButtonScroll(_event));
+    this.#button.opacity = this.#getButtonOpacity();
+    this.#button.update = () => {
+      this.#button.opacity = this.#getButtonOpacity();
     };
 
-    MainPanel.addToStatusArea("BedtimeModeToggleButton", this._button, this._getTopBarPosition());
+    MainPanel.addToStatusArea("BedtimeModeToggleButton", this.#button, this.#getTopBarPosition());
   }
 
-  _addButtonToMenu() {
+  #addButtonToMenu() {
     logDebug("Adding On-demand button to System Menu...");
 
-    this._button = new QuickSetting(this.extension);
-    this._button.create();
+    this.#button = new QuickSetting(this.extension);
+    this.#button.create();
   }
 
-  _getButtonOpacity() {
+  #getButtonOpacity() {
     const fullOpacity = 255;
     const reducedOpacity = 0.35 * fullOpacity;
 
@@ -152,31 +117,31 @@ export class Decorator extends ModuleBase {
     return this.extension.settings.bedtimeModeActive ? fullOpacity : reducedOpacity;
   }
 
-  _handleButtonScroll(event) {
+  #handleButtonScroll(event) {
     if (!(this.extension.settings.buttonBarScrollEnabled && this.extension.settings.bedtimeModeActive)) return;
 
     switch (event.get_scroll_direction()) {
       case Clutter.ScrollDirection.UP:
-        this._increaseColorToneFactor();
+        this.#increaseColorToneFactor();
         break;
 
       case Clutter.ScrollDirection.DOWN:
-        this._decreaseColorToneFactor();
+        this.#decreaseColorToneFactor();
         break;
     }
   }
 
-  _increaseColorToneFactor() {
+  #increaseColorToneFactor() {
     if (this.extension.settings.colorToneFactor <= 95) this.extension.settings.colorToneFactor += 5;
     else this.extension.settings.colorToneFactor = 100;
   }
 
-  _decreaseColorToneFactor() {
+  #decreaseColorToneFactor() {
     if (this.extension.settings.colorToneFactor >= 15) this.extension.settings.colorToneFactor -= 5;
     else this.extension.settings.colorToneFactor = 10;
   }
 
-  _getTopBarPosition() {
+  #getTopBarPosition() {
     const quickSettingsMenuFinder = (entry) => {
       return entry.get_child && entry.get_child() === MainPanel.statusArea.quickSettings;
     };
@@ -191,47 +156,47 @@ export class Decorator extends ModuleBase {
     return manualPosition ? manualValue : defaultValue;
   }
 
-  _onBedtimeModeActiveChanged() {
-    this._updateButton();
-  }
-
-  _onButtonLocationChanged() {
-    this._redrawButton();
-  }
-
-  _onButtonVisibilityChanged() {
-    this._redrawButton();
-  }
-
-  _onButtonBarManualPositionChanged() {
-    this.extension.settings.buttonLocation === "bar" && this._redrawButton();
-  }
-
-  _onButtonBarPositionValueChanged() {
-    this.extension.settings.buttonLocation === "bar" && this._redrawButton();
-  }
-
-  _onButtonBarOnOffIndicatorChanged() {
-    this.extension.settings.buttonLocation === "bar" && this._updateButton();
-  }
-
-  _onActiveScheduleChanged() {
-    this.extension.settings.buttonVisibility === "active-schedule" && this._redrawButton();
-  }
-
-  _updateButton() {
-    if (this._button && this._button.update) {
+  #updateButton() {
+    if (this.#button && this.#button.update) {
       logDebug("Updating On-demand button state...");
-      this._button.update();
+      this.#button.update();
     }
   }
 
-  _redrawButton() {
-    this._removeButton();
-    this._addButton();
+  #redrawButton() {
+    this.#removeButton();
+    this.#addButton();
   }
 
-  _toggleBedtimeMode() {
+  #toggleBedtimeMode() {
     this.extension.settings.bedtimeModeActive = !this.extension.settings.bedtimeModeActive;
+  }
+
+  onBedtimeModeActiveChanged() {
+    this.#updateButton();
+  }
+
+  onButtonLocationChanged() {
+    this.#redrawButton();
+  }
+
+  onButtonVisibilityChanged() {
+    this.#redrawButton();
+  }
+
+  onButtonBarManualPositionChanged() {
+    this.extension.settings.buttonLocation === "bar" && this.#redrawButton();
+  }
+
+  onButtonBarPositionValueChanged() {
+    this.extension.settings.buttonLocation === "bar" && this.#redrawButton();
+  }
+
+  onButtonBarOnOffIndicatorChanged() {
+    this.extension.settings.buttonLocation === "bar" && this.#updateButton();
+  }
+
+  onActiveScheduleChanged() {
+    this.extension.settings.buttonVisibility === "active-schedule" && this.#redrawButton();
   }
 }

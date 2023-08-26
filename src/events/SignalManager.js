@@ -3,12 +3,14 @@
 import { logDebug } from "../utils.js";
 
 export class SignalManager {
+  #connections;
+
   constructor() {
-    this._connections = [];
+    this.#connections = [];
   }
 
   connect(from, to, eventName, handlerName) {
-    this._connections.push({
+    this.#connections.push({
       from: from,
       to: to,
       id: to.connect(eventName, from[handlerName].bind(from)),
@@ -18,7 +20,7 @@ export class SignalManager {
   disable() {
     logDebug("Removing connections managed by SignalManager...");
 
-    this._connections.forEach((connection) => connection.to.disconnect(connection.id));
-    this._connections.length = 0;
+    this.#connections.forEach((connection) => connection.to.disconnect(connection.id));
+    this.#connections.length = 0;
   }
 }

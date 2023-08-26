@@ -10,7 +10,7 @@ import * as Config from "./config.js";
  * @param {string} message The message to log.
  */
 export function logDebug(message) {
-  if (Config.debug) log(`[DEBUG] Bedtime Mode: ${message}`);
+  Config.debug && console.log(`[DEBUG] Bedtime Mode: ${message}`);
 }
 
 /**
@@ -20,7 +20,7 @@ export function logDebug(message) {
  * Otherwise (false/no return/other return value) the loop is stopped.
  *
  * @param {*} func The function to loop at the specified interval
- * @param {*} interval The time in ms at which to call the function
+ * @param {*} interval The time in milliseconds at which to call the function
  * @param  {...any} args Optional arguments to the function
  * @returns The corresponding GLib.Source object which needs be destroyed later on
  */

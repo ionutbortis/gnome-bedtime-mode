@@ -38,69 +38,70 @@ const BedtimeModeIndicator = GObject.registerClass(
 );
 
 export class QuickSetting {
+  #extension;
+
+  #indicator;
+  #quickSettings;
+  #checkMaxRetries;
+  #checkRetryDelay;
+  #checkLoopSource;
+
   constructor(extension) {
-    this.extension = extension;
+    this.#extension = extension;
 
-    this._indicator = null;
+    this.#quickSettings = MainPanel.statusArea.quickSettings;
 
-    this._quickSettings = MainPanel.statusArea.quickSettings;
-
-    this._checkMaxRetries = 4;
-    this._checkRetryDelay = 50;
-    this._checkLoopSource = null;
+    this.#checkMaxRetries = 4;
+    this.#checkRetryDelay = 50;
   }
 
-  _checkDarkModeIndicator() {
-    this._checkMaxRetries--;
-    logDebug(`Dark Mode indicator check retries left ${this._checkMaxRetries}`);
+  create() {
+    this.#indicator = new BedtimeModeIndicator(this.#extension);
 
-    const found = !!this._quickSettings._darkMode;
-
-    return (this._checkMaxRetries > 0 && !found) || this._addIndicator(found);
+    this.#checkLoopSource = loopRun(this.#checkDarkModeIndicator.bind(this), this.#checkRetryDelay);
   }
 
-  _addIndicator(darkModeFound) {
-    this._destroyCheckLoopSource();
+  destroy() {
+    this.#destroyCheckLoopSource();
+
+    this.#indicator?.destroy();
+    this.#indicator = null;
+    this.#quickSettings = null;
+  }
+
+  #checkDarkModeIndicator() {
+    this.#checkMaxRetries--;
+    logDebug(`Dark Mode indicator check retries left ${this.#checkMaxRetries}`);
+
+    const found = !!this.#quickSettings._darkMode;
+
+    return (this.#checkMaxRetries > 0 && !found) || this.#addIndicator(found);
+  }
+
+  #addIndicator(darkModeFound) {
+    this.#destroyCheckLoopSource();
 
     switch (darkModeFound) {
       case true:
         logDebug(`Adding extension indicator before Dark Mode...`);
 
-        this._quickSettings._addItemsBefore(
-          this._indicator.quickSettingsItems,
-          this._quickSettings._darkMode.quickSettingsItems[0]
-        );
+        this.#quickSettings._addItemsBefore(this.#indicator.quickSettingsItems, this.#quickSettings._darkMode.quickSettingsItems[0]);
         break;
 
       case false:
         logDebug(`Adding extension indicator without placement...`);
 
-        this._quickSettings.addExternalIndicator(this._indicator);
+        this.#quickSettings.addExternalIndicator(this.#indicator);
         break;
     }
   }
 
-  create() {
-    this._indicator = new BedtimeModeIndicator(this.extension);
+  #destroyCheckLoopSource() {
+    if (this.#checkLoopSource) {
+      logDebug(`Destroying Dark Mode check Loop Source ${this.#checkLoopSource.get_id()}`);
 
-    this._checkLoopSource = loopRun(this._checkDarkModeIndicator.bind(this), this._checkRetryDelay);
-  }
-
-  _destroyCheckLoopSource() {
-    if (this._checkLoopSource) {
-      logDebug(`Destroying Dark Mode check Loop Source ${this._checkLoopSource.get_id()}`);
-
-      this._checkLoopSource.destroy();
-      this._checkLoopSource = null;
+      this.#checkLoopSource.destroy();
+      this.#checkLoopSource = null;
     }
-  }
-
-  destroy() {
-    this._destroyCheckLoopSource();
-
-    this._indicator?.destroy();
-    this._indicator = null;
-
-    this._quickSettings = null;
   }
 }

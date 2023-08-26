@@ -8,106 +8,96 @@ import { loopRun, logDebug } from "../utils.js";
 const Signals = imports.signals;
 
 export class Scheduler extends ModuleBase {
+  #timerLoopDelay;
+  #timerLoopSource;
+
+  #activeSchedule;
+
   constructor(extension) {
     super(extension);
 
-    this._timerLoopMillis = 2 * 1000;
-    this._timerLoopSource = null;
-
-    this._activeSchedule = false;
+    this.#timerLoopDelay = 2 * 1000;
+    this.#activeSchedule = false;
   }
 
   get activeSchedule() {
-    return this._activeSchedule;
+    return this.#activeSchedule;
   }
 
   enable() {
     logDebug("Enabling Scheduler...");
 
-    this._createConnections();
-    this._enableTimer();
+    this.#createConnections();
+    this.#enableTimer();
   }
 
   disable() {
     logDebug("Disabling Scheduler...");
-    this._disableTimer();
+    this.#disableTimer();
   }
 
-  _createConnections() {
+  #createConnections() {
     logDebug("Creating connections for Scheduler...");
 
-    this.extension.signalManager.connect(
-      this,
-      this.extension.settings,
-      "automatic-schedule-changed",
-      this._onAutomaticScheduleChanged.name
-    );
-    this.extension.signalManager.connect(
-      this,
-      this.extension.settings,
-      "schedule-times-changed",
-      this._onScheduleTimesChanged.name
-    );
+    this.createConnection(this.extension.settings, "automatic-schedule-changed", this.onAutomaticScheduleChanged.name);
+    this.createConnection(this.extension.settings, "schedule-times-changed", this.onScheduleTimesChanged.name);
   }
 
-  _enableTimer() {
+  #enableTimer() {
     if (this.extension.settings.automaticSchedule) {
-      this.extension.settings.bedtimeModeActive = this._isCurrentTimeOnSchedule();
+      this.extension.settings.bedtimeModeActive = this.#isCurrentTimeOnSchedule();
 
-      this._timerLoopSource = loopRun(this._checkScheduleLoop.bind(this), this._timerLoopMillis);
+      this.#timerLoopSource = loopRun(this.#checkScheduleLoop.bind(this), this.#timerLoopDelay);
     }
   }
 
-  _disableTimer() {
-    this._timerLoopSource && this._timerLoopSource.destroy();
-    this._timerLoopSource = null;
+  #disableTimer() {
+    this.#timerLoopSource?.destroy();
+    this.#timerLoopSource = null;
   }
 
-  _checkScheduleLoop() {
-    const currentTimeOnSchedule = this._isCurrentTimeOnSchedule();
+  #checkScheduleLoop() {
+    const currentTimeOnSchedule = this.#isCurrentTimeOnSchedule();
 
-    if (this._activeSchedule !== currentTimeOnSchedule) {
-      this._activeSchedule = currentTimeOnSchedule;
-      this._signalActiveScheduleChange();
+    if (this.#activeSchedule !== currentTimeOnSchedule) {
+      this.#activeSchedule = currentTimeOnSchedule;
+      this.#signalActiveScheduleChange();
 
-      this.extension.settings.bedtimeModeActive = this._activeSchedule;
+      this.extension.settings.bedtimeModeActive = this.#activeSchedule;
     }
 
     return true; // continue loop
   }
 
-  _isCurrentTimeOnSchedule() {
+  #isCurrentTimeOnSchedule() {
     const currentTime = GLib.DateTime.new_now_local();
 
     const now = currentTime.get_hour() + currentTime.get_minute() / 60;
-    const scheduleStart =
-      this.extension.settings.scheduleStartHours + this.extension.settings.scheduleStartMinutes / 60;
+    const scheduleStart = this.extension.settings.scheduleStartHours + this.extension.settings.scheduleStartMinutes / 60;
     const scheduleEnd = this.extension.settings.scheduleEndHours + this.extension.settings.scheduleEndMinutes / 60;
 
-    return scheduleEnd >= scheduleStart
-      ? now >= scheduleStart && now < scheduleEnd
-      : now >= scheduleStart || now < scheduleEnd;
+    return scheduleEnd >= scheduleStart ? now >= scheduleStart && now < scheduleEnd : now >= scheduleStart || now < scheduleEnd;
   }
 
-  _signalActiveScheduleChange() {
-    logDebug(`Active Schedule changed to '${this._activeSchedule}'`);
+  #signalActiveScheduleChange() {
+    logDebug(`Active Schedule changed to '${this.#activeSchedule}'`);
 
-    this.emit("active-schedule-changed", this._activeSchedule);
+    this.emit("active-schedule-changed", this.#activeSchedule);
   }
 
-  _onAutomaticScheduleChanged() {
+  onAutomaticScheduleChanged() {
     if (this.extension.settings.automaticSchedule) {
-      this._enableTimer();
-      this.extension.settings.bedtimeModeActive = this._isCurrentTimeOnSchedule();
+      this.#enableTimer();
+      this.extension.settings.bedtimeModeActive = this.#isCurrentTimeOnSchedule();
     } else {
-      this._disableTimer();
+      this.#disableTimer();
       this.extension.settings.bedtimeModeActive = false;
     }
   }
 
-  _onScheduleTimesChanged() {
+  onScheduleTimesChanged() {
     if (this.extension.settings.automaticSchedule) {
-      this.extension.settings.bedtimeModeActive = this._isCurrentTimeOnSchedule();
+      this.extension.settings.bedtimeModeActive = this.#isCurrentTimeOnSchedule();
     }
   }
 }
