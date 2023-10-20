@@ -1,0 +1,190 @@
+# French translations for gnome-bedtime-mode package.
+# Copyright (C) 2023 THE gnome-bedtime-mode'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-bedtime-mode package.
+# Irénée THIRION <irenee.thirion@e.email>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-bedtime-mode 18\n"
+"Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
+"POT-Creation-Date: 2023-08-21 17:21+0300\n"
+"PO-Revision-Date: 2023-10-20 13:40+0200\n"
+"Last-Translator: Irénée THIRION <irenee.thirion@e.email>\n"
+"Language-Team: French <gnomefr@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Gtranslator 45.2\n"
+
+#: src/model/Presets.js:8
+msgid "Grayscale"
+msgstr "Échelle de gris"
+
+#: src/model/Presets.js:14
+msgid "Amber"
+msgstr "Ambre"
+
+#: src/model/Presets.js:20
+msgid "Green"
+msgstr "Vert"
+
+#: src/model/Presets.js:26
+msgid "Cyan"
+msgstr "Cyan"
+
+#: src/model/Presets.js:32
+msgid "Sepia"
+msgstr "Sépia"
+
+#: src/model/Presets.js:38
+msgid "Red"
+msgstr "Rouge"
+
+#: src/ui/QuickSetting.js:16
+msgid "Bedtime Mode"
+msgstr "Mode coucher"
+
+#: src/ui/preferences.ui:59
+msgid "Automatic Schedule"
+msgstr "Programmation automatique"
+
+#: src/ui/preferences.ui:96
+msgid "Start Time"
+msgstr "Heure de début"
+
+#: src/ui/preferences.ui:103
+msgid ""
+"<small>Specifies the time when Bedtime Mode will be automatically turned on."
+"</small>"
+msgstr ""
+"<small>Spécifie l’heure à laquelle le mode coucher démarrera automatiquement."
+"</small>"
+
+#: src/ui/preferences.ui:180
+msgid "End Time"
+msgstr "Heure de fin"
+
+#: src/ui/preferences.ui:187
+msgid ""
+"<small>Specifies the time when Bedtime Mode will be automatically turned off."
+"</small>"
+msgstr ""
+"<small>Spécifie l’heure à laquelle le mode coucher s’éteindra "
+"automatiquement.</small>"
+
+#: src/ui/preferences.ui:254
+msgid "On-Demand"
+msgstr "À la demande"
+
+#: src/ui/preferences.ui:282
+msgid "Show Button"
+msgstr "Afficher le bouton"
+
+#: src/ui/preferences.ui:289
+msgid ""
+"<small>Choose to always show or hide the button or display it only when the "
+"schedule is active.</small>"
+msgstr ""
+"<small>Choisissez entre un affichage ou un masquage du bouton permanent, ou "
+"encore un affichage au moment de l’activation programmée.</small>"
+
+#: src/ui/preferences.ui:309
+msgid "Always"
+msgstr "Toujours"
+
+#: src/ui/preferences.ui:310
+msgid "On Active Schedule"
+msgstr "Lors de l’activation programmée"
+
+#: src/ui/preferences.ui:311
+msgid "Never"
+msgstr "Jamais"
+
+#: src/ui/preferences.ui:346
+msgid "Button Location"
+msgstr "Emplacement du bouton"
+
+#: src/ui/preferences.ui:353
+msgid ""
+"<small>Add a button to Top Bar or System Menu. The button can be used to "
+"manually toggle the Bedtime Mode.</small>"
+msgstr ""
+"<small>Choisissez de placer le bouton pour activer manuellement le mode "
+"coucher dans la barre supérieure ou dans le menu système.</small>"
+
+#: src/ui/preferences.ui:373
+msgid "Top Bar"
+msgstr "Barre supérieure"
+
+#: src/ui/preferences.ui:374
+msgid "System Menu"
+msgstr "Menu système"
+
+#: src/ui/preferences.ui:409
+msgid "Top Bar On/Off Indicator"
+msgstr "Indicateur Activé / Éteint de la barre supérieure"
+
+#: src/ui/preferences.ui:416
+msgid ""
+"<small>Change the button appearance in Top Bar when Bedtime Mode is active/"
+"inactive.</small>"
+msgstr ""
+"<small>Modifie l’apparence du bouton dans la barre supérieure quand le mode "
+"coucher est activé / inactif.</small>"
+
+#: src/ui/preferences.ui:466
+msgid "Top Bar Manual Position"
+msgstr "Position manuelle dans la barre supérieure"
+
+#: src/ui/preferences.ui:473
+msgid ""
+"<small>Manually change the button position in Top Bar. Zero is the start of "
+"the icons row.</small>"
+msgstr ""
+"<small>Changez manuellement la position du bouton dans la barre supérieure. "
+"Zéro marque le début de la rangée des icônes.</small>"
+
+#: src/ui/preferences.ui:531
+msgid "Color Preset and Intensity"
+msgstr "Préréglage des couleurs et intensité"
+
+#: src/ui/preferences.ui:560
+msgid "Color Preset"
+msgstr "Préréglage colorifique"
+
+#: src/ui/preferences.ui:567
+msgid ""
+"<small>Select the color preset to be used when Bedtime Mode is active.</"
+"small>"
+msgstr ""
+"<small>Choisissez une couleur dominante à utiliser lors de l’activation du "
+"mode coucher.</small>"
+
+#: src/ui/preferences.ui:619
+msgid "Color Intensity"
+msgstr "Intensité colorifique"
+
+#: src/ui/preferences.ui:626
+msgid ""
+"<small>The percentage of how much of the selected color preset is to be "
+"applied.</small>"
+msgstr "<small>Taux d’application de la couleur préconfigurée.</small>"
+
+#: src/ui/preferences.ui:683
+msgid "Intensity Change by Scrolling"
+msgstr "Modifier l’intensité avec le défilement"
+
+#: src/ui/preferences.ui:690
+msgid ""
+"<small>Enable Color Intensity change by scrolling up or down over the button "
+"in Top Bar when Bedtime Mode is active.</small>"
+msgstr ""
+"<small>Modifie l’intensité colorifique en utilisant la molette de défilement "
+"vers le haut ou vers le bas au dessus du bouton dans la barre supérieure "
+"quand le mode coucher est actif.</small>"
+
+#: src/ui/preferences.ui:740
+msgid "Start Bedtime Mode Now"
+msgstr "Activer le mode coucher maintenant"
