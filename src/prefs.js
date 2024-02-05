@@ -1,6 +1,5 @@
 "use strict";
 
-import GLib from "gi://GLib";
 import Adw from "gi://Adw";
 import Gtk from "gi://Gtk";
 
@@ -23,6 +22,6 @@ export default class BedtimeModePreferences extends ExtensionPreferences {
   }
 
   get uiFile() {
-    return GLib.build_filenamev([this.path, "ui", "preferences.ui"]);
+    return `${this.path}/ui/preferences.ui`;
   }
 }

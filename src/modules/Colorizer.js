@@ -15,7 +15,6 @@ const DESATURATE_EFFECT_NAME = "bedtime-mode-desaturate-effect";
 export class Colorizer extends ModuleBase {
   #transitions;
   #transitionDelay;
-
   #transitionStep;
   #transitionLoopSource;
 

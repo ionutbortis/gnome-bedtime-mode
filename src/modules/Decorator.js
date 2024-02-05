@@ -89,7 +89,7 @@ export class Decorator extends ModuleBase {
 
     this.#button = new PanelMenuButton(0.0);
 
-    this.#button.add_actor(icon);
+    this.#button.add_child(icon);
     this.#button.connect("button-press-event", () => this.#toggleBedtimeMode());
     this.#button.connect("touch-event", () => this.#toggleBedtimeMode());
     this.#button.connect("scroll-event", (_actor, _event) => this.#handleButtonScroll(_event));
