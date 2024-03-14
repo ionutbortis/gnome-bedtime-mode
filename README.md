@@ -124,7 +124,7 @@ Open the extension preferences and check if all the texts are properly translate
 
 That's it! You are now an official contributor to this extension, YaaY! :partying_face: :tada: :pray:
 
-<a name="translators">
+<a name="translators"></a>
 
 # Translators hall of fame :trophy:
 
