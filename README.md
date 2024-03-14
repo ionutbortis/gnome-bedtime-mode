@@ -32,7 +32,7 @@ Or
 
 [latest]: https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v18.0/gnome-bedtime-mode_18.0.zip
 
-You can download the [latest release package][latest] and manually install it to your extensions folder. The latest package only supports Gnome version '45'!
+You can download the [latest release package][latest] and manually install it to your extensions folder. The latest package only supports Gnome versions 45 and 46!
 
 For older Gnome versions please use the official [GNOME Shell Extensions website][ego] mentioned above.
 
@@ -128,6 +128,7 @@ That's it! You are now an official contributor to this extension, YaaY! :partyin
 
 # Translators hall of fame :trophy:
 
+- French: [Irénée Thirion ](https://github.com/rene-coty) :medal_sports:
 - Italian: [Albano Battistella](https://github.com/albanobattistella) :medal_sports:
 - Spanish: [Óscar Fernández Díaz](https://github.com/oscfdezdz) :medal_sports:
 - Dutch: [Heimen Stoffels](https://github.com/Vistaus) :medal_sports:

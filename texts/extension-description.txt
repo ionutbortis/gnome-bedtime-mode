@@ -14,7 +14,7 @@ The extension has a nice Settings UI where you can customize it to your liking:
 - Choose another color preset and intensity, if you prefer a different color scheme
 - Change color intensity on the fly by scrolling over the On Demand button in Top Bar
 
-Multi language support is also available, please check the GitHub page if you want to help with the translations. So far, the extension is fully translated to Italian, Spanish, Dutch, German, Czech, Romanian and English.
+Multi language support is also available, please check the GitHub page if you want to help with the translations. So far, the extension is fully translated to French, Italian, Spanish, Dutch, German, Czech, Romanian and English.
 
 If you want to use a keyboard shortcut in order to toggle the Bedtime Mode then you can use this command for the shortcut:
 
