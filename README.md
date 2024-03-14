@@ -30,19 +30,19 @@ From the official GNOME Shell Extensions website:
 
 Or
 
-[latest]: https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v18.0/gnome-bedtime-mode_18.0.zip
+[latest]: https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v19.0/gnome-bedtime-mode_19.0.zip
 
 You can download the [latest release package][latest] and manually install it to your extensions folder. The latest package only supports Gnome versions 45 and 46!
 
 For older Gnome versions please use the official [GNOME Shell Extensions website][ego] mentioned above.
 
 ```
-wget https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v18.0/gnome-bedtime-mode_18.0.zip
+wget https://github.com/ionutbortis/gnome-bedtime-mode/releases/download/v19.0/gnome-bedtime-mode_19.0.zip
 # (Or manually download via browser and run the next commands from the download folder)
 
-gnome-extensions install --force gnome-bedtime-mode_18.0.zip
+gnome-extensions install --force gnome-bedtime-mode_19.0.zip
 
-rm gnome-bedtime-mode_18.0.zip
+rm gnome-bedtime-mode_19.0.zip
 ```
 
 Next, you need to log out and log in again into your user account
@@ -128,7 +128,7 @@ That's it! You are now an official contributor to this extension, YaaY! :partyin
 
 # Translators hall of fame :trophy:
 
-- French: [Irénée Thirion ](https://github.com/rene-coty) :medal_sports:
+- French: [Irénée Thirion](https://github.com/rene-coty) :medal_sports:
 - Italian: [Albano Battistella](https://github.com/albanobattistella) :medal_sports:
 - Spanish: [Óscar Fernández Díaz](https://github.com/oscfdezdz) :medal_sports:
 - Dutch: [Heimen Stoffels](https://github.com/Vistaus) :medal_sports:
