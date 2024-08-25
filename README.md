@@ -133,7 +133,7 @@ That's it! You are now an official contributor to this extension, YaaY! :partyin
 - Spanish: [Óscar Fernández Díaz](https://github.com/oscfdezdz) :medal_sports:
 - Dutch: [Heimen Stoffels](https://github.com/Vistaus) :medal_sports:
 - German: [Philipp Kiemle](https://github.com/daPhipz) :medal_sports:
-- Czech: [Kryštof Černý](https://github.com/cewbdex) :medal_sports:
+- Czech: [Kryštof Černý](https://github.com/cleveHEX) :medal_sports:
 - Romanian & English: [Ionuț Florin Bortiș](https://github.com/ionutbortis) (myself) :medal_sports:
 
 # Credits
