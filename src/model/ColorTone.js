@@ -1,6 +1,6 @@
 "use strict";
 
-import Clutter from "gi://Clutter";
+import Cogl from "gi://Cogl";
 
 import { ColorTones as ColorTonePresets } from "./Presets.js";
 
@@ -16,8 +16,8 @@ export class ColorTone {
 
     this.#preset = this.#findPreset(presetId);
 
-    this.#brightnessColor = new Clutter.Color(this.#preset.brightness);
-    this.#contrastColor = new Clutter.Color(this.#preset.contrast);
+    this.#brightnessColor = new Cogl.Color(this.#preset.brightness);
+    this.#contrastColor = new Cogl.Color(this.#preset.contrast);
   }
 
   get brightnessColor() {
