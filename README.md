@@ -134,6 +134,7 @@ That's it! You are now an official contributor to this extension, YaaY! :partyin
 - Dutch: [Heimen Stoffels](https://github.com/Vistaus) :medal_sports:
 - German: [Philipp Kiemle](https://github.com/daPhipz) :medal_sports:
 - Czech: [Kryštof Černý](https://github.com/cleveHEX) :medal_sports:
+- Persian: [آوید](https://github.com/avds2) :medal_sports:
 - Romanian & English: [Ionuț Florin Bortiș](https://github.com/ionutbortis) (myself) :medal_sports:
 
 # Credits

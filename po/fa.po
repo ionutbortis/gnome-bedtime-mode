@@ -1,172 +1,189 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Persian translations for gnome-bedtime-mode package.
+# Copyright (C) 2024 THE gnome-bedtime-mode'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-bedtime-mode package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# آوید <avds+git@disroot.org>, 2024.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-bedtime-mode 21\n"
+"Project-Id-Version: gnome-bedtime-mode 20\n"
 "Report-Msgid-Bugs-To: ionutbortis@gmail.com\n"
-"POT-Creation-Date: 2025-03-04 18:19+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2024-08-25 14:33+0300\n"
+"PO-Revision-Date: 2024-09-11 16:50+0330\n"
+"Last-Translator: آوید <avds+git@disroot.org>\n"
+"Language-Team: Persian <translation-team-fa@lists.sourceforge.net>\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/model/Presets.js:8
 msgid "Grayscale"
-msgstr ""
+msgstr "خاکستری"
 
 #: src/model/Presets.js:14
 msgid "Amber"
-msgstr ""
+msgstr "کهربایی"
 
 #: src/model/Presets.js:20
 msgid "Green"
-msgstr ""
+msgstr "سبز"
 
 #: src/model/Presets.js:26
 msgid "Cyan"
-msgstr ""
+msgstr "فیروزه‌ای"
 
 #: src/model/Presets.js:32
 msgid "Sepia"
-msgstr ""
+msgstr "سپیداجی"
 
 #: src/model/Presets.js:38
 msgid "Red"
-msgstr ""
+msgstr "قرمز"
 
 #: src/ui/QuickSetting.js:16
 msgid "Bedtime Mode"
-msgstr ""
+msgstr "حالت وقت خواب"
 
 #: src/ui/preferences.ui:59
 msgid "Automatic Schedule"
-msgstr ""
+msgstr "زمان‌بندی خودکار"
 
 #: src/ui/preferences.ui:96
 msgid "Start Time"
-msgstr ""
+msgstr "زمان آغاز"
 
 #: src/ui/preferences.ui:103
 msgid ""
 "<small>Specifies the time when Bedtime Mode will be automatically turned on."
 "</small>"
 msgstr ""
+"<small>مشخص کردن زمان خودکار روشن شدن حالت وقت خواب."
+"</small>"
 
 #: src/ui/preferences.ui:180
 msgid "End Time"
-msgstr ""
+msgstr "زمان پایان"
 
 #: src/ui/preferences.ui:187
 msgid ""
 "<small>Specifies the time when Bedtime Mode will be automatically turned off."
 "</small>"
 msgstr ""
+"<small>مشخص کردن زمان خودکار خاموش شدن حالت وقت خواب."
+"</small>"
 
 #: src/ui/preferences.ui:254
 msgid "On-Demand"
-msgstr ""
+msgstr "هنگام درخواست"
 
 #: src/ui/preferences.ui:282
 msgid "Show Button"
-msgstr ""
+msgstr "نمایش دکمه"
 
 #: src/ui/preferences.ui:289
 msgid ""
 "<small>Choose to always show or hide the button or display it only when the "
 "schedule is active.</small>"
 msgstr ""
+"<small>گزینش این‌که آیا دکمه همیشه آشکار باشد یا پنهان، یا تنها هنگامی "
+"نمایش داده شود که زمان‌بندی روشن است.</small>"
 
 #: src/ui/preferences.ui:309
 msgid "Always"
-msgstr ""
+msgstr "همیشه"
 
 #: src/ui/preferences.ui:310
 msgid "On Active Schedule"
-msgstr ""
+msgstr "هنگام زمان‌بندی روشن"
 
 #: src/ui/preferences.ui:311
 msgid "Never"
-msgstr ""
+msgstr "هرگز"
 
 #: src/ui/preferences.ui:346
 msgid "Button Location"
-msgstr ""
+msgstr "جایگاه دکمه"
 
 #: src/ui/preferences.ui:353
 msgid ""
 "<small>Add a button to Top Bar or System Menu. The button can be used to "
 "manually toggle the Bedtime Mode.</small>"
 msgstr ""
+"<small>افزودن یک دکمه به نوار بالایی یا فهرست سامانه. این دکمه برای تغییر "
+"وضعیت حالت وقت خواب به کار می‌رود.</small>"
 
 #: src/ui/preferences.ui:373
 msgid "Top Bar"
-msgstr ""
+msgstr "نوار بالایی"
 
 #: src/ui/preferences.ui:374
 msgid "System Menu"
-msgstr ""
+msgstr "فهرست سامانه"
 
 #: src/ui/preferences.ui:409
 msgid "Top Bar On/Off Indicator"
-msgstr ""
+msgstr "نشان‌دهندهٔ روشن/خاموش در نوار بالایی"
 
 #: src/ui/preferences.ui:416
 msgid ""
 "<small>Change the button appearance in Top Bar when Bedtime Mode is active/"
 "inactive.</small>"
 msgstr ""
+"<small>تغییر نمای دکمه در نوار بالایی هنگام روشن/خاموش بودن حالت وقت خواب."
+"</small>"
 
 #: src/ui/preferences.ui:466
 msgid "Top Bar Manual Position"
-msgstr ""
+msgstr "جایگاه دستی در نوار بالایی"
 
 #: src/ui/preferences.ui:473
 msgid ""
 "<small>Manually change the button position in Top Bar. Zero is the start of "
 "the icons row.</small>"
 msgstr ""
+"<small>تغییر دستی جایگاه دکمه در نوار بالایی. صفر آغاز ردیف نقشک‌هاست."
+"</small>"
 
 #: src/ui/preferences.ui:531
 msgid "Color Preset and Intensity"
-msgstr ""
+msgstr "شدت رنگ"
 
 #: src/ui/preferences.ui:560
 msgid "Color Preset"
-msgstr ""
+msgstr "رنگ"
 
 #: src/ui/preferences.ui:567
 msgid ""
 "<small>Select the color preset to be used when Bedtime Mode is active.</"
 "small>"
 msgstr ""
+"<small>گزینش رنگ به‌کاررفته هنگام روشن بودن حالت وقت خواب."
+"</small>"
 
 #: src/ui/preferences.ui:619
 msgid "Color Intensity"
-msgstr ""
+msgstr "شدت رنگ"
 
 #: src/ui/preferences.ui:626
 msgid ""
 "<small>The percentage of how much of the selected color preset is to be "
 "applied.</small>"
 msgstr ""
+"<small>درصد میزان رنگ به‌کاررفته."
+"</small>"
 
 #: src/ui/preferences.ui:683
 msgid "Intensity Change by Scrolling"
-msgstr ""
+msgstr "تغییر شدت با اسکرول کردن"
 
 #: src/ui/preferences.ui:690
 msgid ""
 "<small>Enable Color Intensity change by scrolling up or down over the button "
 "in Top Bar when Bedtime Mode is active.</small>"
 msgstr ""
+"<small>به‌کارانداختن تغییر شدت رنگ با اسکرول کردن به بالا و پایین روی "
+"دکمه در نوار بالایی، هنگام روشن بودن حالت وقت خواب.</small>"
 
 #: src/ui/preferences.ui:740
 msgid "Start Bedtime Mode Now"
-msgstr ""
+msgstr "اکنون حالت وقت خواب را آغاز کن"
