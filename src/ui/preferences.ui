@@ -90,17 +90,18 @@
                                     <child>
                                       <object class="GtkBox">
                                         <property name="orientation">vertical</property>
+                                        <property name="valign">center</property>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">Start Time</property>
+                                            <property name="label" translatable="yes">Times</property>
                                           </object>
                                         </child>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="valign">center</property>
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">&lt;small&gt;Specifies the time when Bedtime Mode will be automatically turned on.&lt;/small&gt;</property>
+                                            <property name="label" translatable="yes">&lt;small&gt;Specify when Bedtime Mode will be automatically enabled&lt;/small&gt;</property>
                                             <property name="use-markup">1</property>
                                             <property name="wrap">1</property>
                                             <property name="max-width-chars">55</property>
@@ -116,116 +117,99 @@
                                       <object class="GtkBox">
                                         <property name="hexpand">1</property>
                                         <property name="halign">end</property>
-                                        <property name="spacing">8</property>
+                                        <property name="spacing">12</property>
                                         <child>
-                                          <object class="GtkSpinButton" id="schedule_start_hours_spin">
-                                            <property name="max-width-chars">2</property>
-                                            <property name="width-chars">2</property>
-                                            <property name="text">0</property>
-                                            <property name="orientation">vertical</property>
-                                            <property name="adjustment">schedule_start_hours_adjustment</property>
-                                            <property name="numeric">1</property>
-                                            <property name="wrap">1</property>
+                                          <object class="GtkBox">
+                                            <property name="spacing">6</property>
+                                            <child>
+                                              <object class="GtkLabel">
+                                                <property name="valign">center</property>
+                                                <property name="label" translatable="yes">From</property>
+                                                <property name="xalign">0</property>
+                                                <style>
+                                                  <class name="dim-label"/>
+                                                </style>
+                                              </object>
+                                            </child>
+                                            <child>
+                                              <object class="GtkBox">
+                                                <property name="spacing">4</property>
+                                                <child>
+                                                  <object class="GtkSpinButton" id="schedule_start_hours_spin">
+                                                    <property name="max-width-chars">2</property>
+                                                    <property name="width-chars">2</property>
+                                                    <property name="text">0</property>
+                                                    <property name="orientation">vertical</property>
+                                                    <property name="adjustment">schedule_start_hours_adjustment</property>
+                                                    <property name="numeric">1</property>
+                                                    <property name="wrap">1</property>
+                                                  </object>
+                                                </child>
+                                                <child>
+                                                  <object class="GtkLabel">
+                                                    <property name="label">:</property>
+                                                  </object>
+                                                </child>
+                                                <child>
+                                                  <object class="GtkSpinButton" id="schedule_start_minutes_spin">
+                                                    <property name="max-width-chars">2</property>
+                                                    <property name="width-chars">2</property>
+                                                    <property name="text">0</property>
+                                                    <property name="orientation">vertical</property>
+                                                    <property name="adjustment">schedule_start_minutes_adjustment</property>
+                                                    <property name="numeric">1</property>
+                                                    <property name="wrap">1</property>
+                                                  </object>
+                                                </child>
+                                              </object>
+                                            </child>
                                           </object>
                                         </child>
                                         <child>
-                                          <object class="GtkLabel">
-                                            <property name="label">:</property>
-                                          </object>
-                                        </child>
-                                        <child>
-                                          <object class="GtkSpinButton" id="schedule_start_minutes_spin">
-                                            <property name="max-width-chars">2</property>
-                                            <property name="width-chars">2</property>
-                                            <property name="text">0</property>
-                                            <property name="orientation">vertical</property>
-                                            <property name="adjustment">schedule_start_minutes_adjustment</property>
-                                            <property name="numeric">1</property>
-                                            <property name="wrap">1</property>
-                                          </object>
-                                        </child>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </property>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkListBoxRow">
-                                <property name="activatable">0</property>
-                                <property name="selectable">0</property>
-                                <property name="child">
-                                  <object class="GtkSeparator">
-                                  </object>
-                                </property>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkListBoxRow">
-                                <property name="activatable">0</property>
-                                <property name="selectable">0</property>
-                                <property name="child">
-                                  <object class="GtkBox">
-                                    <property name="margin-start">16</property>
-                                    <property name="margin-end">16</property>
-                                    <property name="margin-top">16</property>
-                                    <property name="margin-bottom">16</property>
-                                    <property name="spacing">30</property>
-                                    <child>
-                                      <object class="GtkBox">
-                                        <property name="orientation">vertical</property>
-                                        <child>
-                                          <object class="GtkLabel">
-                                            <property name="halign">start</property>
-                                            <property name="label" translatable="yes">End Time</property>
-                                          </object>
-                                        </child>
-                                        <child>
-                                          <object class="GtkLabel">
-                                            <property name="valign">center</property>
-                                            <property name="halign">start</property>
-                                            <property name="label" translatable="yes">&lt;small&gt;Specifies the time when Bedtime Mode will be automatically turned off.&lt;/small&gt;</property>
-                                            <property name="use-markup">1</property>
-                                            <property name="wrap">1</property>
-                                            <property name="max-width-chars">55</property>
-                                            <property name="xalign">0</property>
-                                            <style>
-                                              <class name="dim-label"/>
-                                            </style>
-                                          </object>
-                                        </child>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="GtkBox">
-                                        <property name="hexpand">1</property>
-                                        <property name="halign">end</property>
-                                        <property name="spacing">8</property>
-                                        <child>
-                                          <object class="GtkSpinButton" id="schedule_end_hours_spin">
-                                            <property name="max-width-chars">2</property>
-                                            <property name="width-chars">2</property>
-                                            <property name="text">0</property>
-                                            <property name="orientation">vertical</property>
-                                            <property name="adjustment">schedule_end_hours_adjustment</property>
-                                            <property name="numeric">1</property>
-                                            <property name="wrap">1</property>
-                                          </object>
-                                        </child>
-                                        <child>
-                                          <object class="GtkLabel">
-                                            <property name="label">:</property>
-                                          </object>
-                                        </child>
-                                        <child>
-                                          <object class="GtkSpinButton" id="schedule_end_minutes_spin">
-                                            <property name="max-width-chars">2</property>
-                                            <property name="width-chars">2</property>
-                                            <property name="text">0</property>
-                                            <property name="orientation">vertical</property>
-                                            <property name="adjustment">schedule_end_minutes_adjustment</property>
-                                            <property name="numeric">1</property>
-                                            <property name="wrap">1</property>
+                                          <object class="GtkBox">
+                                            <property name="spacing">6</property>
+                                            <child>
+                                              <object class="GtkLabel">
+                                                <property name="valign">center</property>
+                                                <property name="label" translatable="yes">To</property>
+                                                <property name="xalign">0</property>
+                                                <style>
+                                                  <class name="dim-label"/>
+                                                </style>
+                                              </object>
+                                            </child>
+                                            <child>
+                                              <object class="GtkBox">
+                                                <property name="spacing">4</property>
+                                                <child>
+                                                  <object class="GtkSpinButton" id="schedule_end_hours_spin">
+                                                    <property name="max-width-chars">2</property>
+                                                    <property name="width-chars">2</property>
+                                                    <property name="text">0</property>
+                                                    <property name="orientation">vertical</property>
+                                                    <property name="adjustment">schedule_end_hours_adjustment</property>
+                                                    <property name="numeric">1</property>
+                                                    <property name="wrap">1</property>
+                                                  </object>
+                                                </child>
+                                                <child>
+                                                  <object class="GtkLabel">
+                                                    <property name="label">:</property>
+                                                  </object>
+                                                </child>
+                                                <child>
+                                                  <object class="GtkSpinButton" id="schedule_end_minutes_spin">
+                                                    <property name="max-width-chars">2</property>
+                                                    <property name="width-chars">2</property>
+                                                    <property name="text">0</property>
+                                                    <property name="orientation">vertical</property>
+                                                    <property name="adjustment">schedule_end_minutes_adjustment</property>
+                                                    <property name="numeric">1</property>
+                                                    <property name="wrap">1</property>
+                                                  </object>
+                                                </child>
+                                              </object>
+                                            </child>
                                           </object>
                                         </child>
                                       </object>
@@ -251,7 +235,7 @@
                       <object class="GtkLabel">
                         <property name="halign">start</property>
                         <property name="margin-bottom">5</property>
-                        <property name="label" translatable="yes">On-Demand</property>
+                        <property name="label" translatable="yes">On Demand</property>
                         <attributes>
                           <attribute name="weight" value="bold"></attribute>
                         </attributes>
@@ -276,6 +260,7 @@
                                     <child>
                                       <object class="GtkBox">
                                         <property name="orientation">vertical</property>
+                                        <property name="valign">center</property>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="halign">start</property>
@@ -286,7 +271,7 @@
                                           <object class="GtkLabel">
                                             <property name="valign">center</property>
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">&lt;small&gt;Choose to always show or hide the button or display it only when the schedule is active.&lt;/small&gt;</property>
+                                            <property name="label" translatable="yes">&lt;small&gt;Choose when to show the button&lt;/small&gt;</property>
                                             <property name="use-markup">1</property>
                                             <property name="wrap">1</property>
                                             <property name="max-width-chars">50</property>
@@ -340,6 +325,7 @@
                                     <child>
                                       <object class="GtkBox">
                                         <property name="orientation">vertical</property>
+                                        <property name="valign">center</property>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="halign">start</property>
@@ -350,7 +336,7 @@
                                           <object class="GtkLabel">
                                             <property name="valign">center</property>
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">&lt;small&gt;Add a button to Top Bar or System Menu. The button can be used to manually toggle the Bedtime Mode.&lt;/small&gt;</property>
+                                            <property name="label" translatable="yes">&lt;small&gt;Choose where to place the toggle button&lt;/small&gt;</property>
                                             <property name="use-markup">1</property>
                                             <property name="wrap">1</property>
                                             <property name="max-width-chars">50</property>
@@ -403,6 +389,7 @@
                                     <child>
                                       <object class="GtkBox">
                                         <property name="orientation">vertical</property>
+                                        <property name="valign">center</property>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="halign">start</property>
@@ -413,7 +400,7 @@
                                           <object class="GtkLabel">
                                             <property name="valign">center</property>
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">&lt;small&gt;Change the button appearance in Top Bar when Bedtime Mode is active/inactive.&lt;/small&gt;</property>
+                                            <property name="label" translatable="yes">&lt;small&gt;Dim the button when Bedtime Mode is inactive&lt;/small&gt;</property>
                                             <property name="use-markup">1</property>
                                             <property name="wrap">1</property>
                                             <property name="max-width-chars">50</property>
@@ -460,6 +447,7 @@
                                     <child>
                                       <object class="GtkBox">
                                         <property name="orientation">vertical</property>
+                                        <property name="valign">center</property>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="halign">start</property>
@@ -470,7 +458,7 @@
                                           <object class="GtkLabel">
                                             <property name="valign">center</property>
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">&lt;small&gt;Manually change the button position in Top Bar. Zero is the start of the icons row.&lt;/small&gt;</property>
+                                            <property name="label" translatable="yes">&lt;small&gt;The number of spaces from the left to move the button&lt;/small&gt;</property>
                                             <property name="use-markup">1</property>
                                             <property name="wrap">1</property>
                                             <property name="max-width-chars">50</property>
@@ -554,6 +542,7 @@
                                     <child>
                                       <object class="GtkBox">
                                         <property name="orientation">vertical</property>
+                                        <property name="valign">center</property>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="halign">start</property>
@@ -564,7 +553,7 @@
                                           <object class="GtkLabel">
                                             <property name="valign">center</property>
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">&lt;small&gt;Select the color preset to be used when Bedtime Mode is active.&lt;/small&gt;</property>
+                                            <property name="label" translatable="yes">&lt;small&gt;Select a color hue to apply to the workspace&lt;/small&gt;</property>
                                             <property name="use-markup">1</property>
                                             <property name="wrap">1</property>
                                             <property name="max-width-chars">50</property>
@@ -613,6 +602,7 @@
                                     <child>
                                       <object class="GtkBox">
                                         <property name="orientation">vertical</property>
+                                        <property name="valign">center</property>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="halign">start</property>
@@ -623,7 +613,7 @@
                                           <object class="GtkLabel">
                                             <property name="valign">center</property>
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">&lt;small&gt;The percentage of how much of the selected color preset is to be applied.&lt;/small&gt;</property>
+                                            <property name="label" translatable="yes">&lt;small&gt;The percentage of the color preset to apply&lt;/small&gt;</property>
                                             <property name="use-markup">1</property>
                                             <property name="wrap">1</property>
                                             <property name="max-width-chars">50</property>
@@ -677,17 +667,18 @@
                                     <child>
                                       <object class="GtkBox">
                                         <property name="orientation">vertical</property>
+                                        <property name="valign">center</property>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">Intensity Change by Scrolling</property>
+                                            <property name="label" translatable="yes">Change Intensity by Scrolling</property>
                                           </object>
                                         </child>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="valign">center</property>
                                             <property name="halign">start</property>
-                                            <property name="label" translatable="yes">&lt;small&gt;Enable Color Intensity change by scrolling up or down over the button in Top Bar when Bedtime Mode is active.&lt;/small&gt;</property>
+                                            <property name="label" translatable="yes">&lt;small&gt;Change the color intensity by scrolling over the Top Bar button when Bedtime Mode is active&lt;/small&gt;</property>
                                             <property name="use-markup">1</property>
                                             <property name="wrap">1</property>
                                             <property name="max-width-chars">50</property>
